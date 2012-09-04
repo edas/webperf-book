@@ -310,7 +310,7 @@ visiteurs à affiner et approfondir leur recherche.
 
   [^10]: Intervention Bing aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/8523)
 
-![Évolution des performances suivant le ralentissement sur Bing](img/chap01-evolution-des-performances-suivant-le-ralentissement-sur-bing)
+![Évolution des performances suivant le ralentissement sur Bing](img/chap01-evolution-des-performances-suivant-le-ralentissement-sur-bing.png)
 
 La baisse de revenus publicitaires est d'ailleurs corrélée par une étude
 de Jackob Nielsen en juin 2010 : après un grand délai d'attente
