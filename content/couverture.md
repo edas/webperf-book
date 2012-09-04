@@ -1,7 +1,7 @@
 Temps de réponse des sites web
 ========================
 
-Projet disponible à sur <https://github.com/edas/webperf-book
+Projet disponible sur <https://github.com/edas/webperf-book>
 
 Auteur initial: Éric Daspet <http://eric.daspet.name/>
 
