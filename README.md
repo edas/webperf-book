@@ -6,7 +6,7 @@ J’ai tenté d’y investir un peu plus de temps, de me faire accompagner par u
 
 J'ai donc décidé de relancer la chose sous la forme d'un projet collaboratif. Pour l'instant la licence et les conditions sont rédigés dans l'unique objectif de compléter le contenu et le mettre à jour. Des conditions plus libres seront probablement données à partir de là.
 
-Vous trouverez plus de renseignements sur le contexte dans deux billets sur n.survol.fr : [Appel aux bonnes volontés](http://n.survol.fr/n/livre-webperf-appel-aux-bonnes-volontes) et [Licence](http://n.survol.fr/n/livre-en-redaction-communautaire-licence). Vous êtes invités à réagir directement sur ces billets.
+Vous trouverez plus de renseignements complémentaires et les futures actualités sur <http://n.survol.fr/avec/webperf-book>s, et en particulier dans deux billets : [Appel aux bonnes volontés](http://n.survol.fr/n/livre-webperf-appel-aux-bonnes-volontes) et [Licence](http://n.survol.fr/n/livre-en-redaction-communautaire-licence). Vous êtes invités à réagir directement sur ces billets et les suivants.
 
 -- [Éric] (http://eric.daspet.name/)
 
