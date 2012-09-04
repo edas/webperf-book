@@ -37,17 +37,17 @@ Ce que nous allons voir ensemble
 
 Cet ouvrage est découpé en quatre sections et treize chapitres. Les deux
 premiers sont des chapitres d'introduction, ils vous permettront de vous
-familiariser à la notion de performance et aux concepts techniques
+familiariser avec la notion de performance et les concepts techniques
 indispensables pour la suite de votre lecture :
 
 1. Users really respond to speed
 2. Premiers concepts
 
-Le corps du livre est représenté par les six chapitres suivants. Ce sont
-eux qui vous décriront tous les principes techniques, les
-recommandations de performance, la mise en œuvre, le pourquoi et le
-comment. Ils sont plus ou moins placés par ordre de priorité aussi je
-vous conseille de les lire séquentiellement au moins une fois.
+Les six chapitres suivants, qui composent le corps du livre, décriront 
+tous les principes techniques, les recommandations de performance, 
+la mise en œuvre, le pourquoi et le comment. Ils sont plus ou moins placés   
+par ordre de priorité, aussi je vous conseille de les lire séquentiellement 
+au moins une fois.
 
 3. Travailler avec les caches HTTP
 4. Moins de requêtes HTTP
@@ -91,7 +91,7 @@ extensions que vous avez. Pour cela lancez Firefox avec l'option
 « -profilemanager ».
 
 -   Mozilla Firefox :
-    [http://mozilla-europe.org/](http://mozilla-europe.org/) 
+    [http://www.mozilla-europe.org/](http://www.mozilla-europe.org/) 
 -   Gérer les profils Firefox :
     [http://support.mozilla.com/fr/kb/managing+profiles](http://support.mozilla.com/fr/kb/managing+profiles) 
 -   Chrome :
@@ -188,7 +188,7 @@ Si les compromis sont difficiles ce n'est pas qu'ils sont complexes à
 trouver ou à réaliser, c'est qu'il est difficile de se convaincre qu'il
 faut abandonner notre position intégriste du « je ne lâche rien là
 dessus ». Ce qui est délicat c'est de se convaincre soi-même (et les
-autres) à faire un compromis.
+autres) de faire un compromis.
 
 Pour votre bien, et pour celui de vos visiteurs, acceptez les compromis,
 c'est indispensable (et oui, cela veut aussi dire parfois ne pas
@@ -209,13 +209,13 @@ Pire, le logiciel de mesure utilisé peut avoir un impact sur la mesure
 elle même. Chacun étant imparfait d'une façon différente, le résultat
 peut varier fortement. Il est donc parfois vain de comparer des chiffres
 obtenus avec deux logiciels différents. Pour cette raison, deux
-paragraphes de ce livre peuvent donner résultats différents pour un même
+paragraphes de ce livre peuvent donner des résultats différents pour un même
 site, sans forcément qu'il y ait contradiction.
 
 Les statistiques réalisées permettent d’établir des comparaisons entre
 les différents sites dans les mêmes conditions, ou de vérifier les gains
 sur un même site avec le même logiciel avant et après les actions
-correctrices. Il ne faut parfois pas leur donner plus de poids : Ce ne
+correctrices. Il ne faut parfois pas leur donner plus de poids : ce ne
 sont pas les chiffres objectifs mais des mesures qui permettent de
 donner des références et des guides, rien de plus.
 
