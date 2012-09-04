@@ -6,7 +6,7 @@ L'Oeuvre accompagnant ce document est protégée par le droit d'auteur. Seule l'
 
 L'exercice d'un des droits décrits ci-dessous nécessite la compréhension, l'acceptation sans réserve, et le respect de l'ensemble des éléments du présent document en tant que contrat. L'acceptation du présent contrat n'est pas requis mais seule cette acceptation vous permet d'en exercer les droits décrits.
 
-L'usage, la modification ou/et la distribution de l'oeuvre en ayant connaissance des présentes conditions est considéré comme une acceptation pleine et entière du présent Contrat de Licence et en particulier de la clause 6 et de ses effets.
+L'usage, la modification ou/et la distribution de l'oeuvre en ayant connaissance des présentes conditions est considéré comme une acceptation pleine et entière du présent Contrat de Licence et en particulier de la clause de cession des droits et de ses effets.
 
 
 Définitions
@@ -72,7 +72,7 @@ La distribution et la représentation de parties non modifiées de l'Oeuvre Orig
 
     a. Par exception, les extraits très courts qui ne pourraient raisonnablement faire référence à ces informations dans les conditions exprimées, peuvent par exception se contenter d'un lien vers l'Adresse de Distribution, clairement visible et identifiable par les lecteurs ou destinataires.
  
-4. (oeuvre originale) Ne pas donner de l'Oeuvre une présentation qui pourrait trahir le texte ou l'esprit de l'Oeuvre Originale, ni l'intention des auteurs
+4. (pour l'Oeuvre Originale) Ne pas donner de l'Oeuvre une présentation qui pourrait trahir le texte ou l'esprit de l'Oeuvre Originale, ni l'intention des auteurs
 
 
 
@@ -80,9 +80,9 @@ Distribution et représentation d'une Oeuvre Dérivée
 -------------------------------------------------------------------------
 
 
-La distribution et la représentation d'une Oeuvre Dérivée sont autorisées à titre gratuit aux conditions cumulatives suivantes en plus des critères 1 à 3 exprimés au titre précédent :
+La distribution et la représentation d'une Oeuvre Dérivée sont autorisées à titre gratuit aux conditions cumulatives suivantes en plus des critères exprimés au titre précédent :
 
-4. (oeuvre dérivée) Expliciter de manière clairement identifiable, lisible et compréhensible par un lecteur ou destinataire peu attentif qu'il s'agit d'une Oeuvre Dérivée et non de l'Oeuvre Originale, et qu'en conséquence le contenu n'engage pas les auteurs initiaux  
+4. (pour les Oeuvres Dérivées) Expliciter de manière clairement identifiable, lisible et compréhensible par un lecteur ou destinataire peu attentif qu'il s'agit d'une Oeuvre Dérivée et non de l'Oeuvre Originale, et qu'en conséquence le contenu n'engage pas les auteurs initiaux  
       
 5. La distribution ou la représentation doit se faire sous le même format que l'Oeuvre Originale, ce qui exclu entre autres toute conversion vers d'autres formats de fichiers ou d'affichage, ou la fixation sur un support non électronique  
      
