@@ -1,4 +1,3 @@
-<base href="../../../raw/master/content">
 Premiers concepts
 =================
 
@@ -107,7 +106,7 @@ Firefox nommée TamperData permet même de modifier dynamiquement
 les requêtes HTTP au moment où elles sont envoyées, pour tester 
 différents résultats. 
 
-<img src='Pictures/10000000000002FD0000018C2EAD701E.png'>Exemple 
+<img src='../../../raw/master/content/Pictures/10000000000002FD0000018C2EAD701E.png'>Exemple 
 de visualisation d’une requête HTTP avec Firebug 
 
 Analyse d’une requête réseau
@@ -116,7 +115,7 @@ Analyse d’une requête réseau
 La requête HTTP n’est qu’une partie de ce qui est fait sur le réseau. 
 Voici les concepts principaux à retenir. 
 
-<img src='Pictures/10000201000003F3000002C67D904911.png'> 
+<img src='../../../raw/master/content/Pictures/10000201000003F3000002C67D904911.png'> 
 
 Schéma d’un échange réseau 
 
@@ -209,8 +208,8 @@ d’établir les mesures pour chaque requête HTTP faite sur la page.
 On y remarque si une étape prend un temps trop important mais aussi 
 si une requête bloque les suivantes par exemple. 
 
-<img src='Pictures/10000000000003E800000072B41FBE56.png'><img 
-src='Pictures/10000000000002DC0000001FF7769B11.png'>Exemple 
+<img src='../../../raw/master/content/Pictures/10000000000003E800000072B41FBE56.png'><img 
+src='../../../raw/master/content/Pictures/10000000000002DC0000001FF7769B11.png'>Exemple 
 d’analyse faite par webpagetest.org 
 
 ### Plafonnement du débit lors d'une session HTTP
@@ -267,7 +266,7 @@ passante disponible. Pour la page de référence de Google, même
 avec une connexion qui peut réaliser 10 Mb/s, le trafic web n'en 
 utilise pas beaucoup plus de 1,6 Mb/s. 
 
-<img src='Pictures/10000201000001C200000140071D36AB.png'>Bande 
+<img src='../../../raw/master/content/Pictures/10000201000001C200000140071D36AB.png'>Bande 
 passante réellement utilisée en fonction de la bande passante 
 disponible 
 
@@ -278,7 +277,7 @@ du fonctionnement de TCP, des contraintes de HTTP et de la petite
 taille des composants échangés. Ce plafonnement rend peu utile 
 d'avoir une bande passante de plus de 4 à 5 Mb/s. 
 
-<img src='Pictures/10000201000001C200000140F4AD4D80.png'>Bénéfice 
+<img src='../../../raw/master/content/Pictures/10000201000001C200000140F4AD4D80.png'>Bénéfice 
 de l'augmentation de la bande passante pour une page web 
 
 Analyse réseau du chargement d’une page
@@ -330,7 +329,7 @@ de ce javascript et le téléchargement suivant. C’est que le javascript
 prend un certain temps à s’exécuter, et bloque le navigateur 
 pendant ce temps. 
 
-<img src='Pictures/10000000000003E8000004F22494936B.png'>Graphique 
+<img src='../../../raw/master/content/Pictures/10000000000003E8000004F22494936B.png'>Graphique 
 en cascade de la page d’accueil Yahoo! France 
 
 Ensuite vous voyez que le rendu de la page ne commence que longtemps 
