@@ -215,7 +215,7 @@ destination quand on suit la publicité). Il permet de déterminer la
 place de la publicité dans le moteur de recherche et modifie le coût
 d'insertion dans le système adWords. Plus le site et la page destination
 sont lentes, moins la publicité aura une bonne place et plus elle
-coutera cher.
+coûtera cher.
 
 Si ce critère de performance n'est pas le seul, et pas forcément le plus
 important, il est un de ceux qui sont facilement manipulables par les
@@ -245,7 +245,7 @@ trafic pour un ralentissement d'une demi seconde de la page[^6].
 
 > + 500 ms au chargement → - 20 % de trafic
 
-  [^6]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [Conferences Sacalability 2007 de Seattle](http://www.techpresentations.org/Scaling_Google_for_Every_User)
+  [^6]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [Conferences Scalability 2007 de Seattle](http://www.techpresentations.org/Scaling_Google_for_Every_User)
 
 D'autres facteurs sont peut être intervenus en parallèle pour affecter à
 ce point le test (il présente par exemple 30 résultats par page au lieu
@@ -363,7 +363,7 @@ continuer les courbes sur leur progression d'alors.
 
 Bref, on a un gros gâchis mais c’est aussi une chance : Cela signifie
 que nous avons beaucoup de marge pour améliorer les choses et qu’il y a
-certainement des actions simples et peu couteuses à appliquer, avec des
+certainement des actions simples et peu coûteuses à appliquer, avec des
 effets qui seront exceptionnels. Ce livre est là pour vous donner ces
 informations, et bien d’autres.
 
