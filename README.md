@@ -1,6 +1,6 @@
 J’ai commencé à écrire un livre technique sur les temps de réponses des sites web il y a maintenant quelques années. Il est temps de faire le deuil de la forme du projet initial. 
 
-Suite à des changements professionnels et personnels successifs j’ai eu de moins en moins de temps à y accorder et la rédaction plafonne irrémédiablement à 50%. Le contenu vieillit en regard des capacités actuelles des navigateurs et en regard de l’état de l’art. Voir mourir ce contenu dans lequel j’ai tant investit me semble trop difficile.
+Suite à des changements professionnels et personnels successifs j’ai eu de moins en moins de temps à y accorder et la rédaction plafonne irrémédiablement à 50%. Le contenu vieillit en regard des capacités actuelles des navigateurs et en regard de l’état de l’art. Voir mourir ce contenu dans lequel j’ai tant investi me semble trop difficile.
 
 J’ai tenté d’y investir un peu plus de temps, de me faire accompagner par un auteur secondaire, de co-écrire, ou même de donner ce contenu à un auteur qui pourrait prendre la suite mais à chaque fois il est évident que le travail est énorme et que peu de gens sont à la fois suffisamment experts et avec assez de temps libre.
 
