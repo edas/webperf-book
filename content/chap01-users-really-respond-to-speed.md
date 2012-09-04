@@ -23,7 +23,7 @@ Vous verrez de nombreux liens en bas de page. Il n'est pas nécessaire
 d'aller lire les présentations ou les études qui sont liées, même si ça
 ne fait pas de mal, mais il me paraissait important de montrer les
 sources de chaque affirmation présente ici. Ces liens  permettent de
-prouver qu'il ne s'agit pas de chiffres jetés au hasard : Il s'agit
+prouver qu'il ne s'agit pas de chiffres jetés au hasard : il s'agit
 d'études et tests réalisés par les plus gros acteurs du web, diffusés
 publiquement par eux-même, et recoupés par des retours d'expérience de
 nombreux autres. Les chapitres suivants seront moins pollués par ces
@@ -32,7 +32,7 @@ liens en bas de page, promis.
 Les performances impactent votre business, Amazon et Aberdeen
 --------------------------------------------------------------------------------
 
-Pour attirer votre attention, voilà les premiers chiffres du livre : 
+Pour attirer votre attention, voici les premiers chiffres du livre : 
 
 > + 100 ms de latence → - 1 % de ventes [^1]
 
@@ -40,7 +40,7 @@ Pour attirer votre attention, voilà les premiers chiffres du livre : 
 
 Amazon a constaté dans des tests utilisateurs que chaque
 100 millisecondes de latence en plus lors du chargement de leurs pages
-web induisaient une chute de 1 % des ventes. C’est factuel, simple, mais
+web induisait une chute de 1 % des ventes. C’est factuel, simple, mais
 brutal : on parle de ventes, de l'objectif du site d'Amazon. Perdre des
 ventes c'est un échec qui doit retenir l'attention de tous, du
 développeur au directeur.
@@ -55,13 +55,13 @@ Une étude Aberdeen Group est tout aussi claire :
 
 Votre site met probablement plus de deux secondes à se charger
 entièrement une fois que l’utilisateur a cliqué sur un lien. À
-l’écriture de ces lignes la page d’accueil de TF1.fr met cinq secondes.
-Pour prendre plus extrême, FranceTelecom.com met parfois plus de onze
+l’écriture de ces lignes la page d’accueil de TF1.fr met 5 secondes.
+Pour prendre plus extrême, FranceTelecom.com met parfois plus de 11 
 secondes.
 
 Bien que tout ne soit pas transposable ou comparable, quand un site web
-met plus de cinq secondes, que des centaines de millisecondes se
-traduisent déjà en 1 % des ventes  fait réfléchir. Combien perdez-vous à
+met plus de 5 secondes, que des centaines de millisecondes se
+traduisent déjà en 1 % des ventes fait réfléchir. Combien perdez-vous à
 cause des mauvaises performances de votre site web ?
 
 Ce qui est sûr c’est que les utilisateurs réagissent en fonction des
@@ -78,7 +78,7 @@ que ceux d’Amazon.
 Charger la page en une à trois secondes
 ------------------------------------------------
 
-Vous prendrez le TGV ou le bus pour vos vacances ? le TGV bien entendu,
+Vous prendrez le TGV ou le bus pour vos vacances ? Le TGV bien entendu,
 sauf pour les marchés de niche comme les étudiants pendant les vacances
 d’été. Et encore, le train devient de plus en plus la première option
 considérée. Ce n’est pas tellement pour le confort, ce n’est
@@ -105,7 +105,7 @@ vite. 
 Lors de recherches sur Internet les visiteurs décident souvent en
 quelques dixièmes de secondes si la page est potentiellement
 intéressante ou s’ils repartent ailleurs. Au bout de quelques secondes à
-attendre la confiance s’effondre, l’intérêt s’effrite. Après trois à
+attendre, la confiance s’effondre, l’intérêt s’effrite. Après trois à
 quatre secondes les abandons deviennent fréquents et la situation peut
 devenir catastrophique. C’est parfois le site complet qui est abandonné
 par l’utilisateur et l’image négative se diffuse vite par le bouche à
@@ -114,13 +114,13 @@ oreille.
 Jakob Nielsen identifie de manière stable depuis plus de quinze ans
 trois paliers de perception de la vitesse :
 
--   0,1 seconde : En dessous du dixième de seconde la réponse est perçue
+-   0,1 seconde : En dessous du dixième de secondes la réponse est perçue
     comme instantanée. C'est la limite haute pour la manipulation de
     l'interface (clic sur un bouton, glisser/déposer, menu déroulant,
     etc.)
 -   1 seconde : La seconde est le palier de fluidité. Jusque là
     l'utilisateur perçoit le délai mais a encore une navigation fluide
-    sans avoir l'impression d'attendre la machine. C'est celle limite
+    sans avoir l'impression d'attendre la machine. C'est cette limite
     qu'il faudrait dans l'idéal viser pour une navigation interne dans
     un logiciel. Au delà il y a une impression d'attente, et donc de
     frustration.
@@ -137,7 +137,7 @@ et de l'utilisateur, mais les ordres de grandeur sont valables pour
 quasiment toute situation.
 
 Le web a ses habitudes et ses usages. Il est fréquent de devoir dépasser
-la seconde –   même si vous verrez que c'est le temps de réaction de
+la seconde – même si vous verrez que c'est le temps de réaction de
 Google par exemple, ce n'est pas un hasard. 
 
 Nous pouvons probablement parler d'un palier intermédiaire entre la
@@ -166,14 +166,14 @@ juste après les prix trop élevés.
 
 Un tiers des clients avec une mauvaise expérience a en effet abandonné
 le site entièrement et les trois quarts ne reviendront probablement plus
-par la suite. Le palier d'insatisfaction se situait à quatre secondes.
+par la suite. Le palier d'insatisfaction se situait à 4 secondes.
 Au delà les abandons deviennent très importants.
 
 Akamaï a relancé une étude similaire en 2009 avec Forrester Consulting.
-Là c'est à partir de trois secondes pour le chargement de la page qu'on
+Là c'est à partir de 3 secondes pour le chargement de la page qu'on
 identifie 57 % d'abandon parmi les acheteurs, et 80 % qui ne reviendront
-plus s'ils ont eu un résultat inapproprié. Ces paliers de trois ou
-quatre secondes sont une limite haute, à ne pas dépasser, pas un
+plus s'ils ont eu un résultat inapproprié. Ces paliers de 3 ou
+4 secondes sont une limite haute à ne pas dépasser, pas un
 objectif à atteindre.
 
 De plus, ces mauvaises performances rejaillissent sur la perception de
@@ -184,7 +184,7 @@ expérience avec leurs amis ou leur famille.
 Vos utilisateurs ne vous le diront pas forcément, mais ils attendent de
 votre site qu'il soit rapide. C’est tellement naturel qu’ils ne
 nommeront probablement pas le critère. Partout pourtant, quand on teste
-et qu’on fait des études, la vitesse est un critère de choix même s’il
+et que des études sont conduites, la vitesse est un critère de choix même s’il
 n’est pas exprimé. Plus qu’un critère, c’est en fait un pré-requis.
 
 Votre visibilité est aussi impactée
@@ -198,7 +198,7 @@ Speed », concurrent de Yslow de Yahoo!. Les deux servent à analyser une
 page pour y trouver les pistes d'amélioration de performance.
 
 Quelques voix le soupçonnaient auparavant mais Google l'a désormais
-annoncé officiellement : La performance des sites web influe sur les
+annoncé officiellement : la performance des sites web influe sur les
 métriques internes du moteur et sur votre référencement. 
 
 Les performances jouent par exemple sur le positionnement du site dans
@@ -214,7 +214,7 @@ affecté à chaque site et à chaque page ciblée par une publicité (page
 destination quand on suit la publicité). Il permet de déterminer la
 place de la publicité dans le moteur de recherche et modifie le coût
 d'insertion dans le système adWords. Plus le site et la page destination
-sont lentes, moins la publicité aura une bonne place et plus elle
+seront lents, moins la publicité aura une bonne place et plus elle
 coûtera cher.
 
 Si ce critère de performance n'est pas le seul, et pas forcément le plus
@@ -223,7 +223,7 @@ important, il est un de ceux qui sont facilement manipulables par les
 
 Google aide même ces équipes en proposant l'outil Google Page Speed et
 en l'intégrant dans ses outils en ligne Webmaster Tools ou Google
-Analytics. Il est extrêmement probable que les métriques générés par ces
+Analytics. Il est extrêmement probable que les métriques générées par ces
 outils soient exactement celles prises en compte en interne dans les
 moteurs de Google.
 
@@ -255,7 +255,7 @@ trafic est toutefois plus que certaine mais il est difficile
 d'individualiser tous les facteurs qui interviennent.
 
 Par contre même ces derniers tests amènent un résultat complémentaire
-inquiétant : Ceux qui ont un jour fait partie des utilisateurs « test »
+inquiétant : ceux qui ont un jour fait partie des utilisateurs « test »
 ayant reçus une page plus lente ont tendance à faire moins de recherches
 par la suite, même plusieurs semaines après que le test soit fini et que
 la vitesse des pages soit revenue à la normale. De mauvaises
@@ -334,10 +334,10 @@ Malgré l’augmentation des débits, le web est lent
 
 Le web est malheureusement en mauvais état par rapport aux performances.
 Je vous ai cité en début de chapitre les cas de TF1 et de France Telecom
-avec respectivement un peu plus de cinq secondes et un peu moins de dix
-secondes en moyenne. On se situe presque toujours au delà des deux
-secondes, quel que soit le site, et trop souvent au delà de trois, voire
-de cinq secondes. 
+avec respectivement un peu plus de 5 secondes et un peu moins de 10 
+secondes en moyenne. On se situe presque toujours au delà des 2
+secondes, quel que soit le site, et trop souvent au-delà de 3, voire
+de 5 secondes. 
 
 Ici, dans une liste arbitraire de sites mesurés sur une connexion ADSL
 de très bonne qualité, presque la moitié sont au dessus des 4 secondes :
@@ -361,7 +361,7 @@ continuer les courbes sur leur progression d'alors.
 
 ![Croissance du poids et du nombre d'objets d'une page web moyenne](img/chap01-croissance-du-poids-et-du-nombre-d-objets-d-une-page-web-moyenne.png)
 
-Bref, on a un gros gâchis mais c’est aussi une chance : Cela signifie
+Bref, on a un gros gâchis mais c’est aussi une chance : cela signifie
 que nous avons beaucoup de marge pour améliorer les choses et qu’il y a
 certainement des actions simples et peu coûteuses à appliquer, avec des
 effets qui seront exceptionnels. Ce livre est là pour vous donner ces
@@ -464,7 +464,7 @@ taux de transformation[^13].
 
 ![Impact et détail de l'amélioration de performance pour Mozilla](img/chap01-impact-de-l-amelioration-des-performances-pour-mozilla.png)
 
-Strangeloops Networks, une société qui travaille sur les performance, a
+Strangeloops Networks, une société qui travaille sur les performances, a
 aussi publié ses chiffres. Si, parce qu'ils sont intéressés aux
 résultats qu'ils donnent, on ne peut pas forcément prendre leurs
 graphiques pour argent comptant, ils montrent bien une amélioration sur
@@ -499,16 +499,16 @@ boutique, sur leur propension à faire des achats, et sur les coûts de la
 boutique elle-même.
 
 Le nombre de visiteurs dépend souvent fortement de la visibilité dans
-les moteurs de recherche mais aussi du taux de rebond et de la fidélité
-des visiteurs qui restent ainsi que du nombre de pages par visite. On a
-vu qu'en jouant sur la performance on augmentait ces quatre facteurs.
+les moteurs de recherche mais aussi du taux de rebond, de la fidélité
+des visiteurs qui restent, ainsi que du nombre de pages par visite. On a
+vu qu'en jouant sur la performance on augmentait ces 4 facteurs.
 Cette augmentation de trafic elle-même, mathématiquement augmentera les
 ventes.
 
 La propension à faire des achats dépend de l'incitation à déclencher le
 panier (taux de transformation), mais pas uniquement. Le temps passé sur
 le site incite à découvrir et donc à trouver finalement quelque chose
-d'intéressant, ou se laisser tenter, voire à augmenter la taille de son
+d'intéressant, ou à se laisser tenter, voire à augmenter la taille de son
 panier. Là aussi on a vu que tous ces indicateurs sont améliorés quand
 on améliore la vitesse du site.
 
@@ -553,14 +553,14 @@ surveillance, on peut les mettre en pratique en une semaine.
 Plus qu'une fonctionnalité
 --------------------------------
 
-C'est peut être Fred Wilson qui résume mieux tout cela. Fred Wilson est
+C'est peut être Fred Wilson qui résume le mieux tout cela. Fred Wilson est
 un investisseur bien connu aux États Unis d'Amérique de par ses
-participations dans de nombreuses sociétés « web 2.0 » comme twitter,
-del.icio.us ou feedburner. Lors des conférences « Future of Web Apps »
+participations dans de nombreuses sociétés « web 2.0 » comme Twitter,
+Del.icio.us ou Feedburner. Lors des conférences « Future of Web Apps »
 de 2010, dans ses dix principes pour des applications web gagnantes la
 vitesse arrive en premier critère. Pour lui c'est bien plus qu'une
 fonctionnalité, c'est le point le plus important, un pré-requis. Les
-entreprises avec des applications lentes ne  grossissent pas aussi vite.
+entreprises avec des applications lentes ne grossissent pas aussi vite.
 
 > First and foremost, we believe that speed is more than a feature. Speed
 > is the most important feature. […]
@@ -579,7 +579,7 @@ entreprises avec des applications lentes ne  grossissent pas aussi vite.
 -   Quelques dixièmes de secondes de ralentissement peuvent avoir un
     impact négatif concret et important sur votre site
 -   Il vaut mieux se concentrer sur la façade (réseau, navigateur) que
-    sur la génération des pages (programmation java, php, base de
+    sur la génération des pages (programmation Java, PHP, base de
     données)
 -   Améliorer la vitesse de votre site fera immédiatement progresser
     votre taux de rebond, la fidélité de vos visiteurs, le temps passé
