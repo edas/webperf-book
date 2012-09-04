@@ -47,7 +47,7 @@ Vérifiez combien vous coûtent vos serveurs et votre bande passante.
 Imaginez diviser par 40 le nombre de hits ou par 5 votre bande passante.
 L’investissement est très vite rentable. 
 
-![Téléchargements en premier et second accès sur Amazon.fr](img/chap03-telechargements-en-premier-et-second-accès-sur-amazon-fr.png)
+![Téléchargements en premier et second accès sur Amazon.fr](img/chap03-telechargements-en-premier-et-second-acces-sur-amazon-fr.png)
 
 Sur l’échantillon de sites français testés on identifie le nombre de
 requêtes et le poids total du document. Pour chaque site le premier
@@ -77,7 +77,7 @@ sites de commerce, des sites orientés vidéo. Très peu de catégories sont
 exclues et même la page d’accueil de Google qui n’a pour ainsi dire
 aucun composant complexe arrive à diviser par 6 se bande passante.
 
-![Influence du cache sur le poids des pages et le nombre de requêtes HTTP](img/influence-du-cache-sur-le-poids-des-pages-et-le-nombre-de-requetes-http.png)
+![Influence du cache sur le poids des pages et le nombre de requêtes HTTP](img/chap03-influence-du-cache-sur-le-poids-des-pages-et-le-nombre-de-requetes-http.png)
 
 Cache initialisé et cache vide, utilisateurs concernés
 ------------------------------------------------------
