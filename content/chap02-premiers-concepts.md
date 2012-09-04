@@ -1,3 +1,4 @@
+
 Premiers concepts
 =================
 
@@ -30,11 +31,12 @@ Une requête du navigateur au serveur est constituée de trois
 parties : la ligne de requête, un bloc d’entêtes, et éventuellement 
 un bloc de données, le corps de la requête. 
 
-GET /index.html HTTP/1.1 Host: example.org User-Agent: Mozilla/5.0 
-([...]) Gecko/2008092414 Firefox/3.0.3 Accept: text/html,application/xml;q=0.9,*/*;q=0.8 
-Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3 
-Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 
-Keep-Alive: 300 Connection: keep-alive 
+GET /index.html HTTP/1.1 <br/>Host: example.org <br/>User-Agent: 
+Mozilla/5.0 ([...]) Gecko/2008092414 Firefox/3.0.3 <br/>Accept: 
+text/html,application/xml;q=0.9,*/*;q=0.8 <br/>Accept-Language: 
+fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3 <br/>Accept-Encoding: 
+gzip,deflate <br/>Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 
+<br/>Keep-Alive: 300 <br/>Connection: keep-alive <br/> 
 
 La première ligne est la ligne de requête. Le terme `GET` indique 
 qu’on souhaite récupérer une ressource (la page web) ; c’est 
@@ -73,11 +75,11 @@ Une réponse HTTP n’est pas très différente d’une requête. On
 a une ligne de statut, un bloc d’entêtes et un bloc de contenu, 
 le corps de la réponse. 
 
-HTTP/1.1 200 OK Date: Sun, 02 Nov 2008 15:54:27 GMT Server: Apache/2.2.3 
-(CentOS) Last-Modified: Tue, 15 Nov 2005 13:24:10 GMT Etag: 
-"280100-1b6-80bfd280" Accept-Ranges: bytes Content-Length: 
-438 Connection: close Content-Type: text/html; charset=UTF-8 
-<HTML> _[…]_ </HTML> 
+HTTP/1.1 200 OK <br/>Date: Sun, 02 Nov 2008 15:54:27 GMT <br/>Server: 
+Apache/2.2.3 (CentOS) <br/>Last-Modified: Tue, 15 Nov 2005 
+13:24:10 GMT <br/>Etag: "280100-1b6-80bfd280" <br/>Accept-Ranges: 
+bytes <br/>Content-Length: 438 <br/>Connection: close <br/>Content-Type: 
+text/html; charset=UTF-8 <br/> <br/><HTML> <br/>_[…]_ <br/></HTML> 
 
 La ligne de statut contient le protocole, code de retour et un 
 message explicatif. Le protocole sera presque toujours HTTP 
@@ -369,7 +371,7 @@ le navigateur.
 --------
 
 [^1]: More bandwidth doesn't matter (much), Google, Mike Belshe, avril 2010
-Les graphiques suivants sont tirés de cette étude.
-[http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/](http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/)
-
+<br/>Les graphiques suivants sont tirés de cette étude.
+<br/>[http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/](http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/)
+<br/>
 
