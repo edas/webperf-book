@@ -461,3 +461,371 @@ souvent de publicités et contenus externes, non contrôlés par le site
 lui-même, ou de contenu très dynamique regénéré à chaque accès (dans le
 cas de l’absence des etags). 
 
+Expiration explicite des contenus
+---------------------------------
+
+Le système des requêtes conditionnelles reste imparfait du point de vue
+des performances, qu’il soit basé sur la date de dernière modification
+ou l’etag. Chaque nouvelle utilisation d’une ressource implique une
+requête conditionnelle sur le serveur. 
+
+On évite de transférer le contenu de la ressource mais on attend quand
+même une réponse réseau. Pour une page classique avec cinquante
+composants, deux téléchargements simultanés, et une latence de 40 ms,
+nous devrons attendre au mieux une bonne seconde pour rien.
+
+~~~~~~~ {.oneline}
+attente minimum = nbr ressources / connex. simultanées \* latence
+~~~~~~~
+
+La solution c’est l’expiration explicite des contenus. Il s’agit
+d’informer le navigateur que la ressource ne changera pas avant une
+certaine date. Jusque là, le navigateur récupère directement son
+ancienne version sans faire aucune requête réseau.
+
+### Détails HTTP
+
+Lors de la première réponse, le serveur envoie une entête HTTP nommée
+`Expires` ou la propriété `max-age` de l’entête `Cache-Control`. La première
+permet de définir une date d’expiration au format HTTP. La seconde est
+réservée à HTTP 1.1 et permet de définir plutôt une période de validité
+avec un nombre de secondes. On évite ainsi les problèmes synchronisation
+horaire. 
+
+En général on définit les deux. En cas de conflit c’est `Cache-Control`
+qui prime. `Expires` ne servira que pour un client HTTP 1.0 qui ne
+comprend pas `Cache-Control`. Si vous n’en choisissez qu’une, utilisez
+`Expires`.
+
+Réponse HTTP :
+
+~~~~~~~ {.http .response}
+HTTP/1.1 200 OK
+Date: Sun, 02 Nov 2008 15:54:27 GMT
+Server: Apache/2.2.3 (CentOS)
+Last-Modified: Sun, 01 Feb 2009 18:44:18 GMT
+Expires: Sun, 01, Feb, 20010 18:44:18 GMT
+Cache-Control: max-age=31536000
+
+[…]
+~~~~~~~
+
+Jusqu’à l’expiration des contenus – ou si le visiteur renouvelle le
+cache de son navigateur – le navigateur ne fera plus aucune requête pour
+ces ressources. Cela implique aussi que si vous modifiez l’image ou le
+fichier concerné, les visiteurs qui l’ont déjà en cache ne verront pas
+la mise à jour. Aucun procédé ne vous permettra de forcer vos visiteurs
+à mettre à jour leur cache. Cette problématique est abordée plus loin
+dans cette section, avec deux solutions qui sont utilisées par
+l’essentiel des sites web.
+
+Si le cache d’une ressource a expiré, le navigateur utilisera une
+requête conditionnelle plus classique pour revalider son contenu (et
+éventuellement ne pas avoir à le retélécharger). Il obtiendra alors une
+nouvelle date d’expiration explicite, et éventuellement le nouveau
+contenu si la ressource a été mise à jour entre temps.
+
+Si la directive `max-age` est présente en même temps que `must-revalidate`,
+alors le client peut utiliser le cache pendant le temps indiqué, mais il
+doit ensuite absolument revalider son contenu et ne pas réutiliser le
+cache plus longtemps. Cela s’adresse particulièrement à certains proxy
+intermédiaires qui sont configurés pour imposer leurs propres durées
+d’expiration sans prendre en compte ce qui est demandé par le serveur. 
+
+Note : Pour `Cache-Control`, il existe aussi une directive `s-maxage`,
+identique à la précédente, mais qui s’adresse uniquement aux serveurs
+proxy.
+
+### Que mettre en cache et pour combien de temps**
+
+En pratique on sépare d’un côté les ressources qui ne changent que
+rarement, voire jamais (images de graphisme, feuilles de style,
+javascript, et plus généralement tous les fichiers statiques), et d’un
+autre côté les ressources dynamiques ou qui changent fréquemment
+(principalement le code HTML et quelques échanges ajax).
+
+Les ressources statiques peuvent le plus souvent être mises en cache à
+vie, c’est à dire une dizaine d’années. Les ressources dynamiques
+dépendent de votre application :
+
+Le plus souvent les pages HTML contiennent des sections ou des
+informations liées à une authentification, des commentaires, des
+actualités, des publicités ou d’autres éléments qui nécessitent d’être
+réactualisés par le serveur à chaque accès. Ainsi sur l’essentiel des
+sites, les pages HTML elles-même ne sont pas mises en cache. 
+
+**Recommandation** : Pour tous les fichiers statiques (qui ne devraient
+pas être mis à jour plus d'une à deux fois par semaine dans les périodes
+de plus grand changements), définissez une expiration explicite très
+importante, par exemple dix ans.
+
+Attention particulièrement au fichier favicon.ico qu'on oublie
+fréquemment. Ce fichier est d'autant plus spécial qu'il est préférable
+de ne pas en changer l'adresse. Une préconisation spécifique est prévue
+plus loin dans ce chapitre concernant sa date d'expiration.
+
+### Mise en œuvre sur le serveur web
+
+Par défaut votre serveur web ne définit aucune expiration explicite.
+C’est à vous de spécifier ce que vous souhaitez dans votre
+configuration. Pour Apache il est possible d’utiliser 
+[mod_expires](http://httpd.apache.org/docs/2.2/mod/mod_expires.html).
+Vous pourrez, pour un répertoire précis ou pour certains types de
+ressources précis, définir une date d’expiration ou une durée de
+validité pour vos contenus.
+
+Ces expirations peuvent être définis par rapport à la date d’accès (cas
+préférable) ou à la date de dernière modification (pour des cas très
+spécifiques) :
+
+~~~~~~~ {.apache}
+ExpiresActive On\
+ExpiresDefault "access plus 1 month"
+ExpiresByType text/html "access plus 1 month 15 days 2 hours"
+ExpiresByType image/gif "modification plus 5 hours 3 minutes"
+~~~~~~~
+
+Pour les fichiers générés par Java, PHP ou Rails, il vous faudra définir
+vous-même les entêtes HTTP. Par exemple pour PHP :
+
+~~~~~~~ {.php}
+<?php
+$expires = 3600 * 24 * 365 * 10 ; // 10 ans
+$format = 'D, d M Y H:i:s' ;
+$to_browser = gmdate($format, time()+$expires) . ' GMT' ;
+header("Expires: $to_browser"); 
+header("Cache-Control: max-age=$expires") ;
+~~~~~~~
+
+Pour des fichiers HTML avec une expiration courte, comme une page
+d’accueil, n’oubliez pas de gérer aussi les requêtes conditionnelles,
+afin de permettre au navigateur de revalider son contenu et obtenir une
+nouvelle expiration sans tout retélécharger.
+
+Sur Lighttpd les paramètres du modExpire sont similaires mais la syntaxe
+du fichier de configuration laisse plus de latitude pour cibler les
+contenus à mettre en cache :
+
+~~~~~~~ {.lighttpd}
+$HTTP["url"] =~ "^/images/" {
+  expire.url = ( "" => "access plus 1 hours" )
+}
+~~~~~~~
+
+### Cas particulier des connexions sécurisées (https)
+
+Microsoft Internet Explorer a un comportement particulier quand les
+ressources en cache viennent de connexions sécurisées par https. Le
+navigateur impose d'avoir au moins établit un échange avec le serveur
+dans la page courante avant de réutiliser des données de ce serveur dans
+le cache. En pratique cela veut dire que le premier composant de chaque
+domaine accédé en https sera toujours retéléchargé et jamais pris à
+partir du cache, quelles que soient les entêtes que vous lui envoyez. Il
+en va de même pour Mozilla Firefox.
+
+En fait on va même un peu plus loin puisque si vous demandez trois
+images sur un domaine https, même si ce dernières sont en cache, ce sont
+peut être les trois qui seront retéléchargées. Internet Explorer
+télécharge la première, à dessein, mais risque de ne pas avoir encore la
+réponse avant de tenter d'afficher la seconde image. Au lieu d'attendre,
+il constate qu'il n'a toujours pas établit de connexion, et envoie une
+seconde requête à la couche logicielle qui s'occupe du réseau. 
+
+### Versionnement des URLs et mise à jour des contenus
+
+Avec une date d’expiration explicite, il n’y a aucun moyen pour
+l’éditeur d’un site web de forcer une mise à jour d’un contenu mis en
+cache par le navigateur. Si vous changez un logo ou faites des
+corrections dans une feuille de style, certains visiteurs risquent de ne
+jamais recevoir la nouvelle version
+
+Pour palier ce problème, il est possible de versionner les URL. Le cache
+du navigateur est en effet lié à l’adresse de la ressource. Si on change
+cette adresse, le navigateur considère qu’il s’agit d’une nouvelle
+ressource. Il suffit alors de changer l’adresse des composants à chaque
+modification.
+
+#### Forme des adresses versionnées
+
+Il suffit d’ajouter un jeton à l’adresse normale du fichier, et de
+s’assurer que ce jeton sera différent à chaque modification. On peut
+l’ajouter soit dans un paramètre à la fin de l’adresse
+(monstyle.css?xxx), soit dans le nom du fichier lui même
+(monstyle-xxx.css). La première forme a l’avantage de ne nécessiter
+aucun changement dans le stockage ou la configuration du serveur web. La
+seconde forme impose d’avoir un fichier physique par version, ou
+d’utiliser une réécriture d’URL comme celle qui suit (exemple avec
+mod_rewrite et Apache) mais permet de garder un historique des
+versions :
+
+~~~~~~~ {.apache .online}
+RewriteRule ^(.*)-\d\.\d(\.[a-z]{1,5})$  $1$2
+~~~~~~~
+
+La seconde forme, avec un jeton directement intégré dans le nom du
+fichier est très fortement préférable. En effet, HTTP propose par défaut
+de désactiver les caches non explicites s’il y a des paramètres
+(présence d’un point d’interrogation) dans l’adresse. Vous risqueriez de
+ne pas utiliser au mieux certains caches mal configurés même si vous
+avez une expiration explicite. 
+
+![Les adresses des fichiers javascript contiennent des numéros de version](img/chap03-les-adresses-des-fichiers-javascript-contiennent-des-numeros-de-version.png)
+
+#### Forme et génération du jeton unique
+
+Le jeton a pour seule contrainte d’être unique. Quand il est géré
+manuellement ou via un processus de publication hors ligne, on utilise
+généralement un simple numéro de version (monstyle-1.3.css). C’est ce
+qu’utilisent la plupart des sites à fort trafic qui ont industrialisé
+ces questions.
+
+Il est aussi possible d’automatiser cette gestion en utilisant la date
+de dernière modification du composant comme jeton. C’est ce que fait le
+framework Ruby on Rails par défaut pour les fichiers statiques. En PHP
+on pourrait utiliser la fonction suivante pour faire des liens :
+
+~~~~~~~ {.php}
+<?php
+function lien_avec_version($fichier) {
+  $prefixe = "/var/www/htdocs" ; // suivant votre configuration
+  $date = filemtime($prefixe.$fichier) ;
+  return "$fichier?$date" ;
+}
+$url = lien_avec_version("/monimage.png") ;
+echo " <img src='$url' alt='' /> ";
+~~~~~~~
+
+Si vous utilisez cette dernière méthode, préférez générer les jetons une
+fois pour toute à la publication des pages. Si vous utilisez un code PHP
+exécutable à chaque requête (comme dans l’exemple ci-avant) vous risquez
+de surcharger inutilement vos serveurs.
+
+#### Cas particuliers et favicon.ico
+
+Certains fichiers ont une adresse web qui ne peut pas changer ou qu'il
+serait préférable de ne pas changer. C'est par exemple le cas du
+favicon, que certains navigateurs chercheront par défaut à l'adresse
+`/favicon.ico`. Dans ce cas il n'est pas souhaitable de changer le nom du
+fichier et donc pas possible de lui rajouter des paramètres pour
+invalider le cache. Il faut donc éviter des expirations explicites trop
+longues et proposer plutôt une expiration de quelques jours (une à deux
+semaines par exemple).
+
+**Recommandation** : Définissez une expiration explicite de 2 à 15 jours
+pour le favicon.ico afin d'en faciliter le cache sans empêcher d'en
+changer le contenu à l'avenir.
+
+Différencier les copies suivant les utilisateurs et les contextes
+-----------------------------------------------------------------
+
+Le bénéfice du cache HTTP est indéniable mais il pose d'autres
+problèmes : Si plusieurs personnes passent pas le même proxy, ils ne
+pourront pas accéder à des données personnalisées. De même, les méthodes
+vues jusqu'à présent empêchent la donnée de varier en fonction du
+contexte (personne identifiée ou non, présence d'un panier, langue du
+navigateur, etc.).
+
+Pour nous aider nous avons l'entête `Vary` et deux paramètres
+supplémentaires à l'entête `Cache-Control`.
+
+L'entête `Vary` permet d'informer le navigateur et les caches
+intermédiaires du contexte de réutilisation de la page. En ajoutant
+`Cookie` comme valeur, une donnée en cache ne sera réutilisée que pour les
+futures requêtes avec la même valeur de cookie. En ajoutant
+`Accept-Language` on pourra avoir un cache différent par langue des
+navigateurs. On peut aussi trouver `Accept-Encoding` (qui permet de savoir
+si le navigateur accepte ou pas la compression HTTP), `User-Agent` (pour
+faire une page différente suivant les navigateurs) ou `Accept` (pour faire
+un contenu qui peut être envoyé en plusieurs formats suivant ce que
+supporte le navigateur). Ces différentes valeurs peuvent être cumulées
+en les séparant par des virgules.
+
+L'entête suivante permet de servir un cache différent suivant la langue
+et le navigateur :
+
+~~~~~~~ {.http .response .partial .online}
+Vary: Accept-Language, User-Agent
+~~~~~~~
+
+Il est souvent plus simple de se passer totalement des caches partagés
+(proxy) et de se contenter du cache des navigateurs. On s'assure alors
+que chaque client a sa propre page et ses propres contenus, sans pour
+autant s'empêcher de profiter du cache. Pour cela il suffit de rajouter
+le paramètre `private` à l'entête `Cache-Control`. 
+
+~~~~~~~ {.http .response .partial .online}
+Cache-Control: private, max-age=3600 
+~~~~~~~
+
+Le paramètre opposé, `public`, explicite que la donnée est publique,
+partageable à tous et donc utilisable par un cache partagé. C'est public
+qui est la valeur par défaut pour les requêtes de type GET. Pour les
+requêtes de type POST ou en erreur 404 cela autorise le navigateur à
+mettre le résultat en cache (ce qu'il n'aurait pas fait sinon) et donc à
+ne pas retransmettre la donnée au serveur la prochaine fois. On se
+contente habituellement de spécifier ce paramètre pour les requêtes de
+type GET sans erreur, sinon le serveur risque de ne pas déclencher
+certains traitements en provenance de formulaire (vu que le navigateur a
+utilisé le cache).
+
+~~~~~~~ {.http .response .partial .online}
+Cache-Control: public, max-age=3600 
+~~~~~~~
+
+De manière générale on choisit entre public et privé suivant que la
+ressource contient des données propres à l'utilisateur courant ou si
+elle peut être réutilisée par tout le monde. Dès que vous avez une
+authentification ou des préférences utilisateurs, c'est probablement un
+`Cache-Control:private` qu'il vous faut.
+
+
+Cache applicatif HTML 5
+-----------------------
+
+La spécification HTML 5 a prévu des fonctionnalités avancées de cache
+pour les applications hors-ligne. Il s'agit de pouvoir utiliser un site
+web une fois déconnecté, par exemple pour lire du contenu pré-téléchargé
+ou pour gérer des données comme des e-mails. Les images, illustrations,
+et composants, doivent alors être sauvegardés par l'appareil pour être
+réutilisés sans être retéléchargés.
+
+Un fichier texte nommé manifeste liste les différentes ressources qui
+seront sauvegardées en cache suivant la syntaxe suivante : une première
+ligne avec « CACHE MANIFEST », une adresse de ressource (relative ou
+absolue) par ligne. 
+
+~~~~~~~ {.cachemanifest}
+CACHE MANIFEST
+ /style.css
+ /yui.js
+ /img/icones.png
+ /img/bandeau.jpg
+~~~~~~~
+
+Il suffit ensuite de servir ce fichier avec le type mime
+`text/cache-manifest` et d'en référencer l'adresse dans l'attribut
+manifest de la balise `<html>` du document principal :
+
+~~~~~~~ {.html}
+<!DOCTYPE HTML>
+<html manifest="/cache.manifest">
+<head> ... </head>
+<body>
+...
+</body>
+</html>
+~~~~~~~
+
+À chaque accès le navigateur télécharge le manifeste. S'il s'agit d'un
+nouveau manifeste ou si le contenu a changé toutes les ressources sont
+retéléchargées pour être mises à jour. Le cache applicatif HTML 5 permet
+en fait d'autres possibilités (liste blanche, fallback, API pour accéder
+aux différents événement dans le navigateur, etc.) mais cela dépasse le
+cadre de ce livre.
+
+Il s'agit d'une alternative intéressante au cache HTTP avec expiration
+explicite. Elle ajoute en effet une fonctionnalité nouvelle : l'auteur a
+l'initiative de déclencher la mise à jour des ressources en cache. La
+syntaxe est toutefois plus complexe, un fonctionnement moins souple et
+son support est limité (seules les dernières versions des navigateurs
+supportent cette nouveauté).
