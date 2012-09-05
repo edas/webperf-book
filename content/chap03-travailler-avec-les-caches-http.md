@@ -1335,3 +1335,195 @@ l’appel à `session_start()`.
 privées et de vos pages publiques si vous utilisez un système de session
 dans votre applicatif serveur, et corrigez les si nécessaire.
 
+
+Dans les navigateurs
+--------------------
+
+Les réglages de cache sont souvent accusés de tous les maux par 
+les développeurs. Beaucoup de sites vous recommandent de modifier 
+le cache ou de le désactiver. Vous l'avez peut être fait. Vos visiteurs, 
+eux, ne toucheront pas aux réglages. Pensez donc à tout remettre 
+aux valeurs par défaut, généralement sur « automatique » quand 
+vous ne menez pas de test spécifique. 
+
+Pour faire des analyses cache vide, commencez par vider le cache 
+du navigateur, le fermer et le relancer, puis visitez le site 
+souhaité. Alternativement vous pouvez recharger une page complète 
+en demandant au navigateur de ne pas utiliser le cache. En général 
+c'est en appuyant sur la touche « control » (« command » sous Mac) 
+et/ou la touche « shift » quand vous lancez la réactualisation 
+de la page. 
+
+### Taille des caches
+
+Une fois le site en production c'est le problème inverse qui se 
+passe : Les navigateurs réservent un espace disque bien trop 
+petit pour leur cache. 
+
+#### Navigateurs « de bureau »
+
+Cet espace est de 50 Mo ou moins en général pour les anciens navigateurs, 
+seul Chrome montait à un petit 80 Mo. On peut remplir son cache 
+en une ou deux sessions de navigation. 
+
+Les navigateurs récents ont fait un effort et Firefox utilise 
+désormais une taille variable en fonction de l'espace disque 
+disponible, jusqu'à 1 Go. Internet Explorer 9 occupe 1/256ème 
+du disque, avec un maximum à 250 Mo. Chrome a désormais lui aussi 
+une taille maximum du même ordre de grandeur : 250 à 330 Mo ont été 
+reportés suivant les versions et l'espace disque disponible. 
+
+À partir de là pour ajouter des entrées il faut effacer les plus 
+anciennes. Comme il n'y a pas d'algorithme complexe pour déterminer 
+quoi effacer, le cache se renouvelle très rapidement et l'efficacité 
+décroit. Seul Internet Explorer 9 affecte pour l'instant des 
+priorités aux différents objets dans le cache suivant leur rôle 
+et leur usage. 
+
+Si vous contrôlez le parc de votre société, augmenter la taille 
+des caches de navigateurs améliorera sensiblement le confort 
+de navigation de vos utilisateurs. 
+
+#### Taille des caches des navigateurs mobiles
+
+Sur les navigateurs mobiles la situation est plus complexe. 
+Chaque appareil peut avoir sa propre configuration. Dans l'ensemble 
+Android 2.x utilise seulement 4 à 8 Mo. Même les Blackberry font 
+mieux avec 25 Mo. 
+
+Safari mobile sur iOS 4.3 sait lui utiliser jusqu'à 100 Mo en fonction 
+de la mémoire disponible mais il ne s'agit que de mémoire temporaire, 
+pas de disque. Ce cache est perdu dès que Safari est déchargé de 
+la mémoire. Une partie de ce cache peut aussi être supprimé si 
+un autre processus réclame de la mémoire. Les objets effacés 
+du cache à ce moment là ne seront pas forcément les plus anciens. 
+
+Les navigateurs sur tablette sont un peu plus souples puisqu'ils 
+acceptent de 20 Mo (Xoom sous Android 3.0, iPad 1) à 50 Mo (iPad 
+2). Là aussi, les tablettes iOS (iPad) n'utilisent qu'une mémoire 
+temporaire qui aura la même durée de vie que la session du navigateur. 
+
+Il est important de noter que toutes ces tailles sont à entendre 
+une fois les composants décompressés. On atteint donc très rapidement 
+les 4 Mo du cache Android. 
+
+**Recommandation **: Pour des clients mobiles pensez que le 
+cache se remplira très rapidement et ne sera finalement utilisable 
+que pour la session de navigation en cours. 
+
+Certaines anciennes versions iPhones ne pouvaient toutefois 
+pas stocker en cache des composants de plus de 25 Ko, pour un total 
+de 500 Ko. 
+
+**Recommandation : **Pour compatibilité avec les anciens iPhone, 
+gardez au maximum des composants (CSS, javascript) de moins 
+de 25 Ko une fois décompressés et limitez-vous à une vingtaine 
+d'objets. 
+
+### Mozilla Firefox
+
+Dans Mozilla Firefox, les réglages de cache sont dans l'onglet 
+« réseau » de la section « avancé » des préférences. Vous y trouverez 
+un bouton pour vider le cache (retirer tout ce qui y est stocké) 
+et un champ qui permet de définir la taille utilisé par Firefox 
+pour cet usage. 
+
+Pour les détails de configuration il faut aller à la page « about:config » 
+et chercher les directives començant par « browser.cache ». Toutes ces 
+directives sont décrites en anglais sur 
+[http://kb.mozillazine.org/About:config_entries](http://kb.mozillazine.org/About:config_entries). 
+
+Le contenu du cache lui-même peut être exploré en allant à la page 
+« about:cache ». 
+
+![Configuration du cache Mozilla Firefox](img/chap03-configuration-du-cache-mozilla-firefox.png)
+
+Si vous installez la web developper toolbar de Firefox (et je 
+vous recommande de le faire), il est aussi possible de désactiver 
+temporairement ou vider le cache avec une simple option dans 
+un menu déroulant. 
+
+![Désactivation du cache dans la web developper toolbar de Firefox](img/chap03-desactivation-du-cache-dans-la-web-developper-toolbar-de-firefox.png)
+
+L'extension Firebug a elle aussi un menu pour désactiver le cache, 
+dans l'onglet réseau. 
+
+### Opera
+
+Pour Opera, les préférences du cache se situent à l'onglet « avancé » 
+dans la section « historique ». Pour désactiver le cache il suffit 
+de choisir l'item « désactiver » dans les listes déroulantes 
+pour la taille des caches. 
+
+![Configuration du cache Opera](img/chap03-configuration-du-cache-opera.png)
+
+### Safari
+
+Safari n'offre aucune interface pour modifier les informations 
+de cache, mais vous pouvez vider le cache avec une option du menu 
+principal. Sous Mac, les objets sont stockés dans ~/Library/Caches/Safari. 
+Si vous souhaitez désactiver le cache complètement, une astuce 
+peut être de supprimer ce répertoire et de le remplacer par un 
+fichier vide. 
+
+Vous avez aussi une option pour désactiver le cache temporairement 
+dans les menus de développement si vous les avez activé dans les 
+préférences avancées du navigateur. 
+
+Chose rare, Safari a aussi un raccourci clavier pour vider le 
+cache : `shift`, `command`, `E`. 
+
+### Microsoft Internet Explorer
+
+Pour Microsoft Internet Explorer, vous pouvez vider le cache 
+en cliquant sur le bouton « Effacer... » de la section « historique 
+de navigation » dans l'onglet « général » des options Internet. 
+
+Dans les paramètres, assurez vous que la configuration reste 
+sur la valeur par défaut, une vérification automatique. C'est 
+aussi là que vous pourrez ouvrir le répertoire qui contient tous 
+les objets mis en cache. 
+
+![Configuration du cache Microsoft Internet Explorer 7](img/chap03-configuration-du-cache-microsoft-internet-explorer-7.png)
+
+Il est important de noter sélectionner « à chaque visite de cette 
+page web » dans les préférences pour les fichiers temporaires 
+ne suffit pas à désactiver complètement le cache. 
+
+### Google Chrome
+
+Il est possible de désactiver totalement le cache en passant 
+deux paramètres en ligne de commande lors du lancement du navigateur 
+(ou dans l'icône de raccourci) : `--disk-cache-size=1 –-media-cache-size=1`. 
+La taille du cache utilisée est visualisable à l'adresse `chrome://net-internals/httpcache.stats`. 
+
+Vider le cache se fait via les options du menu outil (représenté 
+par la clef à molette dans le coin droit en haut) puis avec « effacer 
+les données de navigation ». 
+
+### Autres navigateurs ou versions plus récentes
+
+Wikipedia maintient pour ses propres besoins une page qui référence 
+les moyens de vider ou désactiver les caches des différents navigateurs. 
+Les menus de ces logiciels changeant régulièrement, vous y trouverez 
+les détails les plus à jour : <http://en.wikipedia.org/wiki/Bypass_your_cache>
+
+À retenir
+---------
+
+* Le cache HTTP peut économiser plus de 80% du volume à télécharger 
+  pour charger une page web ; 
+
+* Il y aura toujours une proportion non négligeable de visites 
+  avec un cache non initialisé, il ne faut pas les oublier ; 
+
+* Désactiver les Etags ; 
+
+* Ajouter une expiration explicite à tous les contenus statiques ; 
+
+* Externalisez les CSS et javascript dans des fichiers séparés 
+  du HTML ; 
+
+* Préchargez le cache quand c'est pertinent ; 
+
+* N'ayez qu'une seule adresse par contenu, évitez les duplications. 
