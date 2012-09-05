@@ -120,7 +120,7 @@ les requêtes HTTP au moment où elles sont envoyées, pour tester
 différents résultats. 
 
 Exemple de visualisation d’une requête HTTP avec Firebug
-![Exemple de visualisation d’une requête HTTP avec Firebug](../../../raw/master/content/Pictures/10000000000002FD0000018C2EAD701E.png)
+![Exemple de visualisation d’une requête HTTP avec Firebug](../../../raw/master/content/img/chap02-1-exemple-de-visualisation-dune-requete-http-avec-firebug.png)
 
 Analyse d’une requête réseau
 ----------------------------
@@ -128,7 +128,7 @@ Analyse d’une requête réseau
 La requête HTTP n’est qu’une partie de ce qui est fait sur le réseau. 
 Voici les concepts principaux à retenir. 
 
-![](../../../raw/master/content/Pictures/10000201000003F3000002C67D904911.png)
+![](../../../raw/master/content/img/chap02-2-.png)
 
 Schéma d’un échange réseau
 
@@ -165,7 +165,7 @@ Des outils comme Firebug, IBM Page Detailer ou AOL Page Test (ici en exemple dan
 Le graphique alors représenté est appelé vue en cascade. Il est un peu différent du schéma explicatif général car il ne prend en compte que les temps d’attente vues du navigateur et permet d’établir les mesures pour chaque requête HTTP faite sur la page. On y remarque si une étape prend un temps trop important mais aussi si une requête bloque les suivantes par exemple.
 
 Exemple d’analyse faite par webpagetest.org
-![Exemple d’analyse faite par webpagetest.org](../../../raw/master/content/Pictures/10000000000002DC0000001FF7769B11.png)
+![Exemple d’analyse faite par webpagetest.org](../../../raw/master/content/img/chap02-3-exemple-danalyse-faite-par-webpagetestorg.png)
 
 ### Plafonnement du débit lors d'une session HTTP
 
@@ -193,7 +193,7 @@ avec une connexion qui peut réaliser 10 Mb/s, le trafic web n'en
 utilise pas beaucoup plus de 1,6 Mb/s. 
 
 Bande passante réellement utilisée en fonction de la bande passante disponible
-![Bande passante réellement utilisée en fonction de la bande passante disponible](../../../raw/master/content/Pictures/10000201000001C200000140071D36AB.png)
+![Bande passante réellement utilisée en fonction de la bande passante disponible](../../../raw/master/content/img/chap02-4-bande-passante-reellement-utilisee-en-fonction-de-la-bande-passante-disponible.png)
 
 Plafonnement 
 
@@ -203,7 +203,7 @@ taille des composants échangés. Ce plafonnement rend peu utile
 d'avoir une bande passante de plus de 4 à 5 Mb/s. 
 
 Bénéfice de l'augmentation de la bande passante pour une page web
-![Bénéfice de l'augmentation de la bande passante pour une page web](../../../raw/master/content/Pictures/10000201000001C200000140F4AD4D80.png)
+![Bénéfice de l'augmentation de la bande passante pour une page web](../../../raw/master/content/img/chap02-5-benefice-de-laugmentation-de-la-bande-passante-pour-une-page-web.png)
 
 Analyse réseau du chargement d’une page
 ---------------------------------------
@@ -227,7 +227,7 @@ Un graphique en cascade du chargement de Yahoo! France accompagne ces pages. Vou
 Tout d’abord vous voyez que certaines requêtes bloquent tout téléchargement. C’est le cas de la troisième ligne, un fichier javascript. Tant que ce javascript n’est pas entièrement téléchargé, rien d’autre n’avance. Il y a même un espace blanc entre la fin de ce javascript et le téléchargement suivant. C’est que le javascript prend un certain temps à s’exécuter, et bloque le navigateur pendant ce temps.
 
 Graphique en cascade de la page d’accueil Yahoo! France
-![Graphique en cascade de la page d’accueil Yahoo! France](../../../raw/master/content/Pictures/10000000000003E8000004F22494936B.png)
+![Graphique en cascade de la page d’accueil Yahoo! France](../../../raw/master/content/img/chap02-6-graphique-en-cascade-de-la-page-daccueil-yahoo-france.png)
 
 Ensuite vous voyez que le rendu de la page ne commence que longtemps après que la page HTML soit téléchargée. La page HTML principale c’est la première ligne. Le début du rendu sur le navigateur c’est la première ligne verticale, entre 3 s. et 3,5 s. La seconde ligne verticale correspond à l’événement `onLoad` du navigateur, c’est à dire quand le navigateur considère avoir entièrement chargé la page.
 
