@@ -1179,7 +1179,7 @@ pleine). Pour éviter ce comportement il faut envoyer les paramètres
 Pour Mozilla Firefox on peut constater ce fonctionnement avec Firebug en
 dépliant les détails d'une requête et en regardant la section « cache ».
 
-![Vérifier l'utilisation du cache par Mozilla Firefox](img/chap03-verifier-l-utilisation-du-cache-par-Mozilla-Firefox)
+![Vérifier l'utilisation du cache par Mozilla Firefox](img/chap03-verifier-l-utilisation-du-cache-par-mozilla-firefox.png)
 
 Les serveurs proxy, souvent dans les très grosses entreprises, sont
 parfois configurés pour avoir eux aussi une politique de cache très
