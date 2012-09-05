@@ -22,7 +22,7 @@ Version: 0.1 (April 7, 2006)
 """
 
 
-import sys, os, zipfile, xml.dom.minidom
+import sys, os, zipfile, xml.dom.minidom, shutil
 
 IGNORED_TAGS = ["office:annotation"]
 
@@ -64,6 +64,7 @@ class ParagraphProps :
         self.headingLevel = 0
         self.code = False
         self.title = False
+        self.hasImg = False
         self.indented = 0
 
     def setIndented (self, value) :
@@ -78,6 +79,8 @@ class ParagraphProps :
     def setCode (self, value) :
         self.code = value
 
+    def setHasImg (self, value) :
+        self.hasImg = value
 
     def __str__ (self) :
 
@@ -98,9 +101,7 @@ class ListProperties :
 
     
 class OpenDocumentTextFile :
-
-
-    def __init__ (self, filepath) :
+    def __init__ (self, filepath, img_prefix) :
         self.footnotes = []
         self.footnoteCounter = 0
         self.textStyles = {"Standard" : TextProps()}
@@ -108,6 +109,8 @@ class OpenDocumentTextFile :
         self.listStyles = {}
         self.fixedFonts = []
         self.hasTitle = 0
+        self.img_prefix = img_prefix
+        self.imgs_num = 0
 
         self.load(filepath)
         
@@ -225,7 +228,6 @@ class OpenDocumentTextFile :
         
         zip = zipfile.ZipFile(filepath)
 
-        #print >>sys.stderr, zip.namelist()
         for name in zip.namelist():
             if "Pictures" in name and not ".." in name:
                 try:
@@ -235,7 +237,6 @@ class OpenDocumentTextFile :
                 zip.extract(name)
 
         styles_doc = xml.dom.minidom.parseString(zip.read("styles.xml"))
-        #print>>sys.stderr, zip.read("styles.xml")
         self.processFontDeclarations(styles_doc.getElementsByTagName(
             "office:font-face-decls")[0])
         self.processStyles(styles_doc.getElementsByTagName("style:style"))
@@ -243,7 +244,6 @@ class OpenDocumentTextFile :
             "text:list-style"))
         
         self.content = xml.dom.minidom.parseString(zip.read("content.xml"))
-        #print>>sys.stderr, zip.read("content.xml")
         self.processFontDeclarations(self.content.getElementsByTagName(
             "office:font-face-decls")[0])
         self.processStyles(self.content.getElementsByTagName("style:style"))
@@ -304,7 +304,6 @@ class OpenDocumentTextFile :
                               "text:list"]]
 
         for paragraph in paragraphs :
-            #print >> sys.stderr, paragraph
             if paragraph.tagName == "text:list" :
                 text = self.listToString(paragraph)
             else :
@@ -322,9 +321,23 @@ class OpenDocumentTextFile :
         return self.compressCodeBlocks(buffer)
 
 
+    def slugify(self, value):
+        """
+        from django/template/defaultfilters.py
+        LICENSE: !!!!!!!
+        Normalizes string, converts to lowercase, removes non-alpha characters,
+        and converts spaces to hyphens.
+        """
+        import unicodedata, re
+        value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
+        value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
+        value = unicode(re.sub(' ', '-', value))
+        return value
+
     def textToString(self, element, props = None) :
 
         buffer = u""
+        img_in_buffer = None
 
         for node in element.childNodes :
 
@@ -343,8 +356,6 @@ class OpenDocumentTextFile :
 
                     styleName = node.getAttribute("text:style-name")
                     style = self.textStyles.get(styleName, None)
-
-                    #print styleName, str(style)
 
                     if style.fixed :
                         buffer += "`" + text + "`"
@@ -401,17 +412,26 @@ class OpenDocumentTextFile :
                 elif tag == "text:line-break":
                     # YOAV - need to add an <br/> here
                     if props:
-                        props.code = True
+                        props.setCode(True)
                     buffer += "\n"
                 elif tag == "text:soft-page-break":
                     pass
                 elif tag == "draw:frame":
                     child = node.childNodes[0]
-                    img_url = child.getAttribute("xlink:href")
-                    buffer += "<img src='../../../raw/master/content/" + img_url + "'>"
+                    img_in_buffer = child.getAttribute("xlink:href")
                 else :
-                    #print >>sys.stderr, "TAG: ", tag
                     buffer += " {" + tag + "} "
+
+        if img_in_buffer:
+            self.imgs_num += 1
+            extension = img_in_buffer.split('.')[-1]
+            imgname = "img/" + self.img_prefix + "-" + str(self.imgs_num) + "-" + self.slugify(buffer) + "." + extension
+            os.rename(img_in_buffer, imgname)
+            buffer += "\n![" + buffer + "](../../../raw/master/content/" + imgname + ")"
+
+            
+        if(props):
+            props.setHasImg(img_in_buffer != None)
 
         return buffer
 
@@ -422,18 +442,19 @@ class OpenDocumentTextFile :
         paraProps = self.paragraphStyles.get(style_name) #, None)
         text = self.textToString(paragraph, paraProps)
 
-        #print >>sys.stderr, style_name.encode("utf-8")
+        #print >>sys.stderr, "TEXT:", text
 
         if paraProps and not paraProps.code :
             text = text.strip()
-        #print >>sys.stderr, text.encode("utf-8")
 
         if paraProps.title :
             self.hasTitle = 1
+            #print >>sys.stderr, "TITLE"
             return text + "\n" + ("=" * len(text))
 
         if paraProps.headingLevel :
 
+            #print >>sys.stderr, "HEADING"
             level = paraProps.headingLevel
             if self.hasTitle : level += 1
 
@@ -444,9 +465,13 @@ class OpenDocumentTextFile :
             else :
                 return "#" * level + " " + text
 
-        elif paraProps.code :
+        elif paraProps.code:
             lines = ["    %s" % line for line in text.split("\n")]
+            #print >>sys.stderr, "CODE"
             return "\n".join(lines)
+        elif paraProps.hasImg:
+            #print >>sys.stderr, "HAS_IMG"
+            return text
 
         """
         if paraProps.indented :
@@ -479,23 +504,21 @@ class OpenDocumentTextFile :
             counter += len(token)
 
         return buffer
-        
-
 
 if __name__ == "__main__" :
+    filename = ""
+    img_prefix = ""
+    if len(sys.argv) >= 3:
+        img_prefix = sys.argv[2]
+    if len(sys.argv) <= 1:
+        print >>sys.stderr, "Usage:", sys.argv[0], "<File name>", "<Optional image prefix>"
+        quit()
 
+    filename = sys.argv[1]
 
-    odt = OpenDocumentTextFile(sys.argv[1])
-
-    #print odt.fixedFonts
-
-    #sys.exit(0)
-    #out = open("out.txt", "wb")
-
+    odt = OpenDocumentTextFile(filename, img_prefix)
     unicode = odt.toString()
     out_utf8 = unicode.encode("utf-8")
-
     sys.stdout.write(out_utf8)
-
-    #out.write(
+    shutil.rmtree("Pictures")
 
