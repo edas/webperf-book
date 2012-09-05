@@ -322,7 +322,7 @@ class OpenDocumentTextFile :
         return self.compressCodeBlocks(buffer)
 
 
-    def textToString(self, element) :
+    def textToString(self, element, props = None) :
 
         buffer = u""
 
@@ -400,13 +400,15 @@ class OpenDocumentTextFile :
                     pass
                 elif tag == "text:line-break":
                     # YOAV - need to add an <br/> here
+                    if props:
+                        props.code = True
                     buffer += "\n"
                 elif tag == "text:soft-page-break":
                     pass
                 elif tag == "draw:frame":
                     child = node.childNodes[0]
                     img_url = child.getAttribute("xlink:href")
-                    buffer += "<img src='" + img_url + "'>"
+                    buffer += "<img src='../../../raw/master/content/" + img_url + "'>"
                 else :
                     #print >>sys.stderr, "TAG: ", tag
                     buffer += " {" + tag + "} "
@@ -418,12 +420,13 @@ class OpenDocumentTextFile :
 
         style_name = paragraph.getAttribute("text:style-name")
         paraProps = self.paragraphStyles.get(style_name) #, None)
-        text = self.textToString(paragraph)
+        text = self.textToString(paragraph, paraProps)
 
         #print >>sys.stderr, style_name.encode("utf-8")
 
         if paraProps and not paraProps.code :
             text = text.strip()
+        #print >>sys.stderr, text.encode("utf-8")
 
         if paraProps.title :
             self.hasTitle = 1
@@ -451,6 +454,7 @@ class OpenDocumentTextFile :
 
         else :
         """
+        #print >>sys.stderr, "WRAP"
         return self.wrapParagraph(text, indent = indent)
         
 
