@@ -371,3 +371,454 @@ On voit aussi deux lignes verticales. La première symbolise
 le début du rendu dans le navigateur (la page commence à ne plus 
 être blanche) et la seconde indique l'événement « onload » dans 
 le navigateur. 
+
+Sous-systèmes du navigateur
+---------------------------
+
+Si le réseau occupe une place prépondérante dans le navigateur 
+et le temps de traitement d'une page, ce n'est pas le seul sous-système 
+présent. Microsoft en identifie onze pour son navigateur Internet 
+Explorer. Si ce qui suit est propre à Microsoft Internet Explorer 
+mais tous les autres navigateurs ont un système similaire. 
+
+* Réseau : Ce sous-système est responsable de toute la communication 
+  entre le navigateur et les serveurs web. Il s'occupe des requêtes 
+  HTTP, des requêtes DNS, des files d'attente de téléchargement, 
+  et des caches. 
+
+* HTML : Une fois le code HTML téléchargé il est envoyé au sous-système 
+  HTML pour être analysée et découpé. Ce module a pour rôle de 
+  créer une structure en mémoire représentant le code HTML. 
+
+* CSS : De même que pour HTML, le module CSS a pour rôle d'analyser 
+  le code source pour créer une structure qui sera réutilisée 
+  plus tard par le navigateur. 
+
+* Collections : Ce sous-système est responsable du stockage 
+  et de l'accès à toutes les méta-données, pour la page (dans 
+  les entêtes HTML par exemple) ou pour les éléments HTML (attributs) 
+
+* Javascript : C'est le sous-sytème chargé d'exécuter le code 
+  javascript. 
+
+* Routage (marshalling) : Si le module javascript n'est pas 
+  directement intégré dans le navigateur, il faut passer par 
+  une couche intermédiaire pour toutes les interactions avec 
+  le DOM ou les éléments du navigateur. Ce sous-système de routage 
+  est là pour faire le pont entre les deux. 
+
+* Modèle objet natif : C'est la représentation native du document 
+  et de ses éléments dans le navigateur, à laquelle on accède 
+  souvent via javascript. 
+
+* Formatage : Une fois les structures du document créées un sous-système 
+  est chargé d'y appliquer les différents styles. 
+
+* Construction des blocs : À partir du formatage on construit 
+  les différents blocs à afficher, par exemple avec leur taille. 
+
+* Agencement (layout) : Couplé avec le module précédent, le 
+  sous-système d'agencement est chargé de préparer le rendu 
+  en organisant les blocs entre eux. 
+
+* Rendu : Le rendu est l'étape finale. Il s'agit d'afficher à 
+  l'écran ce que l'utilisateur verra. C'est aussi ce sous-système 
+  qui s'occupe éventuellement de l'accélération graphique. 
+
+Certains sous-systèmes comme les modules réseau et javascript 
+sont immédiatement identifiés comme des sources de ralentissement 
+possibles mais on le verra, il est possible d'intervenir aussi 
+sur les autres. Les opérations de routage, d'agencement, de 
+rendu ou sur le modèle objet natif peuvent aussi être particulièrement 
+coûteuses. 
+
+Pour une application basée fortement basée sur ajax avec Microsoft 
+Internet Explorer 8, hors réseau, les répartitions sont de l'ordre 
+de 30 % pour le rendu, 20 % pour javascript, et 15 % pour l'agencement, 
+et 12 % pour le formatage. Pour un site web plus classique le rendu, 
+l'agencement et le formatage ont bien moins d'importance car 
+ils interviennent une seule fois (le javascript ne provoque 
+pas de changement fréquents dans la page). 
+
+Ressenti utilisateur, temps de réponse
+--------------------------------------
+
+### Valeurs objectives de temps de réponse
+
+Lors des explorations nous nous attacherons à plusieurs mesures 
+objectives : 
+
+* Temps de chargement complet (PLT, page load time) : temps nécessaire 
+  pour charger, exécuter et afficher toute la page et ses composants. 
+
+* OnLoad : déclenchement de l'événement DOM du même nom dans 
+  la page en cours de chargement. Naturellement cet événement 
+  se déclenche quand toute la page et ses ressources sont chargées 
+  et exécutées, toutefois, il est possible de différer l'exécution 
+  ou le chargement de certains composants, sauf ce qu'on a volontairement 
+  différé. 
+
+* ContentLoaded : déclenchement de l'événement DOM du même 
+  nom, quand la page HTML a été téléchargée et analysée entièrement, 
+  disponible pour utilisation. Les ressources annexes peuvent 
+  être encore en téléchargement. 
+
+* Temps de téléchargement réseau : temps nécessaire pour le 
+  transfert complet réseau de la page HTML principale. 
+
+* Début du rendu (start render) : temps à partir duquel le navigateur 
+  commence à tracer la page à l'écran. 
+
+### Autres valeurs mesurables
+
+Outre les mesures objectives, il est possible de mesurer sur 
+d'autres critères : 
+
+* Page visible (above the fold, ATF) : temps nécessaire pour 
+  charger tous les composants nécessaires à tracer la partie 
+  visible de la page. 
+
+* Temps pour agir (time to act, TTA) : temps nécessaire pour commencer 
+  à utiliser la page (le contenu utile est donc chargé et le navigateur 
+  réactif). 
+
+* Chargement du contenu principal : temps nécessaire pour afficher 
+  le contenu principal du site (généralement le corps textuel 
+  de l'article, le menu principal sur la page d'accueil, parfois 
+  l'illustration ou le formulaire central). 
+
+### Pièges et priorité entre les différentes mesures
+
+Si nous abordons autant de mesures différentes c'est qu'il n'y 
+en a aucune qui répond à toutes les problématiques. Par facilité 
+nous parlons souvent du temps de chargement complet et du temps 
+de chargement du contenu principal, parce que ce sont les mesures 
+significatives les plus parlantes. 
+
+C'est toutefois la combinaison de toutes ces mesures qui constitue 
+la performance d'une page. Lors de vos propres études, faites 
+attention à ne pas vous focaliser uniquement sur les deux que 
+nous mettons souvent en avant. Si le navigateur exécute encore 
+beaucoup de javascript (temps pour agir très long) ou si c'est 
+le contenu utile de la fin de page qui se charge avant celui de la 
+partie visible, vous aurez échoué à efficacement améliorer 
+les performances du point de vue de l'utilisateur. 
+
+Faire attention aux mesures est aussi indispensable quand elles 
+ne sont faussés par un artefact peu significatif. C'est par exemple 
+le cas quand une ressource unique met très longtemps à charger 
+alors que tout le reste de la page est fonctionnel : les mesures 
+onload et temps de chargement complet seront mauvaises mais 
+cela ne reflétera pas la performance réelle de la page et l'expérience 
+utilisateur. À l'inverse, il est possible de différer au dernier 
+moment ou passer en tâche de fond beaucoup de traitements : cela 
+améliore immédiatement quasiment toutes les mesures, mais 
+ça pourra aussi ralentir toutes les interactions futures avec 
+l'utilisateur et donc dégrader la performance réelle de la page. 
+
+Enfin, il est indispensable de vérifier les mesures sur différents 
+navigateurs. Leurs fonctionnalités sont différentes et ils 
+peuvent réagir de manière tout à fait opposée sur une même page. 
+
+### Ressenti utilisateur
+
+Avant de passer à la suite, il est important d'ajouter encore 
+d'autres considérations. Même avec une analyse intelligente 
+et en prenant en compte toutes les mesures brutes, le ressenti 
+de l'utilisateur peut ne pas varier dans le même sens que nos mesures. 
+
+Ce ressenti utilisateur peut être impacté par les _reflow_, 
+ces recalculs du rendu de la page au fur et à mesure de son chargement, 
+qui lui donnent l'impression de « bouger ». Il peut aussi être 
+impacté par la présence d'un FLOUC (flash of unstyled content, 
+affichage bref d'une page non stylée le temps que les styles soient 
+appliqués ou téléchargés), d'un temps avec une page blanche, 
+ou d'une construction trop progressive de la page. Même la présence 
+d'un indicateur de chargement peut changer du tout au tout le 
+ressenti de performance de l'utilisateur. 
+
+Quand nous améliorons les performances il ne faut pas perdre 
+de vue que le plus souvent c'est ce ressenti qui est notre objectif. 
+Les mesures brutes ne servent qu'à nous donner une indication 
+de notre avancée. Il arrivera que l'amélioration des indicateurs 
+chiffrés entraine une dégradation du ressenti, et inversement. 
+Parfois il peut ainsi être une bonne idée de retarder le chargement 
+complet de la page si cela permet d'afficher plus tôt les éléments 
+importants, de diminuer les « bougés » dans le chargement et de 
+continuer des choses invisibles en tâche de fond. 
+
+Les navigateurs font très attention à ce ressenti de performance. 
+Mozilla Firefox a très bien compris l'importance de l'impression 
+de vitesse. Ainsi l'image animée qui tourne quand une page est 
+en cours de chargement a été accéléré au fur et à mesure des versions. 
+Ce changement renforce et donne une visibilité aux améliorations 
+concrètes et réelles de performance dans le moteur. C'est sur 
+l'impression de performance que le navigateur a joué mais la 
+satisfaction pour l'utilisateur est elle très concrète. 
+
+**Recommandation :** Il est heureusement rare que les chiffres 
+donnent une impression totalement fausse, mais attention à 
+ne pas leur donner une importance démesurée. L'interprétation 
+de l'utilisateur et le subjectif ont eux aussi une grande influence. 
+
+Directives principales
+----------------------
+
+De tout ceci on peut tirer cinq directives principales qui devront 
+guider toutes nos actions : 
+
+1. Réduire le nombre de requêtes HTTP 
+
+2. Réduire le poids des composants 
+
+3. Améliorer la parallélisation des téléchargements 
+
+4. Améliorer le ressenti utilisateur 
+
+5. Améliorer l'applicatif et les temps de traitement 
+
+Il est difficile d'établir une priorité entre ces cinq directives, 
+parce que toutes peuvent être la source de votre problème de performance. 
+Toutefois, en général les deux premières directives sont les 
+plus simples à traiter dans un premier temps et offrent un retour 
+sur investissement excellent. Le troisième point permet lui 
+aussi d'améliorer considérablement les performances mais 
+reste parfois plus complexe à gérer. 
+
+Installations et mesures préalables
+-----------------------------------
+
+Ce chapitre sur les concepts de base touche à sa fin, et avant de 
+passer aux détails techniques il est temps de vous inciter à installer 
+les outils nécessaires et à prendre vos premières mesures. 
+
+### Outils
+
+Tout d'abord si vous n'avez pas installé Mozilla Firefox, faites 
+le, tout de suite. C'est ce navigateur qui sera votre principal 
+outil. Gardez à l'esprit qu'appuyer sur la touche _shift_ pendant 
+que vous réactualisez une page permet de ne pas utiliser le cache 
+du navigateur. L'adresse about:config vous permettra d'accéder 
+aux options de configurations internes ; nous en utiliserons 
+plusieurs. 
+
+Profitez en pour installer au minimum les extensions Firebug, 
+Yslow, Google Page Speed et HTTPfox. Prenez les dernières versions, 
+n'hésitez pas à utiliser les bétas ou versions en développement. 
+Google Page Speed vous donnera un premier graphique en cascade, 
+Yslow vous donnera les statistiques et HTTPfox vous permettra 
+d'analyser les entêtes HTTP. 
+
+Installez aussi Chrome, Safari, Microsoft Internet Explorer, 
+et Opera. Pour avoir les différentes versions de chacun de ces 
+logiciels vous aurez certainement à installer des machines 
+virtuelles. Certaines versions ayant des paramétrages vraiment 
+différent, ce n'est pas superflu. 
+
+Si vous avez en plus un Iphone et quelques téléphones portables 
+avec accès web, cela peut être intéressant (mais pas indispensable). 
+Sur Android l'installation de Browser2 ([http://www.5o9mm.com/](http://www.5o9mm.com/)) 
+sera aussi utile pour avoir des métriques fiables. 
+
+Téléchargez et installez ensuite les outils IBM Page Detailer 
+et Page Test, qui vous donneront des cascades précises et bourrées 
+d'informations. 
+
+Les proxys de déboguage Charles et Fiddler peuvent aussi vous 
+aider à intercepter le trafic HTTP et collecter quelques statistiques. 
+Charles vous permettra par exemple de simuler une latence et 
+un débit réduit entre votre serveur et votre navigateur, quand 
+bien même les deux sont sur la même machine. Pour tester des configurations 
+plus complexes, vous pouvez aussi installer Wireshark, qui 
+surveillera tout le réseau et pourra extraire les sessions HTTP, 
+TCP et DNS. 
+
+Enfin, prévoyez un bout de serveur avec Apache et PHP quelque 
+part, avec un accès en écriture à la configuration. C'est ce qui 
+vous permettra de tester vos tentatives. 
+
+Un chapitre dédié aux outils est présent en fin de livre, n'hésitez 
+pas à y jeter un oeil pour savoir comment utiliser tout ça. 
+
+### Mesures
+
+Il est maintenant temps de prendre vos premières mesures. Prenez 
+quelques sites exemples : le votre, mais aussi quelques uns que 
+vous visitez régulièrement. Faites un répertoire pour chaque 
+et sauvegardez le code source et les mesures. Quand vous aurez 
+exploré tout ce livre vous pourrez voir le chemin parcouru. 
+
+![Écran statistique de Yslow](img/chap02-ecran-statistique-de-yslow.png)
+
+Si vous faites des mesures manuelles, pensez à faire un test avec 
+le cache vide, et un test avec le cache pré-initialisé. Des informations 
+sont disponible à ce sujet dans le chapitre lié au cache. Si vous 
+oubliez de vider votre cache avant la première mesure, vous risquez 
+de fausser tous vos résultats. 
+
+Yslow nous donne pratiquement toutes les mesures utiles à sauvegarder. 
+Vous trouverez un lien « vue imprimable » dans le menu outils de 
+l'extension : sauvegardez-en le résultat. Vous aurez le nombre 
+et la répartition des requêtes HTTP, le poids de la page et des 
+différents composants, et le temps de chargement. 
+
+Tout ce qu'il vous manque éventuellement c'est un graphique 
+en cascade avec différents valeur de bande passante et de latence. 
+Webpagetest.org devrait vous donner ça. Pensez à activer la 
+vidéo et à sauvegarder les résultats. 
+
+**Recommandation :** Commencez par faire des mesures Yslow 
+sur chacun de vos sites de travail, puis des mesures avec webpagetest.org 
+avec différentes qualités de connexion Internet. 
+
+Sauvegardez le tout pour pouvoir constater vos avancées au fur 
+et à mesure. 
+
+### Yslow et Google Page Speed en fil directeur
+
+Quand vous ne savez pas quoi faire, ou que vous voulez constater 
+vos progrès, jetez un oeil à Yslow, puis éventuellement à Google 
+Page Speed. Yslow n'est pas parfait, mais c'est un des meilleurs 
+guides qui existe sur le sujet et Google Page Speed comble les 
+quelques manques. Les statistiques, la mesure du temps de réponse 
+et les différentes notes (de F à A, A étant la meilleure) vous donneront 
+un aperçu rapide de là où vous en êtes. 
+
+![L'écran d'évaluation Yslow](img/chap02-lecran-devaluation-yslow.png)
+
+Quand vous voulez avancer indépendamment de ce livre, prenez 
+un sujet où vous avez une mauvaise note, et suivez les recommandations 
+correspondantes. 
+
+Débit et latence d'une connexion Internet type
+----------------------------------------------
+
+### Débit, soyons humbles
+
+Ne soyez pas trop optimistes sur les valeurs de bande passante 
+et latence. Pensez que 2 Mb/s est déjà une bonne moyenne. En réalité 
+beaucoup ont une moins bonne connexion parce qu'ils utilisent 
+une connexion WIFI, un téléphone portable, un ordinateur lent, 
+ou un logiciel P2P en tâche de fond par exemple. Générez des mesures 
+et des tests pour 56 kb/s (modem téléphonique classique, RTC), 
+512 kb/s (ligne ADSL basique, mauvais wifi, ligne partagée), 
+1 Mb/s, 2 Mb/s, éventuellement pour 3 Mb/s et 5 Mb/s. 
+
+Malheureusement il n'est pas la peine de monter plus haut. Plus 
+les gens ont une grande bande passante, plus ils ont tendance 
+à utiliser de logiciels consommateurs simultanément (messagerie, 
+téléchargements, onglets multiples dans le navigateur, etc.) 
+divisant d'autant la bande passante réellement disponible 
+pour la session HTTP. Comme nous l'avons vu, le débit réellement 
+utilisé pour une unique session TCP plafonne de toutes assez 
+rapidement quand on télécharge beaucoup de petits contenus 
+(comme c'est souvent le cas pour le web) : Entre un tuyau de 4 Mb/s 
+et et un tuyau de 10 Mb/s, il n'y a quasiment aucune différence 
+pour le chargement d'une page web (sauf à charger plusieurs pages 
+simultanément), la bande passante réellement utilisée par 
+le navigateur sera presque la même. 
+
+### Latence, prévoyez large
+
+Les latences moyennes sont elles entre 30 ms et 60 ms pour des connexions 
+correctes en France métropolitaine et des sites hébergés eux 
+aussi en France métropolitaine ou dans la proche Europe. La latence 
+dépasse rarement les 100 ms pour des sites en Europe mais peut 
+facilement exploser s'il y a un problème réseau quelconque. 
+Vous pouvez travailler avec le jeu de latence suivant : 30 ms, 
+45 ms, 60 ms, 90 ms et 120 ms voire 150 ms. Si vous travaillez avec 
+un réseau interne vous pouvez éventuellement utiliser 15 ms. 
+Inversement n'hésitez pas à passer à 200 ms si vous savez que les 
+conditions réseau risquent d'être très mauvaises. 
+
+#### Quelques explications sur la latence
+
+La vitesse de la lumière est de 300 000 km/s. Pour réaliser le trajet 
+jusqu'à un serveur Californien, il faudrait 20 000 km par un trajet 
+direct aller-retour soit 67 ms. Dans le meilleur des cas nous 
+utilisons des fibres optiques qui ralentissent de moitié la 
+vitesse de propagation, ce qui donne 100 ms théoriques. En général 
+il faut environ doubler ces temps pour une connexion réelle, 
+donc 200 ms dans notre cas. Même pour joindre New York nous avons 
+dans les 12 000 km en ligne direct aller-retour, donc dans les 
+120 ms possibles. 
+
+Ce sont ces temps là que nous obtenons régulièrement depuis la 
+France pour joindre des serveurs américains. Toute difficulté 
+ou tout équipement réseau superflu viendrait en sus, et bien 
+entendu cela ne comprend pas le délai de réaction de votre serveur 
+lui-même. 
+
+Les équipements réseaux aux deux extrémités amènent forcément 
+un minimum de latence et pour un particulier, même avec des serveurs 
+géographiquement proche, il sera peu commun de tomber en dessous 
+de 30 ms. 
+
+### Combiner latence et débit dans vos tests
+
+Il n'est pas la peine de générer toutes les combinaisons entre 
+débit et latence. Malheureusement un faible débit va très souvent 
+avec une forte latence et inversement. Si on trouve parfois des 
+connexions à forte latence et haut début (les terminaux 3G+ par 
+exemple), la bande passante restera de toutes façons sous utilisée. 
+Du fait du plafonnement des débits TCP, la bande passante utilisée 
+est en fait plus dépendante de la latence que de la bande passante 
+disponible. 
+
+![Bande passante réellement utilisable pour du web en fonction de la latence](img/chap02-bande-passante-reellement-utilisable-pour-du-web-en-fonction-de-la-latence1.png)[^2]
+
+  [^2]: Graphique en provenance de « More Bandwidth Doesn't Matter (Much) » par Mike Belshe le 4 août 2010
+
+Travaillez avec quelques combinaisons qui vous semblent réalistes. 
+Une latence moyenne se situe entre 30 et 60 ms pour des sites hébergés 
+en France ou dans la proche Europe. 
+
+Tout cela prend du temps à générer mais vous saurez ce qu'il en 
+est sans vous baser uniquement sur votre cas. Faites ceci pour 
+votre page d'accueil, mais aussi pour quelques types de pages 
+internes significatives de votre trafic. La page d'accueil 
+n'est pas forcément la mesure la plus pertinente car elle est 
+très spécifique. 
+
+À retenir
+---------
+
+Concernant le réseau 
+
+* Un échange HTTP nécessite au préalable une résolution DNS 
+  et l'établissement d'une connexion TCP, qui prennent tous 
+  deux du temps ; 
+
+* Ce qui est envoyé du navigateur au serveur et inversement prend 
+  du temps, on parle de latence réseau ; 
+
+* L'analyse des échanges réseau peut être faite entre autres 
+  à l'aide de l'extension Firebug ou de webpagetest.org ; 
+
+* La connexion de référence fait environ 2 Mb/s avec une latence 
+  de 50 ms ; 
+
+Concernant HTTP 
+
+* Un échange HTTP est composé d'une requête et d'une réponse ; 
+
+* Requête et réponse HTTP sont composés d'une ligne de statut, 
+  d'une ou plusieurs entêtes clef:valeur, d'une ligne vide, 
+  et éventuellement d'un contenu ; 
+
+* Le détail HTTP (requête, réponse, entêtes, réseau) peut être 
+  visualisé à l'aide de l'extension Firebug sur Mozilla Firefox ; 
+
+Concernant les mesures 
+
+* Les 5 directives principales de performance qui doivent vous 
+  guider ; 
+
+* Le ressenti de performance est aussi important que la mesure 
+  objective ; 
+
+* Utilisez les extensions Yslow et Google Page Speed comme fil 
+  conducteur ; 
+
+* Ne soyez pas trop optimistes sur la qualité des connexions 
+  internet de vos visiteurs. 
