@@ -829,3 +829,509 @@ l'initiative de déclencher la mise à jour des ressources en cache. La
 syntaxe est toutefois plus complexe, un fonctionnement moins souple et
 son support est limité (seules les dernières versions des navigateurs
 supportent cette nouveauté).
+
+Exploiter au mieux les caches
+-----------------------------
+
+### Externaliser les ressources
+
+De manière générale, il est préférable de ne pas mettre en cache les
+pages web elle même, uniquement leurs composants statiques. Elles
+contiennent presque toutes une invite d’authentification utilisateur,
+des publicités, des commentaires utilisateurs ou une section
+d’actualités. Ces éléments doivent être réactualisés et si la page était
+mise en cache, ils resteraient bloqués à leur ancienne valeur.
+
+Ainsi, afin de profiter au maximum du cache, on tente de séparer les
+composants statiques du reste de la page. En externalisant les feuilles
+de style et les javascript dans des fichiers externes, on permet que ces
+codes ci soient mis en cache, selon les méthodes expliquées plus avant,
+quand bien même la page HTML elle-même ne le seraient pas. 
+
+Cette externalisation, où chaque déclaration javascript ou css est
+retirée du code HTML, permet de réduire de façon importante la taille de
+chaque page, et donc le temps de téléchargement pour l’utilisateur.
+Chaque clic sur un lien va mener à une nouvelle page bien plus
+rapidement.
+
+En contre-partie, nous augmentons le nombre de requêtes HTTP à faire
+lors du premier accès à votre site. Cela peut avoir un impact
+significatif si votre site a une grande latence, ou si vos visiteurs ne
+consultent qu’une à deux pages à chaque visite. Nous verrons cependant
+dans les chapitres suivants qu’il est possible de regrouper les
+différents fichiers javascript et css pour limiter cet effet négatif.
+
+**Recommandation** : Externalisez toutes les instructions css ou
+javascript dans un fichier séparé de la page html. Vous pourrez alors
+définir une expiration explicite importante sur ces éléments.
+
+### Système de préchargement
+
+Le préchargement est le second moyen pour optimiser au mieux les caches.
+Il s’agit de télécharger un composant par avance pour la mettre en
+cache. Quand le navigateur aura réellement besoin de cette donnée, il
+pourra alors la récupérer instantanément à partir du cache.
+
+Toute la difficulté est de trouver un équilibre entre le bénéfice du
+préchargement et le risque de télécharger par avance des composants qui
+ne seront pas utilisés ensuite. Un préchargement inutile est en effet
+pénalisant pour l’utilisateur mais pour vos serveurs aussi.
+
+Ainsi, même si votre page d’accueil n’a pas de commentaires, pourquoi ne
+pas charger les icônes et codes javascript qui sont utilisés dans les
+pages internes ? Les illustrations courantes, les javascripts et
+feuilles de styles sont de très bon candidats au préchargement. Les
+pages html elles-même offrent un ration utilité/risque un peu moins
+intéressant.
+
+**Recommandation** : Si votre page courante est très différente des
+pages suivantes probables, n’hésitez pas à précharger certains
+composants afin d’accélérer la transition.
+
+La seule contrainte forte du préchargement est de ne pas être
+contre-productif, c’est à dire ne pas ralentir notre page d’accueil sous
+prétexte d’accélérer les suivantes. Pour cela les ressources à
+précharger sont initialisées en fin de document, après tout ce qui est
+utilisé sur le moment.
+
+Une formule assez simple pourrait être utilisée : On multiple le
+pourcentage d'utilisateurs qui auront besoin de la ressource dans leurs
+prochains accès par le surcoût que représente le téléchargement de cette
+ressource si elle n'est pas préchargée. D'un autre côté on multiplie le
+pourcentage d'utilisateurs qui n'auront pas besoin de la ressource à
+court terme par le surcoût que représente le préchargement de cette
+ressource. Si le premier chiffre est le plus grand alors il faut
+précharger, sinon il vaut mieux s'abstenir.
+
+En pratique la question est beaucoup plus délicate car il est quasiment
+impossible de déterminer le coût pour l'utilisateur d'un préchargement
+inutile. Beaucoup d'utilisateurs ne ressentiront aucun désagrément,
+alors que certains qui ont d'autres téléchargements parallèles verront
+un ralentissement sans savoir à quoi l'attribuer.
+
+La méthode utilisée pour le préchargement a aussi une influence dans la
+décision. Ainsi comme c'est détaillé dans la suite, l'utilisation d'une
+balise `<link rel="prefetch" ...>` présente moins de risques d'effet
+négatif que l'utilisation d'un code javascript.
+
+#### Prefetch et prerender
+
+La méthode idéale est d’utiliser la balise `<link>` avec un attribut
+`rel="prefetch"`. Le navigateur reconnaît alors cette balise et tente de
+précharger la ressource dès qu’il est inactif. Le risque d’effet négatif
+est très réduit car le navigateur vérifie qu’aucune activité réseau
+n’est en cours sur aucun onglet avant de commencer. De plus il stoppe
+ces préchargements dès qu’une requête normale est initiée, afin de ne
+pas la pénaliser. Si cela peut impacter la bande passante d’autres
+logiciels sur le même réseau, cela ne gênera jamais en aucune façon
+votre session de navigation elle-même. Cette fonctionnalité est prévue
+dans HTML 5 mais n’est pour l’instant implémentée que dans les
+navigateurs basés sur le moteur Gecko (dont Mozilla Firefox) et quelques
+versions du navigateur Blackberry.
+
+~~~~~~~ {.html .partial .online}
+<link rel="prefetch" href="http://example.org/maressource">
+~~~~~~~
+
+Vous pouvez vérifier qu'une requête est réalisée par un navigateur
+Mozilla dans le cadre des liens de préchargement grâce à la présence de
+l'entête HTTP `X-Moz:prefetch`.
+
+Le navigateur Chrome (mais uniquement lui) va même un peu plus loin en
+permettant l'utilisation de l'attribut `rel="prerender"`. Contrairement à
+prefetch le navigateur est incité à analyser la page préchargée pour en
+télécharger les sous-composants et en commencer le rendu. L'effet est
+similaire à celui d'une page téléchargée dans un onglet en tâche de
+fond. Vous pouvez savoir si la page est chargée en tâche de fond ou en
+avant-plan grâce à la propriété javascript
+`document.webkitVisibilityState` qui retournera « visible », « hidden » ou
+« prerender », suivant les cas.
+
+~~~~~~~ {.html .partial .online}
+<link rel="prerender" href="http://example.org/maressource">
+~~~~~~~
+
+#### Les méthodes manuelles
+
+Il existe d’autres méthodes, mais toutes ont un même défaut majeur : il
+n’est pas possible de faire un préchargement dépendant de l’activité
+réseau du navigateur. Des préchargements trop importants peuvent
+ralentir le chargement d’autres onglets ou mettre en attente des
+ressources sur le même domaine. Retarder des requêtes souhaitées
+maintenant par l’utilisateur afin d’accélérer une future requête
+potentielle est rarement intéressant. Aussi, ces méthodes ne doivent pas
+référencer plus de deux ressources par domaine (afin de ne pas trop
+retarder les autres requêtes du même domaine) et uniquement si elles ont
+un bon rapport utilité/risque. De plus, afin de ne commencer qu’après le
+chargement complet de la page courante, elles ne devraient être
+initialisées qu'après l’événement onload de la page courante.
+
+La plus simple de ces méthodes alternatives est d’utiliser des requêtes
+Ajax. Elles ont l’avantage d’être asynchrones et de ne pas avoir
+d’indicateur de chargement dans l’interface utilisateur. Un sablier ou
+un indicateur équivalent donnerait en effet un très mauvais ressenti de
+performance à l’utilisateur, même si le résultat objectif est
+intéressant.
+
+Il est aussi possible de charger des images en javascript avec `new
+Image()`, de charger une bibliothèque de code javascript avec un simple
+`<script>`, d'utiliser la balise `<object>`, ou même de charger des
+éléments dans une iframe cachées. Ces trois méthodes peuvent toutefois
+provoquer des indicateurs d’attente dans l’interface utilisateur, voire
+bloquer l’interface entièrement (pendant l’interprétation de la
+bibliothèque javascript par exemple).
+
+#### DNS
+
+Mozilla Firefox, Safari et Google Chrome, dans leurs dernières versions,
+proposent aussi de précharger les résolutions DNS. Ils scannent alors
+tous les liens de la page et font les requêtes DNS utiles quand
+l’activité réseau le permet. Il n’y a rien à faire, mais il est possible
+de demander explicitement le préchargement d’un nom de domaine avec la
+syntaxe suivante :
+
+~~~~~~~ {.html .partial .online}
+<link rel="dns-prefetch" href="//example.org">
+~~~~~~~
+
+Par défaut ce préchargement n’est pas activé pour les liens sécurisé en
+HTTPS. Il est possible de les demander explicitement avec la balise méta
+suivante :
+
+~~~~~~~ {.html .partial .online}
+<meta http-equiv="x-dns-prefetch-control" value="on">
+~~~~~~
+
+Inversement, la valeur off permet de désactiver les préchargements DNS
+(mais pourquoi le voudriez-vous ?).
+
+Microsoft Internet Explorer 9 tente aussi de résoudre en avance les noms
+de machines dans les liens en préchargement :
+
+~~~~~~~ {.html .partial .online}
+<link rel="dns-prefetch"
+href="[http://example.org/index.html](http://example.org/index.html)">
+~~~~~~~
+
+Internet Explorer 9 fait même mieux puisqu'il retient les domaines
+utilisés lors des précédentes visites et tente d'en assurer la
+résolution par avance, au cas où. Il le fait aussi par avance pour les
+premières propositions de la barre d'adresse quand elle est déroulée.
+
+### Mise en cache des requêtes Ajax
+
+Les sites modernes font de plus en plus appel à des requêtes dites
+« Ajax ». Il s’agit simplement de requêtes HTTP faites en javascript
+pour actualiser des données précises sans avoir à recharger
+l’intégralité de la page web et de ses composants.
+
+C’est ainsi qu’est réalisée l’auto-complétion du champs de recherche sur
+Google ou Yahoo! par exemple. Au fur et à mesure de la saisie le
+navigateur réalise quelques requêtes HTTP pour demander au serveur une
+liste de recherches probable pour compléter la saisie de l’utilisateur.
+
+Si certaines de ces requêtes doivent être réactualisées à chaque
+instant, d’autres peuvent tout à fait profiter des mécanismes de cache
+expliquées précédemment. Ainsi l’auto-complétion du moteur de recherche
+peut tout à fait être mise en cache pour plusieurs jours :
+
+Si je commence par taper « conn » le navigateur va établir la liste des
+recherches probables. Comme cela prend un peu de temps il est probable
+que j’ai tapé une lettre de plus avant d’avoir la liste. Si j’en suis à
+« connex » je peux me rendre compte qu’en anglais on dit « connection »
+et pas « connexion ». Je reviens sur ma saisie.
+
+N’est-il pas appréciable que le navigateur puisse me reproposer
+instantanément la liste de termes qu’il avait téléchargé tout à l’heure
+plutôt que de perdre du temps à faire une nouvelle requête ? C’est ce
+qu’il se passe si la requête Ajax est mise en cache. Mieux, si je
+reviens demain faire la même requête, ou une approchant, la liste sera
+toujours en cache, avec une réactivité instantanée.
+
+Les mécanismes techniques pour la mise en cache sont les mêmes que pour
+n’importe quel autre composant. Les entêtes de cache peuvent être
+ajoutées par le serveur web ou directement par votre langage de script
+serveur.
+
+Faites juste attention aux bibliothèques javascript qui activent par
+défaut un mécanisme anti-cache (injection d’un paramètre aléatoire et
+unique dans l’adresse). C’est toujours une fonctionnalité optionnelle
+qu’on peut désactiver, pensez-y.
+
+**Recommandation** : Quand cela est possible, pensez à mettre aussi en
+cache les requêtes Ajax, et éventuellement à désactiver le mécanisme
+anti-cache de votre bibliothèque javascript.
+
+### Mise en cache d’une page d’accueil ou d’une page événementielle à fort trafic
+
+Sur des sites ou des pages à très fort trafic, il peut toutefois être
+intéressant de profiter du cache pour les pages html elles-même, par
+exemple la page d’accueil, les pages des catégories principales ou la
+page qui fait l’actualité actuellement.
+
+En leur permettant d’être mises en cache pour quelques minutes ou
+quelques heures, on évite que l’utilisateur ait à recharger une page sur
+laquelle il est probable qu’il reviendra plusieurs fois. Pour un site à
+fort trafic ou un événementiel (imaginez le site d’un quotidien
+d’actualité lors d’une manifestation ou d’une catastrophe), le gain sera
+notable et appréciable. 
+
+Il s’agit de faire alors l’opération inverse de ce qui est préconisé
+ordinairement. Au lieu d’externaliser toutes les données et ressources
+statiques en laissant la page html dynamique hors du cache, nous allons
+tenter d’externaliser toutes les composantes dynamiques de la page pour
+pouvoir mettre le html lui-même dans le cache.
+
+Parmi ces éléments dynamiques on compte tout ce qui doit absolument être
+mis à jour à chaque nouvel accès sur la page. Assez souvent il y a une
+boite d’authentification utilisateur, des publicités, éventuellement un
+panier sur un site marchand, ou des informations en temps réel sur un
+site sportif ou d’actualité. Au lieu d’être inclus directement dans la
+page html, on va réaliser du code javascript pour charger ces éléments
+dans un second temps, par exemple avec Ajax. Attention toutefois à
+proposer un lien ou un moyen d'accès alternatif à ses informations sans
+utiliser javascript (un lien vers la page panier et vers la page
+d'authentification suffisent probablement).
+
+Notre page principale sera donc indépendante de tout élément temps réel
+ou spécifique à un utilisateur. Elle pourra être mise en cache pour une
+dizaine de minutes à quelques heures, suivant le contexte. Les éventuels
+flux d’actualités ou commentaires utilisateurs ne seront pas rafraichis
+pendant cette dizaine de minutes mais la fluidité de votre site en sera
+améliorée.
+
+**Recommandation** : En cas de besoin, définissez une expiration
+explicite courte (d’une dizaine de minutes à une heure) pour les pages à
+très fort trafic comme les pages d’accueil ou les pages événementielles.
+Si une mise à jour plus fréquente est nécessaire pour certains
+composants, il est possible de les charger dans un second temps par
+Ajax.
+
+Il s’agit majoritairement d’un compromis. Vous acceptez de charger plus
+votre serveur (puisqu’il recevra une requête HTTP supplémentaire à
+chaque accès, pour la partie Ajax) mais vous vous assurez que cette
+éventuelle surcharge n’impacte pas le contenu principal, qui lui sera
+toujours disponible rapidement. Pour peu que la partie statique et la
+partie Ajax ne soient pas servies par les mêmes machines, vous pouvez
+vous permettre d’être moins réactif sur la partie Ajax afin de
+privilégier le service principal (navigation, contenu principal, etc.)
+
+Si cette option n’est pas toujours bénéfique, pour des événements précis
+il peut s’agir d’un gain notable en confort. Les proxy bénéficieront eux
+aussi de cette architecture puisqu’il pourront servir votre contenu
+principal même si votre site est en surcharge.
+
+### Contenu dupliqué sur plusieurs URL
+
+Les navigateurs et les serveurs proxy utilisent un système lié à l’URL
+de chaque ressource pour gérer les caches. Si une ressource change
+d’URL, alors c’est une nouvelle entrée dans le cache qui est utilisée.
+C’est d’ailleurs sur ce principe que nous nous reposons pour versionner
+les composants comment nous l’avons vu précédemment.
+
+Cela implique toutefois qu’une ressource ne doit être accessible que par
+une seule URL, sous peine de ne pas profiter au mieux du cache. Faites
+donc attention à ne pas dupliquer vos URL. En particulier une page
+d’accueil doit être disponible sur « / » ou sur « /index.html », mais
+pas les deux. Tous les liens doivent être uniformisés.
+
+**Recommandation** : Utilisez une et une seule adresse par ressource.
+Faites particulièrement attention à l’uniformisation des adresses pour
+les pages d’accueil et pages d’index (index.html, index.php, etc.).
+
+Support HTTP et comportements par défaut
+----------------------------------------
+
+### Comportements possibles
+
+HTTP est un protocole très souple. Les navigateurs sont finalement
+responsables de ce qu’ils veulent faire. Quoi que vous demandiez, il
+peuvent techniquement ne pas en tenir compte, et leur comportement par
+défaut est parfois lié à une heuristique différente suivant les éditeurs
+et les versions.
+
+Par défaut, c’est à dire sans précision dans les entêtes `Cache-Control`
+ni `Expires`, le navigateur peut :
+
+* ne rien stocker et retélécharger la ressource au prochain accès (cas
+  le plus probable si vous n’envoyez ni entête `Etag` ni entête
+  `Last-Modified`) ;
+* stocker le contenu téléchargé et faire une revalidation avec une
+  requête conditionnelle au prochain accès ;
+* stocker le contenu et le servir de nouveau sans faire appel au
+  serveur tout au long de la session de navigation (c’est à dire
+  jusqu’à ce que l’utilisateur ferme son navigateur) ou pour une durée
+  arbitraire.
+
+Microsoft Internet Explorer 6 est connu par exemple pour employer
+parfois cette troisième méthode de façon inadéquate. Il faut alors
+forcer un nouveau téléchargement dans le navigateur avec la touche shift
+lors de la demande de rafraichissement. Ceci peut être changé dans les
+préférences Internet.
+
+Mozilla Firefox utilise aussi cette troisième méthode dès qu'il
+rencontre une entête `Last-modified. Il considère met alors en cache la
+ressource pour 10 % du temps depuis la dernière modification (un
+composant mis à jour il y a dix jours sera mis en cache pour une journée
+pleine). Pour éviter ce comportement il faut envoyer les paramètres
+`no-store` et `no-cache` dans l'entête `Cache-Control`.
+
+Pour Mozilla Firefox on peut constater ce fonctionnement avec Firebug en
+dépliant les détails d'une requête et en regardant la section « cache ».
+
+![Vérifier l'utilisation du cache par Mozilla Firefox](img/chap03-verifier-l-utilisation-du-cache-par-Mozilla-Firefox)
+
+Les serveurs proxy, souvent dans les très grosses entreprises, sont
+parfois configurés pour avoir eux aussi une politique de cache très
+agressive et mettre en cache les pages pour quelques dizaines de minutes
+ou quelques heures tant qu’ils n’ont pas d’information contraire
+explicite. Ils ont toutefois tendance à ne pas mettre en cache les
+contenus avec des paramètres dans l’URL (présence d’un point
+d’interrogation dans l’adresse).
+
+### Redirections et autres codes HTTP permanents
+
+Comme nous l’avons vu, une réponse HTTP commence toujours par un code de
+retour. Il est très généralement 200 (OK), 304 (le document n’a pas
+changé), ou 404 (document inexistant à cette adresse).
+
+Certains de ces codes de retour ont une sémantique qui précise l’aspect
+temporaire ou permanent de cette réponse. C’est par exemple le cas des
+redirections pour lesquelles on distingue trois codes distincts : 301,
+302, et 307. Le navigateur qui reçoit un de ces codes est informer de
+faire une seconde requête HTTP vers le serveur web, avec une nouvelle
+adresse (l'adresse de redirection).
+
+![Flux HTTP d'une redirection 302](img/chap03-flux-http-d-une-redirection-302.png)
+
+Le code 301 marque une redirection permanente. Les navigateurs et proxy
+sont encouragés à mettre en cache cette information. Les prochaines
+requêtes réutiliseront ce résultat et ne feront plus d’aller-retour
+inutile avec vos serveurs. C’est bénéfique pour vous comme pour vos
+visiteurs.
+
+Le code 307 est lui l’opposé, c’est la marque d’une redirection
+temporaire. Les navigateurs et proxy sont explicitement informés qu’ils
+doivent vérifier la présence de cette redirection à chaque nouvel accès,
+quelle que soit leur configuration ou le contexte. Le code 302 est un
+code à tout faire, à priori à considérer comme temporaire, donc à ne pas
+mettre en cache non plus.
+
+**Recommandation** : Quand une redirection entre deux adresses est
+permanente, utilisez le code HTTP 301 et non le code 302. Cette
+redirection sera alors mise en cache par les visiteurs et les proxys.
+
+D’autres codes HTTP ont une sémantique particulière. Ainsi un client
+HTTP ne devrait jamais faire deux fois la même requête s’il obtient une
+erreur 400 la première fois (comprenez : le résultat doit être mis en
+cache). À l’inverse, le code 303 ne devrait jamais être mis en cache et
+une nouvelle demande au serveur doit être réalisée à chaque fois que
+nécessaire.
+
+### Le cas particulier des rafraichissements
+
+Les navigateurs ont prévu que l'utilisateur puisse outrepasser le cache.
+C'est ce qui est fait quand vous demandez de réactualiser la page
+courante. Dans ces cas là, le navigateur fera toujours une requête vers
+le réseau pour mettre à jour son cache.
+
+Ce comportement reste vrai pour les réactualisations automatiques.
+Ainsi, la balise `<meta http-equiv=refresh>` ou l'entête HTTP Refresh
+lancent aussi la nouvelle page sans passer par le cache. Ce peut être
+une fonctionnalité intéressante à exploiter mais si vous souhaitez
+simplement charger une nouvelle page après quelques secondes (par
+exemple pour un interstitiel de publicité) il faut mieux employer un
+code javascript qui utilise le document.location. Pour des questions de
+compatibilité rien ne vous empêche cependant d'utiliser les deux : le
+document.location en premier et la balise `<meta>` qui se déclenche une
+seconde plus tard pour les utilisateurs sans javascript.
+
+### Autres comportements par défaut
+
+Dans les cas non couverts jusqu’à présent (aucune entête de cache
+explicite, pas de code explicitement temporaire ou permanent), on
+distingue alors trois groupes :
+
+Le premier groupe correspond aux requêtes fait avec le verbe GET. Quand
+le code de retour est 200, 203, 206, 300 ou 410, alors le navigateur et
+le proxy sont encouragés à mettre la réponse en cache, suivant leurs
+propres heuristiques. Le plus souvent, s’il y a une entête `Etag` ou
+`Last-Modified` et pas de paramètres dans l’URL, alors la ressource risque
+d’être mise en cache. 
+
+Le second groupe rassemble toutes les requêtes réalisées avec le verbe
+POST. Le protocole HTTP indique qu’après un POST le cache associé à
+cette adresse doit être expiré (ainsi que ceux des éventuelles adresses
+dans les entêtes Location et `Content-Location` de la réponse). Cela
+revient plus ou moins à dire qu’une requête de type POST ne doit jamais
+être mise en cache.
+
+**Recommandation** : Pensez à utiliser des requêtes de types GET pour
+envoyer vos formulaires quand le résultat peut être mis en cache (par
+exemple pour un moteur de recherche). À l’inverse utilisez une requête 
+de type POST quand cela change le contenu du serveur (par exemple 
+l’envoi d’un nouveau commentaire) afin d’empêcher le cache. 
+L’utilisation de l’entête Location peut aussi expirer le cache de la 
+ressource associée (par exemple la page qui contient les commentaires 
+en question).
+
+Le troisième groupe regroupe tout ce qui n’est pas couvert par les deux
+premiers (c’est à dire une requête de type GET avec un code de retour
+autre que ceux listés). Ces ressources ne sont généralement pas mises en
+cache, mais peuvent toutefois l’être. Ainsi certains navigateurs mettent
+assez facilement en cache les erreurs 404 (page non trouvée). S’il y a
+une entête `Etag` ou `Last-Modified`, alors il est probable que le
+navigateur tente une revalidation avec le serveur au prochain accès afin
+d’éviter un téléchargement inutile.
+
+Dans tous ces trois cas, la présence d’une recommandation explicite via
+`Cache-Control` ou `Expires` aura priorité sur le comportement par défaut.
+Les navigateurs respectent assez bien ces instructions donc vous êtes
+encouragés à proposer des entêtes explicites là où c’est pertinent.
+
+**Recommandation** : Précisez explicitement si vous souhaitez ou pas un
+cache quand cela est pertinent afin d’aider le navigateur à gérer son
+cache.
+
+### Autres paramètres de Cache-Control
+
+Précédemment nous avons vu les directives `max-age`, `s-maxage`, `public`,
+`private`, `must-revalidate` et `proxy-revalidate` de l’entête `Cache-Control`.
+Ce sont celles qui règlent la durée du cache ou qui imposent une
+revalidation explicite.
+
+Il existe toutefois deux autres paramètres :
+
+* `no-cache`, contrairement à ce que laisse entendre son nom, indique
+  que le contenu peut bien être mis en cache, mais doit toujours être
+  revalidé avec le serveur avant d’être réutilisé ;
+* `no-store`, lui, indiqué qu’aucune copie ne doit être stockée dans un
+  cache ou dans un espace de stockage, que ce soit par un proxy ou par
+  un navigateur.
+
+#### Comportement de certains langages de script ou framework applicatifs
+
+Certains mécanismes de sessions comme celui de PHP ajoutent
+automatiquement une entête `Cache-Control` avec une directive `no-cache`.
+C’est souvent souhaitable car s’il y a une session c’est qu’il y a des
+informations privées et spécifique à un utilisateur, mais une directive
+private peut parfois être plus adaptée (car elle n’interdit pas le cache
+par le navigateur). 
+
+De plus, le mécanisme de session est alors souvent initialisé sur toutes
+les pages, pas uniquement les pages privées. Dans ce cas, le cache sera
+aussi désactivé sur les pages publiques qui n’ont aucune information
+spécifique à l’utilisateur.
+
+Si cela arrive, c’est à vous qu’il revient de ne pas initialiser le
+mécanisme de session sur les pages ne comportant rien de spécifique, ou
+de réécrire l’entête `Cache-Control`. Avec PHP cela se fait soit en
+utilisant la fonction `session_cache_limiter()` et
+`session_cache_expire()` avant l’appel à `session_start()`, soit en
+réécrivant l’entête `Cache-Control` manuellement avec `header()` après
+l’appel à `session_start()`.
+
+**Recommandation** : Vérifiez l’entête `Cache-Control` de vos pages
+privées et de vos pages publiques si vous utilisez un système de session
+dans votre applicatif serveur, et corrigez les si nécessaire.
+
