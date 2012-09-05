@@ -624,7 +624,7 @@ partir du cache, quelles que soient les entêtes que vous lui envoyez. Il
 en va de même pour Mozilla Firefox.
 
 En fait on va même un peu plus loin puisque si vous demandez trois
-images sur un domaine https, même si ce dernières sont en cache, ce sont
+images sur un domaine https, même si ces dernières sont en cache, ce sont
 peut être les trois qui seront retéléchargées. Internet Explorer
 télécharge la première, à dessein, mais risque de ne pas avoir encore la
 réponse avant de tenter d'afficher la seconde image. Au lieu d'attendre,
@@ -719,7 +719,7 @@ Différencier les copies suivant les utilisateurs et les contextes
 -----------------------------------------------------------------
 
 Le bénéfice du cache HTTP est indéniable mais il pose d'autres
-problèmes : Si plusieurs personnes passent pas le même proxy, ils ne
+problèmes : Si plusieurs personnes passent pas le même proxy, elles ne
 pourront pas accéder à des données personnalisées. De même, les méthodes
 vues jusqu'à présent empêchent la donnée de varier en fonction du
 contexte (personne identifiée ou non, présence d'un panier, langue du
