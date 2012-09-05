@@ -31,16 +31,17 @@ Une requête du navigateur au serveur est constituée de trois
 parties : la ligne de requête, un bloc d’entêtes, et éventuellement 
 un bloc de données, le corps de la requête. 
 
-    GET /index.html HTTP/1.1
-    Host: example.org
-    User-Agent: Mozilla/5.0 ([...]) Gecko/2008092414 Firefox/3.0.3
-    Accept: text/html,application/xml;q=0.9,*/*;q=0.8
-    Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
-    Accept-Encoding: gzip,deflate
-    Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
-    Keep-Alive: 300
-    Connection: keep-alive
-    
+~~~~~~~ {.http .request}
+GET /index.html HTTP/1.1
+Host: example.org
+User-Agent: Mozilla/5.0 ([...]) Gecko/2008092414 Firefox/3.0.3
+Accept: text/html,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+~~~~~~~    
 
 La première ligne est la ligne de requête. Le terme `GET` indique 
 qu’on souhaite récupérer une ressource (la page web) ; c’est 
@@ -79,26 +80,28 @@ Une réponse HTTP n’est pas très différente d’une requête. On
 a une ligne de statut, un bloc d’entêtes et un bloc de contenu, 
 le corps de la réponse. 
 
-    HTTP/1.1 200 OK
-    Date: Sun, 02 Nov 2008 15:54:27 GMT
-    Server: Apache/2.2.3 (CentOS)
-    Last-Modified: Tue, 15 Nov 2005 13:24:10 GMT
-    Etag: "280100-1b6-80bfd280"
-    Accept-Ranges: bytes
-    Content-Length: 438
-    Connection: close
-    Content-Type: text/html; charset=UTF-8
-    <HTML>
-    _[…]_
-    </HTML>
+~~~~~~~ {.http .response}
+HTTP/1.1 200 OK
+Date: Sun, 02 Nov 2008 15:54:27 GMT
+Server: Apache/2.2.3 (CentOS)
+Last-Modified: Tue, 15 Nov 2005 13:24:10 GMT
+Etag: "280100-1b6-80bfd280"
+Accept-Ranges: bytes
+Content-Length: 438
+Connection: close
+Content-Type: text/html; charset=UTF-8
+<HTML>
+[…]
+</HTML>
+~~~~~~~
 
 La ligne de statut contient le protocole, code de retour et un 
 message explicatif. Le protocole sera presque toujours HTTP 
 1.1, exceptionnellement HTTP 1.0. Le code de retour 200 indique 
 que le serveur a traité la requête avec succès et renvoyé la page 
 demandée, d’où le message explicatif « OK ». Vous connaissez 
-aussi probablement le code de retour 404 « Document Not Found 
-», qui correspond à une page non trouvée. Dans ce livre nous croiserons 
+aussi probablement le code de retour 404 « Document Not Found », 
+qui correspond à une page non trouvée. Dans ce livre nous croiserons 
 aussi les codes 301 et 302 qui sont des redirections, et le code 
 304 qui est lié aux mécanismes de cache. 
 
@@ -119,8 +122,7 @@ Firefox nommée TamperData permet même de modifier dynamiquement
 les requêtes HTTP au moment où elles sont envoyées, pour tester 
 différents résultats. 
 
-Exemple de visualisation d’une requête HTTP avec Firebug
-![Exemple de visualisation d’une requête HTTP avec Firebug](../../../raw/master/content/img/chap02-1-exemple-de-visualisation-dune-requete-http-avec-firebug.png)
+![Exemple de visualisation d’une requête HTTP avec Firebug](img/chap02-exemple-de-visualisation-dune-requete-http-avec-firebug.png)
 
 Analyse d’une requête réseau
 ----------------------------
@@ -128,9 +130,7 @@ Analyse d’une requête réseau
 La requête HTTP n’est qu’une partie de ce qui est fait sur le réseau. 
 Voici les concepts principaux à retenir. 
 
-![](../../../raw/master/content/img/chap02-2-.png)
-
-Schéma d’un échange réseau 
+![Schéma d’un échange réseau](img/chap02-schema-d-un-echange-reseau.png)
 
 ### Requête DNS
 
@@ -221,8 +221,7 @@ d’établir les mesures pour chaque requête HTTP faite sur la page.
 On y remarque si une étape prend un temps trop important mais aussi 
 si une requête bloque les suivantes par exemple. 
 
-Exemple d’analyse faite par webpagetest.org
-![Exemple d’analyse faite par webpagetest.org](../../../raw/master/content/img/chap02-3-exemple-danalyse-faite-par-webpagetestorg.png)
+![Exemple d’analyse faite par webpagetest.org](img/chap02-exemple-danalyse-faite-par-webpagetestorg.png)
 
 ### Plafonnement du débit lors d'une session HTTP
 
@@ -278,18 +277,18 @@ passante disponible. Pour la page de référence de Google, même
 avec une connexion qui peut réaliser 10 Mb/s, le trafic web n'en 
 utilise pas beaucoup plus de 1,6 Mb/s. 
 
-Bande passante réellement utilisée en fonction de la bande passante disponible
-![Bande passante réellement utilisée en fonction de la bande passante disponible](../../../raw/master/content/img/chap02-4-bande-passante-reellement-utilisee-en-fonction-de-la-bande-passante-disponible.png)
+![Bande passante réellement utilisée en fonction de la bande passante disponible](img/chap02-bande-passante-reellement-utilisee-en-fonction-de-la-bande-passante-disponible.png)
 
-Plafonnement 
+[^1]: [More bandwidth doesn't matter (much), Google, Mike Belshe](http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/), avril 2010. Les graphiques suivants sont tirés de cette étude.
+
+#### Plafonnement 
 
 On observe un plafonnement de la bande passante à cause de la latence, 
 du fonctionnement de TCP, des contraintes de HTTP et de la petite 
 taille des composants échangés. Ce plafonnement rend peu utile 
 d'avoir une bande passante de plus de 4 à 5 Mb/s. 
 
-Bénéfice de l'augmentation de la bande passante pour une page web
-![Bénéfice de l'augmentation de la bande passante pour une page web](../../../raw/master/content/img/chap02-5-benefice-de-laugmentation-de-la-bande-passante-pour-une-page-web.png)
+![Bénéfice de l'augmentation de la bande passante pour une page web](img/chap02-benefice-de-laugmentation-de-la-bande-passante-pour-une-page-web.png)
 
 Analyse réseau du chargement d’une page
 ---------------------------------------
@@ -340,8 +339,7 @@ de ce javascript et le téléchargement suivant. C’est que le javascript
 prend un certain temps à s’exécuter, et bloque le navigateur 
 pendant ce temps. 
 
-Graphique en cascade de la page d’accueil Yahoo! France
-![Graphique en cascade de la page d’accueil Yahoo! France](../../../raw/master/content/img/chap02-6-graphique-en-cascade-de-la-page-daccueil-yahoo-france.png)
+![Graphique en cascade de la page d’accueil Yahoo! France](img/chap02-graphique-en-cascade-de-la-page-daccueil-yahoo-france.png)
 
 Ensuite vous voyez que le rendu de la page ne commence que longtemps 
 après que la page HTML soit téléchargée. La page HTML principale 
@@ -373,14 +371,3 @@ On voit aussi deux lignes verticales. La première symbolise
 le début du rendu dans le navigateur (la page commence à ne plus 
 être blanche) et la seconde indique l'événement « onload » dans 
 le navigateur. 
-
-
-
-
---------
-
-[^1]: More bandwidth doesn't matter (much), Google, Mike Belshe, avril 2010
-Les graphiques suivants sont tirés de cette étude.
-[http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/](http://www.belshe.com/2010/05/24/more-bandwidth-doesnt-matter-much/)
-
-
