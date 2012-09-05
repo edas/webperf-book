@@ -13,6 +13,8 @@ Markdown-formatted plain text.
 
 Writteby by [Yuri Takhteyev](http://www.freewisdom.org).
 
+*Modified* for this project
+
 Project website: http://www.freewisdom.org/projects/python-markdown/odt2txt
 Contact: yuri [at] freewisdom.org
 
@@ -22,7 +24,7 @@ Version: 0.1 (April 7, 2006)
 """
 
 
-import sys, os, zipfile, xml.dom.minidom, shutil
+import sys, os, zipfile, xml.dom.minidom, shutil, re
 
 IGNORED_TAGS = ["office:annotation"]
 
@@ -66,6 +68,9 @@ class ParagraphProps :
         self.title = False
         self.hasImg = False
         self.indented = 0
+
+    def setBlockquote(self, value) :
+        self.blockquote = value
 
     def setIndented (self, value) :
         self.indented = value
@@ -111,6 +116,7 @@ class OpenDocumentTextFile :
         self.hasTitle = 0
         self.img_prefix = img_prefix
         self.imgs_num = 0
+        self.previous_list_item = 0
 
         self.load(filepath)
         
@@ -157,6 +163,9 @@ class OpenDocumentTextFile :
         paraProps = ParagraphProps()
 
         name = style.getAttribute("style:name")
+        
+        if name == "Quotations":
+            paraProps.setBlockquote(True)
 
         if name.startswith("Heading_20_") :
             level = name[11:]
@@ -273,14 +282,15 @@ class OpenDocumentTextFile :
 
         styleName = listElement.getAttribute("text:style-name")
         props = self.listStyles.get(styleName, ListProperties())
-
         
-            
-        i = 0
+
+        if listElement.getAttribute("text:continue-numbering") != "true" :
+            self.previous_list_item = 0
+        
         for item in listElement.childNodes :
-            i += 1
+            self.previous_list_item += 1
             if props.ordered :
-                number = str(i)
+                number = str(self.previous_list_item)
                 number = number + "." + " "*(2-len(number))
                 buffer += number + self.paragraphToString(item.childNodes[0],
                                                         indent=3)
@@ -310,12 +320,10 @@ class OpenDocumentTextFile :
                 text = self.paragraphToString(paragraph)
             if text :
                 buffer += text + "\n\n"
-
-        if self.footnotes :
-
-            buffer += "--------\n\n"
-            for cite, body in self.footnotes :
-                buffer += "[^%s]: %s\n\n" % (cite, body)
+            if self.footnotes :
+                for cite, body in self.footnotes :
+                    buffer += "  [^%s]: %s\n\n" % (cite, body)
+                self.footnotes = []
 
 
         return self.compressCodeBlocks(buffer)
@@ -334,7 +342,7 @@ class OpenDocumentTextFile :
         value = unicode(re.sub(' ', '-', value))
         return value
 
-    def textToString(self, element, props = None) :
+    def textToString(self, element, props = None, format = True) :
 
         buffer = u""
         img_in_buffer = None
@@ -352,16 +360,16 @@ class OpenDocumentTextFile :
                     text = self.textToString(node) 
 
                     if not text.strip() :
-                        return ""  # don't apply styles to white space
+                        continue  # don't apply styles to white space
 
                     styleName = node.getAttribute("text:style-name")
                     style = self.textStyles.get(styleName, None)
 
-                    if style.fixed :
+                    if format and style.fixed :
                         buffer += "`" + text + "`"
                         continue
                     
-                    if style :
+                    if format and style :
                         if style.italic and style.bold :
                             mark = "***"
                         elif style.italic :
@@ -371,7 +379,8 @@ class OpenDocumentTextFile :
                         else :
                             mark = ""
                     else :
-                        mark = "<" + styleName + ">"
+                        mark = ""
+                        #mark = "<" + styleName + ">"
 
                     buffer += "%s%s%s" % (mark, text, mark)
                     
@@ -403,8 +412,11 @@ class OpenDocumentTextFile :
                 elif tag == "text:a" :
 
                     text = self.textToString(node)
-                    link = node.getAttribute("xlink:href")
-                    buffer += "[%s](%s)" % (text, link)
+                    if format : 
+                        link = node.getAttribute("xlink:href")
+                        buffer += "[%s](%s)" % (text, link)
+                    else :
+                        buffer += text
                     
                 elif tag == "text:bookmark" or tag == "text:bookmark-end":
                     # YOAV - need to add an # link here
@@ -422,15 +434,30 @@ class OpenDocumentTextFile :
                 else :
                     buffer += " {" + tag + "} "
 
-        if img_in_buffer:
+        if format and img_in_buffer:
             self.imgs_num += 1
             extension = img_in_buffer.split('.')[-1]
-            imgname = "img/" + self.img_prefix + "-" + str(self.imgs_num) + "-" + self.slugify(buffer) + "." + extension
-            os.rename(img_in_buffer, imgname)
-            buffer += "\n![" + buffer + "](../../../raw/master/content/" + imgname + ")"
+            legend = ""
+            prefix = ""
+            imgname = ""
+            if len(buffer) > 200 :
+                legend = ""
+                imgname = "img/" + self.img_prefix + self.slugify(buffer)[:50] + "." + extension
+                prefix = buffer + "\n\n"
+            else :
+                legend = buffer
+                imgname = "img/" + self.img_prefix + self.slugify(buffer) + "." + extension
+                prefix = ""
+            buffer = prefix + "![" + legend + "](" + imgname + ")"
+            if os.path.exists(img_in_buffer) and (img_in_buffer[:9] != "./Object ") :
+                # print  >> sys.stderr, "Try : " + img_in_buffer + " -> " + imgname + "\n"
+                os.rename(img_in_buffer, imgname)
+            else :
+                buffer += "\n/!\\ MISSING IMAGE /!\\ "
+                print  >> sys.stderr, "Warning: Missing image "+imgname+" ("+img_in_buffer+")\n"
 
             
-        if(props):
+        if format and props:
             props.setHasImg(img_in_buffer != None)
 
         return buffer
@@ -440,6 +467,11 @@ class OpenDocumentTextFile :
 
         style_name = paragraph.getAttribute("text:style-name")
         paraProps = self.paragraphStyles.get(style_name) #, None)
+        heading_level = paragraph.getAttribute("text:outline-level")
+        if len(heading_level) > 0:
+            heading_level = int(heading_level)
+            if heading_level > 0:
+                paraProps.setHeading(heading_level)
         text = self.textToString(paragraph, paraProps)
 
         #print >>sys.stderr, "TEXT:", text
@@ -466,21 +498,36 @@ class OpenDocumentTextFile :
                 return "#" * level + " " + text
 
         elif paraProps.code:
-            lines = ["    %s" % line for line in text.split("\n")]
+            #lines = ["    %s" % line for line in text.split("\n")]
             #print >>sys.stderr, "CODE"
-            return "\n".join(lines)
+            text = self.textToString(paragraph, paraProps, False).strip()
+            classnames = [ ]
+            if text[:7] == "HTTP/1." :
+                classnames.append( ".http .response" )
+            elif re.match("^(GET|POST|DELETE|PUT|HEAD) /", text) :
+                classnames.append( ".http .request")
+            elif text[:5] == "<?php" :
+                classnames.append( ".php" )
+            elif text[:15] == "<!DOCTYPE HTML>" or text[:15] == "<!DOCTYPE html>" :
+                classnames.append( ".html")
+            elif text[:6] == "<?xml " :
+                classnames.append( ".xml")
+            if text.find("\n") == -1 :
+                classnames.append( ".oneline" )
+            prefix = ""
+            if len(classnames) :
+                prefix = " {" + " ".join(classnames) + "}"
+            return "~~~~~~~" + prefix + "\n" + text + "\n~~~~~~~"
         elif paraProps.hasImg:
             #print >>sys.stderr, "HAS_IMG"
             return text
-
-        """
-        if paraProps.indented :
+        
+        if paraProps.blockquote :
             return self.wrapParagraph(text, indent = indent, blockquote = True)
 
         else :
-        """
-        #print >>sys.stderr, "WRAP"
-        return self.wrapParagraph(text, indent = indent)
+            #print >>sys.stderr, "WRAP"
+            return self.wrapParagraph(text, indent = indent)
         
 
     def wrapParagraph(self, text, indent = 0, blockquote=False) :
@@ -516,8 +563,9 @@ if __name__ == "__main__" :
 
     filename = sys.argv[1]
 
-    odt = OpenDocumentTextFile(filename, img_prefix)
+    odt = OpenDocumentTextFile(filename, img_prefix )
     unicode = odt.toString()
+    unicode = unicode.replace(u'\u2019', "'")
     out_utf8 = unicode.encode("utf-8")
     sys.stdout.write(out_utf8)
     shutil.rmtree("Pictures")
