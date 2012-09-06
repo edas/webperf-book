@@ -5,20 +5,20 @@ Performance ou performance ?
 ---------------------------------------------
 
 En collectant un peu les avis de chacun sur les performances des sites
-web je me suis aperçu que le terme de performance en français recoupe
+web, je me suis aperçu que le terme de performance en français recoupe
 beaucoup de concepts. Chacun y voit quelque chose de différent, et
 parfois même les gens parlent entre eux sans comprendre qu'ils parlent
 de sujets entièrement différents.
 
-Voici un peu ce que les gens entendent par performance des sites web :
+Voici un peu ce que les gens entendent par « performance des sites web » :
 
 -   bénéfices tirés du site, souvent financiers,
 -   taux de conversion pour les ventes ou les envois formulaires,
 -   nombre de visiteurs uniques, ou de pages vues,
--   ressources utilisées sur les serveurs web ou base de données
--   temps de réaction des serveurs web ou des équipements réseau
--   le temps d'exécution d'une page web php ou java sur le serveur
--   temps de chargement des pages web
+-   ressources utilisées sur les serveurs web ou base de données,
+-   temps de réaction des serveurs web ou des équipements réseau,
+-   le temps d'exécution d'une page web php ou java sur le serveur,
+-   temps de chargement des pages web.
 
 Alors précisons : ce livre ne s'occupe que du dernier item, le temps de
 chargement des pages web par le navigateur sur le poste de l'internaute,
@@ -27,7 +27,7 @@ livre ou regardé le sommaire, cette précision reste importante.
 N'oubliez pas de la faire vous-même quand vous parlez de performance des
 sites web à quelqu'un après m'avoir lu.
 
-Vous le verrez, ce livre est même plus pointu que cela puisque dans le
+Vous le verrez, ce livre est même plus pointu que cela, puisque dans le
 temps de chargement des pages web je ne m'occuperai ni d'architecture
 système, ni de programmation Java ou PHP, ni de bases de données... mais
 vous aurez l'occasion de découvrir que je vous propose bien mieux.
@@ -62,7 +62,7 @@ la mise en œuvre :
 
 9. Optimiser  
 
-Enfin les derniers chapitres collectent toutes les références utiles.
+Enfin, les derniers chapitres collectent toutes les références utiles.
 Ils référencent les recommandations de performance, les termes et
 concepts techniques, les outils de mesure ou de correction, et les sites
 ou documentations externes. Ces chapitres vous serviront d'aide au cours
@@ -77,17 +77,17 @@ Ce dont vous aurez besoin
 --------------------------------
 
 Avant la lecture, préparez un poste de développement qui vous servira
-pour vos tests et vos analyses. Sur ce poste désactivez tous les
+pour vos tests et vos analyses. Sur ce poste, désactivez tous les
 logiciels de vie privée ou les options agressives de surveillance réseau
 de votre anti-virus, ainsi que tous les logiciels ou extensions
 anti-publicités. Ces logiciels pourraient modifier et fausser toutes les
 mesures. Ils sont aussi connus pour parfois modifier le trafic réseau en
 profondeur et vous empêcheront de réaliser vos expériences.
 
-Côté navigateurs vous aurez besoin de Mozilla Firefox ou Chrome pour
+Côté navigateurs, vous aurez besoin de Mozilla Firefox ou Chrome pour
 plusieurs extensions. Créez un profil dédié à vos tests performance sous
 Mozilla Firefox afin de ne pas être impacté par les différentes autres
-extensions que vous avez. Pour cela lancez Firefox avec l'option
+extensions que vous avez. Pour cela, lancez Firefox avec l'option
 « -profilemanager ».
 
 -   Mozilla Firefox :
@@ -97,8 +97,8 @@ extensions que vous avez. Pour cela lancez Firefox avec l'option
 -   Chrome :
     [http://www.google.com/chrome?hl=fr](http://www.google.com/chrome?hl=fr) 
 
-Dans Mozilla Firefox installez la toute dernière version de Firebug
-ainsi que les extensions Yslow et Pagespeed. Pour Chrome installez
+Dans Mozilla Firefox, installez la toute dernière version de Firebug
+ainsi que les extensions Yslow et Pagespeed. Pour Chrome, installez
 l'extension Speed Tracer.
 
 -   Firebug : [http://getfirebug.com/](http://getfirebug.com/) 
@@ -109,7 +109,7 @@ l'extension Speed Tracer.
 -   Speed Tracer :
     [http://code.google.com/intl/fr/webtoolkit/speedtracer/](http://code.google.com/intl/fr/webtoolkit/speedtracer/) 
 
-Vous aurez aussi besoin tôt ou tard d'un proxy de débogage, qui vous
+Vous aurez aussi besoin, tôt ou tard, d'un proxy de débogage, qui vous
 permet d'analyser le trafic réseau. Vous pouvez par exemple utiliser
 Fidler ou Charles. Pour jouer avec le navigateur vous pouvez aussi
 installer l'extension TamperData de Firefox.
@@ -122,15 +122,15 @@ installer l'extension TamperData de Firefox.
     [https://addons.mozilla.org/fr/firefox/addon/966/](https://addons.mozilla.org/fr/firefox/addon/966/) 
 
 Enfin, vous finirez très probablement par avoir un raccourci vers le
-service en ligne webpagetest.org, alors autant le faire maintenant :
+service en ligne webpagetest.org, alors autant le créer maintenant :
 
 -   Webpagetest :
     [http://www.webpagetest.org/](http://www.webpagetest.org/) 
 
 Les dernières versions de Microsoft Internet Explorer, Safari et Opera
 ont aussi des outils pour tester et analyser la performance des pages
-web. Il peut être intéressant de les installer aussi afin de pouvoir
-étudier des ralentissements spécifiques à l'un ou l'autre  de ces
+web. Il peut être intéressant de les installer aussi, afin de pouvoir
+étudier des ralentissements spécifiques à l'un ou l'autre de ces
 navigateurs.
 
 Parti pris et organisation
@@ -138,30 +138,30 @@ Parti pris et organisation
 
 Enfin, j'ai dans ce livre trois partis pris très explicites :
 
--   Ne laisser aucun internaute de côté, que ce soit à cause de son
+-   ne laisser aucun internaute de côté, que ce soit à cause de son
     navigateur (même s'il est faiblement utilisé), de ses difficultés
     matérielles (faible bande passante, mauvaise connectivité, petit
     écran) ou de ses difficultés physiques (handicap divers) ;
--   Faire de la qualité, donc éviter de proposer des solutions qui
+-   faire de la qualité, donc éviter de proposer des solutions qui
     provoqueront des incompatibilités avec les normes et standards ou
-    qui seront impossible à maintenir ensuite ;
--   Tout vous expliquer en détail et quitte à parfois plus me rapprocher
+    qui seront impossibles à maintenir ensuite ;
+-   tout vous expliquer en détail, quitte à parfois plus me rapprocher
     de l'encyclopédie que du cahier de recettes à appliquer sans
     comprendre, parce que les choses changent très vite sur le web,
-    qu'un simple cahier de recette risquerait de devenir obsolète et que
+    qu'un simple cahier de recettes risquerait de devenir obsolète, et que
     j'adhère totalement au principe qu'il vaut mieux apprendre à pêcher
     que de donner du poisson.
 
 Le but final restant tout de même de vous permettre de mettre en œuvre
 rapidement et simplement ce que vous apprenez, je ponctue le livre de
-recommandations claires mises en surbrillances. Si vous voulez aller
-vite il vous suffit de les suivre et de lire les détails uniquement
+recommandations claires mises en surbrillance. Si vous voulez aller
+vite, il vous suffit de les suivre et de lire les détails uniquement
 quand vous en avez besoin.
 
 Compromis
 ---------------
 
-Au fur et à mesure de ce livre je vous proposerai des recommandations.
+Au fil de ce livre je vous proposerai des recommandations.
 Généralement elles sont applicables sans avoir à dégrader l'expérience
 utilisateur ou vos choix graphiques. Par contre, dans de rares cas, il
 vous faudra peut être faire des compromis entre la performance, la
@@ -173,8 +173,8 @@ assez rapidement de sacrifier la performance en trouvant inacceptable de
 « dégrader l'expérience utilisateur ». On privilégie ce qui est
 visible : le graphisme et le contenu de la page.
 
-Dites vous bien cependant que la performance fait justement partie de
-l'expérience utilisateur, et en est même un des critères majeurs. Faites
+Dites-vous bien cependant que la performance fait justement partie de
+l'expérience utilisateur, et elle en est même un des critères majeurs. Faites
 donc attention à ne pas vous focaliser uniquement sur l'évident visible
 dans la page. Acceptez de faire des compromis avec vous-même et avec vos
 interlocuteurs.
@@ -186,8 +186,8 @@ chaque domaine, c'est probablement une erreur.
 
 Si les compromis sont difficiles ce n'est pas qu'ils sont complexes à
 trouver ou à réaliser, c'est qu'il est difficile de se convaincre qu'il
-faut abandonner notre position intégriste du « je ne lâche rien là
-dessus ». Ce qui est délicat c'est de se convaincre soi-même (et les
+faut abandonner notre position intégriste du « je ne lâche rien là-dessus ».
+Ce qui est délicat, c'est de se convaincre soi-même (et les
 autres) de faire un compromis.
 
 Pour votre bien, et pour celui de vos visiteurs, acceptez les compromis,
@@ -206,7 +206,7 @@ de mesure, etc. Je ne prétends donc pas avoir une représentation
 objective des sites testés dans les différents tableaux.
 
 Pire, le logiciel de mesure utilisé peut avoir un impact sur la mesure
-elle même. Chacun étant imparfait d'une façon différente, le résultat
+elle-même. Chacun étant imparfait d'une façon différente, le résultat
 peut varier fortement. Il est donc parfois vain de comparer des chiffres
 obtenus avec deux logiciels différents. Pour cette raison, deux
 paragraphes de ce livre peuvent donner des résultats différents pour un même
