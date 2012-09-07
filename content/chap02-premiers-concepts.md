@@ -1,4 +1,3 @@
-
 Premiers concepts
 =================
 
@@ -751,7 +750,7 @@ lui-même.
 
 Les équipements réseaux aux deux extrémités amènent forcément 
 un minimum de latence et pour un particulier, même avec des serveurs 
-géographiquement proche, il sera peu commun de tomber en dessous 
+géographiquement proches, il sera peu commun de tomber en dessous 
 de 30 ms. 
 
 ### Combiner latence et débit dans vos tests
