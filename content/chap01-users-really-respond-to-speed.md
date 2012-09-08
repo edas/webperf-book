@@ -70,7 +70,7 @@ utilisateurs qui partent et leurs intentions d’achat qui s’écroulent.
 Bref, ils abandonnent ou se freinent.
 
 Le titre de ces quelques paragraphes, « Users really respond to
-speed* » est en fait une citation de Marissa Mayer, vice présidente de
+speed » est en fait une citation de Marissa Mayer, vice présidente de
 la section recherche et expérience utilisateur de Google. Nous le
 verrons, Google a aussi publié des chiffres, pas moins impressionnants
 que ceux d’Amazon.
@@ -96,7 +96,7 @@ dizaine de secondes.
   [^3]: Jakob Nielsen, dans son AlertBox de mai 1996 intitulée [« Original Top Ten Mistakes in Web Design »](http://www.useit.com/alertbox/9605a.html)
   [^4]: Alert box [« Website Response Times » du 21 juin 2010](http://www.useit.com/alertbox/response-times.html)
 
-Le problème est que les usages ont changés, eux. À l’époque le simple
+Le problème est que les usages ont changé, eux. À l’époque le simple
 fait de se connecter était considéré comme une réussite. Maintenant
 c’est une action quotidienne, voire instinctive pour certains, et on
 attend une réactivité en conséquence. La page doit arriver vite, très
@@ -256,7 +256,7 @@ d'individualiser tous les facteurs qui interviennent.
 
 Par contre même ces derniers tests amènent un résultat complémentaire
 inquiétant : ceux qui ont un jour fait partie des utilisateurs « test »
-ayant reçus une page plus lente ont tendance à faire moins de recherches
+ayant reçu une page plus lente ont tendance à faire moins de recherches
 par la suite, même plusieurs semaines après que le test soit fini et que
 la vitesse des pages soit revenue à la normale. De mauvaises
 performances, même temporaires, peuvent vous faire perdre durablement la

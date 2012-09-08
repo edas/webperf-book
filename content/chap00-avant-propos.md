@@ -17,12 +17,12 @@ Voici un peu ce que les gens entendent par « performance des sites web » :
 -   nombre de visiteurs uniques, ou de pages vues,
 -   ressources utilisées sur les serveurs web ou base de données,
 -   temps de réaction des serveurs web ou des équipements réseau,
--   le temps d'exécution d'une page web php ou java sur le serveur,
+-   le temps d'exécution d'une page web PHP ou Java sur le serveur,
 -   temps de chargement des pages web.
 
 Alors précisons : ce livre ne s'occupe que du dernier item, le temps de
 chargement des pages web par le navigateur sur le poste de l'internaute,
-et uniquement de ça. Même si vous avez probablement déjà feuilleté le
+et uniquement de cela. Même si vous avez probablement déjà feuilleté le
 livre ou regardé le sommaire, cette précision reste importante.
 N'oubliez pas de la faire vous-même quand vous parlez de performance des
 sites web à quelqu'un après m'avoir lu.
@@ -45,8 +45,8 @@ indispensables pour la suite de votre lecture :
 
 Les six chapitres suivants, qui composent le corps du livre, décriront 
 tous les principes techniques, les recommandations de performance, 
-la mise en œuvre, le pourquoi et le comment. Ils sont plus ou moins placés   
-par ordre de priorité, aussi je vous conseille de les lire séquentiellement 
+la mise en œuvre, le pourquoi et le comment. Ils sont plus ou moins placés par 
+ordre de priorité, aussi je vous conseille de les lire séquentiellement 
 au moins une fois.
 
 3. Travailler avec les caches HTTP
