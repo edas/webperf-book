@@ -537,11 +537,11 @@ réelle, par des poids lourds du marché.
 Dans son intervention publique, Stangeloops Networks calcule son retour
 sur investissement en comparant le coût investit avec le nombre de
 commandes multipliée par l'augmentation du taux de conversion et
-l'augmentation du panier moyen. Pour 10 000 \$ de revenus quotidiens et
-50 000 \$ investis dans la performance, le ROI est de 24 jours, moins
+l'augmentation du panier moyen. Pour 10 000 $ de revenus quotidiens et
+50 000 $ investis dans la performance, le ROI est de 24 jours, moins
 d'un mois. Leur calcul ne tient même pas compte de la diminution des
 coûts (SEM, hébergement), ou de l'augmentation de trafic (SEO,
-fidélité). On peut donc penser que l'amortissement réel des 50 000 \$
+fidélité). On peut donc penser que l'amortissement réel des 50 000 $
 est atteint en moins de 20 jours.
 
 Vous verrez qu'il est possible de réaliser des investissements beaucoup
