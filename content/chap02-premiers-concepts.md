@@ -12,7 +12,7 @@ Composition d’une requête HTTP
 ------------------------------
 
 Le protocole utilisé par le navigateur web et le serveur web s’appelle 
-HTTP : hypertext transfer protocol. Il s’agit d’un protocole 
+HTTP : HyperText Transfer Protocol. Il s’agit d’un protocole 
 simple à comprendre, basé sur des lignes de texte et des associations 
 clef – valeur. 
 
@@ -40,7 +40,7 @@ Accept-Encoding: gzip,deflate
 Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
 Keep-Alive: 300
 Connection: keep-alive
-~~~~~~~    
+~~~~~~~
 
 La première ligne est la ligne de requête. Le terme `GET` indique 
 qu’on souhaite récupérer une ressource (la page web) ; c’est 
@@ -112,7 +112,7 @@ du fichier image.
 
 ### Les outils
 
-Pour explorer les requêtes et les réponses HTTP je vous encourage 
+Pour explorer les requêtes et les réponses HTTP, je vous encourage 
 à télécharger l’extension Firefox nommée HTTPfox, ou encore 
 l’extension LiveHttpHeaders. L’extension Firebug, les outils 
 IBM Page Detailer ou Page Test peuvent aussi vous montrer le détail 
@@ -158,7 +158,7 @@ C’est seulement après ces deux premières étapes qu’on peut avoir
 un échange requête - réponse entre le navigateur et le serveur 
 web. 
 
-Le principe de base c'est qu'un fil TCP ne sert que pour un seul 
+Le principe de base est qu'un fil TCP ne sert que pour un seul 
 couple requête/réponse. À chaque nouvelle requête, on établit 
 une nouvelle connexion TCP. Pour combler ce problème HTTP prévoit 
 une fonctionnalité (connexions persistantes, keep-alive) 
@@ -235,14 +235,14 @@ monde, si des données sont envoyées plus vite qu'on ne peut les
 recevoir, une grande partie est simplement perdue, ignorée 
 sur le trajet. 
 
-Pour palier ce problème le protocole TCP met en œuvre une communication 
+Pour palier ce problème, le protocole TCP met en œuvre une communication 
 entre le client et le serveur. Le serveur commence par transmettre 
 une certaine quantité de données au client puis attend confirmation 
-de bonne réception. Si tout va bien il va transmettre un peu plus 
+de la bonne réception. Si tout va bien, il va transmettre un peu plus 
 de données à la fois et attendre là aussi confirmation, et ainsi 
 de suite. Quand la vitesse devient trop grande des données sont 
 perdues et la confirmation n'arrive pas. Le serveur diminue 
-alors la quantité de données et recommence. Après la phase d'initialisation 
+alors la quantité de données et recommence. Après la phase d'initialisation, 
 la bande passante utilisée oscille donc (on monte jusqu'à dépasser 
 la bande passante disponible, on diminue d'un coup pour remonter 
 progressivement et recommencer). 
@@ -361,7 +361,7 @@ connexion TCP, l'envoi de la requête et l'attente du navigateur,
 puis la réception elle-même. 
 
 Suivant les lignes, la requête DNS et l'établissement de la connexion 
-TCP peuvent être inutile (respectivement sile domaine a déjà 
+TCP peuvent être inutile (respectivement si le domaine a déjà 
 été résolu en adresse IP, et si le serveur réutilise une connexions 
 persistante). La réception des données est parfois tellement 
 rapide qu'elle semble ne pas apparaître dans le graphique. 
@@ -377,8 +377,8 @@ Sous-systèmes du navigateur
 Si le réseau occupe une place prépondérante dans le navigateur 
 et le temps de traitement d'une page, ce n'est pas le seul sous-système 
 présent. Microsoft en identifie onze pour son navigateur Internet 
-Explorer. Si ce qui suit est propre à Microsoft Internet Explorer 
-mais tous les autres navigateurs ont un système similaire. 
+Explorer. Si ce qui suit est propre à Microsoft Internet Explorer, tous 
+les autres navigateurs ont un système similaire. 
 
 * Réseau : Ce sous-système est responsable de toute la communication 
   entre le navigateur et les serveurs web. Il s'occupe des requêtes 
@@ -431,9 +431,9 @@ sur les autres. Les opérations de routage, d'agencement, de
 rendu ou sur le modèle objet natif peuvent aussi être particulièrement 
 coûteuses. 
 
-Pour une application basée fortement basée sur ajax avec Microsoft 
+Pour une application basée fortement sur ajax avec Microsoft 
 Internet Explorer 8, hors réseau, les répartitions sont de l'ordre 
-de 30 % pour le rendu, 20 % pour javascript, et 15 % pour l'agencement, 
+de 30 % pour le rendu, 20 % pour javascript, 15 % pour l'agencement, 
 et 12 % pour le formatage. Pour un site web plus classique le rendu, 
 l'agencement et le formatage ont bien moins d'importance car 
 ils interviennent une seule fois (le javascript ne provoque 
@@ -709,10 +709,10 @@ les gens ont une grande bande passante, plus ils ont tendance
 téléchargements, onglets multiples dans le navigateur, etc.) 
 divisant d'autant la bande passante réellement disponible 
 pour la session HTTP. Comme nous l'avons vu, le débit réellement 
-utilisé pour une unique session TCP plafonne de toutes assez 
+utilisé pour une unique session TCP plafonne de toute façon assez 
 rapidement quand on télécharge beaucoup de petits contenus 
 (comme c'est souvent le cas pour le web) : Entre un tuyau de 4 Mb/s 
-et et un tuyau de 10 Mb/s, il n'y a quasiment aucune différence 
+et un tuyau de 10 Mb/s, il n'y a quasiment aucune différence 
 pour le chargement d'une page web (sauf à charger plusieurs pages 
 simultanément), la bande passante réellement utilisée par 
 le navigateur sera presque la même. 
@@ -733,10 +733,10 @@ conditions réseau risquent d'être très mauvaises.
 #### Quelques explications sur la latence
 
 La vitesse de la lumière est de 300 000 km/s. Pour réaliser le trajet 
-jusqu'à un serveur Californien, il faudrait 20 000 km par un trajet 
-direct aller-retour soit 67 ms. Dans le meilleur des cas nous 
+jusqu'à un serveur Californien, il faudrait 20 000 km pour un trajet 
+direct aller-retour, soit 67 ms. Dans le meilleur des cas nous 
 utilisons des fibres optiques qui ralentissent de moitié la 
-vitesse de propagation, ce qui donne 100 ms théoriques. En général 
+vitesse de propagation, ce qui donne 100 ms théoriques. En général, 
 il faut environ doubler ces temps pour une connexion réelle, 
 donc 200 ms dans notre cas. Même pour joindre New York nous avons 
 dans les 12 000 km en ligne direct aller-retour, donc dans les 
@@ -758,8 +758,8 @@ de 30 ms.
 Il n'est pas la peine de générer toutes les combinaisons entre 
 débit et latence. Malheureusement un faible débit va très souvent 
 avec une forte latence et inversement. Si on trouve parfois des 
-connexions à forte latence et haut début (les terminaux 3G+ par 
-exemple), la bande passante restera de toutes façons sous utilisée. 
+connexions à forte latence et haut débit (les terminaux 3G+ par 
+exemple), la bande passante restera de toute façon sous utilisée. 
 Du fait du plafonnement des débits TCP, la bande passante utilisée 
 est en fait plus dépendante de la latence que de la bande passante 
 disponible. 
