@@ -70,7 +70,7 @@ utilisateurs qui partent et leurs intentions d’achat qui s’écroulent.
 Bref, ils abandonnent ou se freinent.
 
 Le titre de ces quelques paragraphes, « Users really respond to
-speed » est en fait une citation de Marissa Mayer, actuelle PDG de Yahoo!, qui a été vice-présidente de
+speed » est en fait une citation de Marissa Mayer, lorsqu'elle était vice-présidente de
 la section recherche et expérience utilisateur de Google. Nous le
 verrons, Google a aussi publié des chiffres, pas moins impressionnants
 que ceux d’Amazon.
