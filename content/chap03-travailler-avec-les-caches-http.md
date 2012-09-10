@@ -1407,7 +1407,7 @@ Il est important de noter que toutes ces tailles sont à entendre
 une fois les composants décompressés. On atteint donc très rapidement 
 les 4 Mo du cache Android. 
 
-**Recommandation **: Pour des clients mobiles pensez que le 
+**Recommandation**: Pour des clients mobiles pensez que le 
 cache se remplira très rapidement et ne sera finalement utilisable 
 que pour la session de navigation en cours. 
 
@@ -1415,7 +1415,7 @@ Certaines anciennes versions iPhones ne pouvaient toutefois
 pas stocker en cache des composants de plus de 25 Ko, pour un total 
 de 500 Ko. 
 
-**Recommandation : **Pour compatibilité avec les anciens iPhone, 
+**Recommandation** : Pour compatibilité avec les anciens iPhone, 
 gardez au maximum des composants (CSS, javascript) de moins 
 de 25 Ko une fois décompressés et limitez-vous à une vingtaine 
 d'objets. 
