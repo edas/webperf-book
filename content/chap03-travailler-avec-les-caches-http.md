@@ -39,7 +39,7 @@ page ne télécharge donc que les 20 % qui lui manquent. C'est ça qui peut
 faire la différence entre un site lent et un site instantané.
 
 Pour un utilisateur, passer de 81 requêtes HTTP à 2, ou de 400 ko à
-75 ko c'est la différence entre une voiture et un vélo en performances.
+75 ko, c'est la différence entre une voiture et un vélo en terme de performance.
 Le résultat est visible immédiatement.
 
 Mais en plus du gain visible pour l'utilisateur, vous avez un bonus.
@@ -49,8 +49,8 @@ L'investissement est très vite rentable. 
 
 ![Téléchargements en premier et second accès sur Amazon.fr](img/chap03-telechargements-en-premier-et-second-acces-sur-amazon-fr.png)
 
-Sur l'échantillon de sites français testés on identifie le nombre de
-requêtes et le poids total du document. Pour chaque site le premier
+Sur l'échantillon de sites français testés, on identifie le nombre de
+requêtes et le poids total du document. Pour chaque site, le premier
 camembert montre la proportion de requêtes HTTP économisées si le cache
 est initialisé (en foncé) par rapport au total des requêtes HTTP
 réalisées. Le second camembert montre ce même rapport en prenant en
@@ -91,12 +91,12 @@ peut les réutiliser sans avoir à les re-télécharger.
 
 ### Nombre d'utilisateurs concernés
 
-Sur le papier un utilisateur arrive la première fois avec un cache vide.
+Sur le papier, un utilisateur arrive la première fois avec un cache vide.
 Les composants de la page sont mis en cache par le navigateurs puis
 toutes les pages suivantes, dans la même session ou dans toutes ses
 sessions futures, sont téléchargées avec un cache pré-initialisé. 
 
-En pratique les choses sont un peu différentes. Le cache des navigateurs
+En pratique, les choses sont un peu différentes. Le cache des navigateurs
 est limité en taille et vos utilisateurs ne naviguent pas que sur votre
 site. Au fur et à mesure de leur surf le cache se rempli, et certains
 anciens éléments sont effacés pour laisser de la place, peut être les
@@ -104,7 +104,7 @@ vôtres. Le résultat c'est qu'à la prochaine visite sur votre site, on se
 retrouve dans la situation d'un cache vide : le navigateur doit
 retélécharger tous vos composants.
 
-Ensuite certaines politiques de sécurité d'entreprise ou de gestion de
+Ensuite, certaines politiques de sécurité d'entreprise ou de gestion de
 la vie privée vident automatiquement et régulièrement le cache de
 certains utilisateurs. Ces utilisateurs vont devoir réinitialiser
 souvent leur cache et se retrouveront régulièrement dans une situation
@@ -150,7 +150,7 @@ parfois catastrophiques, même quand ils sont eux aussi basés sur le même
 code source.
 
 Cloud Four a mené un test à grande échelle. Les résultats sont assez
-mauvais. Près d'un tiers des utilisateurs testés ont un terminal qui ne
+mauvais. Près d'un tiers des utilisateurs testés possèdent un terminal qui ne
 met pas en cache les ressources web. Les résultats sont très disparates
 suivant les versions d'un même navigateur, ainsi une installation de la
 version 3 d'Opera Mini fonctionne correctement. alors qu'une
@@ -180,7 +180,7 @@ permet encore de diviser la bande passante globale par 3 à 4.
 Requête conditionnelle
 ----------------------
 
-La principale problématique du navigateur c'est de savoir quoi mettre en
+La principale problématique du navigateur est de savoir quoi mettre en
 cache et combien de temps. Un élément qui ne part pas en cache, c'est un
 téléchargement en plus. Un élément qui reste trop longtemps en cache,
 c'est un élément qui risque de ne pas être mis à jour dans le rendu du
@@ -224,7 +224,7 @@ Content-Type: text/html; charset=UTF-8
 Lors des téléchargements suivants, le navigateur renvoie cet identifiant
 ou cette date et demande un téléchargement conditionnel. Cela se fait
 avec l'entête `If-Modified-Since`, en reprenant la date fournie la
-dernière fois par le serveur. Si le contenu a changé, tout ce passe
+dernière fois par le serveur. Si le contenu a changé, tout se passe
 comme habituellement, et le serveur renvoie une nouvelle date.
 
 Seconde requête :
@@ -281,9 +281,9 @@ RSS. La situation évolue toutefois sur ces derniers logiciels et on peut
 considérer que les mauvais clients HTTP se font rares.
 
 Le protocole HTTP laisse toutefois une marge d'appréciation au
-navigateur. Ainsi, certains navigateurs vérifient s'il y a mis à jour à
-chaque visite, ou à chaque session, ou encore à chaque page. C'est cela
-qui fait que parfois sur Microsoft Internet Explorer on continue pendant
+navigateur. Ainsi, certains navigateurs vérifient s'il y a eu une mise à jour à
+chaque visite, ou à chaque session, ou encore à chaque page. C'est la raison
+pour laquelle parfois sur Microsoft Internet Explorer, on continue pendant
 quelques temps à voir un ancien contenu au lieu de voir la mise à jour.
 
 Pour palier ce problème, il est possible de demander explicitement au
@@ -316,7 +316,7 @@ Javascript, images).
 
 Avec Ruby On Rails, un mécanisme est prévu pour cela dans le framework
 via la méthode `fresh_when`, qui prend une date de dernière modification
-et un etag :
+et un ETag :
 
 ~~~~~~~ {.ruby .rails}
 fresh_when :last_modified => @article.published_at.utc, 
@@ -347,7 +347,7 @@ ETag
 
 La gestion du cache par dernière date de mise à jour est le mécanisme
 dynamique proposé par la version 1.0 du protocole HTTP. Le protocole
-HTTP 1.1 propose un mécanisme plus étendu : l'etag (pour entity tag, en
+HTTP 1.1 propose un mécanisme plus étendu : l'ETag (pour entity tag, en
 anglais).
 
 ### Détails HTTP
@@ -380,32 +380,32 @@ If-Modified-Since: Tue, 15 Nov 2005 13:24:10 GMT
 If-None-Match: "29244f-45d-3819bb2e"
 ~~~~~~~
 
-### Avantages des Etags sur les dates de dernière modification
+### Avantages des ETags sur les dates de dernière modification
 
 Il y a deux avantages à ce nouveau procédé. Tout d'abord on peut gérer
 des mises à jour plus fines, éventuellement plusieurs mises à jour pour
-une même seconde, ce qui n'était pas possible auparavant. Ensuite HTTP
+une même seconde, ce qui n'était pas possible auparavant. Ensuite, HTTP
 1.1 permet de gérer plusieurs représentations d'un même document à la
-même adresse, par exemple un même contenu en plusieurs langues. Il est
+même adresse, par exemple, un même contenu en plusieurs langues. Il est
 ainsi possible d'avoir plusieurs identifiants pour une même adresse (un
 par représentation), ce qui n'était pas réalisable avec les dates de
 modification.
 
 En réalité tous les clients HTTP ne savent pas gérer cette négociation
-avec etag. Il faut donc toujours la doubler avec la négociation par date
+avec ETag. Il faut donc toujours la doubler avec la négociation par date
 de dernière modification quand on le peut.
 
 Au final, comme peu de sites utilisent plusieurs représentations pour
 une même adresse, et comme on doit de toutes façons doubler avec la date
-de dernière modification, la gestion des etag a un intérêt limité.
+de dernière modification, la gestion des ETag a un intérêt limité.
 
-### Désactiver les etags ?
+### Désactiver les ETags ?
 
 L'équipe performance de Yahoo! a proposé dès le départ de désactiver la
-gestion des etags sur les serveurs web. Outre leur intérêt limité, ils
+gestion des ETags sur les serveurs web. Outre leur intérêt limité, ils
 posent en effet quelques problèmes.
 
-L'etag est un identifiant unique textuel. Pour trouver cet identifiant
+L'ETag est un identifiant unique textuel. Pour trouver cet identifiant
 unique, le serveur web le plus courant sur le marché utilise
 l'identifiant interne du fichier sur le disque (l'inode) associé à la
 date de modification du fichier. Si vous avez un gros site avec
@@ -415,15 +415,15 @@ fichier sera différent sur chaque serveur. 
 Chaque serveur aura donc son propre identifiant, différent de celui des
 autres. Pour peu que la première et la seconde requête ne touchent pas
 le même serveur, vous re-téléchargerez inutilement des contenus. Bref,
-non seulement inutiles, les etags vont pénaliser vos performances.
+non seulement inutiles, les ETags vont pénaliser vos performances.
 
-Désactiver les etags sous Apache peut être réalisé avec la directive :
+Désactiver les ETags sous Apache peut être réalisé avec la directive :
 
 ~~~~~~~ {.apache .oneline}
 FileETag none
 ~~~~~~~
 
-En réalité il existe d'autres méthodes de génération des etags, qui ne
+En réalité il existe d'autres méthodes de génération des ETags, qui ne
 comportent pas ce défaut. Il suffit de ne pas utiliser l'identifiant
 interne du fichier (l'inode). On peut par exemple recommander d'utiliser
 la date de dernière modification associée à la taille du fichier :
@@ -433,40 +433,40 @@ FileETag MTime Size
 ~~~~~~~
 
 **Recommandation :** Si votre site utilise plusieurs serveurs web,
-désactivez les etags ou assurez-vous qu'ils ne se basent pas sur l'inode
+désactivez les ETags ou assurez-vous qu'ils ne se basent pas sur l'inode
 des fichiers.
 
-Désactiver les etags est plus simple, et vu leur faible utilité c'est
+Désactiver les ETags est plus simple, et vu leur faible utilité, c'est
 probablement le plus simple, mais le choix vous revient. Si votre site
 n'utilise qu'un seul serveur pour l'instant, ne vous en préoccupez pas.
 
 ### Statistiques
 
 L'analyse d'un échantillon d'une trentaine de sites français ne dégage
-pas de consensus fort sur la questions des etag. À peu près autant
-fonctionnent avec etag que sans etag. Tout au plus peut-on noter que
+pas de consensus fort sur la questions des ETags. À peu près autant
+fonctionnent avec ETag que sans ETag. Tout au plus, on peut noter que
 ceux qui ont les meilleures performances, donc qui ont probablement le
-plus réfléchi à la question, ont plutôt tendance à la désactivation.
+plus réfléchi à la question, ont plutôt tendance à les désactiver.
 
-Il n'y a pas non plus de spécificité suivant le type de contenu (html,
+Il n'y a pas non plus de spécificité suivant le type de contenu (HTML,
 javascript, feuille de style, images, autres). Seul Cdiscount fait une
-différence en mettant des etag sur 60 images mais aucun des 25 fichiers
+différence en mettant des ETag sur 60 images mais aucun des 25 fichiers
 javascript ou des 19 fichiers CSS.
 
-![Statistiques sur la présence d'Etag sur un échantillon de sites français](img/chap03-statistiques-sur-la-presence-d-etag-sur-un-echantillon-de-sites-francais.png)
+![Statistiques sur la présence d'ETag sur un échantillon de sites français](img/chap03-statistiques-sur-la-presence-d-etag-sur-un-echantillon-de-sites-francais.png)
 
 Note : Sur la plupart des sites on peut voir qu'il y a toujours quelques
-contenus sans etags, et quelques contenus avec etag. Il s'agit le plus
+contenus sans ETags, et quelques contenus avec ETag. Il s'agit le plus
 souvent de publicités et contenus externes, non contrôlés par le site
 lui-même, ou de contenu très dynamique regénéré à chaque accès (dans le
-cas de l'absence des etags). 
+cas de l'absence des ETags). 
 
 Expiration explicite des contenus
 ---------------------------------
 
 Le système des requêtes conditionnelles reste imparfait du point de vue
 des performances, qu'il soit basé sur la date de dernière modification
-ou l'etag. Chaque nouvelle utilisation d'une ressource implique une
+ou l'ETag. Chaque nouvelle utilisation d'une ressource implique une
 requête conditionnelle sur le serveur. 
 
 On évite de transférer le contenu de la ressource mais on attend quand
@@ -475,10 +475,10 @@ composants, deux téléchargements simultanés, et une latence de 40 ms,
 nous devrons attendre au mieux une bonne seconde pour rien.
 
 ~~~~~~~ {.oneline}
-attente minimum = nbr ressources / connex. simultanées \* latence
+attente minimum = nbr ressources / connex. simultanées * latence
 ~~~~~~~
 
-La solution c'est l'expiration explicite des contenus. Il s'agit
+La solution, c'est l'expiration explicite des contenus. Il s'agit
 d'informer le navigateur que la ressource ne changera pas avant une
 certaine date. Jusque là, le navigateur récupère directement son
 ancienne version sans faire aucune requête réseau.
@@ -492,7 +492,7 @@ réservée à HTTP 1.1 et permet de définir plutôt une période de validité
 avec un nombre de secondes. On évite ainsi les problèmes synchronisation
 horaire. 
 
-En général on définit les deux. En cas de conflit c'est `Cache-Control`
+En général, on définit les deux. En cas de conflit, c'est `Cache-Control`
 qui prime. `Expires` ne servira que pour un client HTTP 1.0 qui ne
 comprend pas `Cache-Control`. Si vous n'en choisissez qu'une, utilisez
 `Expires`.
@@ -538,7 +538,7 @@ proxy.
 
 ### Que mettre en cache et pour combien de temps**
 
-En pratique on sépare d'un côté les ressources qui ne changent que
+En pratique, on sépare d'un côté les ressources qui ne changent que
 rarement, voire jamais (images de graphisme, feuilles de style,
 javascript, et plus généralement tous les fichiers statiques), et d'un
 autre côté les ressources dynamiques ou qui changent fréquemment
@@ -566,7 +566,7 @@ plus loin dans ce chapitre concernant sa date d'expiration.
 
 ### Mise en œuvre sur le serveur web
 
-Par défaut votre serveur web ne définit aucune expiration explicite.
+Par défaut, votre serveur web ne définit aucune expiration explicite.
 C'est à vous de spécifier ce que vous souhaitez dans votre
 configuration. Pour Apache il est possible d'utiliser 
 [mod_expires](http://httpd.apache.org/docs/2.2/mod/mod_expires.html).
@@ -602,7 +602,7 @@ d'accueil, n'oubliez pas de gérer aussi les requêtes conditionnelles,
 afin de permettre au navigateur de revalider son contenu et obtenir une
 nouvelle expiration sans tout retélécharger.
 
-Sur Lighttpd les paramètres du modExpire sont similaires mais la syntaxe
+Sur Lighttpd, les paramètres du modExpire sont similaires mais la syntaxe
 du fichier de configuration laisse plus de latitude pour cibler les
 contenus à mettre en cache :
 
@@ -612,23 +612,23 @@ $HTTP["url"] =~ "^/images/" {
 }
 ~~~~~~~
 
-### Cas particulier des connexions sécurisées (https)
+### Cas particulier des connexions sécurisées (HTTPS)
 
 Microsoft Internet Explorer a un comportement particulier quand les
-ressources en cache viennent de connexions sécurisées par https. Le
-navigateur impose d'avoir au moins établit un échange avec le serveur
+ressources en cache viennent de connexions sécurisées par HTTPS. Le
+navigateur impose d'avoir au moins établi un échange avec le serveur
 dans la page courante avant de réutiliser des données de ce serveur dans
 le cache. En pratique cela veut dire que le premier composant de chaque
-domaine accédé en https sera toujours retéléchargé et jamais pris à
+domaine accédé en HTTPS sera toujours retéléchargé et jamais pris à
 partir du cache, quelles que soient les entêtes que vous lui envoyez. Il
 en va de même pour Mozilla Firefox.
 
-En fait on va même un peu plus loin puisque si vous demandez trois
-images sur un domaine https, même si ces dernières sont en cache, ce sont
+En fait, on va même un peu plus loin puisque si vous demandez trois
+images sur un domaine HTTPS, même si ces dernières sont en cache, ce sont
 peut être les trois qui seront retéléchargées. Internet Explorer
 télécharge la première, à dessein, mais risque de ne pas avoir encore la
 réponse avant de tenter d'afficher la seconde image. Au lieu d'attendre,
-il constate qu'il n'a toujours pas établit de connexion, et envoie une
+il constate qu'il n'a toujours pas établi de connexion, et envoie une
 seconde requête à la couche logicielle qui s'occupe du réseau. 
 
 ### Versionnement des URLs et mise à jour des contenus
@@ -637,7 +637,7 @@ Avec une date d'expiration explicite, il n'y a aucun moyen pour
 l'éditeur d'un site web de forcer une mise à jour d'un contenu mis en
 cache par le navigateur. Si vous changez un logo ou faites des
 corrections dans une feuille de style, certains visiteurs risquent de ne
-jamais recevoir la nouvelle version
+jamais recevoir la nouvelle version.
 
 Pour palier ce problème, il est possible de versionner les URL. Le cache
 du navigateur est en effet lié à l'adresse de la ressource. Si on change
@@ -725,7 +725,7 @@ vues jusqu'à présent empêchent la donnée de varier en fonction du
 contexte (personne identifiée ou non, présence d'un panier, langue du
 navigateur, etc.).
 
-Pour nous aider nous avons l'entête `Vary` et deux paramètres
+Pour nous aider, nous avons l'entête `Vary` et deux paramètres
 supplémentaires à l'entête `Cache-Control`.
 
 L'entête `Vary` permet d'informer le navigateur et les caches
@@ -772,7 +772,7 @@ utilisé le cache).
 Cache-Control: public, max-age=3600 
 ~~~~~~~
 
-De manière générale on choisit entre public et privé suivant que la
+De manière générale, on choisit entre public et privé suivant que la
 ressource contient des données propres à l'utilisateur courant ou si
 elle peut être réutilisée par tout le monde. Dès que vous avez une
 authentification ou des préférences utilisateurs, c'est probablement un
@@ -816,7 +816,7 @@ manifest de la balise `<html>` du document principal :
 </html>
 ~~~~~~~
 
-À chaque accès le navigateur télécharge le manifeste. S'il s'agit d'un
+À chaque accès, le navigateur télécharge le manifeste. S'il s'agit d'un
 nouveau manifeste ou si le contenu a changé toutes les ressources sont
 retéléchargées pour être mises à jour. Le cache applicatif HTML 5 permet
 en fait d'autres possibilités (liste blanche, fallback, API pour accéder
@@ -846,7 +846,7 @@ Ainsi, afin de profiter au maximum du cache, on tente de séparer les
 composants statiques du reste de la page. En externalisant les feuilles
 de style et les javascript dans des fichiers externes, on permet que ces
 codes ci soient mis en cache, selon les méthodes expliquées plus avant,
-quand bien même la page HTML elle-même ne le seraient pas. 
+quand bien même la page HTML elle-même ne le serait pas. 
 
 Cette externalisation, où chaque déclaration javascript ou css est
 retirée du code HTML, permet de réduire de façon importante la taille de
@@ -859,10 +859,10 @@ lors du premier accès à votre site. Cela peut avoir un impact
 significatif si votre site a une grande latence, ou si vos visiteurs ne
 consultent qu’une à deux pages à chaque visite. Nous verrons cependant
 dans les chapitres suivants qu’il est possible de regrouper les
-différents fichiers javascript et css pour limiter cet effet négatif.
+différents fichiers javascript et CSS pour limiter cet effet négatif.
 
-**Recommandation** : Externalisez toutes les instructions css ou
-javascript dans un fichier séparé de la page html. Vous pourrez alors
+**Recommandation** : Externalisez toutes les instructions CSS ou
+javascript dans un fichier séparé de la page HTML. Vous pourrez alors
 définir une expiration explicite importante sur ces éléments.
 
 ### Système de préchargement
@@ -881,7 +881,7 @@ Ainsi, même si votre page d’accueil n’a pas de commentaires, pourquoi ne
 pas charger les icônes et codes javascript qui sont utilisés dans les
 pages internes ? Les illustrations courantes, les javascripts et
 feuilles de styles sont de très bon candidats au préchargement. Les
-pages html elles-même offrent un ration utilité/risque un peu moins
+pages HTML elles-même offrent un ration utilité/risque un peu moins
 intéressant.
 
 **Recommandation** : Si votre page courante est très différente des
@@ -961,7 +961,7 @@ ressources sur le même domaine. Retarder des requêtes souhaitées
 maintenant par l’utilisateur afin d’accélérer une future requête
 potentielle est rarement intéressant. Aussi, ces méthodes ne doivent pas
 référencer plus de deux ressources par domaine (afin de ne pas trop
-retarder les autres requêtes du même domaine) et uniquement si elles ont
+retarder les autres requêtes du même domaine) et uniquement, si elles ont
 un bon rapport utilité/risque. De plus, afin de ne commencer qu’après le
 chargement complet de la page courante, elles ne devraient être
 initialisées qu'après l’événement onload de la page courante.
@@ -1065,7 +1065,7 @@ anti-cache de votre bibliothèque javascript.
 ### Mise en cache d’une page d’accueil ou d’une page événementielle à fort trafic
 
 Sur des sites ou des pages à très fort trafic, il peut toutefois être
-intéressant de profiter du cache pour les pages html elles-même, par
+intéressant de profiter du cache pour les pages HTML elles-même, par
 exemple la page d’accueil, les pages des catégories principales ou la
 page qui fait l’actualité actuellement.
 
@@ -1078,16 +1078,16 @@ notable et appréciable. 
 
 Il s’agit de faire alors l’opération inverse de ce qui est préconisé
 ordinairement. Au lieu d’externaliser toutes les données et ressources
-statiques en laissant la page html dynamique hors du cache, nous allons
+statiques en laissant la page HTML dynamique hors du cache, nous allons
 tenter d’externaliser toutes les composantes dynamiques de la page pour
-pouvoir mettre le html lui-même dans le cache.
+pouvoir mettre le HTML lui-même dans le cache.
 
-Parmi ces éléments dynamiques on compte tout ce qui doit absolument être
+Parmi ces éléments dynamiques, on compte tout ce qui doit absolument être
 mis à jour à chaque nouvel accès sur la page. Assez souvent il y a une
 boite d’authentification utilisateur, des publicités, éventuellement un
 panier sur un site marchand, ou des informations en temps réel sur un
 site sportif ou d’actualité. Au lieu d’être inclus directement dans la
-page html, on va réaliser du code javascript pour charger ces éléments
+page HTML, on va réaliser du code javascript pour charger ces éléments
 dans un second temps, par exemple avec Ajax. Attention toutefois à
 proposer un lien ou un moyen d'accès alternatif à ses informations sans
 utiliser javascript (un lien vers la page panier et vers la page
@@ -1131,7 +1131,7 @@ les composants comment nous l’avons vu précédemment.
 
 Cela implique toutefois qu’une ressource ne doit être accessible que par
 une seule URL, sous peine de ne pas profiter au mieux du cache. Faites
-donc attention à ne pas dupliquer vos URL. En particulier une page
+donc attention à ne pas dupliquer vos URL. En particulier, une page
 d’accueil doit être disponible sur « / » ou sur « /index.html », mais
 pas les deux. Tous les liens doivent être uniformisés.
 
@@ -1154,7 +1154,7 @@ Par défaut, c’est à dire sans précision dans les entêtes `Cache-Control`
 ni `Expires`, le navigateur peut :
 
 * ne rien stocker et retélécharger la ressource au prochain accès (cas
-  le plus probable si vous n’envoyez ni entête `Etag` ni entête
+  le plus probable si vous n’envoyez ni entête `ETag` ni entête
   `Last-Modified`) ;
 * stocker le contenu téléchargé et faire une revalidation avec une
   requête conditionnelle au prochain accès ;
@@ -1170,7 +1170,7 @@ lors de la demande de rafraichissement. Ceci peut être changé dans les
 préférences Internet.
 
 Mozilla Firefox utilise aussi cette troisième méthode dès qu'il
-rencontre une entête `Last-modified. Il considère met alors en cache la
+rencontre une entête `Last-modified. Il met alors en cache la
 ressource pour 10 % du temps depuis la dernière modification (un
 composant mis à jour il y a dix jours sera mis en cache pour une journée
 pleine). Pour éviter ce comportement il faut envoyer les paramètres
@@ -1255,7 +1255,7 @@ distingue alors trois groupes :
 Le premier groupe correspond aux requêtes fait avec le verbe GET. Quand
 le code de retour est 200, 203, 206, 300 ou 410, alors le navigateur et
 le proxy sont encouragés à mettre la réponse en cache, suivant leurs
-propres heuristiques. Le plus souvent, s’il y a une entête `Etag` ou
+propres heuristiques. Le plus souvent, s’il y a une entête `ETag` ou
 `Last-Modified` et pas de paramètres dans l’URL, alors la ressource risque
 d’être mise en cache. 
 
@@ -1280,7 +1280,7 @@ premiers (c’est à dire une requête de type GET avec un code de retour
 autre que ceux listés). Ces ressources ne sont généralement pas mises en
 cache, mais peuvent toutefois l’être. Ainsi certains navigateurs mettent
 assez facilement en cache les erreurs 404 (page non trouvée). S’il y a
-une entête `Etag` ou `Last-Modified`, alors il est probable que le
+une entête `ETag` ou `Last-Modified`, alors il est probable que le
 navigateur tente une revalidation avec le serveur au prochain accès afin
 d’éviter un téléchargement inutile.
 
@@ -1445,7 +1445,7 @@ un menu déroulant.
 
 ![Désactivation du cache dans la web developper toolbar de Firefox](img/chap03-desactivation-du-cache-dans-la-web-developper-toolbar-de-firefox.png)
 
-L'extension Firebug a elle aussi un menu pour désactiver le cache, 
+L'extension Firebug possède également un menu pour désactiver le cache, 
 dans l'onglet réseau. 
 
 ### Opera
@@ -1486,7 +1486,7 @@ les objets mis en cache.
 
 ![Configuration du cache Microsoft Internet Explorer 7](img/chap03-configuration-du-cache-microsoft-internet-explorer-7.png)
 
-Il est important de noter sélectionner « à chaque visite de cette 
+Il est important de note que sélectionner « à chaque visite de cette 
 page web » dans les préférences pour les fichiers temporaires 
 ne suffit pas à désactiver complètement le cache. 
 
@@ -1517,7 +1517,7 @@ les détails les plus à jour : <http://en.wikipedia.org/wiki/Bypass_your_cache>
 * Il y aura toujours une proportion non négligeable de visites 
   avec un cache non initialisé, il ne faut pas les oublier ; 
 
-* Désactiver les Etags ; 
+* Désactiver les ETags ; 
 
 * Ajouter une expiration explicite à tous les contenus statiques ; 
 
