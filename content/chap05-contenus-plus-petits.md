@@ -53,7 +53,7 @@ contenus avant envoi.
 #### Algorithmes
 
 Les algorithmes utilisés sont extrêmement proches du très courant 
-zip que vous utilisez pour less documents de votre poste de travail. 
+zip que vous utilisez pour les documents de votre poste de travail. 
 Il s'agit de gzip (RFC 1951 et 1952), deflate (RFC 1951 et 1950) 
 et compress. En fait compress est quasiment inutilisé dans les 
 échanges web et les deux autres sont à peu près équivalents, gzip 
