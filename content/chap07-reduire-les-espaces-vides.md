@@ -42,8 +42,8 @@ incompatibles. Ils maintiennent une liste noire fixe des serveurs
 par le navigateur par le passé. Des réflexions sont toutefois 
 menées pour améliorer l'utilisation du pipelining à l'avenir. 
 
-De plus, ce mécanisme peut aussi ralentir le chargement des pages 
-: Le navigateur télécharge en réalité les composants sur plusieurs 
+De plus, ce mécanisme peut aussi ralentir le chargement des pages :
+le navigateur télécharge en réalité les composants sur plusieurs 
 fils TCP en parallèle. Un peu comme les queues au supermarché, 
 si on se contente de regarder le nombre de personnes en attente 
 (le nombre de requêtes) par queue sans regarder le remplissage 
@@ -90,9 +90,10 @@ plus grande intelligence (et donc une plus grande complexité)
 et du serveur web et du navigateur web. 
 
 Pour l'instant le protocole est à l'état de proposition et n'est 
-pour l'instant implémenté (partiellement) que par le navigateur 
-Google Chrome et par les serveurs web de Google. Un module pour 
-le serveur web Apache est toutefois en développement sur [http://code.google.com/p/mod-spdy/](http://code.google.com/p/mod-spdy/). 
+implémenté que (partiellement) par les navigateur Google Chrome et Firefox
+et par quelques serveurs, dont ceux de Google, Wordpress et Twitter.
+Un module pour le serveur web Apache est toutefois en développement sur
+[http://code.google.com/p/mod-spdy/](http://code.google.com/p/mod-spdy/).
 
 ----
 
