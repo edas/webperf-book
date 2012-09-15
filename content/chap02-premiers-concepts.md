@@ -148,7 +148,7 @@ vous cherchez à joindre. Sur un réseau lent ou avec un site très
 
 Une fois que votre navigateur connait l’adresse du serveur à 
 joindre, on peut établir une connexion TCP avec le serveur web. 
-TCP c'est le protocole utilisé par HTTP. Il s'agit ni plus ni moins 
+TCP est le protocole de transport utilisé par HTTP. Il s'agit ni plus ni moins 
 que de mettre en place une sorte de fil de discussion entre le serveur 
 et le client, et pour ça il faut l'accord des deux avec une phase 
 d'initialisation. C’est rapide, très rapide, mais c’est encore 
@@ -170,7 +170,7 @@ existe dans la version 1.1 de HTTP, le pipelining, mais elle est
 rarement activée. Nous y reviendrons plus loin dans ce livre. 
 
 Pour compenser et comme solution de contournement, les navigateurs 
-opèrent plusieurs téléchargements en parallèle (de 2 à 6 suivant 
+opèrent plusieurs téléchargements en parallèle (de 2 à 8 suivant 
 le navigateurs). Ils ouvrent simplement plusieurs fils TCP 
 et y envoient des requêtes différentes. Ils permettent ainsi 
 d'optimiser la bande passante et de ne pas se tourner les pouces 
