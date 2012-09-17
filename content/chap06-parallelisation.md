@@ -677,7 +677,7 @@ peut être prévu avec certitude.
 ~~~~~~~ {.html .partial}
 <script src="/chemin/vers/fichier1.js" defer></script>
 <script src="/chemin/vers/fichier2.js" defer></script>
-<!-- rien ne garantit que le script 1 s'exécutera toujours avant le script 2 →
+<!-- rien ne garantit que le script 1 s'exécutera toujours avant le script 2 -->
 ~~~~~~~
 
 Dans les deux cas, il faudra faire la plus grande attention aux 
@@ -715,3 +715,82 @@ Iframe et événement onload
 --------------------------
 
 **@TODO**
+
+
+Cas des fournisseurs externes
+-----------------------------
+
+Nous avons vu dans ce chapitre qu'un chargement optimal des ressources passe
+par un bon timing. Charger les bonnes ressources au bon moment permet d'avoir
+ces ressources disponibles quand on en aura besoin sans bloquer le
+téléchargement des autres ressources plus prioritaires. Le respect des bonnes
+pratiques citées ci-dessus permet d'y arriver mais il n'est pas toujours
+possible de les appliquer quand on dépend de fournisseurs externes. En
+particulier, les régies publicitaires sont connues pour être de mauvais élèves
+en la matière. Il n'est pas rare que les publicités soient chargés via un
+JavaScript qui utilisera document.write.
+
+Il existe une astuce pour améliorer grandement ce cas : l'utilisation d'une
+iframe intégrée. En effet, HTML5 offre de nouveaux attributs sur les balises
+iframe dont deux nous intéressent tout particulièrement : seamless et srcdoc.
+Leur utilisation combinée va nous permettre d'encapsuler la publicité dans une
+iframe, ce qui aura pour effet de permettre au navigateur de continuer à
+charger la page sans attendre que la publicité soit affichée.
+
+Srcdoc est un attribut qui permet d'injecter le contenu de l'iframe sans
+passer par une ressource externe. On pourra ainsi éviter de télécharger une
+ressource externe supplémentaire.
+
+L'attribut seamless, lorsqu'il est appliqué à une iframe, permet à son contenu
+de ce comporter comme un élément normal du DOM plutôt que comme un nouveau
+document. Le contenu de l'iframe hérite ainsi des styles provenant du document
+parent et, plus important, le JavaScript provenant de la régie publicitaire
+continuera de détecter le bon domaine.
+
+En pratique, si le chargement de la publicité se fait avec les lignes
+suivantes :
+
+~~~~~~~ {.html}
+<script type="text/javascript"><!--
+  ad_width = 300;
+  ad_height = 250;
+//--></script>
+<script type="text/javascript" src="http://www.example.com/ad/show_ads.js">
+</script>
+~~~~~~~
+
+on pourra l'englober dans une iframe de la façon suivante :
+
+~~~~~~~ {.html}
+<iframe src="about:blank" seamless srcdoc="
+  <script type=text/javascript><!--
+    ad_width = 300;
+    ad_height = 250;
+  //--></script>
+  <script src=http://www.example.com/ad/show_ads.js></script>
+">
+</iframe>
+~~~~~~~
+
+Malheureusement, l'attribut srcdoc n'est pris en charge que par certains
+navigateurs modernes. Il convient donc de prévoir un mécanisme de fallback
+pour les autres navigateurs. Il consistera à ajouter ces quelques lignes juste
+après l'iframe pour revenir à un document.write en l'absence de prise en
+charge de srcdoc :
+
+~~~~~~~ {.html}
+<script>
+  function supports_srcdoc() {
+    return 'srcdoc' in document.createElement('iframe');
+  };
+
+  // Support for pre-srcdoc browsers
+  var iframes = document.getElementsByTagName("iframe");
+  var iframe = iframes && iframes[iframes.length-1];
+  var srcdoc = iframe && iframe.getAttribute('srcdoc');
+  if (srcdoc && !supports_srcdoc()) {
+    iframe.parentNode.removeChild(iframe);
+    document.write(srcdoc);
+  }
+</script>
+~~~~~~~
