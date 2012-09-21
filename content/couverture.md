@@ -12,14 +12,10 @@ Mainteneurs actuels du projet :
 *  
 
 
-Autres auteurs principaux:
-
-* vous ?
-* 
-* 
-
-
 Autres contributeurs :
+
+* Pour l'enrichissement et la contribution à du contenu 
+  original : [Bruno Michel](https://github.com/nono)
 
 * Pour les relectures avant la mise sous forme communautaire :
   Nicolas Hoizey, Mathieu Pillard, Rudy Rigot, Anthony Ricaud,
@@ -33,4 +29,8 @@ Autres contributeurs :
 * En vrac pour des corrections et typos : 
   [Denis Roussel](https://github.com/KuiKui), 
   [Benjamin Dos Santos](https://github.com/Benjamin-Ds),
-  [DirtyF](https://github.com/DirtyF), Tanguy Martin
+  [DirtyF](https://github.com/DirtyF), Tanguy Martin,
+  [Tomhtml](https://github.com/TOMHTML), 
+  [Franek](https://github.com/franek),
+  [Mikael Randy](https://github.com/mikaelrandy),
+  Agnès Haasser, [Pascal Borreli](https://github.com/pborreli)
