@@ -728,7 +728,7 @@ pratiques citées ci-dessus permet d'y arriver mais il n'est pas toujours
 possible de les appliquer quand on dépend de fournisseurs externes. En
 particulier, les régies publicitaires sont connues pour être de mauvais élèves
 en la matière. Il n'est pas rare que les publicités soient chargés via un
-JavaScript qui utilisera `document.write`.
+JavaScript qui utilisera `document.write.
 
 Il existe une astuce pour améliorer grandement ce cas : l'utilisation d'une
 iframe intégrée. En effet, HTML5 offre de nouveaux attributs sur les balises
