@@ -1,4 +1,3 @@
-
 Réduire les espaces vides
 =========================
 
@@ -26,7 +25,7 @@ les requêtes HTTP sur un même fil TCP sans attendre la réponse
 correspondante. On évite alors la perte de temps due à la latence 
 entre chaque requête (le temps entre l'envoi du dernier octet 
 de la réponse par le serveur et celui de la réception du dernier 
-octet de la requête HTTP suivante. 
+octet de la requête HTTP suivante). 
 
 ![Impact du pipelining HTTP](img/chap07-impact-du-pipelining-http.png)
 
@@ -90,7 +89,7 @@ plus grande intelligence (et donc une plus grande complexité)
 et du serveur web et du navigateur web. 
 
 Pour l'instant le protocole est à l'état de proposition et n'est 
-implémenté que (partiellement) par les navigateur Google Chrome et Firefox
+implémenté que (partiellement) par les navigateurs Google Chrome et Firefox
 et par quelques serveurs, dont ceux de Google, Wordpress et Twitter.
 Un module pour le serveur web Apache est toutefois en développement sur
 [http://code.google.com/p/mod-spdy/](http://code.google.com/p/mod-spdy/).
