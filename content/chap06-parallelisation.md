@@ -728,20 +728,20 @@ pratiques citées ci-dessus permet d'y arriver mais il n'est pas toujours
 possible de les appliquer quand on dépend de fournisseurs externes. En
 particulier, les régies publicitaires sont connues pour être de mauvais élèves
 en la matière. Il n'est pas rare que les publicités soient chargés via un
-JavaScript qui utilisera document.write.
+JavaScript qui utilisera `document.write`.
 
 Il existe une astuce pour améliorer grandement ce cas : l'utilisation d'une
 iframe intégrée. En effet, HTML5 offre de nouveaux attributs sur les balises
-iframe dont deux nous intéressent tout particulièrement : seamless et srcdoc.
-Leur utilisation combinée va nous permettre d'encapsuler la publicité dans une
-iframe, ce qui aura pour effet de permettre au navigateur de continuer à
-charger la page sans attendre que la publicité soit affichée.
+iframe dont deux nous intéressent tout particulièrement : `seamless` et 
+`srcdoc`. Leur utilisation combinée va nous permettre d'encapsuler la 
+publicité dans une iframe, ce qui aura pour effet de permettre au navigateur 
+de continuer à charger la page sans attendre que la publicité soit affichée.
 
-Srcdoc est un attribut qui permet d'injecter le contenu de l'iframe sans
+L'attribut `srcdoc` permet d'injecter le contenu de l'iframe sans
 passer par une ressource externe. On pourra ainsi éviter de télécharger une
 ressource externe supplémentaire.
 
-L'attribut seamless, lorsqu'il est appliqué à une iframe, permet à son contenu
+L'attribut `seamless`, lorsqu'il est appliqué à une iframe, permet à son contenu
 de ce comporter comme un élément normal du DOM plutôt que comme un nouveau
 document. Le contenu de l'iframe hérite ainsi des styles provenant du document
 parent et, plus important, le JavaScript provenant de la régie publicitaire
@@ -750,7 +750,7 @@ continuera de détecter le bon domaine.
 En pratique, si le chargement de la publicité se fait avec les lignes
 suivantes :
 
-~~~~~~~ {.html}
+~~~~~~~ {.html .partial}
 <script type="text/javascript"><!--
   ad_width = 300;
   ad_height = 250;
@@ -761,7 +761,7 @@ suivantes :
 
 on pourra l'englober dans une iframe de la façon suivante :
 
-~~~~~~~ {.html}
+~~~~~~~ {.html .partial}
 <iframe src="about:blank" seamless srcdoc="
   <script type=text/javascript><!--
     ad_width = 300;
@@ -772,13 +772,13 @@ on pourra l'englober dans une iframe de la façon suivante :
 </iframe>
 ~~~~~~~
 
-Malheureusement, l'attribut srcdoc n'est pris en charge que par certains
-navigateurs modernes. Il convient donc de prévoir un mécanisme de fallback
+Malheureusement, l'attribut `srcdoc n'est pris en charge que par certains
+navigateurs modernes. Il convient donc de prévoir un mécanisme par défaut
 pour les autres navigateurs. Il consistera à ajouter ces quelques lignes juste
-après l'iframe pour revenir à un document.write en l'absence de prise en
+après l'iframe pour revenir à un `document.write en l'absence de prise en
 charge de srcdoc :
 
-~~~~~~~ {.html}
+~~~~~~~ {.html .partial}
 <script>
   function supports_srcdoc() {
     return 'srcdoc' in document.createElement('iframe');
