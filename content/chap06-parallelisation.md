@@ -728,7 +728,7 @@ pratiques citées ci-dessus permet d'y arriver mais il n'est pas toujours
 possible de les appliquer quand on dépend de fournisseurs externes. En
 particulier, les régies publicitaires sont connues pour être de mauvais élèves
 en la matière. Il n'est pas rare que les publicités soient chargés via un
-JavaScript qui utilisera `document.write.
+JavaScript qui utilisera `document.write`.
 
 Il existe une astuce pour améliorer grandement ce cas : l'utilisation d'une
 iframe intégrée. En effet, HTML5 offre de nouveaux attributs sur les balises
@@ -772,11 +772,11 @@ on pourra l'englober dans une iframe de la façon suivante :
 </iframe>
 ~~~~~~~
 
-Malheureusement, l'attribut `srcdoc n'est pris en charge que par certains
+Malheureusement, l'attribut `srcdoc` n'est pris en charge que par certains
 navigateurs modernes. Il convient donc de prévoir un mécanisme par défaut
 pour les autres navigateurs. Il consistera à ajouter ces quelques lignes juste
-après l'iframe pour revenir à un `document.write en l'absence de prise en
-charge de srcdoc :
+après l'iframe pour revenir à un `document.write` en l'absence de prise en
+charge de `srcdoc` :
 
 ~~~~~~~ {.html .partial}
 <script>
