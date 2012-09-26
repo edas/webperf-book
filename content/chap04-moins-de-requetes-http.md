@@ -8,7 +8,7 @@ des requêtes HTTP.
 
 Les caches HTTP sont un excellent moyen de réduire ce nombre de 
 requêtes HTTP, et donc d'améliorer le chargement de la page. 
-Toutefois, comme nous l'avons vu plus avant, la moitié des utilisateurs 
+Toutefois, comme nous l'avons vu auparavant, la moitié des utilisateurs 
 ont de temps en temps une expérience sans cache et 20 % des pages 
 sont quand même téléchargées entièrement. 
 
@@ -25,21 +25,21 @@ Impact d'une requête HTTP
 
 Comme nous l'avons vu dans le chapitre sur les premiers concepts, 
 une requête HTTP ne dépend pas uniquement du poids de ce qui est 
-téléchargé. En plus du fichier lui-même téléchargé il faut faire 
+téléchargé. En plus du fichier lui-même téléchargé, il faut faire 
 un aller-retour réseau entre le navigateur, subir le délai de 
-réaction du serveur web, et prendre le temps d'envoyer la requête. 
+réaction du serveur web et prendre le temps d'envoyer la requête. 
 
-Sur une bonne connexion l'aller-retour réseau est souvent très 
+Sur une bonne connexion, l'aller-retour réseau est souvent très 
 réduit, quelques dizaines de milli-secondes tout au plus. Pour 
 une requête simple sur un site qui fait un usage mesuré des cookies, 
 l'envoi de la requête elle-même n'ajoute pas vraiment de délai. 
 
-Sur une connexion un peu dégradée le délai du à l'aller-retour 
+Sur une connexion un peu dégradée, le délai dû à l'aller-retour 
 réseau peut facilement dépasser 100 ms. Quand on a 200 composants 
 à télécharger (cas de www.lemonde.fr), multiplier 100 ms par 
 200 commence à ne pas devenir négligeable. On obtiendrait près 
 de 20 secondes uniquement à cause de ces délais, en plus des téléchargements 
-eux-même. 
+eux-même.
 
 Sur les sites modernes, avec beaucoup de composants, le nombre 
 de requêtes HTTP devient un problème en soi. C'est d'autant plus 
@@ -51,9 +51,9 @@ il attend.
 Pour palier ce problème de latence les navigateurs téléchargent 
 plusieurs composants en simultanés. Ainsi sur Microsoft Internet 
 Explorer 6 qui a deux files de téléchargements simultanées, 
-200 composants avec un aller-retour à 100 ms cela couterait 10 
-secondes. Sur Firefox 3.5 (6 téléchargements simultanés) on 
-tombe à 3,5 secondes mais cela fait encore beaucoup. 
+200 composants avec un aller-retour à 100 ms coûterait 10 
+secondes. Sur Firefox 3.5 (6 téléchargements simultanés), on 
+tombe à 3,5 secondes mais cela fait encore beaucoup.
 
 Un des palliatifs utilisés est de tricher avec le navigateur 
 en utilisant plusieurs domaines. Si un navigateur a deux files 
@@ -77,9 +77,9 @@ rien qu'avec ces 27 requêtes HTTP (une demie seconde avec Firefox
 3.5). 
 
 En fusionnant ces différents fichiers javascript avant de les 
-renvoyer au navigateur c'est un unique gros fichier qu'on téléchargera. 
-On évite alors l'impact de 26 requêtes HTTP (il en faudra toujours 
-une) et le délai que ça implique pour les mauvaises connexions 
+renvoyer au navigateur en un unique gros fichier qu'on téléchargera, on 
+évite alors l'impact de 26 requêtes HTTP (il en faudra toujours 
+une) et le délai que cela implique pour les mauvaises connexions 
 ou les mauvais navigateurs. 
 
 La problématique est similaire pour les feuilles de style. Ici 
@@ -99,7 +99,7 @@ ont tendance à les charger séquentiellement sans utiliser leurs
 possibilités de téléchargements parallèles : pendant ce temps 
 rien d'autre ne se passe dans le navigateur. Si cela arrive, 27+12 
 requêtes gagnées pour une latence de 100 ms c'est presque 4 secondes 
-d'économisées pour lors du chargement de la page. 
+d'économisées lors du chargement de la page. 
 
 Pour fusionner nos fichiers la procédure la plus évidente est 
 encore la plus simple : faites des copier/coller dans un seul 
@@ -136,7 +136,7 @@ fichiers et le chargement d'un fichier fusionné unique suivant
 qu'elle est en développement ou en production. Il suffira de 
 penser à mettre à jour le fichier de fusion à chaque livraison 
 en recette ou en production. Si cela apparaît contraignant et 
-dangereux (puisque manuel) sachez que de nombreuses très grosses 
+dangereux (puisque manuel), sachez que de nombreuses très grosses 
 entreprises web fonctionnent ainsi. Parfois l'automatisation 
 de tâches élémentaires et simples ne vaut pas le coût face aux 
 contraintes que cela apporterait. 
@@ -146,7 +146,7 @@ contraintes que cela apporterait.
 Toutefois, mettre en place une procédure entièrement automatisée 
 ne demande pas plus de quelques dizaines de lignes de script. 
 Il faut alors référencer les fichiers javascript et les fichiers 
-css dans un fichier de configuration. En développement l'application 
+CSS dans un fichier de configuration. En développement, l'application 
 relit dynamiquement cette configuration pour charger les composants 
 un à un dans leur dernière version. 
 
@@ -158,7 +158,7 @@ lors de la livraison en environnement de test (mais ce peut être
 plus fréquent). Les environnements de test, recette et production 
 n'ont plus qu'à faire référence à ce dernier. En général on profite 
 de cette étape pour réaliser d'autres optimisations en même 
-temps que la fusion, par exemple une minimisation des contenus 
+temps que la fusion, par exemple une minification des contenus 
 (nous en parlerons plus loin dans ce livre). 
 
 De nombreux composants PHP proposent d'automatiser ainsi le 
@@ -179,9 +179,9 @@ et aux dates de dernière modification des contenus.
 
 Le mod_concat est un exemple d'implémentation de ce mécanisme 
 pour le serveur web Apache. Une page avec une adresse qui finit 
-par un double point d'interrogation et lune liste de fichiers 
+par un double point d'interrogation et une liste de fichiers 
 séparés par des virgules chargera en une seule requête le contenu 
-des différents fichiers end renvoyant la date de modification 
+des différents fichiers en renvoyant la date de modification 
 du fichier le plus récent. Un module similaire existe sur lighttpd. 
 
 Yahoo! utilise lui aussi un tel mécanisme qu'ils appellent « 
@@ -199,7 +199,7 @@ la bibliothèque javascript YUI et le module de gestion des cookies :
 ### Fichier unique ou spécifique à la page
 
 Lors de la fusion des fichiers en un seul, il faut réfléchir si 
-l'on créé un fichier spécifique à la page en cours, ou si l'on créé 
+l'on créé un fichier spécifique à la page en cours, ou si l'on créée 
 un fichier central unique à toute l'application. Il s'agit finalement 
 d'un compromis entre le temps de chargement de la première page 
 et la réactivité des pages suivantes : 
@@ -211,7 +211,7 @@ chargement de la première page. En échange ce fichier pourra
 suivantes n'auront plus besoin d'aucun téléchargement sur 
 le réseau. 
 
-À l'inverse avec des fichiers spécifiques à chaque page le visiteur 
+À l'inverse, avec des fichiers spécifiques à chaque page le visiteur 
 devra initialiser un nouveau téléchargement à chaque nouveau 
 modèle de page, sans pouvoir exploiter son cache HTTP même si 
 les fichiers téléchargés contiennent des parties communes. 
@@ -226,7 +226,7 @@ central unique pour la feuille de style vous permettra d'avoir
 un site très réactif. C'est le mode que vous devriez privilégier 
 dans un premier temps. 
 
-Dans une seconde étape il est possible de spécialiser les pages 
+Dans une seconde étape, il est possible de spécialiser les pages 
 qui diffèrent vraiment du reste du site. Il s'agit essentiellement 
 des quelques pages très riches en animation ou qui ont besoin 
 de composants additionnels très lourds. On peut par exemple 
@@ -240,7 +240,7 @@ qu'il couterait trop cher de regrouper avec un fichier central,
 il est possible de réaliser un fichier par modèle de page. Ce peut 
 être par exemple un fichier pour la section boutique, un pour 
 la section jeux, un pour les pages de contenu, un pour les pages 
-de section, etc. 
+de section, etc.
 
 Il faut toutefois garder à l'esprit que cette dernière subdivision 
 diminue l'efficacité du cache puisque plus rien n'est partagé 
@@ -374,7 +374,7 @@ et ralentit toute l'application. Les solutions mises en œuvre
 sont donc logiquement les mêmes. 
 
 Sur le web vous trouverez de nombreux articles sur les « sprites 
-css ». Il ne s'agit que de cela : combiner plusieurs images référencées 
+CSS ». Il ne s'agit que de cela : combiner plusieurs images référencées 
 par votre feuille de style en un seul fichier. 
 
 ### Gains de performance
@@ -399,7 +399,7 @@ un même sprite, elles s'afficheront simultanément sur la page.
 
 Le contre-coup est le risque de faire télécharger dans le sprite 
 des images qui ne sont pas utilisées par la page courante. Dans 
-ce cas l'augmentation de volume impactera négativement la performance. 
+ce cas, l'augmentation de volume impactera négativement la performance. 
 Toutefois, par expérience, si le regroupement est fait de manière 
 cohérente le gain en nombre de requêtes HTTP compense largement 
 l'augmentation du poids total. Même en regroupant un fichier 
@@ -407,7 +407,7 @@ avec la centaine d'icônes du site et que seules une vingtaine
 sont utilisées par page, il est probable que le résultat soit 
 positif. 
 
-Le sprite aussi extrêmement intéressant pour les autres pages 
+Le sprite peut aussi être extrêmement intéressant pour les autres pages 
 du site puisque le sprite sera alors en cache dans le navigateur 
 et que les futures pages ne nécessiteront aucun téléchargement. 
 
@@ -473,7 +473,7 @@ ou du moins avec une marge suffisamment grande. La problématique
 est similaire en hauteur avec les colonnes. 
 
 Il vous faut aussi penser à prévoir une marge suffisante pour 
-les différents cas : Par exemple si la taille de l'écran est moins 
+les différents cas : Par exemple, si la taille de l'écran est moins grande
 que chez vous votre cadre s'affichera peut être plus étroit, 
 et donc plus long que chez vous. De même, si l'utilisateur a agrandi 
 ses polices de caractères le texte prendra plus de place, en largeur 
@@ -486,7 +486,7 @@ prévu.
 #### Répétition des images
 
 La problématique des marges se fait d'autant plus visible quand 
-une image doit être répétée en horizontalement (en x) ou verticalement 
+une image doit être répétée horizontalement (en x) ou verticalement 
 (en y). Dans ce cas il faut que le morceau d'image à afficher soit 
 seule sur sa ligne (ou sur sa colonne) sans marge sur cette ligne. 
 
@@ -494,7 +494,7 @@ seule sur sa ligne (ou sur sa colonne) sans marge sur cette ligne.
 très étroites (ou très petites en hauteur), on sépare souvent 
 ces images dans des sprites dédiés : un pour les images qui se répètent 
 en hauteur, et un pour les images qui se répètent en largeur. Les 
-images qui doivent se répéter deux les deux axes dans des dimensions 
+images qui doivent se répéter sur les deux axes dans des dimensions 
 inconnues ne sont pas intégrables dans des sprites. 
 
 ### Limitations
@@ -530,8 +530,8 @@ inutile que de surface utile.
 ![Exemple de sprite à réserver à des usages spécifiques : organisation en diagonale](img/chap04-exemple-de-sprite-a-reserver-a-des-usages-specifiques--organisation-en-diagonale.png)
 
 Pour les dispositifs mobiles (téléphones, tablettes) où la 
-mémoire est très limitée, par contre, les parties inutilisées 
-du sprite peuvent gêner la navigation. Sur ces plateformes il 
+mémoire est très limitée, les parties inutilisées du sprite
+peuvent, par contre, gêner la navigation. Sur ces plateformes il 
 faudra faire attention à charger des petits sprites avec peu 
 d'espace blanc et aucune image inutile. 
 
@@ -623,7 +623,7 @@ Le groupe de travail CSS 3 au W3C (l'organisme qui s'occupe de
 la standardisation du langage) réfléchit aussi aux futures 
 syntaxes pour gérer efficacement les sprites. Pour l'instant 
 plusieurs syntaxes ont été évoquées (`@sprite`, `sprite()`, 
-`image-slice()`, etc.) mais rien n'est vraiment définit. 
+`image-slice()`, etc.) mais rien n'est vraiment défini. 
 
 Le mécanisme des sprites devenant de plus en plus répandu on peut 
 toutefois imaginer que les navigateurs se mettent rapidement 
@@ -709,7 +709,7 @@ dans des fichiers externes pour qu'ils puissent utiliser le
 cache. Nous allons désormais modérer cette recommandation. 
 
 Pour les pages d'accueil et pour les pages d'entrées du visiteur 
-(par exemple la page nommée dans une publicité ou une plaquette) 
+(par exemple la page nommée dans une publicité ou une plaquette),
 la problématique est parfois un peu particulière. Ce sont les 
 pages qui vont faire que le visiteur approfondira ses recherches 
 ou pas, la vitesse est critique. Quelques dixièmes de secondes 
@@ -719,16 +719,16 @@ Les internautes venant par définition d'un site tiers, et n'étant
 souvent pas des habitués, vos ressources ne seront pas encore 
 en cache. 
 
-Dans ce cas, le surcoût du aux requêtes HTTP en plus n'est pas forcément 
+Dans ce cas, le surcoût dû aux requêtes HTTP en plus n'est pas forcément 
 compensé par le gain dû aux caches. On s'autorise alors à mettre 
 le plus de contenus possible dans la page web elle-même, et à insérer 
-directement les codes javascript et css au lieu de faire des fichiers 
+directement les codes javascript et CSS au lieu de faire des fichiers 
 externes. 
 
 **Recommandation** : Pour les pages cibles (page d'accueil, 
 publicité, plaquette) attirant essentiellement des nouveaux 
 utilisateurs et suffisamment différentes du reste du site, 
-envisagez d'intégrer directement les codes javascript et css 
+envisagez d'intégrer directement les codes javascript et CSS 
 dans le corps de la page HTML au lieu de fichiers externes. 
 
 Ceci est une exception aux recommandations générales qui proposent 
@@ -778,7 +778,7 @@ Les liens en « data: » viennent de la RFC 2397 de 1998. Il s'agit
 tout simplement d'embarquer le contenu directement dans un 
 lien plutôt que d'avoir son adresse sur le réseau. 
 
-Au lieu d'initier un téléchargement le navigateur lit les données 
+Au lieu d'initier un téléchargement, le navigateur lit les données 
 embarquées dans le lien comme s'il s'agissait d'un fichier. 
 Le lien peut représenter une image, un fichier texte, une feuille 
 de style, etc. 
@@ -797,7 +797,7 @@ pour une image ou `text/css` pour une feuille de style. Ce type
 de contenu peut embarquer un paramètre spécifiant codage caractère 
 dans le type mime, par exemple `text/html;charset=utf-8`. 
 Enfin on insère la donnée binaire ou texte elle-même, après une 
-virgule. Par défaut ce est codé comme un lien, avec %xx où xx représente 
+virgule. Par défaut, ce contenu est codé comme un lien, avec %xx où xx représente 
 la valeur de l'octet à insérer (%20 pour un espace par exemple). 
 Si le type mime contient le paramètre `base64` (les paramètres 
 sont séparés par des points virgules) alors on utilise le codage 
@@ -882,7 +882,7 @@ version, Microsoft Internet Explorer ne le permettait pas dans
 ses versions 6 et 7, qui sont encore assez répandues. Si vous utilisez 
 un site web public, vous devrez peut être proposer des alternatives 
 à ces deux versions. Une possibilité est de proposer une feuille 
-de style additionnelle ou alternative à spécifique à Internet 
+de style additionnelle ou alternative spécifique à Internet 
 Explorer 6 et 7 qui elle va utiliser des fichiers traditionnels, 
 ou une autre méthode (par exemple les compositions mhtml vues 
 juste après). Cela demande toutefois de maintenir deux versions 
@@ -1009,10 +1009,10 @@ extensions Firefox.
 
 La faible compatibilité des fichiers mhtml les limite à des intranets 
 où on contrôle les navigateurs web et leurs versions, ou comme 
-alternative aux URL en data : pour les vieilles versions d'Internet 
+alternative aux URL en data: pour les vieilles versions d'Internet 
 Explorer. 
 
-À l'aide de commentaires et de hacks CSS certains ont réussi à 
+À l'aide de commentaires et de hacks CSS, certains ont réussi à 
 faire interpréter un même fichier avec des liens en data: pour 
 ceux qui le supportent, et des composants intégrés en mhtml pour 
 les vieilles versions de Internet Explorer. Cette technique 
@@ -1061,7 +1061,7 @@ probablement pas), quitte à ralentir un peu le chargement de
 la seconde page (vu que le cache ne sera pas initialisé). Plus 
 la page est spéciale, et uniquement utilisée comme page d'arrivée 
 (et pas dans la suite de la navigation), plus la décision d'embarquer 
-javascript, css, voire images et autres composants en ligne 
+javascript, CSS, voire images et autres composants en ligne 
 à du sens. 
 
 Pour les téléchargements par lot via data:, mhtml ou jar les critères 
@@ -1081,14 +1081,14 @@ qui doivent alors guider le choix :
   parallèle des navigateurs) ; 
 
 * ne pas charger un composant en lot avec un contenu principal 
-  (css ou js) si ce composant est aussi utilisé ailleurs sans 
+  (CSS ou js) si ce composant est aussi utilisé ailleurs sans 
   ce contenu principal (sinon on va de toutes façons devoir le 
   recharger indépendamment et on l'aura téléchargé deux fois 
   au final). 
 
 
 
-Globalement si deux contenus sont toujours utilisés ensemble, 
+Globalement, si deux contenus sont toujours utilisés ensemble, 
 les charger en un seul lot a presque toujours du sens. C'est par 
 exemple le cas pour des images de fonds ou des icônes qui sont utilisées 
 sur presque toutes les pages et référencées par la feuille de 
@@ -1104,8 +1104,8 @@ ces solutions aux cas où le gain est assuré.
 grande majorité des pages peuvent être intégrées directement 
 dans la feuille de style à l'aide des procédés data: et mhtml. 
 
-Pour servir le bon type de contenu à chaque navigateur on peut 
-par exemple utiliser des commentaires conditionnels HTML (et 
+Pour servir le bon type de contenu à chaque navigateur, on peut,
+par exemple, utiliser des commentaires conditionnels HTML (et 
 donc des feuilles de style différentes). 
 
 Repérer les requêtes HTTP inutiles
@@ -1124,7 +1124,7 @@ et les images de gradients ou de coins arrondis.
 
 ### Redirections
 
-Les redirections sont les premiers candidats à l'élimination.On 
+Les redirections sont les premiers candidats à l'élimination. On 
 voit beaucoup de redirections sur les sites d'entreprise. La 
 saisie de [http://example.org/](http://example.org/) nous 
 renvoie vers [http://www.example.org/](http://www.example.org/) 
@@ -1180,7 +1180,7 @@ donner une allure plus classique à une impression papier. Le
 navigateur se charge alors de prendre la feuille de style qui 
 est adapté à son cas et d'ignorer les autres. 
 
-Malheureusement certains navigateurs téléchargent toutes 
+Malheureusement, certains navigateurs téléchargent toutes 
 ces feuilles de style, même quand ils ne s'en servent pas. Dès 
 lors, il est important de ne proposer que les feuilles de style 
 qui sont vraiment utiles et de ne pas les multiplier « au cas où 
@@ -1250,7 +1250,7 @@ et « vieux » par certains graphistes.
 
 La technique la plus habituelle est d'utiliser une à neuf images 
 pour les coins et les bordures, et un montage peu simple en html 
-et css pour placer ces images dans les différents coins et bords. 
+et CSS pour placer ces images dans les différents coins et bords. 
 Le plus souvent ce sont quatre images qui sont utilisées, ou au 
 moins une grande image (sprite) de taille extrêmement importante 
 au cas où le bloc s'étende sur la page. Ceci est à multiplier par 
@@ -1361,7 +1361,7 @@ une obligation de moyens. Vous pouvez faire mieux, mais si vous
 avez amélioré la situation sur ce point là pour 50 % des visiteurs 
 c'est déjà pas mal non ? Les autres améliorations s'adresseront, 
 elles, à tout le monde. Certaines même s'adresseront uniquement 
-à Microsoft Internet Explorer, et vous aurez rétablit la balance 
+à Microsoft Internet Explorer, et vous aurez rétabli la balance 
 sans rentrer dans des développements discutables. 
 
 #### SVG et VML
@@ -1491,8 +1491,8 @@ Si vous décidez d'utiliser une de ces deux méthodes, relisez
 le titre précédent « Lâcher Microsoft Internet Explorer 6 à 8 
 » par acquis de conscience. Il est très probable que vous vous 
 engagiez sur une solution qui ne couvre pas tous les cas d'utilisation, 
-qui vous ajoute des contraintes de développement, et qui a elle 
-aussi ses défauts de performance (htc pour l'une, javascript 
+qui vous ajoute des contraintes de développement, et qui a, elle 
+aussi, ses défauts de performance (htc pour l'une, javascript 
 pour l'autre). À vous de faire vos choix, je ne vous donne que les 
 armes, mais si vous vous tirez dans le pied à ce sujet, je dégage 
 toute responsabilité. 
@@ -1687,7 +1687,7 @@ Elles prennent quatre valeurs :
 
 Afin de s'assurer d'un support sur Safari (au moins jusqu'à la 
 version 6 incluse) , Iphone (au moins jusqu'à la version 4.2 incluse) 
-et Android (2.3 incluse) il faudra ajouter une seconde directive 
+et Android (2.3 incluse), il faudra ajouter une seconde directive 
 préfixée par `-webkit-` : `-webkit-text-shadow`. 
 
 **Recommandation** : Quand cela est possible, remplacez les 
@@ -1714,13 +1714,13 @@ simplement deux balises <script> utilisant la même adresse
 ou un même composant chargé via des adresses proches (une qui 
 contient un paramètre et l'autre non), par deux serveurs distincts 
 (le chargement de jquery une fois par Google et une fois en local 
-sur le site ), ou dans des versions proches. 
+sur le site), ou dans des versions proches. 
 
 Ces duplications imposent au navigateur de charger plusieurs fois le composant. Quand il s'agit de bibliothèques javascript de près de 100 Ko l'impact sur les performances est important. Pour traquer ces cas regardez la liste des ressources CSS et javascript téléchargées et traquez des noms similaires.
 
 ![Ces duplications imposent au navigateur de charger plusieurs fois le composant](img/chap04-ces-duplications-imposent-au-navigateur-de-charger.png)
 
-Dans le cas d'images ce peuvent être plusieurs images proches 
+Dans le cas d'images, cela peut être plusieurs images proches 
 : couleurs proches, dégradés similaires, arrondis. Ces images 
 peuvent généralement être regroupés avec un minimum de compromis 
 avec le graphiste. Cela améliorera l'homogénéité du site, simplifiera 
@@ -1796,7 +1796,7 @@ Content-Type: text/html;charset=UTF-8
 ~~~~~~~
 
 Malheureusement certaines sites ne le spécifient pas, ou mal. 
-Les navigateurs cherchent donc détecter quel est le bon jeu de 
+Les navigateurs cherchent donc à détecter quel est le bon jeu de 
 caractères. Pour les y aider les développeurs peuvent donc spécifier 
 l'entête `Content-Type` dans les balises `<meta http-equiv>`. 
 
@@ -1826,7 +1826,7 @@ autre balise du `<head>`.
 
 Enfin, et bien que cela soit étonnant, de nombreux sites contiennent 
 des liens ou des références vers des fichiers inexistants (javascript, 
-css, images). Ces fichiers ont pu exister à un moment, et ne sont 
+CSS, images). Ces fichiers ont pu exister à un moment, et ne sont 
 plus utilisés. Les références restent dans certains gabarits 
 et provoquent des erreurs 404. 
 
@@ -1869,4 +1869,4 @@ erreur 404
   certaines images ; 
 
 * Faites attention aux composants chargés inutilement plusieurs 
-  fois. 
+  fois.
