@@ -24,7 +24,7 @@ de l'ordre de 25 % sur le temps de chargement complet de ses pages
 web après activation de la compression. 
 
 Outre le gain de performance dû au temps de téléchargement, il 
-y aussi pour vous un gain financier immédiat, dû à la bande passante 
+y a aussi pour vous un gain financier immédiat, dû à la bande passante 
 utilisée. Si vous divisez par deux le volume échangé par votre 
 serveur, vous divisez aussi par deux les coûts associés. L'outil 
 [http://www.port80software.com/tools/bandwidthcalchz.asp](http://www.port80software.com/tools/bandwidthcalchz.asp) 
@@ -42,7 +42,7 @@ C'est cependant probablement négligeable au regard des gains.
 
 **Recommandation** : Activer la compression HTTP sur votre 
 serveur web, au moins pour les contenus statiques à base de texte 
-(css et javascript par exemple). 
+(CSS et javascript par exemple). 
 
 ### Fonctionnement
 
@@ -153,7 +153,7 @@ fois le même travail :
 mod_gzip_temp_dir /tmp
 ~~~~~~~
 
-Il aussi est possible de pré-compresser les contenus statiques 
+Il est aussi possible de pré-compresser les contenus statiques 
 et de demander à mod_gzip de les utiliser au lieu de les compresser 
 lui-même. Ici on utilise l'extension `.gz` : 
 
@@ -388,7 +388,7 @@ conviennent parfaitement.
 
 Les algorithmes de compression utilisés sont extrêmement performants 
 pour les fichiers textes classiques. C'est le cas des fichiers 
-html, css, javascript, xml, etc. Pour ces fichiers, même un niveau 
+HTML, CSS, javascript, XML, etc. Pour ces fichiers, même un niveau 
 de compression minimum obtient de très bons résultats. 
 
 Côté web on peut identifier les types mimes suivants : 
@@ -455,16 +455,16 @@ statique ou dynamique. Vous pouvez activer la compression des
 contenus statiques sans avoir de doute. Le cache du serveur web 
 permettra de limiter la pénalité processeur tout en réduisant 
 le volume de données échanger. C'est un des meilleurs retours 
-sur investissement en terme de performance si on compte faible 
-investissement humain pour la mise en œuvre. 
+sur investissement en terme de performance en raison du faible 
+investissement humain nécessaire pour la mise en œuvre. 
 
-Pour les contenus dynamiques il s'agit de faire un compromis 
+Pour les contenus dynamiques, il s'agit de faire un compromis 
 entre le processeur du serveur et le gain en volume parce que le 
 résultat de la compression ne pourra pas être mis en cache. La 
 plupart des sites à très fort trafic choisissent de désactiver 
 la compression HTTP des contenus dynamiques, c'est à dire de 
-la page HTML initiale et des éventuelles données json échangées 
-à l'aide de requêtes ajax. 
+la page HTML initiale et des éventuelles données JSON échangées 
+à l'aide de requêtes AJAX. 
 
 Si vous pouvez le permettre, tentez d'activer la compression 
 des contenus dynamiques, mais ne luttez pas inutilement si vous 
@@ -507,7 +507,7 @@ bien identifiées :
   un proxy (un défaut fait qu'il ne déclare pas toujours le support 
   de la compression dans ce cas). 
 
-Majoritairement il s'agit d'utilisateurs en entreprise, fortements 
+Majoritairement il s'agit d'utilisateurs en entreprise, fortement 
 bridés, avec Microsoft Internet Explorer 6, et un proxy d'entreprise 
 trop agressif. 
 
@@ -1065,7 +1065,7 @@ vous fassiez. Votre capacité d'intervention se limite donc
 à faire en sorte qu'il soit le plus petit possible. La différence 
 entre un favicon de 300 ou de 500 octets est virtuellement nulle 
 et il n'y a qu'une seule règle importante à respecter : viser une 
-image qui fait au plus 1 Ko. Cette limite est dûr à TCP, pour éviter 
+image qui fait au plus 1 Ko. Cette limite est due à TCP, pour éviter 
 que le téléchargement ne nécessite plusieurs paquets réseaux. 
 
 **Recommandation** : Supprimer les différentes résolutions 
@@ -1121,7 +1121,7 @@ soient remplacés dans le code par des noms plus courts.
 
 Closure Compiler est parfois vu comme celui donnant les meilleurs 
 résultats mais les différences sont assez négligeables. YUI 
-Compressor a souvent ma préférence car c'est le seul a aussi minimiser 
+Compressor a souvent ma préférence car c'est le seul à aussi minimiser 
 les fichiers CSS. 
 
 ### CSS
@@ -1147,7 +1147,7 @@ tester le résultat sur de nombreux navigateurs et sur l'intégralité
 de vos pages pour être certains qu'aucun dégât n'apparait. 
 
 Il est aussi important de noter que YUI Compressor est le seul 
-a permettre de réaliser la compression en local. Tous les autres 
+à permettre de réaliser la compression en local. Tous les autres 
 outils sont basés sur des formulaires en ligne et peuvent poser 
 des problèmes de confidentialité. 
 
@@ -1182,7 +1182,7 @@ d'un seul, ce qui impose potentiellement un aller-retour serveur
 en plus. 
 
 La première recommandation est d'éviter d'utiliser les cookies 
-pour autre chose que des courts identifiants. Le contenu des 
+pour autre chose que de courts identifiants. Le contenu des 
 sessions et des préférences peut être stocké côté serveur, ne 
 laissant que le jeton de session dans le cookie. 
 
@@ -1233,7 +1233,7 @@ y référence fréquemment un plan du site complet et dans ce cas
 leur poids varie de 25 Ko à 50 Ko (HTML uniquement). La page d'erreur 
 de tf1.fr fait par exemple 30 Ko. 
 
-**Recommandation : **Assurez-vous que les pages d'erreurs, 
+**Recommandation** : Assurez-vous que les pages d'erreurs, 
 et principalement la page d'erreur 404 soit minimale (HTML de 
 5 Ko environ) 
 
@@ -1242,7 +1242,7 @@ la page d'accueil, ce qui fait un aller-retour serveur inutile
 et une page de 75 à 100 Ko à télécharger. La page d'orange.fr fait 
 par exemple 
 
-**Recommandation : **La page d'erreur ne doit pas mener à une 
+**Recommandation** : La page d'erreur ne doit pas mener à une 
 redirection. 
 
 Le navigateur qui a une référence cassée vers une image ou un javascript 
@@ -1275,7 +1275,7 @@ donc à toujours avoir un fichier /favicon.ico, même s'il est
 perfectible du point de vue graphisme. Vous éviterez à certains 
 navigateur d'avoir à télécharger une page d'erreur inutilement. 
 
-**Recommandation : **Toujours prévoir un fichier favicon.ico 
+**Recommandation** : Toujours prévoir un fichier favicon.ico 
 à la racine du domaine. 
 
 À retenir
