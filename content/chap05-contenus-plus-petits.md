@@ -378,7 +378,7 @@ en France.
 
 Vous pouvez cependant faire vous-même un montage similaire 
 avec serveur en proxy inverse qui ajoute un filtre de compression 
-avant de renvoyer les résultats. Apache, Ngix, ou Squid avec 
+avant de renvoyer les résultats. Apache, Nginx, Varnish ou Squid avec 
 le module ecap-gzip ([http://code.google.com/p/squid-ecap-gzip/](http://code.google.com/p/squid-ecap-gzip/)) 
 conviennent parfaitement. 
 
