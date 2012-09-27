@@ -1,10 +1,9 @@
-
 Parallélisation
 ===============
 
 Nous l'avons vu dans le chapitre d'introduction aux premiers 
 concepts, une session web a tendance à fortement sous-utiliser 
-notre bande bande passante. Sur nos machines modernes, le processeur 
+notre bande passante. Sur nos machines modernes, le processeur 
 tourne lui aussi quasiment à vide pendant une bonne partie du 
 chargement. 
 
@@ -129,7 +128,7 @@ par VPN. Si une de ces connexions est trouvée, le navigateur est
 alors limité à deux connexions persistantes par domaine. 
 
 Il est possible dans ce navigateur de connaître combien de connexions 
-sont utilisées à l'aide de propriété javascript `maxConnexionsPerServer` 
+sont utilisées à l'aide de la propriété javascript `maxConnexionsPerServer` 
 de l'objet `window`. 
 
 Plusieurs domaines en parallèle
@@ -173,7 +172,7 @@ sera plus fort.
 Il est sage de se contenter de deux domaines, surtout avec les 
 avancées des navigateurs récents qui parallélisent déjà très 
 bien, mais même la répartition sur deux domaines devient moins 
-importantes qu'avant sur un site léger. 
+importante qu'avant sur un site léger. 
 
 ![Domaines utilisés par la page d'accueil Yahoo!, répartition en requêtes et en poids](img/chap06-domaines-utilises-par-la-page-daccueil-yahoo-repartition-en-requetes-et-en-poids.png)
 
@@ -328,7 +327,7 @@ de la page.
 
 Ce comportement est aussi celui de Internet Explorer 7 et d'Opera 
 au moins jusqu'à sa version 11.5. Si un script apparaît, il faudra 
-attendre son téléchargement et son exécution avant complète 
+attendre son téléchargement et son exécution complète avant 
 de faire quoi que ce soit d'autre. 
 
 Firefox 3.5 et Internet Explorer 8 sont un peu plus avancés puisqu'il 
@@ -431,7 +430,7 @@ faible latence à plus d'une seconde pour un gros jquery monolithique.
 
 Pendant ce temps, Opera et Internet Explorer 7 bloquent toute 
 activité. Pour ces navigateurs, un script qui met une seconde 
-à se charger c'est un page dont le chargement est ralentit d'autant. 
+à se charger c'est une page dont le chargement est ralenti d'autant. 
 
 Les autres navigateurs savent paralléliser les téléchargements 
 suivants (images et autres fichiers javascript) mais le rendu 
@@ -463,7 +462,7 @@ si la page affichée à l'utilisateur est exploitable entre temps.
 C'est tout l'objectif de déporter le javascript en fin de page. 
 
 **Recommandation** : Placez les codes javascripts externes 
-ou lents en fin de page, juste avant la fermeture de la balise </body>. 
+ou lents en fin de page, juste avant la fermeture de la balise `</body>`. 
 
 ### Rendre la page fonctionnelle en attendant javascript
 
@@ -471,7 +470,7 @@ Malheureusement pour nous, les sites sont de plus en plus en dépendance
 forte avec javascript. Pour mettre en œuvre notre recommandation 
 d'injecter le javascript uniquement à la fin de la page, il faut 
 respecter une bonne pratique d'accessibilité : d'abord construire 
-la page, utilisable sans javascript, et ajouter les enrichissement 
+la page, utilisable sans javascript, et ajouter les enrichissements 
 seulement ensuite. 
 
 Il nous faudra toutefois éviter qu'un enrichissement dépendant 
@@ -483,12 +482,12 @@ Trois options sont possibles :
 La première est de cacher la fonctionnalité tant qu'elle n'est 
 pas complète. On utilisera cela pour les fonctionnalités annexes 
 qui ne manqueront pas à l'utilisateur et dont l'apparition différée 
-ne choquera pas l'utilisateur. Le cas parfait pour cet option 
+ne choquera pas l'utilisateur. Le cas parfait pour cette option 
 est le carrousel : Par défaut seul le premier item du carrousel 
 s'affiche. L'interface semble fonctionnelle, l'utilisateur 
 se retrouve juste avec un seul visuel. 
 
-Une fois le javascript disponible, c'est là que les autres visuel 
+Une fois le javascript disponible, c'est là que les autres visuels 
 sont téléchargés en tâche de fond et que l'animation commence. 
 Si c'est bien réalisé, l'utilisateur ne se rendra même pas compte 
 que le chargement se fait en deux temps. Seul le fait que le premier 
@@ -575,7 +574,7 @@ Il s'agit de réaliser d'abord une page fonctionnelle sans javascript,
 puis de modifier le DOM avec javascript pour obtenir l'effet 
 souhaité. Si les deux interfaces, avec et sans, diffèrent visuellement, 
 l'effet peut être gênant pour l'utilisateur. C'est encore plus 
-vrai si les script sont exécutés en fin de page puisque la page 
+vrai si les scripts sont exécutés en fin de page puisque la page 
 « sans javascript » sera donc affichée plus longtemps. 
 
 Il est alors nécessaire de prévoir si la page exécutera ou non 
@@ -608,7 +607,7 @@ sous forme d'onglets de façon à optimiser l'espace de la page.
 Il est possible de passer de l'un à l'autre avec uniquement des 
 règles CSS. Les onglets supplémentaires (ici « résultats » et 
 « à venir ») ne seront pas utilisables directement. Pour passer 
-sur ces onglets il faudra attente le chargement complet de Javascript 
+sur ces onglets il faudra attendre le chargement complet de Javascript 
 mais l'utilisateur ne s'en apercevra probablement pas : Il s'agit 
 d'un contenu annexe sur lequel l'utilisateur n'ira pas forcément 
 cliquer en moins de quelques secondes. Si besoin on peut toutefois 
@@ -680,9 +679,9 @@ peut être prévu avec certitude.
 <!-- rien ne garantit que le script 1 s'exécutera toujours avant le script 2 -->
 ~~~~~~~
 
-Dans les deux cas, il faudra faire la plus grande attention aux 
-dépendances entre vos codes javascript : Si Jquery est chargé 
-avec l'attribut async, rien ne garantit que Jquery sera bien 
+Dans les deux cas, il faudra porter la plus grande attention aux 
+dépendances entre vos codes javascript : Si jQuery est chargé 
+avec l'attribut async, rien ne garantit que jQuery sera bien 
 initialisé quand vous tenterez de l'utiliser dans une autre 
 balise `<script>` plus loin. 
 
@@ -727,7 +726,7 @@ téléchargement des autres ressources plus prioritaires. Le respect des bonnes
 pratiques citées ci-dessus permet d'y arriver mais il n'est pas toujours
 possible de les appliquer quand on dépend de fournisseurs externes. En
 particulier, les régies publicitaires sont connues pour être de mauvais élèves
-en la matière. Il n'est pas rare que les publicités soient chargés via un
+en la matière. Il n'est pas rare que les publicités soient chargées via un
 JavaScript qui utilisera `document.write`.
 
 Il existe une astuce pour améliorer grandement ce cas : l'utilisation d'une
