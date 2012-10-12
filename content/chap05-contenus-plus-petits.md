@@ -623,9 +623,9 @@ en jpeg.
 sur des png 8 bits, ce qui permet de beaux dégradés sans passer par
 le format 24 bits beaucoup lourd. Le second avantage est que IE6 
 gère alors correctement (miracle) la transparence : les pixels ayant
-un alpha de moins de 50% sont bien transparentes et non bleu clair.
-Par contre peu de logiciels de graphisme propose cette option 
-( ex: Fireworks, Pngquant, mais pas Photoshop CS6).
+un alpha de moins de 50% sont bien transparents et non bleus clairs.
+Par contre, peu de logiciels de graphisme proposent cette option 
+(ex: Fireworks, Pngquant, mais pas Photoshop CS6).
 
 #### Gif ou png
 
