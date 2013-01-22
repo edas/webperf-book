@@ -28,7 +28,7 @@ Autres contributeurs :
 
 * En vrac pour des corrections et typos : 
   [Denis Roussel](https://github.com/KuiKui), 
-  [Benjamin Dos Santos](https://github.com/Benjamin-Ds),
+  [Benjamin Dos Santos](https://github.com/bdossantos),
   [DirtyF](https://github.com/DirtyF), Tanguy Martin,
   [Tomhtml](https://github.com/TOMHTML), 
   [Franek](https://github.com/franek),
