@@ -36,7 +36,7 @@ Pour attirer votre attention, voici les premiers chiffres du livre : 
 
 > + 100 ms de latence → - 1 % de ventes [^1]
 
-  [^1]: Greg Linden, Amazon.com, dans sa présentation [« Make Data Useful » donnée en novembre 1996, page 15](http://sites.google.com/site/glinden/Home/StanfordDataMining.2006-11-28.ppt)
+  [^1]: Greg Linden, Amazon.com, dans sa présentation [« Make Data Useful » donnée en novembre 2006, page 15](http://sites.google.com/site/glinden/Home/StanfordDataMining.2006-11-28.ppt)
 
 Amazon a constaté dans des tests utilisateurs que chaque
 100 millisecondes de latence en plus lors du chargement de leurs pages
