@@ -158,14 +158,14 @@ Votre commerce et votre marque en pâtissent, l’étude Akamaï
 ----------------------------------------------------------------------------
 
 Dans une étude de 2006, Akamaï et JupiterResearch ont mesuré l’impact
-des performances auprès de 1000 marchands en ligne. Ils ont trouvé que
-la lenteur d’un site marchand est le motif d’insatisfaction principal,
+des performances auprès de 1 000 marchands en ligne. Ils ont trouvé que
+la lenteur d’un site marchand est le second motif principal d’insatisfaction,
 juste après les prix trop élevés.
 
-Un tiers des clients avec une mauvaise expérience a en effet abandonné
-le site entièrement et les trois quarts ne reviendront probablement plus
+Un tiers des clients ayant estimé leur expérience mauvaise a abandonné
+le site, et les trois quarts ne reviendront probablement plus
 par la suite. Le palier d'insatisfaction se situait à 4 secondes.
-Au delà les abandons deviennent très importants.
+Au-delà, les abandons deviennent très importants.
 
 Akamaï a relancé une étude similaire en 2009 avec Forrester Consulting.
 Là c'est à partir de 3 secondes pour le chargement de la page qu'on
@@ -176,8 +176,7 @@ objectif à atteindre.
 
 De plus, ces mauvaises performances rejaillissent sur la perception de
 la boutique et de la marque. 30 % des visiteurs vont ainsi développer
-une perception négative de la société ou partager leur (mauvaise)
-expérience avec leurs amis ou leur famille.
+une perception négative de la société et potentiellement partager leur (mauvaise) expérience avec leurs amis ou leur famille.
 
 Vos utilisateurs ne vous le diront pas forcément, mais ils attendent de
 votre site qu'il soit rapide. C’est tellement naturel qu’ils ne
@@ -188,7 +187,7 @@ n’est pas exprimé. Plus qu’un critère, c’est en fait un pré-requis.
 Votre visibilité est aussi impactée
 -----------------------------------------
 
-Depuis quelques temps Google a rejoint Yahoo! pour communiquer auprès
+Depuis quelques temps, Google a rejoint Yahoo! pour communiquer auprès
 des développeurs de sites web et leur enseigner comment améliorer les
 performances. C'est ainsi que Steve Souders, autrefois à Yahoo! est
 passé chez Google. Depuis Google a sorti l'extension de Firefox « Page
@@ -197,7 +196,7 @@ page pour y trouver les pistes d'amélioration de performance.
 
 Quelques voix le soupçonnaient auparavant mais Google l'a désormais
 annoncé officiellement : la performance des sites web influe sur les
-métriques internes du moteur et sur votre référencement. 
+métriques internes du moteur et sur votre référencement.
 
 Les performances jouent par exemple sur le positionnement du site dans
 les résultats de recherche (activité SEO). Le temps de chargement des
@@ -211,13 +210,13 @@ qualité) de la partie adWords de Google (activité SEM). Ce score est
 affecté à chaque site et à chaque page ciblée par une publicité (page
 destination quand on suit la publicité). Il permet de déterminer la
 place de la publicité dans le moteur de recherche et modifie le coût
-d'insertion dans le système adWords. Plus le site et la page destination
-seront lents, moins la publicité aura une bonne place et plus elle
+d'insertion dans le système AdWords. Plus le site et la page destination
+seront lents, moins la publicité aura une bonne place, et plus elle
 coûtera cher.
 
 Si ce critère de performance n'est pas le seul, et pas forcément le plus
 important, il est un de ceux qui sont facilement manipulables par les
-équipes techniques des sites web. 
+équipes techniques des sites web.
 
 Google aide même ces équipes en proposant l'outil Google Page Speed et
 en l'intégrant dans ses outils en ligne Webmaster Tools ou Google
@@ -228,7 +227,7 @@ moteurs de Google.
 Les cas Google, Microsoft, AOL et Yahoo!
 ---------------------------------------------------
 
-Plus haut je vous ai cité le cas d’Amazon, qui voit ses ventes chuter de
+Plus haut, je vous ai cité le cas d’Amazon, qui voit ses ventes chuter de
 1 % pour chaque tranche de 100 ms de latence. Il y a en fait d'autres
 poids lourds qui ont donné des chiffres sur ce sujet : Google,
 Microsoft, AOL et Yahoo! Ce dernier a même créé une équipe dédiée au
@@ -239,18 +238,18 @@ signification sont différents à chaque fois.
 
 Google a mené plusieurs expérimentations sur les performances dans leur
 page de recherche. Un premier résultat fait état d'une perte de 20 % de
-trafic pour un ralentissement d'une demi seconde de la page[^6].
+trafic pour un ralentissement d'une demi-seconde de la page[^6].
 
 > + 500 ms au chargement → - 20 % de trafic
 
   [^6]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [Conferences Scalability 2007 de Seattle](http://www.techpresentations.org/Scaling_Google_for_Every_User)
 
-D'autres facteurs sont peut être intervenus en parallèle pour affecter à
+D'autres facteurs sont peut-être intervenus en parallèle pour affecter à
 ce point le test (il présente par exemple 30 résultats par page au lieu
-des 10 habituels) et d'autres tests plus récents ont des résultats
+des 10 habituels), et d'autres tests plus récents ont des résultats
 beaucoup plus mesurés. La corrélation entre performance et fidélité du
-trafic est toutefois plus que certaine mais il est difficile
-d'individualiser tous les facteurs qui interviennent.
+trafic est toutefois plus que certaine, mais il est difficile
+d'individualiser tous les facteurs.
 
 Par contre même ces derniers tests amènent un résultat complémentaire
 inquiétant : ceux qui ont un jour fait partie des utilisateurs « test »
@@ -271,13 +270,13 @@ la première semaine, puis encore 25 % par la suite[^7]. 
 Le retour d’expérience suivant vient de Yahoo! Sur leurs tests
 comparatifs, un délai de 400 ms induit immédiatement 5 à 9 % d’abandon[^8],
 c’est à dire de gens qui ne vont pas plus loin et qui ne cliquent sur
-aucun lien ni aucune publicité.
+aucun lien, ni aucune publicité.
 
 > + 400 ms au chargement → - 5 à 9 % d’abandon
 
   [^8]: Présentation de Stoyan Stefanov (Yahoo!)  [« Yslow 2.0 early preview » en décembre 2008 en Chine](http://www.techpresentations.org/YSlow_2.0_early_preview_in_China)
 
-Pour AOL la découverte se fait plus en termes d'intérêt et de motivation
+Pour AOL, la découverte se fait plus en termes d'intérêt et de motivation
 du visiteur. Plus les pages sont lentes à charger, moins le visiteur va
 en visiter. La courbe est assez franche, presque droite au départ.
 Ainsi, les 10 % de visiteurs qui ont les pages les plus rapides lisent
@@ -311,7 +310,7 @@ visiteurs à affiner et approfondir leur recherche.
 ![Évolution des performances suivant le ralentissement sur Bing](img/chap01-evolution-des-performances-suivant-le-ralentissement-sur-bing.png)
 
 La baisse de revenus publicitaires est d'ailleurs corrélée par une étude
-de Jackob Nielsen en juin 2010 : après un grand délai d'attente
+de Jackob Nielsen en juin 2010 : après un grand délai d'attente,
 l'utilisateur se concentre sur le contenu et est bien moins à même de
 s'arrêter sur les contenus promotionnels. Jackob évoque le passage de
 20 % d'attention au promotionnel pour 1 seconde d'attente à 1 %
@@ -319,7 +318,7 @@ d'attention au promotionnel seulement après 8 secondes d'attente.
 
 Certes, tout le monde n’est pas Google, Microsoft, AOL, Amazon ou Yahoo!
 Il n’est pas possible de transposer immédiatement ces chiffres sur votre
-site. En revanche ce qui est certain c’est que vos utilisateurs
+site. En revanche, ce qui est certain c’est que vos utilisateurs
 réagiront aux performances de votre site. Il y aura une influence réelle
 sur votre trafic, vos ventes, la fidélité de vos utilisateurs, et la
 confiance qu’ils auront dans votre site et votre marque. Toutes les
