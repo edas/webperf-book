@@ -158,14 +158,14 @@ Votre commerce et votre marque en pâtissent, l’étude Akamaï
 ----------------------------------------------------------------------------
 
 Dans une étude de 2006, Akamaï et JupiterResearch ont mesuré l’impact
-des performances auprès de 1000 marchands en ligne. Ils ont trouvé que
-la lenteur d’un site marchand est le motif d’insatisfaction principal,
+des performances auprès de 1 000 marchands en ligne. Ils ont trouvé que
+la lenteur d’un site marchand est le second motif principal d’insatisfaction,
 juste après les prix trop élevés.
 
-Un tiers des clients avec une mauvaise expérience a en effet abandonné
-le site entièrement et les trois quarts ne reviendront probablement plus
+Un tiers des clients ayant estimé leur expérience mauvaise a abandonné
+le site, et les trois quarts ne reviendront probablement plus
 par la suite. Le palier d'insatisfaction se situait à 4 secondes.
-Au delà les abandons deviennent très importants.
+Au-delà, les abandons deviennent très importants.
 
 Akamaï a relancé une étude similaire en 2009 avec Forrester Consulting.
 Là c'est à partir de 3 secondes pour le chargement de la page qu'on
@@ -176,8 +176,13 @@ objectif à atteindre.
 
 De plus, ces mauvaises performances rejaillissent sur la perception de
 la boutique et de la marque. 30 % des visiteurs vont ainsi développer
-une perception négative de la société ou partager leur (mauvaise)
-expérience avec leurs amis ou leur famille.
+une perception négative de la société et potentiellement partager leur (mauvaise) expérience avec leurs amis ou leur famille.
+
+Une autre étude, menée par Forrester et sponsorisée par Akamai en 2010, concerne
+cette fois-ci les sites bancaires : 56% des utilisateurs s'attendent à
+des temps de réponse inférieurs à 2 secondes.[^6]
+
+  [^6]: Étude « The Impact of Poor Web Site Performance in Financial Services » citée dans [« Online Banking Customers Expect Fast Website Performance, Survey Finds »](http://www.banktech.com/business-intelligence/online-banking-customers-expect-fast-web/222500093)
 
 Vos utilisateurs ne vous le diront pas forcément, mais ils attendent de
 votre site qu'il soit rapide. C’est tellement naturel qu’ils ne
@@ -188,7 +193,7 @@ n’est pas exprimé. Plus qu’un critère, c’est en fait un pré-requis.
 Votre visibilité est aussi impactée
 -----------------------------------------
 
-Depuis quelques temps Google a rejoint Yahoo! pour communiquer auprès
+Depuis quelques temps, Google a rejoint Yahoo! pour communiquer auprès
 des développeurs de sites web et leur enseigner comment améliorer les
 performances. C'est ainsi que Steve Souders, autrefois à Yahoo! est
 passé chez Google. Depuis Google a sorti l'extension de Firefox « Page
@@ -197,7 +202,7 @@ page pour y trouver les pistes d'amélioration de performance.
 
 Quelques voix le soupçonnaient auparavant mais Google l'a désormais
 annoncé officiellement : la performance des sites web influe sur les
-métriques internes du moteur et sur votre référencement. 
+métriques internes du moteur et sur votre référencement.
 
 Les performances jouent par exemple sur le positionnement du site dans
 les résultats de recherche (activité SEO). Le temps de chargement des
@@ -211,13 +216,13 @@ qualité) de la partie adWords de Google (activité SEM). Ce score est
 affecté à chaque site et à chaque page ciblée par une publicité (page
 destination quand on suit la publicité). Il permet de déterminer la
 place de la publicité dans le moteur de recherche et modifie le coût
-d'insertion dans le système adWords. Plus le site et la page destination
-seront lents, moins la publicité aura une bonne place et plus elle
+d'insertion dans le système AdWords. Plus le site et la page destination
+seront lents, moins la publicité aura une bonne place, et plus elle
 coûtera cher.
 
 Si ce critère de performance n'est pas le seul, et pas forcément le plus
 important, il est un de ceux qui sont facilement manipulables par les
-équipes techniques des sites web. 
+équipes techniques des sites web.
 
 Google aide même ces équipes en proposant l'outil Google Page Speed et
 en l'intégrant dans ses outils en ligne Webmaster Tools ou Google
@@ -228,7 +233,7 @@ moteurs de Google.
 Les cas Google, Microsoft, AOL et Yahoo!
 ---------------------------------------------------
 
-Plus haut je vous ai cité le cas d’Amazon, qui voit ses ventes chuter de
+Plus haut, je vous ai cité le cas d’Amazon, qui voit ses ventes chuter de
 1 % pour chaque tranche de 100 ms de latence. Il y a en fait d'autres
 poids lourds qui ont donné des chiffres sur ce sujet : Google,
 Microsoft, AOL et Yahoo! Ce dernier a même créé une équipe dédiée au
@@ -239,18 +244,18 @@ signification sont différents à chaque fois.
 
 Google a mené plusieurs expérimentations sur les performances dans leur
 page de recherche. Un premier résultat fait état d'une perte de 20 % de
-trafic pour un ralentissement d'une demi seconde de la page[^6].
+trafic pour un ralentissement d'une demi-seconde de la page[^7].
 
 > + 500 ms au chargement → - 20 % de trafic
 
-  [^6]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [Conferences Scalability 2007 de Seattle](http://www.techpresentations.org/Scaling_Google_for_Every_User)
+  [^7]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [Conferences Scalability 2007 de Seattle](http://www.techpresentations.org/Scaling_Google_for_Every_User)
 
-D'autres facteurs sont peut être intervenus en parallèle pour affecter à
+D'autres facteurs sont peut-être intervenus en parallèle pour affecter à
 ce point le test (il présente par exemple 30 résultats par page au lieu
-des 10 habituels) et d'autres tests plus récents ont des résultats
+des 10 habituels), et d'autres tests plus récents ont des résultats
 beaucoup plus mesurés. La corrélation entre performance et fidélité du
-trafic est toutefois plus que certaine mais il est difficile
-d'individualiser tous les facteurs qui interviennent.
+trafic est toutefois plus que certaine, mais il est difficile
+d'individualiser tous les facteurs.
 
 Par contre même ces derniers tests amènent un résultat complémentaire
 inquiétant : ceux qui ont un jour fait partie des utilisateurs « test »
@@ -262,39 +267,39 @@ confiance des internautes.
 
 Leur second retour d’expérience concerne le service Google Maps. Après
 avoir réduit le poids de leur page de 30 %, le trafic a augmenté de 10 %
-la première semaine, puis encore 25 % par la suite[^7]. 
+la première semaine, puis encore 25 % par la suite[^8]. 
 
 > - 30 % sur le poids de la page → + 10 % puis + 25 % de trafic
 
-  [^7]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [conférences Web 2.0 en novembre 2006](http://www.zdnet.com/blog/btl/googles-marissa-mayer-speed-wins/3925)
+  [^8]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [conférences Web 2.0 en novembre 2006](http://www.zdnet.com/blog/btl/googles-marissa-mayer-speed-wins/3925)
 
 Le retour d’expérience suivant vient de Yahoo! Sur leurs tests
-comparatifs, un délai de 400 ms induit immédiatement 5 à 9 % d’abandon[^8],
+comparatifs, un délai de 400 ms induit immédiatement 5 à 9 % d’abandon[^9],
 c’est à dire de gens qui ne vont pas plus loin et qui ne cliquent sur
-aucun lien ni aucune publicité.
+aucun lien, ni aucune publicité.
 
 > + 400 ms au chargement → - 5 à 9 % d’abandon
 
-  [^8]: Présentation de Stoyan Stefanov (Yahoo!)  [« Yslow 2.0 early preview » en décembre 2008 en Chine](http://www.techpresentations.org/YSlow_2.0_early_preview_in_China)
+  [^9]: Présentation de Stoyan Stefanov (Yahoo!)  [« Yslow 2.0 early preview » en décembre 2008 en Chine](http://www.techpresentations.org/YSlow_2.0_early_preview_in_China)
 
-Pour AOL la découverte se fait plus en termes d'intérêt et de motivation
+Pour AOL, la découverte se fait plus en termes d'intérêt et de motivation
 du visiteur. Plus les pages sont lentes à charger, moins le visiteur va
 en visiter. La courbe est assez franche, presque droite au départ.
 Ainsi, les 10 % de visiteurs qui ont les pages les plus rapides lisent
 en moyenne 8 pages par visite. Cela descend entre 6 et 7 pour les 10 %
 suivants, puis 5 pages par visite pour le troisième décile, 4 pages pour
-le quatrième, etc.[^9] Les 50 % de visiteurs qui ont les plus mauvaises
+le quatrième, etc.[^10] Les 50 % de visiteurs qui ont les plus mauvaises
 performances visitent moins de 3 pages par visite en moyenne. C'est
 presque trois fois moins que le premier décile. L'influence du temps de
 chargement est donc indéniablement perceptible.
 
-  [^9]: Présentation Dave Artz, Director of optimization, AOL, aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/7579)
+  [^10]: Présentation Dave Artz, Director of optimization, AOL, aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/7579)
 
 ![Influence du temps de chargement sur le nombre de pages visitées pour AOL](img/chap01-influence-du-temps-de-chargement-sur-le-nombre-de-pages-visitees-pour-aol.png)
 
 Enfin, sur Bing, un ralentissement influe sur le visiteur dès 200 ms. À
 partir de 500 ms on voit déjà une baisse de plus de 1,2 % du revenu par
-visiteur[^10]. Avec une ou deux secondes de ralentissement ce sont
+visiteur[^11]. Avec une ou deux secondes de ralentissement ce sont
 respectivement 2,8 % et 4,3 % de perte de revenu par utilisateur. Ces
 effets négatifs sont accompagnés de pertes de satisfaction utilisateur,
 de plus faibles taux de clics, et d'une diminution de la propension des
@@ -306,12 +311,12 @@ visiteurs à affiner et approfondir leur recherche.
 
 > + 2 s au chargement  → - 4,3 % de revenus
 
-  [^10]: Intervention Bing aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/8523)
+  [^11]: Intervention Bing aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/8523)
 
 ![Évolution des performances suivant le ralentissement sur Bing](img/chap01-evolution-des-performances-suivant-le-ralentissement-sur-bing.png)
 
 La baisse de revenus publicitaires est d'ailleurs corrélée par une étude
-de Jackob Nielsen en juin 2010 : après un grand délai d'attente
+de Jackob Nielsen en juin 2010 : après un grand délai d'attente,
 l'utilisateur se concentre sur le contenu et est bien moins à même de
 s'arrêter sur les contenus promotionnels. Jackob évoque le passage de
 20 % d'attention au promotionnel pour 1 seconde d'attente à 1 %
@@ -319,7 +324,7 @@ d'attention au promotionnel seulement après 8 secondes d'attente.
 
 Certes, tout le monde n’est pas Google, Microsoft, AOL, Amazon ou Yahoo!
 Il n’est pas possible de transposer immédiatement ces chiffres sur votre
-site. En revanche ce qui est certain c’est que vos utilisateurs
+site. En revanche, ce qui est certain c’est que vos utilisateurs
 réagiront aux performances de votre site. Il y aura une influence réelle
 sur votre trafic, vos ventes, la fidélité de vos utilisateurs, et la
 confiance qu’ils auront dans votre site et votre marque. Toutes les
@@ -345,7 +350,7 @@ de très bonne qualité, presque la moitié sont au dessus des 4 secondes :
 Si les débits et la puissance des machines ont explosé, les développeurs
 ont aussi fait moins attention au poids des pages, à leur contenu, à
 leur utilisation. En cinq ans (2003 à 2008) on a entre autres triplé le
-poids des pages [^11], doublé le nombre de composants par page, et doublé le
+poids des pages [^12], doublé le nombre de composants par page, et doublé le
 nombre de balises HTML. Entre 2008 et 2009 l'augmentation a été encore
 plus importante. 
 
@@ -355,7 +360,7 @@ l'étude ne va pas jusqu'en 2010, avec la multiplication des
 bibliothèques javascript et des effets visuels, on peut sans risques
 continuer les courbes sur leur progression d'alors.
 
-  [^11]: Étude avec sources sur websiteoptimizations.com, [« Average Web Page Size Triples Since 2003 » d’avril 2008](http://www.websiteoptimization.com/speed/tweak/average-web-page/)
+  [^12]: Étude avec sources sur websiteoptimizations.com, [« Average Web Page Size Triples Since 2003 » d’avril 2008](http://www.websiteoptimization.com/speed/tweak/average-web-page/)
 
 ![Croissance du poids et du nombre d'objets d'une page web moyenne](img/chap01-croissance-du-poids-et-du-nombre-d-objets-d-une-page-web-moyenne.png)
 
@@ -442,9 +447,9 @@ Pour finir sur une note positive, l'exemple Shopzilla est intéressant.
 En refondant leur site web, ils ont amélioré le chargement des pages en
 passant de 6 secondes à 1,2 secondes. Pour résultat tous leurs
 indicateurs sont passés au vert : taux de transformation amélioré de 7 à
-12 % et nombre de pages vues augmenté de 25 % [^12].
+12 % et nombre de pages vues augmenté de 25 % [^13].
 
-  [^12]: Intervention de Philip Dixon, VP of Engineering, Shopzilla, aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/7709)
+  [^13]: Intervention de Philip Dixon, VP of Engineering, Shopzilla, aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/7709)
 
 Mieux encore, cette expérience leur a permis de diviser par deux le
 nombre de serveurs nécessaires et a diminué les coûts de déploiement de
@@ -456,9 +461,9 @@ Même chose chez Mozilla, leur équipe a aussi pu constater les effets
 positifs du travail sur les performances web. En réduisant de
 2,2 secondes le temps de chargement de leur page d'arrivée (celle qui
 incite à télécharger le navigateur), ils ont pu augmenter de 15,4 % le
-taux de transformation[^13].
+taux de transformation[^14].
 
-  [^13]: Publication de Blake Cutler sur le blog officiel Mozilla, [le 5 avril 2010](http://blog.mozilla.com/metrics/2010/04/05/firefox-page-load-speed-%E2%80%93-part-ii/)
+  [^14]: Publication de Blake Cutler sur le blog officiel Mozilla, [le 5 avril 2010](http://blog.mozilla.com/metrics/2010/04/05/firefox-page-load-speed-%E2%80%93-part-ii/)
 
 ![Impact et détail de l'amélioration de performance pour Mozilla](img/chap01-impact-de-l-amelioration-des-performances-pour-mozilla.png)
 
