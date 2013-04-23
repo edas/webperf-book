@@ -39,7 +39,7 @@ page ne télécharge donc que les 20 % qui lui manquent. C'est ça qui peut
 faire la différence entre un site lent et un site instantané.
 
 Pour un utilisateur, passer de 81 requêtes HTTP à 2, ou de 400 ko à
-75 ko, c'est la différence entre une voiture et un vélo en terme de performance.
+75 ko, c'est la différence entre un camion et une voiture de course en terme de performance.
 Le résultat est visible immédiatement.
 
 Mais en plus du gain visible pour l'utilisateur, vous avez un bonus.
