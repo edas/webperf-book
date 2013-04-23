@@ -3,7 +3,7 @@ Users really respond to speed
 
 (en français : les utilisateurs réagissent vraiment à la vitesse)
 
-Ce titre est en fait une citation de Marissa Mayer, lorsqu'elle était vice-présidente de
+Ce titre est une citation de Marissa Mayer, lorsqu'elle était vice-présidente de
 la section recherche et expérience utilisateur de Google. Nous le
 verrons, Google a publié des chiffres impressionnants, tout comme Amazon ; nous les
 découvrirons dans ce chapitre.
@@ -21,7 +21,7 @@ d’abord tordre le cou aux idées reçues avant de le développer. C’est la
 raison d’être de ce chapitre. Lisez-le en entier avant de passer à la
 suite, n’en sautez pas une page. Après sa lecture vous devriez envisager
 de bousculer l’ordre de vos priorités et insérer la performance dans les
-premières lignes. Si à un quelconque moment, vous doutez, revenez faire
+premières lignes. Si à un quelconque moment vous doutez, revenez faire
 un tour sur ce chapitre.
 
 Vous verrez de nombreux liens en bas de page. Il n'est pas nécessaire
