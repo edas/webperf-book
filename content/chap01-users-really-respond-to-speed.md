@@ -3,15 +3,20 @@ Users really respond to speed
 
 (en français : les utilisateurs réagissent vraiment à la vitesse)
 
-J’ai souhaité insérer la question du pourquoi en tout premier chapitre.
-Quand j’ai commencé à parler de performance des sites web je me suis
-retrouvé face à un mur, à chaque fois. Tout le monde s’accorde à dire
+Ce titre est une citation de Marissa Mayer, lorsqu'elle était vice-présidente de
+la section recherche et expérience utilisateur de Google. Nous le
+verrons, Google a publié des chiffres impressionnants, tout comme Amazon ; nous les
+découvrirons dans ce chapitre.
+
+Il nous a semblé important d'insérer la question du pourquoi en tout premier chapitre.
+Quiconque évangélise au sujet de la performance des sites web peut se retrouver
+face à un mur à chaque fois. Tout le monde s’accorde à dire
 qu’il s’agit d’un sujet important mais dès qu’on entre dans le concret
 il y a toujours une bonne raison pour laisser ça de côté, souvent une
-très bonne raison même. Bref, « c’est important mais pas pour moi, ou
+très bonne raison, même. Bref, « c’est important mais pas pour moi, ou
 pas maintenant ».
 
-Ce n’est que par la suite que j’ai compris que sur ce sujet il fallait
+L'évidence émerge : il faut
 d’abord tordre le cou aux idées reçues avant de le développer. C’est la
 raison d’être de ce chapitre. Lisez-le en entier avant de passer à la
 suite, n’en sautez pas une page. Après sa lecture vous devriez envisager
@@ -22,11 +27,11 @@ un tour sur ce chapitre.
 Vous verrez de nombreux liens en bas de page. Il n'est pas nécessaire
 d'aller lire les présentations ou les études qui sont liées, même si ça
 ne fait pas de mal, mais il me paraissait important de montrer les
-sources de chaque affirmation présente ici. Ces liens  permettent de
+sources de chaque affirmation présente ici. Ces liens permettent de
 prouver qu'il ne s'agit pas de chiffres jetés au hasard : il s'agit
 d'études et tests réalisés par les plus gros acteurs du web, diffusés
-publiquement par eux-même, et recoupés par des retours d'expérience de
-nombreux autres. Les chapitres suivants seront moins pollués par ces
+publiquement par eux-mêmes, et recoupés par des retours d'expérience de
+nombreux autres. Les chapitres suivants seront moins envahis par ces
 liens en bas de page, promis.
 
 Les performances impactent votre business, Amazon et Aberdeen
@@ -38,11 +43,11 @@ Pour attirer votre attention, voici les premiers chiffres du livre : 
 
   [^1]: Greg Linden, Amazon.com, dans sa présentation [« Make Data Useful » donnée en novembre 2006, page 15](http://sites.google.com/site/glinden/Home/StanfordDataMining.2006-11-28.ppt)
 
-Amazon a constaté dans des tests utilisateurs que chaque
+Amazon a constaté dans des tests utilisateurs que pour chaque
 100 millisecondes de latence en plus lors du chargement de leurs pages
-web induisait une chute de 1 % des ventes. C’est factuel, simple, mais
+web, s'ensuivait une chute de 1 % des ventes. C’est factuel, simple, et
 brutal : on parle de ventes, de l'objectif du site d'Amazon. Perdre des
-ventes c'est un échec qui doit retenir l'attention de tous, du
+ventes, c'est un échec qui doit retenir l'attention de tous, du
 développeur au directeur.
 
 Une étude Aberdeen Group est tout aussi claire :
@@ -55,7 +60,7 @@ Une étude Aberdeen Group est tout aussi claire :
 
 Votre site met probablement plus de deux secondes à se charger
 entièrement une fois que l’utilisateur a cliqué sur un lien. À
-l’écriture de ces lignes la page d’accueil de TF1.fr met 5 secondes.
+l’écriture de ces lignes, la page d’accueil de TF1.fr met 5 secondes.
 Pour prendre plus extrême, FranceTelecom.com met parfois plus de 11 
 secondes.
 
@@ -64,16 +69,10 @@ met plus de 5 secondes, que des centaines de millisecondes se
 traduisent déjà en 1 % des ventes fait réfléchir. Combien perdez-vous à
 cause des mauvaises performances de votre site web ?
 
-Ce qui est sûr c’est que les utilisateurs réagissent en fonction des
+Ce qui est sûr, c’est que les utilisateurs réagissent en fonction des
 performances des sites web. Si votre site est lent, ce sont vos
 utilisateurs qui partent et leurs intentions d’achat qui s’écroulent.
 Bref, ils abandonnent ou se freinent.
-
-Le titre de ces quelques paragraphes, « Users really respond to
-speed » est en fait une citation de Marissa Mayer, lorsqu'elle était vice-présidente de
-la section recherche et expérience utilisateur de Google. Nous le
-verrons, Google a aussi publié des chiffres, pas moins impressionnants
-que ceux d’Amazon.
 
 Charger la page en une à trois secondes
 ------------------------------------------------
@@ -89,8 +88,8 @@ propos des sites Internet. Jakob Nielsen, gourou de l’utilisabilité du
 web, en parlait déjà en mai 1996 comme une des dix plus grosses erreurs
 du design web [^3]. Il en reparle en 1997, 1999, 2000, 2004, 2010 [^4], mais
 finalement pas grand chose n’a changé. Malgré l’explosion des débits,
-entre 100 et 2000 fois supérieurs à ceux de 1996, on trouve encore des
-gros sites de multinationales avec des temps de chargement approchant la
+entre 100 et 2 000 fois supérieurs à ceux de 1996, on trouve encore des
+sites de multinationales avec des temps de chargement approchant la
 dizaine de secondes.
 
   [^3]: Jakob Nielsen, dans son AlertBox de mai 1996 intitulée [« Original Top Ten Mistakes in Web Design »](http://www.useit.com/alertbox/9605a.html)
@@ -105,29 +104,28 @@ vite. 
 Lors de recherches sur Internet les visiteurs décident souvent en
 quelques dixièmes de secondes si la page est potentiellement
 intéressante ou s’ils repartent ailleurs. Au bout de quelques secondes à
-attendre, la confiance s’effondre, l’intérêt s’effrite. Après trois à
+attendre, la confiance s’effrite, l’intérêt s’effondre. Après trois à
 quatre secondes les abandons deviennent fréquents et la situation peut
 devenir catastrophique. C’est parfois le site complet qui est abandonné
-par l’utilisateur et l’image négative se diffuse vite par le bouche à
-oreille.
+par l’utilisateur et l’image négative se diffuse par bouche-à-oreille.
 
 Jakob Nielsen identifie de manière stable depuis plus de quinze ans
 trois paliers de perception de la vitesse :
 
--   0,1 seconde : En dessous du dixième de secondes la réponse est perçue
+-   0,1 seconde : En dessous du dixième de seconde, la réponse est perçue
     comme instantanée. C'est la limite haute pour la manipulation de
     l'interface (clic sur un bouton, glisser/déposer, menu déroulant,
     etc.)
--   1 seconde : La seconde est le palier de fluidité. Jusque là
-    l'utilisateur perçoit le délai mais a encore une navigation fluide
+-   1 seconde : La seconde est le palier de fluidité. Jusque là,
+    l'utilisateur perçoit le délai, mais a encore une navigation fluide
     sans avoir l'impression d'attendre la machine. C'est cette limite
-    qu'il faudrait dans l'idéal viser pour une navigation interne dans
-    un logiciel. Au delà il y a une impression d'attente, et donc de
+    qu'il faudrait viser dans l'idéal pour une navigation interne dans
+    un logiciel. Au-delà, il y a une impression d'attente et donc de
     frustration.
--   10 secondes : C'est la limite de l'attention. Jusqu'à 10 secondes
-    l'utilisateur se sent à la merci de la machine mais peut accepter
-    d'attendre. Au-delà il commence à penser à autre chose, voire à
-    réaliser des actions tierces et revient à la machine plus tard pour
+-   10 secondes : C'est la limite de l'attention. Jusqu'à 10 secondes,
+    l'utilisateur se sent à la merci de la machine, mais peut accepter
+    d'attendre. Au-delà, il commence à penser à autre chose, voire à
+    réaliser d'autres activités et revient à la machine plus tard pour
     constater la progression.
 
 ![Perception en fonction du temps de réponse](img/chap01-perception-en-fonction-du-temps-de-reponse.png)
@@ -136,21 +134,21 @@ Bien entendu ces paliers ne sont pas précis. Ils dépendent du contexte
 et de l'utilisateur, mais les ordres de grandeur sont valables pour
 quasiment toute situation.
 
-Le web a ses habitudes et ses usages. Il est fréquent de devoir dépasser
-la seconde – même si vous verrez que c'est le temps de réaction de
-Google par exemple, ce n'est pas un hasard. 
+Le web a ses habitudes et ses usages. Il est fréquent que les sites
+s'affichent en plus d'une seconde. Certains pourtant,
+comme Google sur leur page d'accueil, s'attachent à ne pas dépasser
+ce palier symbolique.
 
-Nous pouvons probablement parler d'un palier intermédiaire entre la
-seconde et les 10 secondes. Le côté fortement concurrentiel du web fait
-qu'un utilisateur a peu d'intérêt à attendre 10 secondes, il a plus vite
-fait d'aller sur un site concurrent qui lui se charge rapidement. Au
-delà de 3 à 4 secondes, les conséquences négatives deviennent non
+Nous pouvons probablement parler d'un autre palier intermédiaire entre la
+seconde et les 10 secondes. L'aspect fortement concurrentiel du web incite
+l'utilisateur à ne pas attendre 10 secondes, il a plus vite
+fait d'aller sur un site concurrent qui lui se charge rapidement. Au-delà de 3 à 4 secondes, les conséquences négatives deviennent non
 négligeables.
 
-Plus récemment on a pu voir une statistique tirée de Google Analytics
-mettant en rapport le temps de chargement d'un jeu de pages référence
+Plus récemment, on a pu voir une statistique tirée de Google Analytics
+mettant en rapport, sur un échantillon de pages, le temps de chargement
 avec le taux d'abandon. Ce dernier monte progressivement, quasiment
-proportionnellement au temps de chargement de 0 à 5 secondes.
+proportionnellement au temps de chargement, sur l'ensemble des valeurs de 0 à 5 secondes.
 
 ![Abandons en fonction du temps de chargement](img/chap01-abandons-en-fonction-du-temps-de-chargement.png)[^5]
 
