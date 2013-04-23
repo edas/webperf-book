@@ -53,33 +53,39 @@ Ouvrir plus de connexions permet d'optimiser la bande passante
 mais charge plus le processeur. 
 
 Historiquement les navigateurs ouvraient nativement deux 
-connexions en parallèle par site (même nom de machine). Ils pouvaient 
+connexions en parallèle par site (même nom de domaine complet). Ils pouvaient 
 ainsi télécharger deux images simultanément, et exploiter 
 au mieux la bande passante. Depuis, les processeurs et les débits 
 ont augmentés de façon impressionnante et deux connexions simultanées 
 ne suffisent plus à couvrir même la moitié de notre bande passante 
 ou à occuper significativement nos processeurs. 
 
-Les navigateurs récents sont tous passés à six connexions persistantes 
-simultanées par domaine, sauf Opera qui est passé à huit et les 
-navigateurs mobiles qui sont à quatre (probablement à cause 
-des processeurs plus faibles). 
+Les navigateurs récents et les mobiles sont tous passés à six connexions persistantes 
+simultanées par domaine, sauf Opera et Internet Explorer 10 qui sont passé à huit.
 
 
 +-----------------------------+-------------------------------------+
 | Navigateur                  | Connexions persistantes par domaine |
 +=============================+=====================================+
-| Firefox 3 et plus           | 6                                   |
+| Firefox                     | 6                                   |
 +-----------------------------+-------------------------------------+
 | Chrome                      | 6                                   |
 +-----------------------------+-------------------------------------+
-| Safari                      | 6                                   |
+| Safari Mac, iOS             | 6                                   |
 +-----------------------------+-------------------------------------+
 | Internet Explorer 6 et 7    | 2                                   |
 +-----------------------------+-------------------------------------+
-| Internet Explorer 8 et plus | 6                                   |
+| Internet Explorer 8 et 9    | 6                                   |
++-----------------------------+-------------------------------------+
+| Internet Explorer 10        | 8                                   |
 +-----------------------------+-------------------------------------+
 | Opera                       | 8                                   |
++-----------------------------+-------------------------------------+
+| Opera Mobile                | 8                                   |
++-----------------------------+-------------------------------------+
+| Android 2.3                 | 8                                   |
++-----------------------------+-------------------------------------+
+| Android 4                   | 6                                   |
 +-----------------------------+-------------------------------------+
 
 
