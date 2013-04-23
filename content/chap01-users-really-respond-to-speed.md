@@ -178,6 +178,12 @@ De plus, ces mauvaises performances rejaillissent sur la perception de
 la boutique et de la marque. 30 % des visiteurs vont ainsi développer
 une perception négative de la société et potentiellement partager leur (mauvaise) expérience avec leurs amis ou leur famille.
 
+Une autre étude, menée par Forrester et sponsorisée par Akamai en 2010, concerne
+cette fois-ci les sites bancaires : 56% des utilisateurs s'attendent à
+des temps de réponse inférieurs à 2 secondes.[^6]
+
+  [^6]: Étude « The Impact of Poor Web Site Performance in Financial Services » citée dans [« Online Banking Customers Expect Fast Website Performance, Survey Finds »](http://www.banktech.com/business-intelligence/online-banking-customers-expect-fast-web/222500093)
+
 Vos utilisateurs ne vous le diront pas forcément, mais ils attendent de
 votre site qu'il soit rapide. C’est tellement naturel qu’ils ne
 nommeront probablement pas le critère. Partout pourtant, quand on teste
@@ -238,11 +244,11 @@ signification sont différents à chaque fois.
 
 Google a mené plusieurs expérimentations sur les performances dans leur
 page de recherche. Un premier résultat fait état d'une perte de 20 % de
-trafic pour un ralentissement d'une demi-seconde de la page[^6].
+trafic pour un ralentissement d'une demi-seconde de la page[^7].
 
 > + 500 ms au chargement → - 20 % de trafic
 
-  [^6]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [Conferences Scalability 2007 de Seattle](http://www.techpresentations.org/Scaling_Google_for_Every_User)
+  [^7]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [Conferences Scalability 2007 de Seattle](http://www.techpresentations.org/Scaling_Google_for_Every_User)
 
 D'autres facteurs sont peut-être intervenus en parallèle pour affecter à
 ce point le test (il présente par exemple 30 résultats par page au lieu
@@ -261,20 +267,20 @@ confiance des internautes.
 
 Leur second retour d’expérience concerne le service Google Maps. Après
 avoir réduit le poids de leur page de 30 %, le trafic a augmenté de 10 %
-la première semaine, puis encore 25 % par la suite[^7]. 
+la première semaine, puis encore 25 % par la suite[^8]. 
 
 > - 30 % sur le poids de la page → + 10 % puis + 25 % de trafic
 
-  [^7]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [conférences Web 2.0 en novembre 2006](http://www.zdnet.com/blog/btl/googles-marissa-mayer-speed-wins/3925)
+  [^8]: Marissa Mayer, VP section recherche et expérience utilisateur, Google, [conférences Web 2.0 en novembre 2006](http://www.zdnet.com/blog/btl/googles-marissa-mayer-speed-wins/3925)
 
 Le retour d’expérience suivant vient de Yahoo! Sur leurs tests
-comparatifs, un délai de 400 ms induit immédiatement 5 à 9 % d’abandon[^8],
+comparatifs, un délai de 400 ms induit immédiatement 5 à 9 % d’abandon[^9],
 c’est à dire de gens qui ne vont pas plus loin et qui ne cliquent sur
 aucun lien, ni aucune publicité.
 
 > + 400 ms au chargement → - 5 à 9 % d’abandon
 
-  [^8]: Présentation de Stoyan Stefanov (Yahoo!)  [« Yslow 2.0 early preview » en décembre 2008 en Chine](http://www.techpresentations.org/YSlow_2.0_early_preview_in_China)
+  [^9]: Présentation de Stoyan Stefanov (Yahoo!)  [« Yslow 2.0 early preview » en décembre 2008 en Chine](http://www.techpresentations.org/YSlow_2.0_early_preview_in_China)
 
 Pour AOL, la découverte se fait plus en termes d'intérêt et de motivation
 du visiteur. Plus les pages sont lentes à charger, moins le visiteur va
@@ -282,18 +288,18 @@ en visiter. La courbe est assez franche, presque droite au départ.
 Ainsi, les 10 % de visiteurs qui ont les pages les plus rapides lisent
 en moyenne 8 pages par visite. Cela descend entre 6 et 7 pour les 10 %
 suivants, puis 5 pages par visite pour le troisième décile, 4 pages pour
-le quatrième, etc.[^9] Les 50 % de visiteurs qui ont les plus mauvaises
+le quatrième, etc.[^10] Les 50 % de visiteurs qui ont les plus mauvaises
 performances visitent moins de 3 pages par visite en moyenne. C'est
 presque trois fois moins que le premier décile. L'influence du temps de
 chargement est donc indéniablement perceptible.
 
-  [^9]: Présentation Dave Artz, Director of optimization, AOL, aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/7579)
+  [^10]: Présentation Dave Artz, Director of optimization, AOL, aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/7579)
 
 ![Influence du temps de chargement sur le nombre de pages visitées pour AOL](img/chap01-influence-du-temps-de-chargement-sur-le-nombre-de-pages-visitees-pour-aol.png)
 
 Enfin, sur Bing, un ralentissement influe sur le visiteur dès 200 ms. À
 partir de 500 ms on voit déjà une baisse de plus de 1,2 % du revenu par
-visiteur[^10]. Avec une ou deux secondes de ralentissement ce sont
+visiteur[^11]. Avec une ou deux secondes de ralentissement ce sont
 respectivement 2,8 % et 4,3 % de perte de revenu par utilisateur. Ces
 effets négatifs sont accompagnés de pertes de satisfaction utilisateur,
 de plus faibles taux de clics, et d'une diminution de la propension des
@@ -305,7 +311,7 @@ visiteurs à affiner et approfondir leur recherche.
 
 > + 2 s au chargement  → - 4,3 % de revenus
 
-  [^10]: Intervention Bing aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/8523)
+  [^11]: Intervention Bing aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/8523)
 
 ![Évolution des performances suivant le ralentissement sur Bing](img/chap01-evolution-des-performances-suivant-le-ralentissement-sur-bing.png)
 
@@ -344,7 +350,7 @@ de très bonne qualité, presque la moitié sont au dessus des 4 secondes :
 Si les débits et la puissance des machines ont explosé, les développeurs
 ont aussi fait moins attention au poids des pages, à leur contenu, à
 leur utilisation. En cinq ans (2003 à 2008) on a entre autres triplé le
-poids des pages [^11], doublé le nombre de composants par page, et doublé le
+poids des pages [^12], doublé le nombre de composants par page, et doublé le
 nombre de balises HTML. Entre 2008 et 2009 l'augmentation a été encore
 plus importante. 
 
@@ -354,7 +360,7 @@ l'étude ne va pas jusqu'en 2010, avec la multiplication des
 bibliothèques javascript et des effets visuels, on peut sans risques
 continuer les courbes sur leur progression d'alors.
 
-  [^11]: Étude avec sources sur websiteoptimizations.com, [« Average Web Page Size Triples Since 2003 » d’avril 2008](http://www.websiteoptimization.com/speed/tweak/average-web-page/)
+  [^12]: Étude avec sources sur websiteoptimizations.com, [« Average Web Page Size Triples Since 2003 » d’avril 2008](http://www.websiteoptimization.com/speed/tweak/average-web-page/)
 
 ![Croissance du poids et du nombre d'objets d'une page web moyenne](img/chap01-croissance-du-poids-et-du-nombre-d-objets-d-une-page-web-moyenne.png)
 
@@ -441,9 +447,9 @@ Pour finir sur une note positive, l'exemple Shopzilla est intéressant.
 En refondant leur site web, ils ont amélioré le chargement des pages en
 passant de 6 secondes à 1,2 secondes. Pour résultat tous leurs
 indicateurs sont passés au vert : taux de transformation amélioré de 7 à
-12 % et nombre de pages vues augmenté de 25 % [^12].
+12 % et nombre de pages vues augmenté de 25 % [^13].
 
-  [^12]: Intervention de Philip Dixon, VP of Engineering, Shopzilla, aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/7709)
+  [^13]: Intervention de Philip Dixon, VP of Engineering, Shopzilla, aux [conférences Velocity 2009](http://en.oreilly.com/velocity2009/public/schedule/detail/7709)
 
 Mieux encore, cette expérience leur a permis de diviser par deux le
 nombre de serveurs nécessaires et a diminué les coûts de déploiement de
@@ -455,9 +461,9 @@ Même chose chez Mozilla, leur équipe a aussi pu constater les effets
 positifs du travail sur les performances web. En réduisant de
 2,2 secondes le temps de chargement de leur page d'arrivée (celle qui
 incite à télécharger le navigateur), ils ont pu augmenter de 15,4 % le
-taux de transformation[^13].
+taux de transformation[^14].
 
-  [^13]: Publication de Blake Cutler sur le blog officiel Mozilla, [le 5 avril 2010](http://blog.mozilla.com/metrics/2010/04/05/firefox-page-load-speed-%E2%80%93-part-ii/)
+  [^14]: Publication de Blake Cutler sur le blog officiel Mozilla, [le 5 avril 2010](http://blog.mozilla.com/metrics/2010/04/05/firefox-page-load-speed-%E2%80%93-part-ii/)
 
 ![Impact et détail de l'amélioration de performance pour Mozilla](img/chap01-impact-de-l-amelioration-des-performances-pour-mozilla.png)
 
