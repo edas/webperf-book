@@ -4,7 +4,7 @@ Premiers concepts
 Avant d’entrer dans le détail des recommandations et du travail 
 à réaliser, il est important de comprendre ce qu’il se passe entre 
 le navigateur et le serveur web. Vous connaissez peut-être le 
-principal mais jetez tout de même un oeil attentif à l’analyse 
+principal mais jetez tout de même un œil attentif à l’analyse 
 réseau. Il y a de nombreux points sous-estimés qui méritent votre 
 attention. 
 
@@ -18,7 +18,7 @@ clef – valeur.
 
 La première particularité de HTTP est d’être un protocole dit 
 _stateless_, sans état. Il n’y a en effet qu’un seul échange : 
-Le navigateur envoie une requête puis attend la réponse du serveur. 
+le navigateur envoie une requête puis attend la réponse du serveur. 
 Il n’y a aucun autre échange entre les deux intervenants. Lorsque 
 le navigateur demandera une seconde ressource (ou rechargera 
 la même que précédemment) il fera une nouvelle requête, indépendante, 
@@ -27,7 +27,7 @@ sans aucun lien avec la première.
 ### Exemple de requête HTTP
 
 Une requête du navigateur au serveur est constituée de trois 
-parties : la ligne de requête, un bloc d’entêtes, et éventuellement 
+parties : la ligne de requête, un bloc d’en-têtes, et éventuellement 
 un bloc de données, le corps de la requête. 
 
 ~~~~~~~ {.http .request}
@@ -46,37 +46,43 @@ La première ligne est la ligne de requête. Le terme `GET` indique
 qu’on souhaite récupérer une ressource (la page web) ; c’est 
 ce qui est fait le plus souvent. Vous pourrez aussi trouver `POST`, 
 qui indique qu’on souhaite envoyer une ressource, par exemple 
-un message sur un forum. D’autres opérations existent mais nos 
-navigateurs n’utilisent que ces deux là donc nous nous en contenterons. 
+un message sur un forum. [D’autres méthodes existent](https://fr.wikipedia.org/wiki/Http#M.C3.A9thodes) mais l'essentiel  du web
+est conçu autour de ces deux-là donc nous nous en contenterons.
 
 Vient ensuite l’adresse de la ressource que nous souhaitons 
 récupérer, ou vers laquelle nous souhaitons envoyer des informations. 
 Cette adresse commence toujours par `/`, et ne contient pas le 
-nom de domaine. Il s’agit d’une chaîne de caractères arbitraire. 
+nom de domaine[^proxyrequests]. Notons que la spécification HTTP n'impose qu'une
+chaîne de caractères arbitraire. 
 Si habituellement on considère qu’il y a des répertoires, un 
 nom de fichier puis une extension, l’adresse peut en fait correspondre 
 à tout à fait autre chose. Il s’agit en fait d’un simple identifiant, 
 charge au serveur de savoir à quoi il correspond. 
+
+[^proxyrequests]: Cela n'est vrai que pour les requêtes à destination des 
+serveurs HTTP finaux. Lorsqu'on utilise un proxy HTTP, on envoie aussi des requêtes HTTP,
+mais qui contiennent cette fois le domaine-cible.
 
 La troisième information de la première ligne de requête est 
 le protocole utilisé. Ce sera quasiment toujours `HTTP/1.1` 
 pour les navigateurs, même si quelques rares scripts ou robots 
 utilisent encore `HTTP/1.0`. 
 
-Le reste de l’exemple donné constitue le bloc d’entête. Chaque 
+Le reste de l’exemple donné constitue le bloc d’en-tête. Chaque 
 ligne contient un couple clef – valeur, séparés par le caractère 
-« : ». Certaines valeurs ont de multiples valeurs séparées par 
+« : ». Notons que les clefs ne sont pas sensibles à la casse.
+Certaines valeurs ont de multiples valeurs séparées par 
 des virgules, et parfois une valeur est paramétrée, les paramètres 
 étant séparés par un point virgule. 
 
-Une ligne vide indique la fin du bloc d’entête. Dans le cas d’une 
+Une ligne vide indique la fin du bloc d’en-tête. Dans le cas d’une 
 requête de type `POST` vous trouverez aussi un bloc de contenu 
 juste après. Il peut contenir des valeurs de formulaire par exemple. 
 
 ### Exemple de réponse HTTP
 
 Une réponse HTTP n’est pas très différente d’une requête. On 
-a une ligne de statut, un bloc d’entêtes et un bloc de contenu, 
+a une ligne de statut, un bloc d’en-têtes et un bloc de contenu, 
 le corps de la réponse. 
 
 ~~~~~~~ {.http .response}
@@ -89,6 +95,7 @@ Accept-Ranges: bytes
 Content-Length: 438
 Connection: close
 Content-Type: text/html; charset=UTF-8
+
 <HTML>
 […]
 </HTML>
@@ -105,23 +112,30 @@ aussi les codes 301 et 302 qui sont des redirections, et le code
 304 qui est lié aux mécanismes de cache. 
 
 La suite de la réponse est vraiment similaire à ce que nous avons 
-vu pour une requête : une suite d’entêtes avec clef - valeur, une 
-ligne vide, et le corps de la réponse. Le corps de la réponse c’est 
-le fichier HTML, le code javascript, ou le contenu binaire de 
+vu pour une requête : une suite d’en-têtes avec clef - valeur, une 
+ligne vide, et le corps de la réponse. Le corps de la réponse, c'est 
+ce que le serveur a fait correspondre à la ressource demandée,
+par exemple un fichier HTML, du code javascript, ou du contenu binaire de 
 du fichier image. 
 
 ### Les outils
 
-Pour explorer les requêtes et les réponses HTTP, je vous encourage 
-à télécharger l’extension Firefox nommée HTTPfox, ou encore 
-l’extension LiveHttpHeaders. L’extension Firebug, les outils 
-IBM Page Detailer ou Page Test peuvent aussi vous montrer le détail 
+Pour explorer les requêtes et les réponses HTTP, les navigateurs web
+actuels ont maintenant des outils directement intégrés: Chrome et Firefox
+ont chacun leurs *Developer Tools*.
+
+Pour beaucoup d'usages ces outils sont suffisants, mais pour aller plus loin,
+on pourra télécharger l’extension Firefox nommée HTTPfox, ou encore 
+l’extension LiveHttpHeaders. L’extension Firebug,ou le site [Web Page Test](http://www.webpagetest.org/)
+peuvent aussi vous montrer le détail 
 de ce qui est envoyé et reçu par les navigateurs. L’extension 
 Firefox nommée TamperData permet même de modifier dynamiquement 
 les requêtes HTTP au moment où elles sont envoyées, pour tester 
-différents résultats. 
+différents résultats.
 
 ![Exemple de visualisation d’une requête HTTP avec Firebug](img/chap02-exemple-de-visualisation-dune-requete-http-avec-firebug.png)
+
+Pour les plus geeks, l'outil en ligne de commandes `curl` est indispensable.
 
 Analyse d’une requête réseau
 ----------------------------
@@ -136,9 +150,9 @@ Voici les concepts principaux à retenir.
 Le début d’un échange commence toujours par une requête DNS. 
 Quand vous demandez http://www.example.org/ il s’agit de déterminer 
 quelle est l’adresse IP de la machine hébergeant www.example.org. 
-C’est un DNS (serveur de nom de domaine) chez vote fournisseur 
+C’est un serveur DNS (serveur de nom de domaine) chez votre fournisseur 
 d’accès qui va vous répondre. C’est généralement rapide, mais 
-ça prend tout de même prendre quelques dizaines de millisecondes. 
+ça peut tout de même prendre quelques dizaines de millisecondes. 
 En fait tout dépend de la latence avec le DNS de votre société, 
 et éventuellement de la latence entre ce DNS et celui du site que 
 vous cherchez à joindre. Sur un réseau lent ou avec un site très 
@@ -151,30 +165,36 @@ joindre, on peut établir une connexion TCP avec le serveur web.
 TCP est le protocole de transport utilisé par HTTP. Il s'agit ni plus ni moins 
 que de mettre en place une sorte de fil de discussion entre le serveur 
 et le client, et pour ça il faut l'accord des deux avec une phase 
-d'initialisation. C’est rapide, très rapide, mais c’est encore 
-une étape à franchir, qui dépend elle aussi de la latence. 
+d'initialisation. C’est rapide, mais c’est encore 
+une étape à franchir, qui dépend elle aussi de la latence. En effet, 
+l'établissement d'une connexion TCP se fait en trois temps, et dure
+donc trois fois la latence.
 
 C’est seulement après ces deux premières étapes qu’on peut avoir 
 un échange requête - réponse entre le navigateur et le serveur 
-web. 
+web. Mais attention: juste après l'établissement de la connexion,
+le transfert ne se fait pas encore à plein régime: c'est ce qu'on appelle
+l'algorithme *slow start*, algorithme utilisé pour ne pas engorger
+les réseaux.
 
-Le principe de base est qu'un fil TCP ne sert que pour un seul 
-couple requête/réponse. À chaque nouvelle requête, on établit 
-une nouvelle connexion TCP. Pour combler ce problème HTTP prévoit 
-une fonctionnalité (connexions persistantes, keep-alive) 
-pour garder le fil TCP ouvert et pouvoir y enchaîner plusieurs 
-requêtes, l'une après l'autre. Cette possibilité a un gros avantage, 
-mais n'est pas toujours activée sur les serveurs à cause de la 
-consommation en ressources qu'elle implique. Une seconde fonctionnalité 
-existe dans la version 1.1 de HTTP, le pipelining, mais elle est 
-rarement activée. Nous y reviendrons plus loin dans ce livre. 
-
-Pour compenser et comme solution de contournement, les navigateurs 
+Pour HTTP, l'un des principes de base est que pour chaque requête on
+crée une nouvelle connexion TCP. Pour compenser et comme solution de contournement, les navigateurs 
 opèrent plusieurs téléchargements en parallèle (de 2 à 8 suivant 
 le navigateurs). Ils ouvrent simplement plusieurs fils TCP 
 et y envoient des requêtes différentes. Ils permettent ainsi 
 d'optimiser la bande passante et de ne pas se tourner les pouces 
 pendant les temps d'attente dus à la latence. 
+
+Pour combler ce problème HTTP prévoit 
+une fonctionnalité (connexions persistantes, keep-alive) 
+pour garder le fil TCP ouvert et pouvoir y enchaîner plusieurs 
+requêtes, l'une après l'autre. Cette possibilité est un gros avantage, et permet
+de compenser les problèmes dus au *slow start*,
+mais n'est pas toujours activée sur les serveurs à cause de la 
+consommation en ressources qu'elle implique. Une seconde fonctionnalité 
+existe dans la version 1.1 de HTTP, le pipelining, mais elle est 
+rarement activée. Nous y reviendrons plus loin dans ce livre. 
+
 
 ### Génération de la page HTML par le serveur
 
@@ -185,11 +205,10 @@ HTTP ».
 
 Comme on l'a déjà vu dans le chapitre d'introduction, le temps 
 de génération de la page, ce que j'ai appelé la partie « back-end 
-», est généralement inférieur à la demie seconde (voire inférieur au dizième de seconde), 
+», est généralement inférieur à la demie-seconde (voire inférieur au dizième de seconde), 
 et au final négligeable par rapport au temps de chargement total de la page. Quand ce n'est pas le cas,
 des techniques d'optimisation existent, mais ce n'est pas le sujet de ce livre, nous n'aborderons
 donc plus ce point.
-
 
 ### Temps de transfert, débit et latence
 
@@ -206,12 +225,8 @@ sur ces deux durées.
 
 ### Les outils
 
-Des outils comme Firebug, IBM Page Detailer ou AOL Page Test (ici 
-en exemple dans sa version web) vous montreront les différentes 
-étapes d’une requêtes, pour vous permettre de constater où est 
-votre problème. Vous trouverez aussi des équivalents à Firebug 
-dans les navigateurs Chrome et Safari. Plusieurs proxy de développement 
-comme HttpWatch peuvent aussi exporter des données similaires. 
+Des outils comme Firebug, les outils de développements natifs des navigateurs ou WebPagetest (http://www.webpagetest.org ) vous montreront les différentes étapes d’une requêtes, pour vous permettre de constater où est 
+votre problème. Les navigateurs Chrome, Safari et Firefox possèdent nativement des outils équivalents à Firebug. Plusieurs proxy de développement comme HttpWatch peuvent aussi exporter des données similaires. 
 
 Le graphique alors représenté est appelé vue en cascade. Il est 
 un peu différent du schéma explicatif général car il ne prend 
@@ -255,7 +270,7 @@ préalable de faible débit perdure.
 #### Influence sur HTTP et les pages web
 
 Sur le web l'essentiel des contenus sont très petits, souvent 
-moins de 5 ko, rarement plus de 25 ko. Seuls quelques pages ou composants 
+moins de 10 ko, rarement plus de 25 ko (http://httparchive.org/interesting.php#responsesizes). Seuls quelques pages ou composants 
 javascript montent à 100 ko. Le résultat c'est que très souvent 
 TCP n'a pas le temps d'échanger assez de données pour monter à 
 la bande passante optimale entre le client et le serveur. 
@@ -314,7 +329,7 @@ ou d’éviter de bloquer le navigateur à un moment critique.
 Les graphiques en cascade sont un des outils principaux, essentiellement 
 Firebug ou les outils de développements de Chrome, Google Page 
 Speed ou Yslow (tous les deux des extensions de Firefox), un proxy 
-de débogage comme Charles, et AOL (web) Page Test ou IBM Page Detailer. 
+de débogage comme Charles, et WebPagetest. 
 On y liste toutes les requêtes sur un axe de temps. On voit s’il 
 y en a trop, lesquelles bloquent les autres, lesquelles sont 
 lentes, etc. 
@@ -362,7 +377,7 @@ puis la réception elle-même.
 
 Suivant les lignes, la requête DNS et l'établissement de la connexion 
 TCP peuvent être inutile (respectivement si le domaine a déjà 
-été résolu en adresse IP, et si le serveur réutilise une connexions 
+été résolu en adresse IP, et si le serveur réutilise une connexion 
 persistante). La réception des données est parfois tellement 
 rapide qu'elle semble ne pas apparaître dans le graphique. 
 
@@ -396,8 +411,8 @@ Explorer :
   et de l'accès à toutes les méta-données, pour la page (dans 
   les entêtes HTML par exemple) ou pour les éléments HTML (attributs) 
 
-* Javascript : C'est le sous-sytème chargé d'exécuter le code 
-  javascript. 
+* JavaScript : C'est le sous-sytème chargé d'exécuter le code 
+  JavaScript. 
 
 * Routage (marshalling) : Si le module javascript n'est pas 
   directement intégré dans le navigateur, il faut passer par 
@@ -407,7 +422,7 @@ Explorer :
 
 * Modèle objet natif : C'est la représentation native du document 
   et de ses éléments dans le navigateur, à laquelle on accède 
-  souvent via javascript. 
+  souvent via JavaScript. 
 
 * Formatage : Une fois les structures du document créées un sous-système 
   est chargé d'y appliquer les différents styles. 
@@ -429,11 +444,11 @@ qu'il faudra donc eviter.
 
 Pour une application basée fortement sur ajax avec Microsoft 
 Internet Explorer 8, hors réseau, les répartitions sont de l'ordre 
-de 30 % pour le rendu, 20 % pour javascript, 15 % pour l'agencement, 
+de 30 % pour le rendu, 20 % pour JavaScript, 15 % pour l'agencement, 
 et 12 % pour le formatage. Pour un site web plus classique le rendu, 
 l'agencement et le formatage ont bien moins d'importance car 
-ils interviennent une seule fois (le javascript ne provoque 
-pas de changement fréquents dans la page).(notabene: il faudrait trouver un exemple plus moderne)
+ils interviennent une seule fois (le JavaScript ne provoque 
+pas de changements fréquents dans la page).(notabene: il faudrait trouver un exemple plus moderne)
 
 Cependant quelques points meritent une attention particulière.
 
@@ -779,7 +794,7 @@ disponible.
 
 ![Bande passante réellement utilisable pour du web en fonction de la latence](img/chap02-bande-passante-reellement-utilisable-pour-du-web-en-fonction-de-la-latence1.png)[^2]
 
-  [^2]: Graphique en provenance de « More Bandwidth Doesn't Matter (Much) » par Mike Belshe le 4 août 2010
+  [^2]: Graphique en provenance de « More Bandwidth Doesn't Matter (Much) » par Mike Belshe le 4 août 2010
 
 Travaillez avec quelques combinaisons qui vous semblent réalistes. 
 Une latence moyenne se situe entre 30 et 60 ms pour des sites hébergés 
