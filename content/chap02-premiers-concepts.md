@@ -185,11 +185,11 @@ HTTP ».
 
 Comme on l'a déjà vu dans le chapitre d'introduction, le temps 
 de génération de la page, ce que j'ai appelé la partie « back-end 
-», est quasiment toujours inférieur à la demie seconde (et le 
-plus souvent inférieur au dizième de seconde), et au final négligeable 
-par rapport au temps de chargement total de la page. C'est pourquoi 
-c'est probablement la dernière fois que vous lirez quelque chose 
-à ce propos dans ce livre, nous nous concentrerons sur le reste. 
+», est généralement inférieur à la demie seconde (voire inférieur au dizième de seconde), 
+et au final négligeable par rapport au temps de chargement total de la page. Quand ce n'est pas le cas,
+des techniques d'optimisation existent, mais ce n'est pas le sujet de ce livre, nous n'aborderons
+donc plus ce point.
+
 
 ### Temps de transfert, débit et latence
 
@@ -371,14 +371,13 @@ le début du rendu dans le navigateur (la page commence à ne plus
 être blanche) et la seconde indique l'événement « onload » dans 
 le navigateur. 
 
-Sous-systèmes du navigateur
----------------------------
+Dans le navigateur
+------------------
 
-Si le réseau occupe une place prépondérante dans le navigateur 
-et le temps de traitement d'une page, ce n'est pas le seul sous-système 
-présent. Microsoft en identifie onze pour son navigateur Internet 
-Explorer. Si ce qui suit est propre à Microsoft Internet Explorer, tous 
-les autres navigateurs ont un système similaire. 
+Si le réseau occupe une place prépondérante dans le temps de d'affichage d'une page, 
+ce n'est pas le seul domaine qui entre en jeu. 
+A titre d'exemple, Microsoft identifie onze sous-système pour son navigateur Internet 
+Explorer :
 
 * Réseau : Ce sous-système est responsable de toute la communication 
   entre le navigateur et les serveurs web. Il s'occupe des requêtes 
@@ -424,12 +423,9 @@ les autres navigateurs ont un système similaire.
   l'écran ce que l'utilisateur verra. C'est aussi ce sous-système 
   qui s'occupe éventuellement de l'accélération graphique. 
 
-Certains sous-systèmes comme les modules réseau et javascript 
-sont immédiatement identifiés comme des sources de ralentissement 
-possibles mais on le verra, il est possible d'intervenir aussi 
-sur les autres. Les opérations de routage, d'agencement, de 
-rendu ou sur le modèle objet natif peuvent aussi être particulièrement 
-coûteuses. 
+La construction de la page en mémoire et l'affichage dans le navigateur passe donc
+par de nombreuses étapes, susceptibles de générer des ralentissements ou blocages
+qu'il faudra donc eviter.
 
 Pour une application basée fortement sur ajax avec Microsoft 
 Internet Explorer 8, hors réseau, les répartitions sont de l'ordre 
@@ -437,7 +433,22 @@ de 30 % pour le rendu, 20 % pour javascript, 15 % pour l'agencement,
 et 12 % pour le formatage. Pour un site web plus classique le rendu, 
 l'agencement et le formatage ont bien moins d'importance car 
 ils interviennent une seule fois (le javascript ne provoque 
-pas de changement fréquents dans la page). 
+pas de changement fréquents dans la page).(notabene: il faudrait trouver un exemple plus moderne)
+
+Cependant quelques points meritent une attention particulière.
+
+En premier lieu, on mentionnera :
+* l'ordre d'apparition des composants dans la page qui peut provoquer des blocages
+(attente qu'un composant - js, fonte - soit chargé et interprété avant de charger le suivant)
+* les composants dont le navigateur ne peut pas connaitre les dimensions sans les avoir
+complètement telechargés, et qui obligent a redessiner toute la page plusieurs fois 
+(images sans dimenssions, animations flash chargées par javascript, publicités...)
+
+En second ordre, mais qui peuvent etre problematique sur des grosses pages :
+* la taille du DOM
+* la complexité des selecteurs CSS
+
+ 
 
 Ressenti utilisateur, temps de réponse
 --------------------------------------
@@ -719,16 +730,18 @@ le navigateur sera presque la même.
 
 ### Latence, prévoyez large
 
-Les latences moyennes sont elles entre 30 ms et 60 ms pour des connexions 
+Les latences moyennes sont elles entre 30 ms et 60 ms pour des connexions filaires
 correctes en France métropolitaine et des sites hébergés eux 
 aussi en France métropolitaine ou dans la proche Europe. La latence 
 dépasse rarement les 100 ms pour des sites en Europe mais peut 
-facilement exploser s'il y a un problème réseau quelconque. 
+facilement exploser s'il y a un problème réseau quelconque, et dès que l'on
+utilise des connexions aeriennes telles que Wifi public ou par mobiles. 
+
 Vous pouvez travailler avec le jeu de latence suivant : 30 ms, 
-45 ms, 60 ms, 90 ms et 120 ms voire 150 ms. Si vous travaillez avec 
-un réseau interne vous pouvez éventuellement utiliser 15 ms. 
-Inversement n'hésitez pas à passer à 200 ms si vous savez que les 
-conditions réseau risquent d'être très mauvaises. 
+45 ms, 60 ms, 90 ms et 120 ms voire 150 ms. 
+Si vous travaillez exclusivement avec un réseau interne vous pouvez éventuellement utiliser 15 ms. 
+Inversement n'hésitez pas à tester jusqu'à 200 ms pour tenir compte des connexions mobiles degradées
+ou vous savez que les conditions réseau risquent d'être très mauvaises. 
 
 #### Quelques explications sur la latence
 
