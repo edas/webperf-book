@@ -232,7 +232,7 @@ Seconde requête :
 ~~~~~~~ {.http .request}
 GET /index.html HTTP/1.1
 Host: example.org
-If-Modified-Since: Tue, 15 Nov 2005 13:24:10 GMT
+If-Modified-Since: Mon, 29 Apr 2013 13:24:10 GMT
 Accept-Encoding: gzip,deflate
 ~~~~~~~
 
@@ -240,9 +240,8 @@ Réponse :
 
 ~~~~~ {.http .response}
 HTTP/1.1 200 OK
-Date: Sun, 02 Nov 2008 15:54:27 GMT
-Last-Modified: Sun, 01 Feb 2009 18:44:18 GMT
-Etag: "29244f-45d-3819bb2e"
+Date: Sun, 28 Apr 2013 15:54:27 GMT
+Last-Modified: Mon, 22 Apr 2013 18:44:18 GMT
 Content-Type: text/html; charset=UTF-8
 
 <HTML>
@@ -262,14 +261,14 @@ Seconde requête :
 ~~~~~~~ {.http .request}
 GET /index.html HTTP/1.1
 Host: example.org
-If-Modified-Since: Tue, 15 Nov 2005 13:24:10 GMT
+If-Modified-Since: Mon, 29 Apr 2013 13:24:10 GMT
 ~~~~~~~
 
 Réponse (seules des entêtes sont envoyées, aucun contenu) :
 
 ~~~~~ {.http .response}
 HTTP/1.1 304 NOT MODIFIED
-Date: Sun, 02 Nov 2008 15:54:27 GMT
+Date: Mon, 29 Apr 2013 15:54:27 GMT
 Content-Type: text/html; charset=UTF-8
 ~~~~~
 
@@ -345,10 +344,8 @@ function HttpCache($last_modified_timestamp)  {
 ETag
 ----
 
-La gestion du cache par dernière date de mise à jour est le mécanisme
-dynamique proposé par la version 1.0 du protocole HTTP. Le protocole
-HTTP 1.1 propose un mécanisme plus étendu : l'ETag (pour entity tag, en
-anglais).
+La gestion du cache par la date de dernière mise à jour est un mécanisme dynamique proposé par la version 1.0 du protocole HTTP.
+HTTP 1.1, quant à lui, apporte un mécanisme plus étendu : l'ETag (pour Entity Tag, en anglais).
 
 ### Détails HTTP
 
