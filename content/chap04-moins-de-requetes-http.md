@@ -108,7 +108,9 @@ qui sera à charger par le navigateur.
 
 **Recommandation** : Regroupez les feuilles de style apparaissant 
 sur la même page en un seul fichier. Faites de même avec les codes 
-javascript. Limitez-vous si possible à un seul composant de 
+javascript. Si possible, pensez à utiliser les attributs "defer" et "async" sur la balise script, 
+si votre code est conçu pour être fonctionnel en asynchrone.
+Limitez-vous si possible à un seul composant de 
 chaque type sur une page. 
 
 ### Garder un développement souple
