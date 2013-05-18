@@ -533,7 +533,7 @@ Note : pour `Cache-Control`, il existe aussi une directive `s-maxage`,
 identique à la précédente, mais qui s'adresse uniquement aux serveurs
 proxy.
 
-### Que mettre en cache et pour combien de temps**
+### Que mettre en cache et pour combien de temps
 
 En pratique, on sépare d'un côté les ressources qui ne changent que
 rarement, voire jamais (images de graphisme, feuilles de style,
