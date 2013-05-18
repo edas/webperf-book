@@ -1195,9 +1195,8 @@ changé), ou 404 (document inexistant à cette adresse).
 Certains de ces codes de retour ont une sémantique qui précise l’aspect
 temporaire ou permanent de cette réponse. C’est par exemple le cas des
 redirections pour lesquelles on distingue trois codes distincts : 301,
-302, et 307. Le navigateur qui reçoit un de ces codes est informer de
-faire une seconde requête HTTP vers le serveur web, avec une nouvelle
-adresse (l'adresse de redirection).
+302, et 307. Avec ces codes, le navigateur est informé que la ressource se trouve à une autre adresse.
+Le navigateur va donc réaliser une nouvelle requête HTTP.
 
 ![Flux HTTP d'une redirection 302](img/chap03-flux-http-d-une-redirection-302.png)
 
