@@ -509,7 +509,7 @@ bien identifiées :
 
 Majoritairement il s'agit d'utilisateurs en entreprise, fortement 
 bridés, avec Microsoft Internet Explorer 6, et un proxy d'entreprise 
-trop agressif. 
+trop agressif.
 
 Il devrait être possible d'envoyer quand même du contenu compressé 
 aux seconds, et probablement à la majorité des premiers, mais 
@@ -749,7 +749,7 @@ pour relancer l'opération avec des paramètres plus agressifs.
 Si vous avez suivi les recommandations de compression HTTP précédentes, 
 votre serveur web utilise de toutes façons gzip pour vos fichiers 
 svg. Il n'est donc pas forcément important de réaliser ces recompressions 
-à la main. 
+à la main.
 
 ### Méta-données
 
@@ -948,6 +948,11 @@ qui accrochent l'oeil et qui contiennent le plus de détail.
 **Recommandation** : Réglez et diminuez la qualité de vos images 
 jpeg à 80 ou 70 %, éventuellement en réservant une zone dans l'image 
 avec une forte qualité pour quelques détails. 
+
+L'outil JPEGmini ([http://jpegmini.com/](http://jpegmini.com/)) analyse l'image
+source, détermine automatiquement les zones en leur appliquant le taux de
+compression adéquat. Il existe en exécutables Windows et Mac, et est disponible
+en service web.
 
 Sous certaines versions d'Adobe Photoshop ce travail peut être 
 réalisé directement par le graphiste à l'aide de calques. Lors 
