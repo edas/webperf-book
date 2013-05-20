@@ -106,10 +106,11 @@ message explicatif. Le protocole sera presque toujours HTTP
 1.1, exceptionnellement HTTP 1.0. Le code de retour 200 indique 
 que le serveur a traité la requête avec succès et renvoyé la page 
 demandée, d’où le message explicatif « OK ». Vous connaissez 
-aussi probablement le code de retour 404 « Document Not Found », 
+aussi probablement le code de retour 404 « Document Not Found », 
 qui correspond à une page non trouvée. Dans ce livre nous croiserons 
 aussi les codes 301 et 302 qui sont des redirections, et le code 
-304 qui est lié aux mécanismes de cache. 
+304 qui est lié aux mécanismes de cache. Pour information, la RFC 2616
+définit [la liste des codes HTTP](http://fr.wikipedia.org/wiki/Liste_des_codes_HTTP).
 
 La suite de la réponse est vraiment similaire à ce que nous avons 
 vu pour une requête : une suite d’en-têtes avec clef - valeur, une 
