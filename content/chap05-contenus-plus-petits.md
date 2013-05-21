@@ -332,6 +332,32 @@ ligne de configuration :
 gzip_static      on;
 ~~~~~~~
 
+#### Varnish
+Depuis Varnish 3.0, la compression gzip est nativement supportée et activée par défaut.
+
+Lorsqu'il reçoit un requête, Varnish vérifie si le client supporte gzip, d'après l'entête Accept-Encoding.
+Si le client la supporte, il va forcer la valeur de Accept-Encoding à "gzip".
+
+Lorsque Varnish va demander le contenu au backend, il forcera Accept-Encoding à "gzip", de sorte que si le backend renvoi du contenu gzipé, Varnish le gardera en cache sous cette forme compressé.
+Si le backend renvoi du texte non compressé, Varnish le conservera non compressé.
+
+Pour économiser de la place dans le cache, il est possible de contraindre Varnish à compresser la réponse du backend :
+
+~~~~~~~
+sub vcl_fetch {
+    # si le contenu est de type texte (html, css, js, etc ...)
+    if (beresp.http.content-type ~ "text") {
+        # on force la compression avant la mise en cache
+        set beresp.do_gzip = true;
+    }
+}
+~~~~~~~
+
+Note de la documentation : En règle générale, Varnish utilise peu le CPU, donc il peut être judicieux de lui déléguer la compression des contenus textes car il aura moins tendance à saturer le CPU que les autres serveurs web (notamment Apache).
+
+Documentation officielle de Varnish sur la compression : [https://www.varnish-cache.org/docs/trunk/users-guide/compression.html](https://www.varnish-cache.org/docs/trunk/users-guide/compression.html)
+
+
 #### Contenus dynamiques
 
 Si Apache permet de compresser les contenus dynamiques, on se 
