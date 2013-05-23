@@ -1,6 +1,7 @@
 * Le livre : https://github.com/edas/webperf-book/
 * Les tickets en cours : https://github.com/edas/webperf-book/issues 
 * Quelques liens à pour fouiller : https://groups.diigo.com/group/web-performance 
+* La liste de diffusion webperf française : https://groups.google.com/group/performance-web?hl=fr
 
 Participer
 ==========
