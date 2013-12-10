@@ -22,4 +22,4 @@ Les contenus avec l'extension "md" sont codés dans le format [Markdown][], avec
 Licence et droits d'utilisation
 ------------------------------------
 
-Ces contenus sont protégés par le droit d'auteur. Ils sont partagés sous des conditions spécifiques décrites dans le fichier `contrat-licence.md`.
+Ces contenus, sauf précision contraire (par exemple pour certaines illustrations appartenant à des tiers) sont distribués sous licence Creative Commons avec les mention Attribution Partage à l'identique. Le contenu exact de la licence est disponible dans le fichier license.md à la racine de ce projet.
