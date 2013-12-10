@@ -1,107 +1,95 @@
-Contrat de Licence
-==============
+Creative Commons Attribution-ShareAlike 4.0 International Public License
 
+By exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License ("Public License"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.
 
-L'Œuvre accompagnant ce document est protégée par le droit d'auteur. Seule l'utilisation tel qu'explicitement décrit ci-dessous est autorisée. Les autres usages sont interdits et réservés par les auteurs de façon exclusive, dans la limite des exceptions aux droits d'auteurs et des autres lois applicables.
+Section 1 – Definitions.
 
-L'exercice d'un des droits décrits ci-dessous nécessite la compréhension, l'acceptation sans réserve, et le respect de l'ensemble des éléments du présent document en tant que contrat. L'acceptation du présent contrat n'est pas requis mais seule cette acceptation vous permet d'en exercer les droits décrits.
+Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.
+Adapter's License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.
+BY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.
+Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.
+Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.
+Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.
+License Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.
+Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.
+Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.
+Licensor means the individual(s) or entity(ies) granting rights under this Public License.
+Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.
+Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.
+You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.
+Section 2 – Scope.
 
-L'usage, la modification ou/et la distribution de l'Œuvre en ayant connaissance des présentes conditions est considéré comme une acceptation pleine et entière du présent Contrat de Licence et en particulier de la clause de cession des droits et de ses effets.
+License grant.
+Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:
+reproduce and Share the Licensed Material, in whole or in part; and
+produce, reproduce, and Share Adapted Material.
+Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.
+Term. The term of this Public License is specified in Section 6(a).
+Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.
+Downstream recipients.
+Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.
+Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.
+No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.
+No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).
+Other rights.
 
+Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.
+Patent and trademark rights are not licensed under this Public License.
+To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.
+Section 3 – License Conditions.
 
-Définitions
----------------
+Your exercise of the Licensed Rights is expressly made subject to the following conditions.
 
-Les termes commençant par une capitale utilisent les définitions suivantes :
+Attribution.
 
-Contrat de Licence
-  ~ le présent document qui détaille les conditions sous lesquelles le ou les auteurs allouent des droits sur l'Œuvre
-  
-Œuvre
-  ~ l'Œuvre de l'esprit accompagnant le présent Contrat de Licence et couverte par le droit de la propriété intellectuelle et artistique ou toute autre loi applicable, ainsi que son éventuelle copie
+If You Share the Licensed Material (including in modified form), You must:
 
-Œuvre Originale 
-  ~ l'Œuvre telle qu'elle est diffusée ou a été diffusée par les auteurs principaux et qui n'a pas été préalablement étiquetée explicitement par ces derniers comme "non originale", "modifiée" ou "dérivée". La mention du présent Contrat de Licence, des Auteurs Principaux et de l'Adresse de Distribution font partie intégrante de l'Œuvre Originale.
-  
-Œuvre Dérivée
-  ~ une Œuvre autre que l'Œuvre Originale, créée partiellement ou totalement à partir de l'Œuvre ou d'une partie de l'Œuvre, éventuellement modifiée, et qui ne peut être considéré comme une Œuvre totalement indépendante au regard du droit d'auteur ou des autres lois applicables. Les Œuvres collectives, reccueils, et collections diverses, ainsi que l'inclusion dans une Œuvre tierce sont considérées comme des Œuvres Dérivées dans le présent document. Les traductions, arrangements, extraits autres que ceux prévus par les exceptions légales au droit d'auteur, adaptation pour d'autres formats, résumés, lectures, enregistrements, ainsi que les modifications, transformations, remaniements, enrichissements, synchronisations avec une Œuvre tierce, sont considérés comme des Œuvres Dérivées. La conversion dans d'autres formats de fichiers, dans une autre architecture de code source ou la fixation sur un support non électronique sont aussi considérés comme des Œuvres Dérivées.
-  
-Auteur Initial
-  ~ Éric Daspet, http://eric.daspet.name/
-    
-Mainteneurs
-  ~ liste des personnes responsables d'assurer la diffusion, l'évolution et l'exploitation de l'Œuvre Originale, tels que désignés par l'Auteur Initial ou ses successeurs.
-  
-Usage Commercial
-  ~ les Usages Commerciaux sont définis pour ce qui suit comme les usages réalisés avec l'intention ou l'objectif de réaliser un profit commercial ou une compensation financière, y compris par monétisation publicitaire. Entre autres, lorsqu'ils sont faits dans l'intention ou l'objectif d'apporter une visibilité propre à générer un profit commercial ou une compensation financière, l'apposition de logo, marque ou liens ainsi que la distribution ou représentation par une une association ou une entreprise à but lucratif, sont présumés être des Usages Commerciaux.
-  
-Adresse de Distribution
- ~ adresse électronique à partir de laquelle l'Œuvre est diffusée. L'Adresse de Distribution de l'Œuvre Originale est actuellement https://github.com/edas/webperf-book
+retain the following if it is supplied by the Licensor with the Licensed Material:
+identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);
+a copyright notice;
+a notice that refers to this Public License;
+a notice that refers to the disclaimer of warranties;
+a URI or hyperlink to the Licensed Material to the extent reasonably practicable;
+indicate if You modified the Licensed Material and retain an indication of any previous modifications; and
+indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.
+You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.
+If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.
+ShareAlike.
+In addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.
 
-Auteurs Principaux
-  ~ personnes ayant réalisé un travail significatif sur l'Œuvre Originale. La liste des Auteurs Principaux de L'Œuvre Originale est tenue à jour par et sous la seule autorité des Mainteneurs et de l'Auteur Initial, qui seuls peuvent décider d'un ajout ou d'une suppression en regard du travail fourni.
+The Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.
+You must include the text of, or the URI or hyperlink to, the Adapter's License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.
+You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter's License You apply.
+Section 4 – Sui Generis Database Rights.
 
-  
+Where the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:
 
-Usage à titre individuel
----------------------------------
+for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;
+if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and
+You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.
+For the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.
+Section 5 – Disclaimer of Warranties and Limitation of Liability.
 
-Les usages cumulativement privés et individuels sont autorisés sans limitation et à titre gratuit. Cette autorisation exclu implicitement tout partage et toute diffusion totale ou partielle de l'Œuvre.
+ Unless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.
+ To the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.
+The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.
+Section 6 – Term and Termination.
 
+This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.
+Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:
 
+automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or
+upon express reinstatement by the Licensor.
+For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.
+For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.
+Sections 1, 5, 6, 7, and 8 survive termination of this Public License.
+Section 7 – Other Terms and Conditions.
 
-Distribution et représentation de l'Œuvre Originale
-------------------------------------------------------------------------
+The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.
+Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.
+Section 8 – Interpretation.
 
-La distribution et la représentation de l'Œuvre Originale, sous forme intégrale, sont autorisées à titre gratuit aux conditions cumulatives suivantes :
-
-1.  Sur l'Œuvre diffusée, offrir aux destinataires l'intégralité des droits offerts par ce présent Contrat de Licence, sous les mêmes conditions mais sans aucune restriction ou condition supplémentaire à ce présent contrat.
-
-   a. L'utilisation de mesures techniques de protection (aussi connues sous les acronymes MTP ou DRM) ou de contrôle d'accès serait en contradiction avec cette demande. 
-
-   b. Pour permettre au mieux l'exercice de ce point, l'Œuvre doit rester accompagnée du présent Contrat de Licence non modifié, qui seul peut donner des droits aux destinataires sur l'Œuvre diffusée. La mention du présent Contrat de Licence doit être explicitée afin qu'il ne puisse être ignoré.
-
-    c. La présente clause ne s'applique pas à un Œuvre tierce englobante ou liée dans le cas où cette dernière peut être considérée comme raisonnablement distincte et indépendante de l'Œuvre d'origine
-
-2. La distribution ou représentation ne doit pas être à Usage Commercial
-
-
-La distribution et la représentation de parties non modifiées de l'Œuvre Originale sont autorisées à titre gratuit aux conditions supplémentaires suivantes :
-
-3.  Ne pas modifier ou supprimer les informations concernant la liste des Auteurs Principaux ou l'Adresse de Distribution de l'Œuvre Originale, ni diminuer leur visibilité initiale
-
-    a. Par exception, les extraits très courts qui ne pourraient raisonnablement faire référence à ces informations dans les conditions exprimées, peuvent par exception se contenter d'un lien vers l'Adresse de Distribution, clairement visible et identifiable par les lecteurs ou destinataires.
- 
-4. (pour l'Œuvre Originale) Ne pas donner de l'Œuvre une présentation qui pourrait trahir le texte ou l'esprit de l'Œuvre Originale, ni l'intention des auteurs
-
-
-
-Distribution et représentation d'une Œuvre Dérivée
--------------------------------------------------------------------------
-
-
-La distribution et la représentation d'une Œuvre Dérivée sont autorisées à titre gratuit aux conditions cumulatives suivantes en plus des critères exprimés au titre précédent :
-
-4. (pour les Œuvres Dérivées) Expliciter de manière clairement identifiable, lisible et compréhensible par un lecteur ou destinataire peu attentif qu'il s'agit d'une Œuvre Dérivée et non de l'Œuvre Originale, et qu'en conséquence le contenu n'engage pas les auteurs initiaux  
-      
-5. La distribution ou la représentation doit se faire sous le même format que l'Œuvre Originale, ce qui exclu entre autres toute conversion vers d'autres formats de fichiers ou d'affichage, ou la fixation sur un support non électronique  
-     
-6. Donner aux Mainteneurs de l'Œuvre Originale ou leurs successeurs désignés, ainsi qu'à l'Auteur Initial ou son successeur désigné :
-
-    a. un droit, exclusif de tout autre que ceux attribués par le point .1. du présent Contrat de Licence, délégable, de représentation, d’adaptation, de traduction, d’exploitation, de diffusion, et d’utilisation, totale ou partielle, à titre commercial ou non, sur tout support (dont en particulier : support numérique, papier, vidéo et audio – ce qui inclut entre autres les livres, revues, articles, présentations, mémos, dépliants et affiches sous formes papier, fichier numérique, disque, bande, et streaming), dans le monde entier et pour la durée maximale prévue par le droit d’auteur, sur les modifications et travaux dérivés ainsi diffusés ainsi que sur les produits dérivés qui pourraient en découler.
-
-    b. dans le cas où l'utilisation de l'Œuvre ouvrirait des droits ou des redevances sous un régime légal de gestion collective obligatoire, un droit exclusif de collecter les redevances correspondantes pour le compte des Auteurs Principaux et de les affecter à l'exploitation ou à l'évolution de l'Œuvre Originale, et/ou aux Auteurs Principaux. 
-
-    c. afin de permettre l'exploitation des droits attribués, la mention d'une adresse électronique à laquelle les destinataires des droits peuvent demander et obtenir gratuitement la transmission de l'Œuvre Dérivée et de tous les codes et fichiers sources leur permettant l'exploitation adéquate de l'Œuvre ; ou à défaut la publication de ces codes et fichiers sources à une adresse indiquée dans l'Œuvre dérivée
-
-7. Si un auteur d'une Œuvre Dérivée ajoute une section "Auteurs Principaux de l'Œuvre Dérivée", distincte de la section des Auteurs Principaux de l'Œuvre Originale décrite au point .3. Cette section ne devra pas être supprimée ni diminuée en visibilité. Elle pourra être tenue à jour pour tenir compte avec honnêteté et raison de la liste des Auteurs Principaux de l'Œuvre depuis sa dérivation de l'Œuvre Originale.
-
-8. Dans le cas où le contenu serait représenté ou distribué à des tiers non francophones, il appartient à la personne à l'origine de cette représentation ou de cette distribution de s'assurer que le présent Contrat de Licence sera correctement compris et accepté
-
-
-Cas spécifiques
--------------------
-
-Dans le cas ou une ou plusieurs clauses du présent Contrat de Licence ne pourrait être mise en Œuvre selon la loi applicable, le présent Contrat de Licence serait appliqué au plus proche qu'il est possible de son esprit d'origine.
-
-Pour tout besoin dépassant le cadre du présent Contrat de Licence, le lecteur est invité à se tourner vers l'Auteur Initial ou les Mainteneurs
+For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.
+To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.
+No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.
+Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.
