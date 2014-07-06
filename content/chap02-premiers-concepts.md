@@ -161,7 +161,7 @@ vous cherchez à joindre. Sur un réseau lent ou avec un site très
 
 ### Connexion TCP
 
-Une fois que votre navigateur connait l’adresse du serveur à 
+Une fois que votre navigateur connaît l’adresse du serveur à 
 joindre, on peut établir une connexion TCP avec le serveur web. 
 TCP est le protocole de transport utilisé par HTTP. Il s'agit ni plus ni moins 
 que de mettre en place une sorte de fil de discussion entre le serveur 
@@ -242,7 +242,7 @@ si une requête bloque les suivantes par exemple.
 
 #### Gestion de la bande passante par TCP
 
-Sur Internet le serveur ne connait pas la bande passante disponible 
+Sur Internet le serveur ne connaît pas la bande passante disponible 
 sur le client, ou sur les éléments réseaux entre le serveur et 
 le client. Il est donc impossible de savoir à priori à quelle vitesse 
 envoyer les données. Comme les équipements réseaux ne peuvent 
@@ -393,45 +393,45 @@ Dans le navigateur
 Si le réseau occupe une place prépondérante dans le temps de d'affichage d'une page, 
 ce n'est pas le seul domaine qui entre en jeu. 
 A titre d'exemple, Microsoft identifie onze sous-système pour son navigateur Internet 
-Explorer :
+Explorer :
 
-* Réseau : Ce sous-système est responsable de toute la communication 
+* Réseau : Ce sous-système est responsable de toute la communication 
   entre le navigateur et les serveurs web. Il s'occupe des requêtes 
   HTTP, des requêtes DNS, des files d'attente de téléchargement, 
   et des caches. 
 
-* HTML : Une fois le code HTML téléchargé il est envoyé au sous-système 
+* HTML : Une fois le code HTML téléchargé il est envoyé au sous-système 
   HTML pour être analysée et découpé. Ce module a pour rôle de 
   créer une structure en mémoire représentant le code HTML. 
 
-* CSS : De même que pour HTML, le module CSS a pour rôle d'analyser 
+* CSS : De même que pour HTML, le module CSS a pour rôle d'analyser 
   le code source pour créer une structure qui sera réutilisée 
   plus tard par le navigateur. 
 
-* Collections : Ce sous-système est responsable du stockage 
+* Collections : Ce sous-système est responsable du stockage 
   et de l'accès à toutes les méta-données, pour la page (dans 
   les entêtes HTML par exemple) ou pour les éléments HTML (attributs) 
 
-* JavaScript : C'est le sous-sytème chargé d'exécuter le code 
+* JavaScript : C'est le sous-système chargé d'exécuter le code 
   JavaScript. 
 
-* Routage (marshalling) : Si le module javascript n'est pas 
+* Routage (marshalling) : Si le module javascript n'est pas 
   directement intégré dans le navigateur, il faut passer par 
   une couche intermédiaire pour toutes les interactions avec 
   le DOM ou les éléments du navigateur. Ce sous-système de routage 
   est là pour faire le pont entre les deux. 
 
-* Modèle objet natif : C'est la représentation native du document 
+* Modèle objet natif : C'est la représentation native du document 
   et de ses éléments dans le navigateur, à laquelle on accède 
   souvent via JavaScript. 
 
 * Formatage : Une fois les structures du document créées un sous-système 
   est chargé d'y appliquer les différents styles. 
 
-* Construction des blocs : À partir du formatage on construit 
+* Construction des blocs : À partir du formatage on construit 
   les différents blocs à afficher, par exemple avec leur taille. 
 
-* Agencement (layout) : Couplé avec le module précédent, le 
+* Agencement (layout) : Couplé avec le module précédent, le 
   sous-système d'agencement est chargé de préparer le rendu 
   en organisant les blocs entre eux. 
 
@@ -441,7 +441,7 @@ Explorer :
 
 La construction de la page en mémoire et l'affichage dans le navigateur passe donc
 par de nombreuses étapes, susceptibles de générer des ralentissements ou blocages
-qu'il faudra donc eviter.
+qu'il faudra donc éviter.
 
 Pour une application basée fortement sur ajax avec Microsoft 
 Internet Explorer 8, hors réseau, les répartitions sont de l'ordre 
@@ -449,20 +449,20 @@ de 30 % pour le rendu, 20 % pour JavaScript, 15 % pour l'agencement,
 et 12 % pour le formatage. Pour un site web plus classique le rendu, 
 l'agencement et le formatage ont bien moins d'importance car 
 ils interviennent une seule fois (le JavaScript ne provoque 
-pas de changements fréquents dans la page).(notabene: il faudrait trouver un exemple plus moderne)
+pas de changements fréquents dans la page).(notabene : il faudrait trouver un exemple plus moderne)
 
-Cependant quelques points meritent une attention particulière.
+Cependant quelques points méritent une attention particulière.
 
 En premier lieu, on mentionnera :
 * l'ordre d'apparition des composants dans la page qui peut provoquer des blocages
 (attente qu'un composant - js, fonte - soit chargé et interprété avant de charger le suivant)
-* les composants dont le navigateur ne peut pas connaitre les dimensions sans les avoir
-complètement telechargés, et qui obligent a redessiner toute la page plusieurs fois 
-(images sans dimenssions, animations flash chargées par javascript, publicités...)
+* les composants dont le navigateur ne peut pas connaître les dimensions sans les avoir
+complètement téléchargés, et qui obligent a redessiner toute la page plusieurs fois 
+(images sans dimensions, animations flash chargées par javascript, publicités...)
 
-En second ordre, mais qui peuvent etre problematique sur des grosses pages :
+En second ordre, mais qui peuvent être problématique sur des grosses pages :
 * la taille du DOM
-* la complexité des selecteurs CSS
+* la complexité des sélecteurs CSS
 
  
 
@@ -472,12 +472,12 @@ Ressenti utilisateur, temps de réponse
 ### Valeurs objectives de temps de réponse
 
 Lors des explorations nous nous attacherons à plusieurs mesures 
-objectives : 
+objectives : 
 
-* Temps de chargement complet (PLT, page load time) : temps nécessaire 
+* Temps de chargement complet (PLT, page load time) : temps nécessaire 
   pour charger, exécuter et afficher toute la page et ses composants. 
 
-* OnLoad : déclenchement de l'événement DOM du même nom dans 
+* OnLoad : déclenchement de l'événement DOM du même nom dans 
   la page en cours de chargement. Naturellement cet événement 
   se déclenche quand toute la page et ses ressources sont chargées 
   et exécutées, toutefois, il est possible de différer l'exécution 
@@ -555,7 +555,7 @@ de l'utilisateur peut ne pas varier dans le même sens que nos mesures.
 
 Ce ressenti utilisateur peut être impacté par les _reflow_, 
 ces recalculs du rendu de la page au fur et à mesure de son chargement, 
-qui lui donnent l'impression de « bouger ». Il peut aussi être 
+qui lui donnent l'impression de « bouger ». Il peut aussi être 
 impacté par la présence d'un FLOUC (flash of unstyled content, 
 affichage bref d'une page non stylée le temps que les styles soient 
 appliqués ou téléchargés), d'un temps avec une page blanche, 
@@ -567,10 +567,10 @@ Quand nous améliorons les performances il ne faut pas perdre
 de vue que le plus souvent c'est ce ressenti qui est notre objectif. 
 Les mesures brutes ne servent qu'à nous donner une indication 
 de notre avancée. Il arrivera que l'amélioration des indicateurs 
-chiffrés entraine une dégradation du ressenti, et inversement. 
+chiffrés entraîne une dégradation du ressenti, et inversement. 
 Parfois il peut ainsi être une bonne idée de retarder le chargement 
 complet de la page si cela permet d'afficher plus tôt les éléments 
-importants, de diminuer les « bougés » dans le chargement et de 
+importants, de diminuer les « bougés » dans le chargement et de 
 continuer des choses invisibles en tâche de fond. 
 
 Les navigateurs font très attention à ce ressenti de performance. 
@@ -625,7 +625,7 @@ le, tout de suite. C'est ce navigateur qui sera votre principal
 outil. Gardez à l'esprit qu'appuyer sur la touche _shift_ pendant 
 que vous réactualisez une page permet de ne pas utiliser le cache 
 du navigateur. L'adresse about:config vous permettra d'accéder 
-aux options de configurations internes ; nous en utiliserons 
+aux options de configurations internes ; nous en utiliserons 
 plusieurs. 
 
 Profitez en pour installer au minimum les extensions Firebug, 
@@ -664,12 +664,12 @@ part, avec un accès en écriture à la configuration. C'est ce qui
 vous permettra de tester vos tentatives. 
 
 Un chapitre dédié aux outils est présent en fin de livre, n'hésitez 
-pas à y jeter un oeil pour savoir comment utiliser tout ça. 
+pas à y jeter un œil pour savoir comment utiliser tout ça. 
 
 ### Mesures
 
 Il est maintenant temps de prendre vos premières mesures. Prenez 
-quelques sites exemples : le votre, mais aussi quelques uns que 
+quelques sites exemples : le votre, mais aussi quelques uns que 
 vous visitez régulièrement. Faites un répertoire pour chaque 
 et sauvegardez le code source et les mesures. Quand vous aurez 
 exploré tout ce livre vous pourrez voir le chemin parcouru. 
@@ -683,7 +683,7 @@ oubliez de vider votre cache avant la première mesure, vous risquez
 de fausser tous vos résultats. 
 
 Yslow nous donne pratiquement toutes les mesures utiles à sauvegarder. 
-Vous trouverez un lien « vue imprimable » dans le menu outils de 
+Vous trouverez un lien « vue imprimable » dans le menu outils de 
 l'extension : sauvegardez-en le résultat. Vous aurez le nombre 
 et la répartition des requêtes HTTP, le poids de la page et des 
 différents composants, et le temps de chargement. 
@@ -703,7 +703,7 @@ et à mesure.
 ### Yslow et Google Page Speed en fil directeur
 
 Quand vous ne savez pas quoi faire, ou que vous voulez constater 
-vos progrès, jetez un oeil à Yslow, puis éventuellement à Google 
+vos progrès, jetez un œil à Yslow, puis éventuellement à Google 
 Page Speed. Yslow n'est pas parfait, mais c'est un des meilleurs 
 guides qui existe sur le sujet et Google Page Speed comble les 
 quelques manques. Les statistiques, la mesure du temps de réponse 
@@ -751,12 +751,12 @@ correctes en France métropolitaine et des sites hébergés eux
 aussi en France métropolitaine ou dans la proche Europe. La latence 
 dépasse rarement les 100 ms pour des sites en Europe mais peut 
 facilement exploser s'il y a un problème réseau quelconque, et dès que l'on
-utilise des connexions aeriennes telles que Wifi public ou par mobiles. 
+utilise des connexions aériennes telles que Wifi public ou par mobiles. 
 
 Vous pouvez travailler avec le jeu de latence suivant : 30 ms, 
 45 ms, 60 ms, 90 ms et 120 ms voire 150 ms. 
 Si vous travaillez exclusivement avec un réseau interne vous pouvez éventuellement utiliser 15 ms. 
-Inversement n'hésitez pas à tester jusqu'à 200 ms pour tenir compte des connexions mobiles degradées
+Inversement n'hésitez pas à tester jusqu'à 200 ms pour tenir compte des connexions mobiles dégradées
 ou vous savez que les conditions réseau risquent d'être très mauvaises. 
 
 #### Quelques explications sur la latence
@@ -795,7 +795,7 @@ disponible.
 
 ![Bande passante réellement utilisable pour du web en fonction de la latence](img/chap02-bande-passante-reellement-utilisable-pour-du-web-en-fonction-de-la-latence1.png)[^2]
 
-  [^2]: Graphique en provenance de « More Bandwidth Doesn't Matter (Much) » par Mike Belshe le 4 août 2010
+  [^2]: Graphique en provenance de « More Bandwidth Doesn't Matter (Much) » par Mike Belshe le 4 août 2010
 
 Travaillez avec quelques combinaisons qui vous semblent réalistes. 
 Une latence moyenne se situe entre 30 et 60 ms pour des sites hébergés 
@@ -815,22 +815,22 @@ Concernant le réseau
 
 * Un échange HTTP nécessite au préalable une résolution DNS 
   et l'établissement d'une connexion TCP, qui prennent tous 
-  deux du temps ; 
+  deux du temps ; 
 
 * Ce qui est envoyé du navigateur au serveur et inversement prend 
   du temps, on parle de latence réseau ; 
 
 * L'analyse des échanges réseau peut être faite entre autres 
-  à l'aide de l'extension Firebug ou de webpagetest.org ; 
+  à l'aide de l'extension Firebug ou de webpagetest.org ; 
 
 * La connexion de référence fait environ 2 Mb/s avec une latence 
-  de 50 ms ; 
+  de 50 ms ; 
 
 Concernant HTTP 
 
 * Un échange HTTP est composé d'une requête et d'une réponse ; 
 
-* Requête et réponse HTTP sont composés d'une ligne de statut, 
+* Requête et réponse HTTP sont composées d'une ligne de statut, 
   d'une ou plusieurs entêtes clef:valeur, d'une ligne vide, 
   et éventuellement d'un contenu ; 
 
@@ -840,13 +840,13 @@ Concernant HTTP
 Concernant les mesures 
 
 * Les 5 directives principales de performance qui doivent vous 
-  guider ; 
+  guider ; 
 
 * Le ressenti de performance est aussi important que la mesure 
-  objective ; 
+  objective ; 
 
 * Utilisez les extensions Yslow et Google Page Speed comme fil 
-  conducteur ; 
+  conducteur ; 
 
 * Ne soyez pas trop optimistes sur la qualité des connexions 
   internet de vos visiteurs. 
