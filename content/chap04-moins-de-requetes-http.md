@@ -96,17 +96,17 @@ Le gain est d'autant plus important qu'en réalité les fichiers
 javascript posent des problèmes aux navigateurs. C'est aussi 
 vrai dans une moindre mesure pour les fichiers CSS. Ces fichiers 
 ont tendance à les charger séquentiellement sans utiliser leurs 
-possibilités de téléchargements parallèles : pendant ce temps 
+possibilités de téléchargements parallèles : pendant ce temps 
 rien d'autre ne se passe dans le navigateur. Si cela arrive, 27+12 
 requêtes gagnées pour une latence de 100 ms c'est presque 4 secondes 
 d'économisées lors du chargement de la page. 
 
 Pour fusionner nos fichiers la procédure la plus évidente est 
-encore la plus simple : faites des copier/coller dans un seul 
+encore la plus simple : faites des copier/coller dans un seul 
 fichier que vous enregistrez sur le disque. C'est ce fichier 
 qui sera à charger par le navigateur. 
 
-**Recommandation** : Regroupez les feuilles de style apparaissant 
+**Recommandation** : Regroupez les feuilles de style apparaissant 
 sur la même page en un seul fichier. Faites de même avec les codes 
 javascript. Si possible, pensez à utiliser les attributs "defer" et "async" sur la balise script, 
 si votre code est conçu pour être fonctionnel en asynchrone.
@@ -165,7 +165,7 @@ temps que la fusion, par exemple une minification des contenus
 
 De nombreux composants PHP proposent d'automatiser ainsi le 
 mécanisme de fusion (par exemple le plugin sfConbine pour le 
-framework PHP Symfony : http://www.symfony-project.org/plugins/sfCombinePlugin). 
+framework PHP Symfony : http://www.symfony-project.org/plugins/sfCombinePlugin). 
 
 Une alternative intéressante est d'utiliser un module directement 
 embarqué dans le serveur web. Ce dernier, qui ne prendra alors 
@@ -186,17 +186,17 @@ séparés par des virgules chargera en une seule requête le contenu
 des différents fichiers en renvoyant la date de modification 
 du fichier le plus récent. Un module similaire existe sur lighttpd. 
 
-Yahoo! utilise lui aussi un tel mécanisme qu'ils appellent « 
-combo handler » pour ses serveurs de ressources statiques. L'adresse 
+Yahoo! utilise lui aussi un tel mécanisme qu'ils appellent « 
+combo handler » pour ses serveurs de ressources statiques. L'adresse 
 suivante permet ainsi de charger en une fois le code de base de 
-la bibliothèque javascript YUI et le module de gestion des cookies : 
+la bibliothèque javascript YUI et le module de gestion des cookies : 
 <http://yui.yahooapis.com/combo?3.3.0/build/yui/yui-min.js&3.3.0/build/cookie/cookie-min.js>
 
-* Pour Apache 2 : <http://code.google.com/p/modconcat/>
+* Pour Apache 2 : <http://code.google.com/p/modconcat/>
 
-* Pour Lighttpd : <http://code.google.com/p/lighttpd-mod-concat/> 
+* Pour Lighttpd : <http://code.google.com/p/lighttpd-mod-concat/> 
 
-* Système Yahoo! : <http://www.stevesouders.com/blog/2008/07/17/yuis-combo-handler-cdn-service/> et <http://yuiblog.com/blog/2008/10/17/loading-yui/> 
+* Système Yahoo! : <http://www.stevesouders.com/blog/2008/07/17/yuis-combo-handler-cdn-service/> et <http://yuiblog.com/blog/2008/10/17/loading-yui/> 
 
 ### Fichier unique ou spécifique à la page
 
@@ -204,7 +204,7 @@ Lors de la fusion des fichiers en un seul, il faut réfléchir si
 l'on créé un fichier spécifique à la page en cours, ou si l'on créée 
 un fichier central unique à toute l'application. Il s'agit finalement 
 d'un compromis entre le temps de chargement de la première page 
-et la réactivité des pages suivantes : 
+et la réactivité des pages suivantes : 
 
 Avec un gros fichier unique le visiteur télécharge forcément 
 une partie non négligeable de code inutile, ralentissant le 
@@ -238,7 +238,7 @@ utiliser le fichier central mais leur version, spécifique.
 
 Éventuellement, s'il est possible d'individualiser quelques 
 modèles de pages bien spécifiques et suffisamment distincts, 
-qu'il couterait trop cher de regrouper avec un fichier central, 
+qu'il coûterait trop cher de regrouper avec un fichier central, 
 il est possible de réaliser un fichier par modèle de page. Ce peut 
 être par exemple un fichier pour la section boutique, un pour 
 la section jeux, un pour les pages de contenu, un pour les pages 
@@ -251,13 +251,13 @@ une requête HTTP vaut généralement mieux qu'un petit renflement
 du fichier central. Tout est histoire de compromis et c'est à 
 vous de tracer la ligne jaune. 
 
-* Page classique de contenu : site.css 
+* Page classique de contenu : site.css 
 
-* Page d'accueil : accueil.css 
+* Page d'accueil : accueil.css 
 
-* Pages boutique : boutique.css 
+* Pages boutique : boutique.css 
 
-* Pages jeux : jeux.css 
+* Pages jeux : jeux.css 
 
 ### Quand faire plusieurs fichiers
 
@@ -277,31 +277,31 @@ le taux de réutilisation quand celui du fichier central est mauvais.
 On construit alors un fichier central qui contient ce qui est 
 commun à l'essentiel des pages et on construit quelques fichiers 
 additionnels suivant les types de pages. Ainsi une page chargera 
-au plus deux feuilles de style : la feuille de style centrale avec 
+au plus deux feuilles de style : la feuille de style centrale avec 
 ce qui est utilisable partout, et une feuille spécifique à son 
-modèle (par exemple la feuille de style propre à la section « boutique 
-en ligne »). 
+modèle (par exemple la feuille de style propre à la section « boutique 
+en ligne »). 
 
 Le calibrage de cette dernière étape est délicat, il faut éviter 
 de créer trop de composants différents, et s'assurer que le fichier 
 central ne devient pas trop pauvre. Rappelez-vous que la multiplication 
-des requêtes HTTP coute bien plus cher qu'un petit ajout dans 
+des requêtes HTTP coûte bien plus cher qu'un petit ajout dans 
 le fichier central, tout est question de compromis. Si vous avez 
 des doutes, rien ne vaut un petit test en production sur des échantillons 
 d'utilisateurs cibles. 
 
-* Page classique de contenu : central.css 
+* Page classique de contenu : central.css 
 
-* Page d'accueil : accueil.css 
+* Page d'accueil : accueil.css 
 
-* Pages boutique : central.css + boutique.css 
+* Pages boutique : central.css + boutique.css 
 
-* Pages jeux : central.css + jeux.css 
+* Pages jeux : central.css + jeux.css 
 
-* Page référencée dans une publicité : accueil-pub.css (si 
+* Page référencée dans une publicité : accueil-pub.css (si 
   central.css ne convient pas) 
 
-* Page de configuration avec des composants évolués : central.css 
+* Page de configuration avec des composants évolués : central.css 
   + config.css + … 
 
 En dehors des pages spécifiques comme celles des éditeurs riches 
@@ -325,7 +325,7 @@ par page (mais pas plus, et uniquement si on en a vraiment besoin).
 Il est en effet plus fréquent d'avoir besoin d'un composant spécifique 
 qui sera un peu gros pour une inclusion inconditionnelle dans 
 toutes les pages. Suivant les besoins on peut même aller jusqu'à 
-trois fichiers javascript : le fichier central du site, le fichier 
+trois fichiers javascript : le fichier central du site, le fichier 
 qui contient les composants propres à la section (boutique, 
 actus, etc.), et le fichier qui contient les composants spécifique 
 à la page ou au modèle de page. 
@@ -353,7 +353,7 @@ Images en sprites CSS
 
 Une fois les feuilles de styles et fichiers javascript concaténés 
 il reste un composant principal qui occupe souvent plus de la 
-moitié des requêtes HTTP : les images. Contrairement à ce que 
+moitié des requêtes HTTP : les images. Contrairement à ce que 
 nous dit l'intuition, fusionner plusieurs images en un seul 
 fichier est relativement courant. C'était même une pratique 
 quasi systématique sur les jeux et autres applications locales 
@@ -375,13 +375,13 @@ est très lent. Chaque appel fichier prend un temps non négligeable
 et ralentit toute l'application. Les solutions mises en œuvre 
 sont donc logiquement les mêmes. 
 
-Sur le web vous trouverez de nombreux articles sur les « sprites 
-CSS ». Il ne s'agit que de cela : combiner plusieurs images référencées 
+Sur le web vous trouverez de nombreux articles sur les « sprites 
+CSS ». Il ne s'agit que de cela : combiner plusieurs images référencées 
 par votre feuille de style en un seul fichier. 
 
 ### Gains de performance
 
-Combiner dix images en un seul fichier (un « sprite ») permet d'éviter 
+Combiner dix images en un seul fichier (un « sprite ») permet d'éviter 
 neuf requêtes HTTP. En considérant une latence de 50 ms c'est 
 quasiment une demi-seconde qui est ainsi économisée. 
 
@@ -413,7 +413,7 @@ Le sprite peut aussi être extrêmement intéressant pour les autres pages
 du site puisque le sprite sera alors en cache dans le navigateur 
 et que les futures pages ne nécessiteront aucun téléchargement. 
 
-**Recommandation** : Regroupez vos images de décoration liée 
+**Recommandation** : Regroupez vos images de décoration liée 
 par la feuille de style en quelques grosses images (sprites) 
 et utilisez les règles CSS pour afficher uniquement la partie 
 que vous souhaitez. 
@@ -443,17 +443,17 @@ Il faudra le plus souvent faire correspondre le cadre avec une
 partie au milieu de l'image, et donc positionner le coin en haut 
 à droite de l'image plusieurs pixels avant le coin en haut à droite 
 du cadre visible dans la page. La conséquence est que le plus souvent 
-les mesures sont négatives : 
+les mesures sont négatives : 
 
-Nous pourrions donc avoir un code CSS similaire à : 
+Nous pourrions donc avoir un code CSS similaire à : 
 
 ~~~~~~~ {.css}
 div#boite {
-    background-image: url(sprite.png) ;
-    background-repeat: no-repeat ;
-    background-position: -20px -20px ;
-    width: 10px ;
-    height: 10px ;
+    background-image: url(sprite.png) ;
+    background-repeat: no-repeat ;
+    background-position: -20px -20px ;
+    width: 10px ;
+    height: 10px ;
 }
 ~~~~~~~
 
@@ -475,7 +475,7 @@ ou du moins avec une marge suffisamment grande. La problématique
 est similaire en hauteur avec les colonnes. 
 
 Il vous faut aussi penser à prévoir une marge suffisante pour 
-les différents cas : Par exemple, si la taille de l'écran est moins grande
+les différents cas : Par exemple, si la taille de l'écran est moins grande
 que chez vous votre cadre s'affichera peut être plus étroit, 
 et donc plus long que chez vous. De même, si l'utilisateur a agrandi 
 ses polices de caractères le texte prendra plus de place, en largeur 
@@ -494,7 +494,7 @@ seule sur sa ligne (ou sur sa colonne) sans marge sur cette ligne.
 
 À cause de cette problématique, et parce que ces images sont généralement 
 très étroites (ou très petites en hauteur), on sépare souvent 
-ces images dans des sprites dédiés : un pour les images qui se répètent 
+ces images dans des sprites dédiés : un pour les images qui se répètent 
 en hauteur, et un pour les images qui se répètent en largeur. Les 
 images qui doivent se répéter sur les deux axes dans des dimensions 
 inconnues ne sont pas intégrables dans des sprites. 
@@ -520,7 +520,7 @@ par le navigateur.
 Nous avons dit que dans un sprite le poids de téléchargement des 
 icônes inutiles est largement compensé par la réduction des 
 requêtes HTTP. Toutefois les portions inutilisées du sprite 
-ont un second effet : Pour afficher une image le navigateur la 
+ont un second effet : Pour afficher une image le navigateur la 
 décompresse en mémoire. Là, un pixel utilise 4 octets, la compression 
 jpeg ou png n'entre pas en compte. 
 
@@ -529,7 +529,7 @@ n'a presque aucune conséquence. On évitera juste d'utiliser
 des sprites avec trop d'espace blanc inutile, ou plus de surface 
 inutile que de surface utile. 
 
-![Exemple de sprite à réserver à des usages spécifiques : organisation en diagonale](img/chap04-exemple-de-sprite-a-reserver-a-des-usages-specifiques--organisation-en-diagonale.png)
+![Exemple de sprite à réserver à des usages spécifiques : organisation en diagonale](img/chap04-exemple-de-sprite-a-reserver-a-des-usages-specifiques--organisation-en-diagonale.png)
 
 Pour les dispositifs mobiles (téléphones, tablettes) où la 
 mémoire est très limitée, les parties inutilisées du sprite
@@ -555,7 +555,7 @@ le gain de poids du sprite.
 #### Accessibilité
 
 On distingue généralement deux types d'usages pour les images 
-sur une page web : les images de contenu et les images de décoration. 
+sur une page web : les images de contenu et les images de décoration. 
 
 Les images de contenu sont celles qui font partie intégrante 
 de l'information transmise par la page. Leur disparition ferait 
@@ -572,20 +572,20 @@ ou à la compréhension du site comme les icônes, les traits de séparation,
 etc. 
 
 En général on peut séparer les deux catégories en se posant les 
-questions suivantes : L'image fait-elle perdre une information 
+questions suivantes : L'image fait-elle perdre une information 
 si je la retire ? Devrais-je en mettre une alternative texte si 
 je retire l'aspect graphique du site ? L'image resterait-elle 
 la même si je change totalement le graphisme du site ? 
 
-Une image de contenu obtiendrait un « oui » à ces questions, une 
-image de décoration aurait un « non ». Les premières devraient 
+Une image de contenu obtiendrait un « oui » à ces questions, une 
+image de décoration aurait un « non ». Les premières devraient 
 normalement être insérées via la balise HTML `<img>` et les secondes 
 via un `background-image` en CSS. 
 
 Les sprites sont réservés aux images de présentation. Un navigateur 
 qui ne supporte pas CSS ou un robot qui se contente de lire le contenu 
 n'aura aucun problème. Ces images sont là uniquement pour l'aspect 
-graphique : elles ne manqueront pas si elles sont omises et elles 
+graphique : elles ne manqueront pas si elles sont omises et elles 
 n'ont aucune valeur prises hors contexte. 
 
 À l'inverse, une image de contenu ne devrait pas être insérée 
@@ -603,14 +603,14 @@ marges et aux répétitions.
 
 Le moteur Gecko de Mozilla (qui équipe entre autres le navigateur 
 Firefox) contient déjà une valeur `-moz-image-rect` qui permet 
-de déterminer quelle est la partie de l'image qui sera affichée 
-: plus besoin de marges et plus aucun risque d'afficher plus que 
+de déterminer quelle est la partie de l'image qui sera affichée : 
+plus besoin de marges et plus aucun risque d'afficher plus que 
 prévu en cas de répétition. 
 
 Ainsi l'instruction suivante permet, avec Gecko, de n'afficher 
 que l'icône de dix pixels aux coordonnées 50,60 par rapport au 
 coin en haut à gauche (on donne l'adresse du sprite, puis les coins 
-en haut à gauche et en bas à droite) : 
+en haut à gauche et en bas à droite) : 
 
 ~~~~~~~ {.css .online}
 background-image:-moz-image-rect('sprite.png',50px,60px,60px,70px); 
@@ -676,7 +676,7 @@ CSS pour chaque image). On peut citer le [CSS sprite generator](http://spritegen
 ![CSS sprite generator](img/chap04-css-sprite-generator.png)
 
 Si la première catégorie d'outils est à éviter, tous ces outils 
-partagent en plus un défaut : en créant automatiquement l'image 
+partagent en plus un défaut : en créant automatiquement l'image 
 de sprite vous n'aurez plus la main sur les réglages fins de l'image 
 (gestion de la transparence, indexation intelligente des couleurs, 
 etc.). Si vous souhaitez des images avec un poids le plus faible 
@@ -727,7 +727,7 @@ le plus de contenus possible dans la page web elle-même, et à insérer
 directement les codes javascript et CSS au lieu de faire des fichiers 
 externes. 
 
-**Recommandation** : Pour les pages cibles (page d'accueil, 
+**Recommandation** : Pour les pages cibles (page d'accueil, 
 publicité, plaquette) attirant essentiellement des nouveaux 
 utilisateurs et suffisamment différentes du reste du site, 
 envisagez d'intégrer directement les codes javascript et CSS 
@@ -755,7 +755,7 @@ sans subir la latence entre chaque requête. C'est ce que proposent
 les trois solutions ci-dessous. 
 
 * Insertion d'une contenu directement dans un lien via le protocole 
-  « data: » 
+  « data: » 
 
 * Insertion d'un contenu groupé avec un autre via le format mhtml 
 
@@ -770,13 +770,13 @@ méthodes à l'aide de commentaires HTML conditionnels (ils ne
 sont relus que par Microsoft Internet Explorer et permettent 
 de gérer une version spécifique à ce navigateur). 
 
-Toutes ont toutefois un avantage concret : Elles permettent 
+Toutes ont toutefois un avantage concret : Elles permettent 
 de regrouper plusieurs fichiers de type différent tout en permettant 
 de les télécharger en un seul lot et de mettre ce lot en cache. 
 
 ### Les liens en data:
 
-Les liens en « data: » viennent de la RFC 2397 de 1998. Il s'agit 
+Les liens en « data: » viennent de la RFC 2397 de 1998. Il s'agit 
 tout simplement d'embarquer le contenu directement dans un 
 lien plutôt que d'avoir son adresse sur le réseau. 
 
@@ -787,7 +787,7 @@ de style, etc.
 
 #### Fonctionnement
 
-Le prototype de ces liens est le suivant : 
+Le prototype de ces liens est le suivant : 
 
 ~~~~~~~ {.online}
 data:[<mediatype>][;base64],<data> 
@@ -805,7 +805,7 @@ Si le type mime contient le paramètre `base64` (les paramètres
 sont séparés par des points virgules) alors on utilise le codage 
 base64. 
 
-Exemple avec une image insérée dans le HTML : 
+Exemple avec une image insérée dans le HTML : 
 
 ~~~~~~~ {.html .partial}
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUh
@@ -823,7 +823,7 @@ kJggg==" alt="Puce rouge" />
 Cette fonctionnalité peut avoir un intérêt quand on souhaite 
 avoir un seul fichier, sans composant externe (par exemple la 
 diffusion d'un CV au format HTML). Nous l'utilisons ici pour 
-son effet de bord : aucune requête HTTP n'est alors générée sur 
+son effet de bord : aucune requête HTTP n'est alors générée sur 
 le réseau, l'image et son fichier source sont envoyées groupés. 
 
 Si dans le cas du fichier HTML l'effet est peu utilisé, c'est très 
@@ -837,7 +837,7 @@ requêtes HTTP ?
 
 On embarque alors certaines séries d'images de fond (puces, 
 dégradés, icônes) directement dans la feuille de style en utilisant 
-ces liens en « data: » plutôt qu'en référençant de vrais fichiers 
+ces liens en « data: » plutôt qu'en référençant de vrais fichiers 
 sur le réseau. Si le poids de la feuille de style va augmenter fortement 
 on aura toutefois fait moins de requêtes, et chargé plus rapidement 
 la page. Le pari est que l'augmentation en volume total (30 % de 
@@ -847,19 +847,19 @@ la diminution du nombre de requêtes. Pour des petites images
 
 S'il est possible de générer ces liens soit même, ils sont généralement 
 créés par un scripts, par exemple par la fonction `base64_encode()` 
-de PHP : 
+de PHP : 
 
 ~~~~~~~ {.php}
 <?php
 function lien_data($type, $fichier) {
-   $data = file_gets_content( $fichier ) ;
-   $base64 = base64_encode($data) ;
-   return "data:$type;base64,$base64" ;
+   $data = file_gets_content( $fichier ) ;
+   $base64 = base64_encode($data) ;
+   return "data:$type;base64,$base64" ;
 }
 ~~~~~~~
 
 Google embarque aussi quelques images de contenu directement 
-dans la page HTML : les vignettes de fichiers vidéos dans les résultats 
+dans la page HTML : les vignettes de fichiers vidéos dans les résultats 
 de recherche. Il s'agit d'images qui n'ont de sens que pour la 
 requête courante (donc qui ne peuvent profiter du cache) et dont 
 on veut éviter qu'elle apparaissent au fur et à mesure dans la 
@@ -900,9 +900,9 @@ aide à la compréhension, outils d'accessibilité, etc.).
 ### Les fichiers composés mhtml
 
 Les fichiers mhtml viennent du monde des emails (le nom vient 
-de « mime html », mime venant lui-même de « multipurpose internet 
-mail extensions », pour « extensions multifonctions pour e-mails 
-internet). Ils y servent à insérer des images jointes au mail 
+de « mime html », mime venant lui-même de « multipurpose internet 
+mail extensions », pour « extensions multifonctions pour e-mails 
+internet »). Ils y servent à insérer des images jointes au mail 
 et y faire référence dans le corps du document (généralement 
 du HTML). 
 
@@ -921,13 +921,13 @@ L'interne des fichiers est exactement le même que l'enveloppe
 d'un e-mail. Le contenu principal prend un type mime spécifique 
 (`multipart/related`, qui est différent du type mime avec lequel 
 est envoyé le fichier mhtml lui-même) et on utilise des séparateurs 
-(« boundary ») pour diviser le message en plusieurs sous contenus. 
+(« boundary ») pour diviser le message en plusieurs sous contenus. 
 Chaque sous contenu a ensuite ses propres entêtes avec son type 
 mime. 
 
 Exemple de fichier MHTML (notez bien la présence d'entêtes et 
 les différents blocs de contenu et la présence des deux tirets 
-finaux) : 
+finaux) : 
 
 ~~~~~~~ {.email .mime}
 From: eric.daspet@example.org
@@ -944,7 +944,7 @@ Content-Type: multipart/related ;
 <link rel="stylesheet" href="mhtml:http://...fichier.html!st.css">
 </head>
 <body>
-<p>Exemple de puce rouge : 
+<p>Exemple de puce rouge : 
 <img src="mhtml:http://......fichier.html!puce-rouge.png" alt="*">
 </p>
 </body>
@@ -971,7 +971,7 @@ vr4MkhoXe0rZigAAAABJRU5ErkJggg==
 ~~~~~~~
 
 Pour référencer un contenu (identifié grâce à l'entête `Content-Location` 
-dans le fichier mhtml) on utilise un lien de type suivant : 
+dans le fichier mhtml) on utilise un lien de type suivant : 
 
 ~~~~~~~ {.oneline}
 mhtml:adresse_du_fichier!identifiant_dans_le_fichier
@@ -1004,8 +1004,8 @@ sa version 9 savent relire ces contenus. C'est d'ailleurs la
 seule alternative viable pour les premiers. 
 
 Pour Mozilla Firefox, il est toutefois possible d'ajouter le 
-support des mhtml via une extension. Les extensions « Mozilla 
-Archive Format » (maf) ou « unMHT » permettent cela. Elles sont 
+support des mhtml via une extension. Les extensions « Mozilla 
+Archive Format » (maf) ou « unMHT » permettent cela. Elles sont 
 toutes les deux téléchargeables depuis le dépôt officiel des 
 extensions Firefox. 
 
@@ -1039,7 +1039,7 @@ Généralement on utilise l'extension .jar plutôt que .zip, mais
 cela n'a aucune influence réelle. 
 
 On peut ensuite référencer les documents avec une syntaxe quasiment 
-identique à celle des fichiers mhtml : 
+identique à celle des fichiers mhtml : 
 
 ~~~~~~~ {.oneline}
 jar:adresse_du_fichier_jar!adresse_dans_le_fichier_jar
@@ -1054,7 +1054,7 @@ donc ce n'est pas un critère différenciant).
 
 ### Quand et quoi mettre « en ligne » ou par lot
 
-Les données « en ligne » devraient être réservées aux pages d'accueil, 
+Les données « en ligne » devraient être réservées aux pages d'accueil, 
 aux pages d'arrivées spéciales (celles nommées dans une publicité, 
 dans une plaquette). Dans ces cas l'idée est de convaincre l'utilisateur 
 de continuer sur le site en lui donnant la meilleure expérience 
@@ -1071,16 +1071,16 @@ sont un peu plus souples. Il est en effet possible de profiter
 du cache quand les fichiers sont chargés en lot avec une feuille 
 de style ou un javascript externe (et pas directement avec la 
 page principale elle-même). Il n'y a que trois problématiques 
-qui doivent alors guider le choix : 
+qui doivent alors guider le choix : 
 
 * limiter la présence dans le lot de composants qui sont inutiles 
   pour la page en cours (et encore plus s'ils sont aussi potentiellement 
-  inutiles dans les futures pages visitées) ; 
+  inutiles dans les futures pages visitées) ; 
 
 * ne pas tout mettre en un seul fichier mais faire en sorte que 
   la page ait au moins deux ou trois lots ou composants différents 
   de taille similaire (afin d'optimiser les capacité de téléchargement 
-  parallèle des navigateurs) ; 
+  parallèle des navigateurs) ; 
 
 * ne pas charger un composant en lot avec un contenu principal 
   (CSS ou js) si ce composant est aussi utilisé ailleurs sans 
@@ -1102,7 +1102,7 @@ mhtml et data: suivant le navigateur en proposant les deux) et
 du coût de maintenance associé, il faut vraiment restreindre 
 ces solutions aux cas où le gain est assuré. 
 
-**Recommandation** : Les images de décoration utiles sur la 
+**Recommandation** : Les images de décoration utiles sur la 
 grande majorité des pages peuvent être intégrées directement 
 dans la feuille de style à l'aide des procédés data: et mhtml. 
 
@@ -1121,7 +1121,7 @@ de style.
 
 Il faut ensuite faire la chasse à toutes les requêtes HTTP qui 
 pourraient être inutiles. On en identifie habituellement trois 
-types : les redirections, les feuilles de style alternatives, 
+types : les redirections, les feuilles de style alternatives, 
 et les images de gradients ou de coins arrondis. 
 
 ### Redirections
@@ -1151,7 +1151,7 @@ acceptable pourrait être de au moins faire en sorte que la première
 redirection nous emmène directement à la destination finale 
 sans les étapes intermédiaire. 
 
-**Recommandation** : Évitez les redirections, ou restreignez-les 
+**Recommandation** : Évitez les redirections, ou restreignez-les 
 pour ne jamais les empiler les unes après les autres. 
 
 S'il faut faire une redirection le problème peut être encore 
@@ -1168,7 +1168,7 @@ en HTTP (on utilise un code de retour spécial, qui peut être 301,
 immédiatement sans besoin pour le premier de télécharger une 
 lourde page HTML bourrée de composants. 
 
-**Recommandation** : Les éventuelles redirections doivent 
+**Recommandation** : Les éventuelles redirections doivent 
 être réalisées avec un code de retour HTTP 301, 302 ou 307 et pas 
 à l'aide d'une balise HTML ou d'un code javascript. 
 
@@ -1185,10 +1185,10 @@ est adapté à son cas et d'ignorer les autres.
 Malheureusement, certains navigateurs téléchargent toutes 
 ces feuilles de style, même quand ils ne s'en servent pas. Dès 
 lors, il est important de ne proposer que les feuilles de style 
-qui sont vraiment utiles et de ne pas les multiplier « au cas où 
+qui sont vraiment utiles et de ne pas les multiplier « au cas où 
 ». 
 
-**Recommandation** : Ne proposer des feuilles de style pour 
+**Recommandation** : Ne proposer des feuilles de style pour 
 des médias spécifiques qu'en cas de besoin. Vous éviterez d'ajouter 
 des téléchargements inutiles pour certains navigateurs. 
 
@@ -1199,7 +1199,7 @@ le même fichier) plutôt que de faire un fichier CSS par type d'application
 navigateur de faire une requête supplémentaire inutilement 
 vu qu'il va de toutes façons télécharger les deux. 
 
-**Recommandation** : Insérer les styles destinés aux différents 
+**Recommandation** : Insérer les styles destinés aux différents 
 médias dans le même fichier CSS plutôt que dans des fichiers dédiés 
 à chaque fois. 
 
@@ -1216,7 +1216,7 @@ pouvoir basculer rapidement de l'un à l'autre, mais du coup ils
 ralentissent le chargement de la page principale, ce qui est 
 rarement une bonne idée. 
 
-**Recommandation** : Ne spécifiez pas de style alternatif dans 
+**Recommandation** : Ne spécifiez pas de style alternatif dans 
 la page HTML. Si vous devez proposer plusieurs styles, reposez-vous 
 sur un mécanisme à base de javascript ou via un fonctionnement 
 applicatif côté serveur (le serveur se chargera d'envoyer la 
@@ -1231,15 +1231,15 @@ de style et applicables à votre contenu HTML.
 
 Normalement le navigateur gère les priorités et les redéfinitions 
 dans les feuilles de style. Si j'ajoute une image de fond rouge 
-à tous les paragraphes, un verte aux paragraphes d'introduction 
+à tous les paragraphes, une verte aux paragraphes d'introduction 
 et une bleue quand l'écran fait moins de 600 pixels, le navigateur 
-sait faire le tri et n'en télécharger qu'une seule : celle qu'il 
+sait faire le tri et n'en télécharger qu'une seule : celle qu'il 
 affichera réellement. Android n'a pas ce comportement astucieux 
 et téléchargera les trois images quoi qu'il en soit. Le navigateur 
 risque donc de télécharger beaucoup d'images inutiles, et de 
 ralentir d'autant le chargement complet de la page. 
 
-**Recommandation** : Ne vous reposez pas trop sur la cascade 
+**Recommandation** : Ne vous reposez pas trop sur la cascade 
 CSS. Faites en sorte que pour chaque balise HTML seule une image 
 de fond soit applicable dans les feuilles de style. 
 
@@ -1248,7 +1248,7 @@ de fond soit applicable dans les feuilles de style.
 Dans les mises en page riches, une partie non négligeable des 
 images est souvent utilisée pour arrondir les angles des cadres. 
 Les blocs rectangulaires purs et durs sont vus comme agressifs 
-et « vieux » par certains graphistes. 
+et « vieux » par certains graphistes. 
 
 La technique la plus habituelle est d'utiliser une à neuf images 
 pour les coins et les bordures, et un montage peu simple en html 
@@ -1256,7 +1256,7 @@ et CSS pour placer ces images dans les différents coins et bords.
 Le plus souvent ce sont quatre images qui sont utilisées, ou au 
 moins une grande image (sprite) de taille extrêmement importante 
 au cas où le bloc s'étende sur la page. Ceci est à multiplier par 
-le nombre de blocs différents à arrondir : couleur, taille, épaisseur 
+le nombre de blocs différents à arrondir : couleur, taille, épaisseur 
 de bordure, etc. 
 
 ![Bloc avec des coins arrondis](img/chap04-bloc-avec-des-coins-arrondis.png)
@@ -1270,21 +1270,21 @@ meilleures performances.
 
 Si votre graphiste est rétif à l'idée de ce genre de changement 
 radical, il est heureusement possible d'envisager une autre 
-solution : 
+solution : 
 
 #### Utilisation de CSS 3
 
 Le niveau 3 de la spécification CSS propose une amélioration 
-que nous pouvons utiliser. Le module « Backgrounds and Borders 
-» inclut en effet une propriété `border-radius` qui permet d'arrondir 
+que nous pouvons utiliser. Le module « Backgrounds and Borders » 
+inclut en effet une propriété `border-radius` qui permet d'arrondir 
 la bordure d'un bloc. Aucune image n'est alors mise en œuvre et 
-le rendu sera tel qu'on l'attends : un bloc dont les bords sont 
+le rendu sera tel qu'on l'attends : un bloc dont les bords sont 
 arrondis. 
 
 L'arrondi généré correspond à un quart d'ovale dont la distance 
 entre le centre et les bords est donnée en paramètre. Il est donc 
 possible de spécifier deux valeurs pour chaque coin (`border-{top|bottom}-{left|right}-radius`) 
-séparées par un espace : la distance du centre de l'ovale par rapport 
+séparées par un espace : la distance du centre de l'ovale par rapport 
 au bord vertical puis la distance du centre par rapport au bord 
 horizontal. Si on ne spécifie qu'une seule valeur elle servira 
 pour les deux distances. 
@@ -1298,12 +1298,12 @@ dans le même ordre que pour la propriété border, puis une barre
 oblique (_slash_) et les distances avec les quatre bords horizontaux. 
 
 ~~~~~~~ {.css}
-border-radius: 55pt 55pt 55pt 55pt / 25pt 25pt 25pt 25pt ;
-/* équivalent à : */
-border-top-right-radius: 55pt 25pt ;
-border-top-left-radius: 55pt 25pt ;
-border-bottom-left-radius: 55pt 25pt ;
-border-bottom-right-radius: 55pt 25pt ;
+border-radius: 55pt 55pt 55pt 55pt / 25pt 25pt 25pt 25pt ;
+/* équivalent à : */
+border-top-right-radius: 55pt 25pt ;
+border-top-left-radius: 55pt 25pt ;
+border-bottom-left-radius: 55pt 25pt ;
+border-bottom-right-radius: 55pt 25pt ;
 ~~~~~~~
 
 Tous les navigateurs récents acceptent ces directives CSS, 
@@ -1314,11 +1314,11 @@ toutefois un préfixe `-webkit-`. Il vous suffit de préciser
 les deux versions, avec et sans préfixe, pour maximiser la compatibilité. 
 
 ~~~~~~~ {.css}
--webkit-border-radius: 55px ;
+-webkit-border-radius: 55px ;
 border-radius: 55px ;
 ~~~~~~~
 
-**Recommandation** : Utilisez CSS 3 pour remplacer les blocs 
+**Recommandation** : Utilisez CSS 3 pour remplacer les blocs 
 à coins arrondis ou formes arrondies créés à partir de fichiers 
 images. 
 
@@ -1347,10 +1347,10 @@ vous choisissez). Il s'agit de n'appliquer les arrondis qu'aux
 navigateurs supportant CSS 3 et de considérer qu'il s'agit d'un 
 enrichissement optionnel, d'un bonus. On parle souvent d'enrichissement 
 progressif ou de dégradation élégante, il s'agit d'assumer 
-de faire « mieux » pour certains navigateurs tant que les autres 
+de faire « mieux » pour certains navigateurs tant que les autres 
 gardent un niveau de qualité acceptable. 
 
-La seconde solution est d'utiliser les « hacks » CSS ou les commentaires 
+La seconde solution est d'utiliser les « hacks » CSS ou les commentaires 
 conditionnels HTML pour revenir à l'ancienne méthode des coins 
 arrondis à l'aide d'images pour ces vieilles versions de Microsoft 
 Internet Explorer. Si cela vous paraît inacceptable de laisser 
@@ -1369,12 +1369,12 @@ sans rentrer dans des développements discutables.
 #### SVG et VML
 
 Il nous reste encore deux solutions qui n'ont pas été abordées 
-pour nos coins arrondis : utiliser des images vectorielles directement 
+pour nos coins arrondis : utiliser des images vectorielles directement 
 embarquées dans un code html ou javascript, ne nécessitant pas 
 de multiples images tierces. 
 
 Nous pouvons faire appel pour cela aux deux langages vectoriels 
-utilisés sur le web : SVG et VML. Le premier, SVG, est supporté 
+utilisés sur le web : SVG et VML. Le premier, SVG, est supporté 
 plus ou moins bien par tous les navigateurs récents mais souffre 
 lui aussi d'un manque de support de Microsoft Internet Explorer 
 6 à 8 (sauf plugin tiers à installer en plus). Il n'offre donc pas 
@@ -1397,7 +1397,7 @@ Dans l'exemple suivant on commence par déclarer l'espace de
 nom VML (le préfixe utilisé par les balises VML) avant d'utiliser 
 `<roundrect>` lui même. Ceux qui ont l'habitude d'utiliser 
 XML doivent faire attention, la syntaxe pour déclarer l'espace 
-de nom n'est pas une faute de frappe, y compris le préfixe « `xml:` 
+de nom n'est pas une faute de frappe, y compris le préfixe « `xml:` 
 » qui n'est lui-même pas déclaré (si cette phrase d'avertissement 
 ne vous dit rien, ignorez là). 
 
@@ -1409,16 +1409,16 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing
 ~~~~~~~
 
 Pour que le tout fonctionne on ajoute quelques lignes à la feuille 
-de style : 
+de style : 
 
 ~~~~~~~ {.css}
 v\:roundrect {
-    behavior:url(#default#VML) ;
+    behavior:url(#default#VML) ;
 }
 ~~~~~~~
 
 Au final, si on souhaite utiliser la même balise pour tous les 
-navigateurs, on peut finir avec un code similaire à celui ci : 
+navigateurs, on peut finir avec un code similaire à celui ci : 
 
 ~~~~~~~ {.css}
 v\:roundrect {
@@ -1429,13 +1429,13 @@ v\:roundrect {
     -webkit-border-radius: 10px ;
     -khtml-border-radius: 10px ;
     border-radius: 10px ;
-    /* suite pour IE seulement : */
+    /* suite pour IE seulement : */
     behavior:url(#default#VML)
     /background-color:transparent ;
 }
 ~~~~~~~
 
-On notera l'obligation d'utiliser un « hack » CSS (la barre oblique 
+On notera l'obligation d'utiliser un « hack » CSS (la barre oblique 
 inverse) pour retirer la couleur de fond dans Internet Explorer. 
 Cette dernière est en effet alors précisée dans la balise VML. 
 Pour Microsoft Internet Explorer 8 il faut aussi souvent ajouter 
@@ -1457,7 +1457,7 @@ pour chaque sélecteur CSS qui cible les images à coins arrondis.
 <script type="text/javascript" src="script/roundies.js">
 </script><![endif]-->
 DD_roundies.addRule('#menu li', '10px'); 
-DD_roundies.addRule('h1', '20px') ;
+DD_roundies.addRule('h1', '20px') ;
 ~~~~~~~
 
 La seconde méthode utilise un fichier HTC (l'équivalent des 
@@ -1485,12 +1485,12 @@ coins sont arrondis de la même façon et peut poser des problèmes
 de performance (je ne garantis donc pas que le remède n'est pas 
 pire que le mal initial, c'est à vous de le vérifier). 
 
-* DD_Roundies : [http://dillerdesign.com/experiment/DD_roundies/](http://dillerdesign.com/experiment/DD_roundies/) 
+* DD_Roundies : [http://dillerdesign.com/experiment/DD_roundies/](http://dillerdesign.com/experiment/DD_roundies/) 
 
-* HTC curved corners : [http://code.google.com/p/curved-corner/](http://code.google.com/p/curved-corner/) 
+* HTC curved corners : [http://code.google.com/p/curved-corner/](http://code.google.com/p/curved-corner/) 
 
 Si vous décidez d'utiliser une de ces deux méthodes, relisez 
-le titre précédent « Lâcher Microsoft Internet Explorer 6 à 8 
+le titre précédent « Lâcher Microsoft Internet Explorer 6 à 8 
 » par acquis de conscience. Il est très probable que vous vous 
 engagiez sur une solution qui ne couvre pas tous les cas d'utilisation, 
 qui vous ajoute des contraintes de développement, et qui a, elle 
@@ -1566,7 +1566,7 @@ Les deux propriétés peuvent être préfixées par `repeating-`
 pour demander une répétition du gradient. 
 
 Enfin, les navigateurs actuels demandent pour l'instant un 
-préfixe pour interpréter ces syntaxes : `-moz-` pour Mozilla 
+préfixe pour interpréter ces syntaxes : `-moz-` pour Mozilla 
 (utilisé dans les exemples), et `-o-` pour Opera et `-webkit-` 
 pour Webkit. Dans le futur ces préfixes sont amenés à disparaître. 
 
@@ -1574,31 +1574,31 @@ pour Webkit. Dans le futur ces préfixes sont amenés à disparaître.
 
 Pour les anciens webkit (Safari et Chrome, y compris mobiles) 
 c'est une `-webkit-linear-gradient` qui contrôle les deux 
-types de dégradés.Les paramètres sont, dans l'ordre : 
+types de dégradés.Les paramètres sont, dans l'ordre : 
 
 * le mot clef `radial` ou `linear` respectivement pour des dégradés 
-  radiaux ou linéaires ; 
+  radiaux ou linéaires ; 
 
 * la position du début du dégradé avec d'abord la position horizontale 
   (mot clef `left`, `center`, `right`, ou une mesure par rapport 
   au bord) puis la position verticale (`top`, `center`, `left`, 
-  ou une mesure) ; 
+  ou une mesure) ; 
 
-* uniquement dans le cas d'un dégradé radial : la taille du rayon 
-  de début ; 
+* uniquement dans le cas d'un dégradé radial : la taille du rayon 
+  de début ; 
 
 * la position de fin du dégradé, suivant la même syntaxe que le 
-  début ; 
+  début ; 
 
-* uniquement dans le cas d'un dégradé radial : la taille du rayon 
-  de fin ; 
+* uniquement dans le cas d'un dégradé radial : la taille du rayon 
+  de fin ; 
 
-* la couleur de début dans l'expression `from( )` ; 
+* la couleur de début dans l'expression `from( )` ; 
 
-* la couleur de fin dans l'expression `to( )` ; 
+* la couleur de fin dans l'expression `to( )` ; 
 
 * d'optionnels points d'arrêts avec l'expression `color-stop( 
-  )` qui contient deux arguments séparés par une virgule : une 
+  )` qui contient deux arguments séparés par une virgule : une 
   mesure en pourcentage pour la position de la couleur intermédiaire 
   et le code couleur voulu. 
 
@@ -1621,7 +1621,7 @@ Android et Iphone.
 Il n'est pas certain que cette ancienne syntaxe continue à être 
 supportée pendant des années, aussi vous êtes encouragés à toujours 
 aussi utiliser la syntaxe pérenne expliquée plus avant. Le navigateur 
-utilisera celle qu'il reconnaitra (ou la dernière saisie s'il 
+utilisera celle qu'il reconnaîtra (ou la dernière saisie s'il 
 connait les deux). 
 
 #### Support des anciens navigateurs Opera
@@ -1655,7 +1655,7 @@ En comparant les versions avec et sans dégradé on aura certainement
 une impression négative sur la seconde mais le visiteur ne ressentira 
 probablement pas de manque avec cette alternative. 
 
-**Recommandation** : Quand cela est possible, remplacez les 
+**Recommandation** : Quand cela est possible, remplacez les 
 images de dégradés par des règles CSS 3, ou simulez les avec un 
 jeu de deux couleurs. 
 
@@ -1673,7 +1673,7 @@ avec une image de fond ou accepter de ne pas afficher d'ombre.
 
 Il existe deux directives, `box-shadow` pour créer une ombre 
 sur un bloc et `text-shadow` pour créer une ombre sous un texte. 
-Elles prennent quatre valeurs : 
+Elles prennent quatre valeurs : 
 
 * un décalage horizontal pour faire en sorte que l'ombre se situe 
   sur un côté, 
@@ -1681,7 +1681,7 @@ Elles prennent quatre valeurs :
 * un décalage vertical pour faire en sorte que l'ombre se situe 
   en haut ou en bas, 
 
-* une mesure pour l'entendue du flou autour de l'ombre, 
+* une mesure pour l'étendue du flou autour de l'ombre, 
 
 * la couleur de l'ombre. 
 
@@ -1690,9 +1690,9 @@ Elles prennent quatre valeurs :
 Afin de s'assurer d'un support sur Safari (au moins jusqu'à la 
 version 6 incluse) , Iphone (au moins jusqu'à la version 4.2 incluse) 
 et Android (2.3 incluse), il faudra ajouter une seconde directive 
-préfixée par `-webkit-` : `-webkit-text-shadow`. 
+préfixée par `-webkit-` : `-webkit-text-shadow`. 
 
-**Recommandation** : Quand cela est possible, remplacez les 
+**Recommandation** : Quand cela est possible, remplacez les 
 ombres portées réalisées avec des images par des règles CSS 3. 
 
 Éviter les requêtes HTTP non souhaitées
@@ -1728,7 +1728,7 @@ peuvent généralement être regroupés avec un minimum de compromis
 avec le graphiste. Cela améliorera l'homogénéité du site, simplifiera 
 les développements et améliorera les performances. 
 
-**Recommandation** : Traquez et éliminez les composants chargés 
+**Recommandation** : Traquez et éliminez les composants chargés 
 plusieurs fois par erreur et les images proches. 
 
 ### Manque de cache sur les réactualisations
@@ -1759,10 +1759,10 @@ S'il s'agit d'une actualisation différée alors un code javascript
 remplacer la balise `<meta>`. 
 
 ~~~~~~~ {.oneline .javascript}
-window.setTimeout( function() { document.location = "…" ; }, 1000) ;
+window.setTimeout( function() { document.location = "…" ; }, 1000) ;
 ~~~~~~~
 
-**Recommandation** : Éliminez les entêtes « refresh » présente 
+**Recommandation** : Éliminez les entêtes « refresh » présente 
 dans les entêtes HTTP ou dans les balises <meta>. Remplacez les 
 par des redirections HTTP ou des compteurs javascript. 
 
@@ -1785,7 +1785,7 @@ d'une page HTML qui fait parfois plus de 100 Ko puis une tentative
 d'interpréter cette page HTML comme si c'était un autre type 
 de contenu. 
 
-**Recommandation** : Traquez et éliminez les références à des 
+**Recommandation** : Traquez et éliminez les références à des 
 URL vides. 
 
 ### Détection de jeu de caractères
@@ -1819,7 +1819,7 @@ page. Ce faisant il perd un peu de temps mais certains navigateurs
 vont jusqu'à télécharger une seconde fois les composants qu'ils 
 avaient commencer à télécharger. 
 
-**Recommandation** : Précisez le bon jeu de caractères dans 
+**Recommandation** : Précisez le bon jeu de caractères dans 
 les entêtes HTTP et placez en plus le `<meta>` correspondant 
 le plus haut possible dans votre page, si possible avant toute 
 autre balise du `<head>`. 
@@ -1838,7 +1838,7 @@ les performances s'en ressortent puisqu'il faut télécharger
 la page d'erreur en lieu et place du composant initial, inutilement. 
 Parfois ces pages d'erreur dépassent 100 Ko. 
 
-**Recommandation** : Vérifiez la présence de références vers 
+**Recommandation** : Vérifiez la présence de références vers 
 des composants ayant changé d'adresse ou ayant été supprimés 
 (ou liés avec la mauvaise adresse) et corrigez les. 
 
@@ -1853,22 +1853,22 @@ erreur 404
 ---------
 
 * Le nombre de requêtes HTTP est l'un des principaux facteurs 
-  de ralentissement des pages web ; 
+  de ralentissement des pages web ; 
 
 * Regroupez les composants javascript et les feuilles de style 
-  en un seul fichier ; 
+  en un seul fichier ; 
 
 * Réalisez des sprites CSS pour charger plusieurs images en 
-  une fois ; 
+  une fois ; 
 
 * Chargez les petites images présentes sur toutes les pages 
   par un système de téléchargement par lot comme les liens en 
-  data: ; 
+  data: ; 
 
-* Évitez les redirections HTTP ; 
+* Évitez les redirections HTTP ; 
 
 * Profitez des nouvelles fonctionnalités CSS 3 pour remplacer 
-  certaines images ; 
+  certaines images ; 
 
 * Faites attention aux composants chargés inutilement plusieurs 
   fois.
