@@ -9,7 +9,7 @@ chargement.
 
 La solution naturelle est de permettre au navigateur de paralléliser 
 son travail, par exemple télécharger deux composants simultanément 
-vu que la limitation est « par téléchargement » et non globale. 
+vu que la limitation est « par téléchargement » et non globale. 
 On utilise alors mieux le processeur et la bande passante. 
 
 On peut constater ce manque de parallélisation des navigateurs 
@@ -28,7 +28,7 @@ de la bande passante ajoute encore à la frustration quand on se
 rends compte que la vitesse la plus importante est de 51 Kb/s. 
 
 Sur les lignes de téléchargement on peut voir que certaines connexions 
-servent peu (les premières) et que les autres ont des « trous ». 
+servent peu (les premières) et que les autres ont des « trous ». 
 En permettant la parallélisation dès le début on gagnerait 2,5 
 secondes au départ. En évitant le trou et en permettant l'utilisation 
 soutenue de toutes les connexions, on finirait là aussi environ 
@@ -213,7 +213,7 @@ domaines.
 nouvelle connexion est prohibitif : N'ajoutez pas un domaine 
 tant que vous avez moins de 8 à 10 requêtes par connexion. Si vous 
 avez des visiteurs avec des navigateurs récents, cela veut dire 
-que vous pourrez souvent rester avec un voire deux domaines. 
+que vous pourrez souvent rester avec un voir deux domaines. 
 
 **Recommandation** : Sur un site standard, privilégiez la répartition 
 de vos composants sur deux à trois domaines. 
@@ -346,7 +346,7 @@ savent tous le gérer dans leurs versions répandues).
 Seules les versions récentes des navigateurs (Chrome 11, Firefox 
 3.6, Internet Explorer 9 et Safari 5.1) savent charger en parallèle 
 les images quant elles apparaissent après une feuille de style 
-suivie par un script « en ligne ». Les autres navigateurs (y compris 
+suivie par un script « en ligne ». Les autres navigateurs (y compris 
 toutes les versions d'Opera au moins jusqu'à la 11.5) attendent 
 le téléchargement complet de la feuille de style pour exécuter 
 le javascript et enfin commencer à télécharger les images. 
@@ -398,7 +398,7 @@ Positionner le code javascript
 La première recommandation pour palier le problème de parallélisation 
 des scripts est de faire attention à leur placement dans le corps 
 de la page. Pour cela on distingue les scripts embarqués dans 
-la page (« inline ») et les scripts externes. 
+la page (« inline ») et les scripts externes. 
 
 ### Code javascript embarqué dans la page
 
@@ -525,8 +525,8 @@ quand il n'est pas envisageable de les masquer par défaut ou de
 les faire apparaître à l'écran par la suite. 
 
 C'est par exemple cette solution qu'on trouvera derrière les 
-boutons « retirer le produit de la commande et recalculer le prix 
-à payer » d'un récapitulatif de commande. Il est nécessaire pour 
+boutons « retirer le produit de la commande et recalculer le prix 
+à payer » d'un récapitulatif de commande. Il est nécessaire pour 
 l'utilisateur d'avoir immédiatement accès au bouton et d'en 
 connaître la présence, par contre il est envisageable d'attendre 
 un court instant une fois qu'on tente de faire une opération. 
@@ -581,13 +581,13 @@ puis de modifier le DOM avec javascript pour obtenir l'effet
 souhaité. Si les deux interfaces, avec et sans, diffèrent visuellement, 
 l'effet peut être gênant pour l'utilisateur. C'est encore plus 
 vrai si les scripts sont exécutés en fin de page puisque la page 
-« sans javascript » sera donc affichée plus longtemps. 
+« sans javascript » sera donc affichée plus longtemps. 
 
 Il est alors nécessaire de prévoir si la page exécutera ou non 
 les scripts pour lui faire afficher directement la bonne mise 
-en page. Pour cela on utilise généralement un script « en ligne 
+en page. Pour cela on utilise généralement un script « en ligne 
 », directement embarqué dans le `<head>` de la page HTML, qui 
-se contente d'ajouter une classe nommée « js » à la balise racine 
+se contente d'ajouter une classe nommée « js » à la balise racine 
 `<html>`. 
 
 ~~~~~~~ {.oneline .html .partial}
@@ -611,8 +611,8 @@ sous forme d'onglets de façon à optimiser l'espace de la page.
 ![Résultats sportifs avec javscript](img/chap06-resultats-sportifs-avec-javscript.png)
 
 Il est possible de passer de l'un à l'autre avec uniquement des 
-règles CSS. Les onglets supplémentaires (ici « résultats » et 
-« à venir ») ne seront pas utilisables directement. Pour passer 
+règles CSS. Les onglets supplémentaires (ici « résultats » et 
+« à venir ») ne seront pas utilisables directement. Pour passer 
 sur ces onglets il faudra attendre le chargement complet de Javascript 
 mais l'utilisateur ne s'en apercevra probablement pas : Il s'agit 
 d'un contenu annexe sur lequel l'utilisateur n'ira pas forcément 
@@ -656,7 +656,7 @@ de bloquer le rendu.
 #### Defer et async
 
 Depuis longtemps Microsoft Internet Explorer accepte un attribut 
-nommé « defer » sur les balises `<script>`. Il permet au navigateur 
+nommé « defer » sur les balises `<script>`. Il permet au navigateur 
 d'initier le téléchargement mais lui demande d'en différer 
 l'exécution à la fin de la page (dans l'ordre d'apparition). 
 On évite alors l'effet bloquant tout en permettant au navigateur 
@@ -670,7 +670,7 @@ de HTML 5 et commence à être supporté ailleurs.
 <script src="/chemin/vers/fichier.js" defer></script> 
 ~~~~~~~
 
-L'attribut « async » est lui tout nouveau, arrivé aussi avec HTML 
+L'attribut « async » est lui tout nouveau, arrivé aussi avec HTML 
 5. Le téléchargement du fichier est initié immédiatement et 
 le script sera exécuté dès que possible (à la fin du téléchargement), 
 mais le navigateur est informé qu'il doit continuer l'analyse 
