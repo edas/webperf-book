@@ -101,7 +101,7 @@ est limité en taille et vos utilisateurs ne naviguent pas que sur votre
 site. Au fur et à mesure de leur surf le cache se remplit, et certains
 anciens éléments sont effacés pour laisser de la place, peut être les
 vôtres. Le résultat c'est qu'à la prochaine visite sur votre site, on se
-retrouve dans la situation d'un cache vide : le navigateur doit
+retrouve dans la situation d'un cache vide : le navigateur doit
 retélécharger tous vos composants.
 
 Ensuite, certaines politiques de sécurité d'entreprise ou de gestion de
@@ -186,7 +186,7 @@ téléchargement en plus. Un élément qui reste trop longtemps en cache,
 c'est un élément qui risque de ne pas être mis à jour dans le rendu du
 navigateur quand bien même il aurait changé sur le serveur.
 
-Le premier mécanisme mis en oeuvre pour répondre à ces questions est la
+Le premier mécanisme mis en œuvre pour répondre à ces questions est la
 requête conditionnelle. Il s'agit pour le serveur d'informer le
 navigateur sur la date de dernière mise à jour du contenu. Dans les
 téléchargements suivants, le navigateur peut demander au serveur si la
@@ -1224,7 +1224,7 @@ cache). À l’inverse, le code 303 ne devrait jamais être mis en cache et
 une nouvelle demande au serveur doit être réalisée à chaque fois que
 nécessaire.
 
-### Le cas particulier des rafraichissements
+### Le cas particulier des rafraîchissements
 
 Les navigateurs ont prévu que l'utilisateur puisse outrepasser le cache.
 C'est ce qui est fait quand vous demandez de réactualiser la page
@@ -1403,7 +1403,7 @@ Il est important de noter que toutes ces tailles sont à entendre
 une fois les composants décompressés. On atteint donc très rapidement 
 les 4 Mo du cache Android. 
 
-**Recommandation**: pour des clients mobiles pensez que le 
+**Recommandation** : pour des clients mobiles pensez que le 
 cache se remplira très rapidement et ne sera finalement utilisable 
 que pour la session de navigation en cours. 
 
@@ -1411,7 +1411,7 @@ Certaines anciennes versions iPhones ne pouvaient toutefois
 pas stocker en cache des composants de plus de 25 Ko, pour un total 
 de 500 Ko. 
 
-**Recommandation** : pour compatibilité avec les anciens iPhone, 
+**Recommandation** : pour compatibilité avec les anciens iPhone, 
 gardez au maximum des composants (CSS, javascript) de moins 
 de 25 Ko une fois décompressés et limitez-vous à une vingtaine 
 d'objets. 
@@ -1419,18 +1419,18 @@ d'objets.
 ### Mozilla Firefox
 
 Dans Mozilla Firefox, les réglages de cache sont dans l'onglet 
-« réseau » de la section « avancé » des préférences. Vous y trouverez 
+« réseau » de la section « avancé » des préférences. Vous y trouverez 
 un bouton pour vider le cache (retirer tout ce qui y est stocké) 
 et un champ qui permet de définir la taille utilisée par Firefox 
 pour cet usage. 
 
-Pour les détails de configuration il faut aller à la page « about:config » 
-et chercher les directives començant par « browser.cache ». Toutes ces 
+Pour les détails de configuration il faut aller à la page « about:config » 
+et chercher les directives començant par « browser.cache ». Toutes ces 
 directives sont décrites en anglais sur 
 [http://kb.mozillazine.org/About:config_entries](http://kb.mozillazine.org/About:config_entries). 
 
 Le contenu du cache lui-même peut être exploré en allant à la page 
-« about:cache ». 
+« about:cache ». 
 
 ![Configuration du cache Mozilla Firefox](img/chap03-configuration-du-cache-mozilla-firefox.png)
 
@@ -1472,8 +1472,8 @@ cache : `shift`, `command`, `E`.
 ### Microsoft Internet Explorer
 
 Pour Microsoft Internet Explorer, vous pouvez vider le cache 
-en cliquant sur le bouton « Effacer... » de la section « historique 
-de navigation » dans l'onglet « général » des options Internet. 
+en cliquant sur le bouton « Effacer... » de la section « historique 
+de navigation » dans l'onglet « général » des options Internet. 
 
 Dans les paramètres, assurez vous que la configuration reste 
 sur la valeur par défaut, une vérification automatique. C'est 
@@ -1482,8 +1482,8 @@ les objets mis en cache.
 
 ![Configuration du cache Microsoft Internet Explorer 7](img/chap03-configuration-du-cache-microsoft-internet-explorer-7.png)
 
-Il est important de noter que sélectionner « à chaque visite de cette 
-page web » dans les préférences pour les fichiers temporaires 
+Il est important de noter que sélectionner « à chaque visite de cette 
+page web » dans les préférences pour les fichiers temporaires 
 ne suffit pas à désactiver complètement le cache. 
 
 ### Google Chrome
@@ -1494,8 +1494,8 @@ deux paramètres en ligne de commande lors du lancement du navigateur
 La taille du cache utilisée est visualisable à l'adresse `chrome://net-internals/httpcache.stats`. 
 
 Vider le cache se fait via les options du menu outil (représenté 
-par la clef à molette dans le coin droit en haut) puis avec « effacer 
-les données de navigation ». 
+par la clef à molette dans le coin droit en haut) puis avec « effacer 
+les données de navigation ». 
 
 ### Autres navigateurs ou versions plus récentes
 
@@ -1508,10 +1508,10 @@ les détails les plus à jour : <http://en.wikipedia.org/wiki/Bypass_your_cache>
 ---------
 
 * Le cache HTTP peut économiser plus de 80% du volume à télécharger 
-  pour charger une page web ; 
+  pour charger une page web ; 
 
 * Il y aura toujours une proportion non négligeable de visites 
-  avec un cache non initialisé, il ne faut pas les oublier ; 
+  avec un cache non initialisé, il ne faut pas les oublier ; 
 
 * Désactiver les ETags ; 
 

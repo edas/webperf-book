@@ -549,7 +549,7 @@ est atteint en moins de 20 jours.
 
 Vous verrez qu'il est possible de réaliser des investissements beaucoup
 plus faibles, avec des résultats qui restent spectaculaires. La mise en
-oeuvre des deux préconisations les plus importantes prennent moins d'une
+œuvre des deux préconisations les plus importantes prennent moins d'une
 journée chacune. En comptant les tests, l'apprentissage et la
 surveillance, on peut les mettre en pratique en une semaine.
 

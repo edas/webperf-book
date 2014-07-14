@@ -40,7 +40,7 @@ millisecondes d'occupation processeur. Côté serveur la compression
 n'est pas à coût nul, et prendra quelque chose comme 5 % du processeur. 
 C'est cependant probablement négligeable au regard des gains. 
 
-**Recommandation** : Activer la compression HTTP sur votre 
+**Recommandation** : Activer la compression HTTP sur votre 
 serveur web, au moins pour les contenus statiques à base de texte 
 (CSS et javascript par exemple). 
 
@@ -63,7 +63,7 @@ n'est qu'une variation de deflate avec des méta-données.
 
 1. Le navigateur commence par envoyer une entête particulière 
    quand il envoie sa requête. Il s'agit de l'entête `Accept-Encoding`. 
-   Le plus souvent la valeur est « gzip, deflate », qui signale 
+   Le plus souvent la valeur est « gzip, deflate », qui signale 
    que le navigateur supporte ces deux algorithmes. 
 
 ~~~~~~~ {.http .request}
@@ -122,7 +122,7 @@ doit être de nouveau réalisée.
 
 La mise en place de la compression HTTP est généralement l'affaire 
 de quelques lignes dans la configuration du serveur web. Quasiment 
-tous ont un module intégré ou une extension pour gérer la compression : 
+tous ont un module intégré ou une extension pour gérer la compression : 
 
 #### Apache 1.3
 
@@ -133,7 +133,7 @@ dans les paquets disponibles.
 * [http://www.schroepl.net/projekte/mod_gzip/](http://www.schroepl.net/projekte/mod_gzip/) 
 
 Pour une configuration minimale il suffit d'activer le module 
-et d'ajouter quelques lignes dans la configuration Apache : 
+et d'ajouter quelques lignes dans la configuration Apache : 
 
 ~~~~~~~ {.apache .partial}
 LoadModule gzip_module modules/mod_gzip.so
@@ -147,7 +147,7 @@ LoadModule gzip_module modules/mod_gzip.so
 Par défaut les fichiers sont recompressés à chaque accès. En 
 spécifiant un répertoire temporaire, on pourra mettre en cache 
 les fichiers statiques compressés pour éviter de faire plusieurs 
-fois le même travail : 
+fois le même travail : 
 
 ~~~~~~~ {.oneline .apache .partial}
 mod_gzip_temp_dir /tmp
@@ -155,7 +155,7 @@ mod_gzip_temp_dir /tmp
 
 Il est aussi possible de pré-compresser les contenus statiques 
 et de demander à mod_gzip de les utiliser au lieu de les compresser 
-lui-même. Ici on utilise l'extension `.gz` : 
+lui-même. Ici on utilise l'extension `.gz` : 
 
 ~~~~~~~ {.apache .partial}
 mod_gzip_can_negotiate Yes
@@ -176,7 +176,7 @@ compresser. On peut aisément définir ce minimum à 1 Ko étant donné
 qu'un seul paquet TCP/IP. On définit la taille maximum des fichiers 
 à compresser (pour ne pas tenter de compresser un fichier trop 
 important en volume) et l'occupation maximum en mémoire (au-delà 
-les fichiers sont compressés dans un répertoire temporaire) : 
+les fichiers sont compressés dans un répertoire temporaire) : 
 
 ~~~~~~~ {.apache .partial}
 mod_gzip_minimum_file_size    1000
@@ -187,7 +187,7 @@ mod_gzip_maximum_inmem_size   600000
 Enfin, on peut inclure ou exclure des contenus en fonction de 
 leur nom de fichier, de leur type mime, ou du module responsable 
 de leur gestion dans Apache. Le dernier paramètre de ces directives 
-est toujours une expression rationnelle : 
+est toujours une expression rationnelle : 
 
 ~~~~~~~ {.apache .partial}
 mod_gzip_item_include file \.html$
@@ -210,8 +210,8 @@ pas activé par défaut et c'est à vous de le faire.
 
 * [http://httpd.apache.org/docs/2.0/mod/mod_deflate.html](http://httpd.apache.org/docs/2.0/mod/mod_deflate.html) 
 
-Une fois le module chargé il suffit de déclarer le filtre « deflate » 
-pour tous les types de fichiers souhaités : 
+Une fois le module chargé il suffit de déclarer le filtre « deflate » 
+pour tous les types de fichiers souhaités : 
 
 ~~~~~~~ {.apache .partial}
 AddOutputFilterByType DEFLATE text/html text/plain text/xml 
@@ -241,7 +241,7 @@ mais il ne permet pas le cache des contenus compressés.
 * [http://redmine.lighttpd.net/wiki/1/Docs:ModCompress](http://redmine.lighttpd.net/wiki/1/Docs:ModCompress) 
 
 La liste des contenus à compresser est fixée par la directive 
-`compress.filtype` : 
+`compress.filtype` : 
 
 ~~~~~~~ {.oneline .lighttpd .partial}
 compress.filetype  = ("text/plain", "text/html")
@@ -250,7 +250,7 @@ compress.filetype  = ("text/plain", "text/html")
 Les contenus sont par défaut compressés à chaque requête. Pour 
 éviter de recompresser des milliers de fois le même fichier statique 
 Lighttpd nous permet de spécifier un répertoire où seront mis 
-en cache les résultats de compression : 
+en cache les résultats de compression : 
 
 ~~~~~~~ {.oneline .lighttpd .partial}
 compress.cache-dir = "/var/www/cache/"
@@ -259,7 +259,7 @@ compress.cache-dir = "/var/www/cache/"
 Enfin, une dernière directive permet de désactiver la compression 
 pour les fichiers trop volumineux. Le module contient une limite 
 haute native de 128 Mo mais il est probablement une bonne idée 
-de la réduire drastiquement : 
+de la réduire drastiquement : 
 
 ~~~~~~~ {.oneline .lighttpd .partial}
 compress.max-filesize = 1000 # en Ko
@@ -269,12 +269,12 @@ compress.max-filesize = 1000 # en Ko
 
 Le module de compression est livré par défaut avec IIS. Il vous 
 suffit de vous rendre dans l'outil de gestion IIS, dans l'onglet 
-« services » des propriétés du site web. 
+« services » des propriétés du site web. 
 
 * [http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/25d2170b-09c0-45fd-8da4-898cf9a7d568.mspx](http://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/25d2170b-09c0-45fd-8da4-898cf9a7d568.mspx) 
 
 Il est aussi possible d'activer la compression via deux lignes 
-de commande : 
+de commande : 
 
 ~~~~~~~ {.oneline .wshell}
 cscript adsutil.vbs set w3svc/filters/compression/parameters/HcDoStaticCompression true
@@ -305,7 +305,7 @@ pour désactiver tout cache par les proxy et les navigateurs.
 
 Pour faciliter, il existe des modules tierces qui permettent 
 de gérer tout cela plus simplement. C'est par exemple le cas de 
-IIS Accelerator : 
+IIS Accelerator : 
 
 * [http://www.vigos.com/products/iis-accelerator/](http://www.vigos.com/products/iis-accelerator/) 
 
@@ -314,7 +314,7 @@ IIS Accelerator :
 Dans Nginx la compression est gérée par le module HttpGzip. On 
 spécifie alors trois lignes, respectivement pour activer la 
 compression, définir les types des contenus à compresser, et 
-la taille minimale d'un fichier pour le prendre en compte : 
+la taille minimale d'un fichier pour le prendre en compte : 
 
 ~~~~~~~ {.nginx .partial}
 gzip             on;
@@ -325,8 +325,8 @@ gzip_min_length  1000;
 Par défaut la compression est faite à chaque requête. Le module 
 HttpGzipStatic permet d'utiliser des versions précompressées 
 sur disque. Dans ce cas Nginx recherche un fichier de même nom avec 
-en plus le suffixe « .gz ». On active ce support avec une simple 
-ligne de configuration : 
+en plus le suffixe « .gz ». On active ce support avec une simple 
+ligne de configuration : 
 
 ~~~~~~~ {.oneline .nginx .partial}
 gzip_static      on;
@@ -341,7 +341,7 @@ Si le client la supporte, il va forcer la valeur de Accept-Encoding à "gzip".
 Lorsque Varnish va demander le contenu au backend, il forcera Accept-Encoding à "gzip", de sorte que si le backend renvoi du contenu gzipé, Varnish le gardera en cache sous cette forme compressé.
 Si le backend renvoi du texte non compressé, Varnish le conservera non compressé.
 
-Pour économiser de la place dans le cache, il est possible de contraindre Varnish à compresser la réponse du backend :
+Pour économiser de la place dans le cache, il est possible de contraindre Varnish à compresser la réponse du backend :
 
 ~~~~~~~
 sub vcl_fetch {
@@ -353,9 +353,9 @@ sub vcl_fetch {
 }
 ~~~~~~~
 
-Note de la documentation : En règle générale, Varnish utilise peu le CPU, donc il peut être judicieux de lui déléguer la compression des contenus textes car il aura moins tendance à saturer le CPU que les autres serveurs web (notamment Apache).
+Note de la documentation : En règle générale, Varnish utilise peu le CPU, donc il peut être judicieux de lui déléguer la compression des contenus textes car il aura moins tendance à saturer le CPU que les autres serveurs web (notamment Apache).
 
-Documentation officielle de Varnish sur la compression : [https://www.varnish-cache.org/docs/trunk/users-guide/compression.html](https://www.varnish-cache.org/docs/trunk/users-guide/compression.html)
+Documentation officielle de Varnish sur la compression : [https://www.varnish-cache.org/docs/trunk/users-guide/compression.html](https://www.varnish-cache.org/docs/trunk/users-guide/compression.html)
 
 
 #### Contenus dynamiques
@@ -381,7 +381,7 @@ zlib.output_compression = On
 ~~~~~~~
 
 Pour Django il faut simplement ajouter le module gzip dans le 
-middleware : 
+middleware : 
 
 ~~~~~~~ {.django .partial}
 MIDDLEWARE_CLASSES = (
@@ -394,10 +394,10 @@ MIDDLEWARE_CLASSES = (
 
 Enfin, il est possible de désactiver totalement la compression 
 HTTP sur vos serveurs applicatifs et dans les applications elles-même. 
-C'est alors à un boitier qui se branche entre votre serveur web 
+C'est alors à un boîtier qui se branche entre votre serveur web 
 et Internet qu'est dévolue la tâche de réaliser la compression. 
 
-Il existe de nombreux boitiers qui réalisent cette opération, 
+Il existe de nombreux boîtiers qui réalisent cette opération, 
 et bien d'autres en même temps (gestion de la sécurité ssl, recompression 
 des images, proxy cache, etc.). On peut par exemple citer ActivNetworks 
 en France. 
@@ -417,7 +417,7 @@ pour les fichiers textes classiques. C'est le cas des fichiers
 HTML, CSS, javascript, XML, etc. Pour ces fichiers, même un niveau 
 de compression minimum obtient de très bons résultats. 
 
-Côté web on peut identifier les types mimes suivants : 
+Côté web on peut identifier les types mimes suivants : 
 
 * text/plain, 
 
@@ -480,7 +480,7 @@ fait habituellement une différence suivant le type de contenu,
 statique ou dynamique. Vous pouvez activer la compression des 
 contenus statiques sans avoir de doute. Le cache du serveur web 
 permettra de limiter la pénalité processeur tout en réduisant 
-le volume de données échanger. C'est un des meilleurs retours 
+le volume de données échangé. C'est un des meilleurs retours 
 sur investissement en terme de performance en raison du faible 
 investissement humain nécessaire pour la mise en œuvre. 
 
@@ -503,7 +503,7 @@ Tous les navigateurs récents supportent la compression HTTP
 avec gzip ou deflate, et ce depuis Microsoft Internet Explorer 
 4 et Netscape 4. Seuls restent quelques mauvais navigateurs 
 mobiles comme certains Blackberry. Ce n'est toutefois pas un 
-problème grâce au mécanisme d'auto-négociation : Si un navigateur 
+problème grâce au mécanisme d'auto-négociation : Si un navigateur 
 ne supporte pas la fonctionnalité il n'annonce pas le support 
 de gzip ou de deflate dans les entêtes HTTP et le serveur web ne 
 déclenchera pas la compression. 
@@ -523,11 +523,11 @@ c'est un défaut souvent jugé comme négligeable.
 La surprise vient en fait du nombre de visiteurs qui déclarent 
 ne pas supporter la compression. Ils peuvent représenter jusqu'à 
 15 % des visites uniques. Il s'agit en fait de deux catégories 
-bien identifiées : 
+bien identifiées : 
 
 * les utilisateurs avec des proxy, anti-virus, anti-malware, 
   outils de respect de la vie privée, et autres logiciels intermédiaires 
-  mal configurés ; 
+  mal configurés ; 
 
 * les utilisateurs de Microsoft Internet Explorer 6 derrière 
   un proxy (un défaut fait qu'il ne déclare pas toujours le support 
@@ -543,13 +543,13 @@ il n'y a malheureusement pas de solution efficace pour les détecter
 simplement dans le serveur web. 
 
 Google a développé un test applicatif à base de cookie, javascript 
-et iframe : Si le navigateur ne déclare pas supporter la compression 
-HTTP et qu'aucun cookie au nom de « gzip » n'est présent, on insère 
+et iframe : Si le navigateur ne déclare pas supporter la compression 
+HTTP et qu'aucun cookie au nom de « gzip » n'est présent, on insère 
 ce cookie avec une valeur 0 et on ajoute une iframe spécifique. 
 Cette iframe est envoyée compressée quelle que soit la déclaration 
 du navigateur, et exclue de tout cache (`Cache-Control: no-cache`). 
 Google a aussi remarqué qu'il était très important que l'adresse 
-de la page présente l'extension « .html » pour certains proxys 
+de la page présente l'extension « .html » pour certains proxys 
 dans le cadre de ce test. Un javascript dans l'iframe modifie 
 le cookie pour y mettre la valeur 1. Si la page compressée est correctement 
 décodée le cookie passe donc à 1, sinon il reste à 0. Par la suite 
@@ -576,11 +576,11 @@ impactera donc directement le temps de chargement et les performances
 du site. 
 
 Heureusement tout n'est pas perdu. Nous allons voir que nous 
-avons de multiples leviers pour optimiser le poids des images : 
+avons de multiples leviers pour optimiser le poids des images : 
 
 ### Format des images
 
-Il existe quatre formats d'images courants sur le web : JPEG, 
+Il existe quatre formats d'images courants sur le web : JPEG, 
 SVG, GIF et PNG. 
 
 Le jpeg est un format adapté pour les photos, avec des millions 
@@ -601,7 +601,7 @@ et d'image vectoriel. Il est impossible de représenter une photo
 ainsi mais en échange les logos ou les images créées à partir de 
 formes et de courbes peuvent être représentés avec une grande 
 fidélité quelle que soit la taille de l'image. On peut zoomer 
-à l'infini sans jamais voir de pixelisation. Comme il s'agit 
+à l'infini sans jamais voir de pixellisation. Comme il s'agit 
 d'un fichier qui contient du texte (du code XML), il est possible 
 de le compresser avec zip. On lui donne alors généralement l'extension 
 .svgz. 
@@ -624,7 +624,7 @@ des images inutilement volumineuses.
 
 Tout d'abord, tout ce qui est dès le départ réalisé en mode vectoriel 
 devrait rester dans le format svg. Quand cela est possible les 
-graphiques statistiques (en barres, en camenbert, en courbes) 
+graphiques statistiques (en barres, en camembert, en courbes) 
 sont aussi de très bons candidats au svg. 
 
 Ensuite, les logos, les visuels contenant du texte à lire, et 
@@ -639,16 +639,16 @@ Enfin, et il ne devrait rester plus que ça, tout ce qui est créé
 à partir de photos ou de dessins doit être réalisé à l'aide d'images 
 jpeg. 
 
-**Recommandation** : Vérifier que toutes les images créées 
+**Recommandation** : Vérifier que toutes les images créées 
 à partir de formes vectorielles qui le peuvent sont sauvegardées 
-en svg ; que les images de logo, contenant du texte ou des gros aplats 
-de couleurs unie sont en png ; et que les photos et dessins sont 
+en svg ; que les images de logo, contenant du texte ou des gros aplats 
+de couleurs unie sont en png ; et que les photos et dessins sont 
 en jpeg. 
 
-**Notes** : Il est possible d'obtenir une transparence avec alpha 
+**Notes** : Il est possible d'obtenir une transparence avec alpha 
 sur des png 8 bits, ce qui permet de beaux dégradés sans passer par
 le format 24 bits beaucoup lourd. Le second avantage est que IE6 
-gère alors correctement (miracle) la transparence : les pixels ayant
+gère alors correctement (miracle) la transparence : les pixels ayant
 un alpha de moins de 50% sont bien transparents et non bleus clairs.
 Par contre, peu de logiciels de graphisme proposent cette option 
 (ex: Fireworks, Pngquant, mais pas Photoshop CS6).
@@ -676,7 +676,7 @@ Vous pouvez sans craintes passer tous vos gif en png et vous serez
 sûrs d'y gagner. Si vous souhaitez le faire en masse, l'outil 
 imagemagick permet d'automatiser cela. 
 
-**Recommandation** : Convertir toute les images gif non animées 
+**Recommandation** : Convertir toute les images gif non animées 
 en fichiers png. 
 
 En fait il reste un cas où gif peut être adapté, c'est pour les images 
@@ -726,7 +726,7 @@ d'être dépendant d'un service externe.
 * [http://www.punypng.com/](http://www.punypng.com/) 
 
 Ces outils sont très intéressants car ils peuvent faire partie 
-de votre processus de mise en production : Lorsque les fichiers 
+de votre processus de mise en production : Lorsque les fichiers 
 sont packagés pour être mis en production un script passe toutes 
 les images par pngcrush ou optipng pour les optimiser. 
 
@@ -737,7 +737,7 @@ de quelques octets et le temps nécessaire passe de quelque secondes
 défaut obtient déjà de très bons résultats et offre le meilleur 
 rapport efficacité/temps. 
 
-**Recommandation** : Recompresser toutes les images png avec 
+**Recommandation** : Recompresser toutes les images png avec 
 optipng. 
 
 S'il s'agit de simplement vérifier l'état d'une page ou de faire 
@@ -794,7 +794,7 @@ présentes dans chacun diffèrent.
 
 #### Png
 
-Pour png les mêmes outils que précédemment font aussi le travail : 
+Pour png les mêmes outils que précédemment font aussi le travail : 
 pngcrush, optipng, et punnypng. Il n'y a donc pas besoin d'une 
 opération supplémentaire si vous avez déjà exécuté l'un d'eux. 
 
@@ -810,7 +810,7 @@ donc il n'y a aucun risque de dégradation de la qualité.
 
 * [http://freshmeat.net/projects/jpegoptim](http://freshmeat.net/projects/jpegoptim) 
 
-**Recommandation** : Retirer les méta-données des images jpeg 
+**Recommandation** : Retirer les méta-données des images jpeg 
 à l'aide de jpegtran. 
 
 #### Copyright, licences
@@ -853,7 +853,7 @@ sérieusement et si la qualité graphique n'est jamais remise
 en question, alors vous avez un biais opposé, qui n'est pas meilleur. 
 
 Il y a deux moyens d'action pour jouer sur la qualité d'une image 
-web : la palette de couleurs, et la force de compression jpeg. 
+web : la palette de couleurs, et la force de compression jpeg. 
 
 #### Palette de couleurs
 
@@ -882,13 +882,13 @@ un index de toutes les couleurs utilisées).
 Ensuite la question est de savoir si on ne peut pas réduire encore 
 les couleurs. Si deux couleurs de vert dans l'image sont très 
 approchantes, peut-on utiliser le même aux deux endroits ? Le 
-« enregistrer pour le web » d'Adobe Photoshop permet de tester 
+« enregistrer pour le web » d'Adobe Photoshop permet de tester 
 plusieurs combinaisons et d'en comparer le résultat avant de 
-choisir. Faites cependant très attention : L'oeil humain est 
+choisir. Faites cependant très attention : L'œil humain est 
 très bon pour comparer, mais se laisse facilement tromper quand 
 il n'a qu'un seul échantillon sous les yeux. En comparant une 
 images en pleines couleurs et une image en 256 couleurs côte à 
-côte, il est évident que la dégradation vous paraitra gênante, 
+côte, il est évident que la dégradation vous paraîtra gênante, 
 disgracieuse. Par la suite, même en retirant de la vue l'image 
 en pleines couleurs vous verrez immédiatement tous les défauts 
 de l'images en 256 couleurs. 
@@ -898,7 +898,7 @@ de l'images en 256 couleurs.
 Pourtant, faites l'expérience de mettre cette image dans vos 
 pages, sans rien dire à personnes, vous verrez que pas grand monde 
 ne s'en apercevra. Plus avant dans ce livre nous avions repéré 
-une astuce similaire : Pour faire un bouton avec un dégradé, il 
+une astuce similaire : Pour faire un bouton avec un dégradé, il 
 suffit en fait de mettre une couleur claire sur la moitié haute 
 et une plus foncée sur la moitié basse, et pas un réel dégradé. 
 C'est ce que font beaucoup de sites web, et personne ne le remarque. 
@@ -906,7 +906,7 @@ Sachez-donc faire des compromis de qualité, ce n'est pas toujours
 négatif et cela peut vous apporter de réels gains de performance 
 quand vous additionnez ceux de toutes les images. 
 
-**Recommandation** : Réduisez à 256 couleurs ou moins la palette 
+**Recommandation** : Réduisez à 256 couleurs ou moins la palette 
 de la plupart de vos images PNG d'interface graphique. 
 
 Adobe Photoshop, comme les autres logiciels d'édition d'image, 
@@ -923,7 +923,7 @@ choix cruciaux.
 Comme personne ne souhaite passer plusieurs heures à optimiser 
 de simples images, je vous propose d'utiliser l'outil pngquant. 
 Il sait réduire la palette en supprimant les détails inutiles 
-ou invisibles à l'oeil. Le travail est souvent meilleur visuellement 
+ou invisibles à l'œil. Le travail est souvent meilleur visuellement 
 que ce que fait Photoshop. 
 
 #### Qualité jpeg
@@ -938,7 +938,7 @@ prêt à accepter.
 
 Régler la qualité à 100 n'a virtuellement aucun intérêt pour 
 le web. Jusqu'à 90 % aucune différence n'est généralement visible 
-à l'oeil nu. Le plus souvent 80 % est un réglage par défaut qui permet 
+à l'œil nu. Le plus souvent 80 % est un réglage par défaut qui permet 
 d'avoir une image de très bonne qualité. Vous pouvez assez souvent 
 descendre jusqu'à 70 % pour des illustrations sans que cela soit 
 vraiment gênant. 
@@ -969,9 +969,9 @@ l'objet principal de l'image (par exemple la pointe d'un stylo)
 soit parfait, et que le reste (stylo, fond) puisse être plus ou 
 moins précis. On peut alors arriver à une qualité globale bien 
 plus faible en gardant une dégradation invisible sur les zones 
-qui accrochent l'oeil et qui contiennent le plus de détail. 
+qui accrochent l'œil et qui contiennent le plus de détail. 
 
-**Recommandation** : Réglez et diminuez la qualité de vos images 
+**Recommandation** : Réglez et diminuez la qualité de vos images 
 jpeg à 80 ou 70 %, éventuellement en réservant une zone dans l'image 
 avec une forte qualité pour quelques détails. 
 
@@ -982,7 +982,7 @@ en service web.
 
 Sous certaines versions d'Adobe Photoshop ce travail peut être 
 réalisé directement par le graphiste à l'aide de calques. Lors 
-de l'enregistrement « pour le web », l'outil de qualité permet 
+de l'enregistrement « pour le web », l'outil de qualité permet 
 de sélectionner un réglage différent par couche. Il suffit alors 
 de copier le détail principal de l'image sur une couche à part, 
 pour ensuite sélectionner une qualité de 90 % à cette couche et 
@@ -1003,7 +1003,7 @@ bien plus faible pour le reste de l'image.
 Après avoir choisi le bon format, recompressé les png, retiré 
 les méta-données, limité la palette au strict minimum, modifié 
 avec pertinence la qualité des jpeg, il ne vous reste plus que 
-quelques points à vérifier pour diminuer le poids de vos images : 
+quelques points à vérifier pour diminuer le poids de vos images : 
 
 #### Taille de l'image adaptée
 
@@ -1025,7 +1025,7 @@ besoin d'une vignette et d'une image grande taille, il est souvent
 préférable de livrer deux images plutôt que de réaliser le redimensionnement 
 dans le navigateur. 
 
-**Recommandation** : Vérifier que les images téléchargées 
+**Recommandation** : Vérifier que les images téléchargées 
 sont utilisées directement dans leur taille réelle et non redimensionnées 
 dans le navigateur. 
 
@@ -1048,9 +1048,9 @@ toujours la même.
 L'outil PunnyPNG fait cette opération, mais peut être réalisée 
 à partir de n'importe quel éditeur d'images évolué. 
 
-* PunnyPNG : [http://www.punypng.com/](http://www.punypng.com/) 
+* PunnyPNG : [http://www.punypng.com/](http://www.punypng.com/) 
 
-**Recommandation** : Utiliser PunnyPNG ou un outil équivalent 
+**Recommandation** : Utiliser PunnyPNG ou un outil équivalent 
 pour s'assurer que les pixels transparents dans les PNG avec 
 une couche d'opacité variable sont optimisés pour une meilleure 
 compression. 
@@ -1058,7 +1058,7 @@ compression.
 #### Animations gif
 
 Nous avons vu précédemment que le format gif n'est conseillé 
-que dans un seul cas : les images animées. Une image animée est 
+que dans un seul cas : les images animées. Une image animée est 
 constituée de multiples images qui s'affichent l'une après 
 l'autre suivant une temporisation prédéfinie. 
 
@@ -1069,9 +1069,9 @@ ne souffre d'aucun problème de compatibilité et peut être réalisée
 automatiquement par script lors de la mise en production d'une 
 image. 
 
-* Gifsicle : [http://www.lcdf.org/gifsicle/](http://www.lcdf.org/gifsicle/) 
+* Gifsicle : [http://www.lcdf.org/gifsicle/](http://www.lcdf.org/gifsicle/) 
 
-**Recommandation** : Supprimer les pixels inutiles dans les 
+**Recommandation** : Supprimer les pixels inutiles dans les 
 images gif animées grâce à l'outil gifsicle. 
 
 #### Espaces blancs
@@ -1083,7 +1083,7 @@ Ces bordures peuvent facilement être remplacées par des marges
 ou des bordures en CSS. Le poids total de vos images s'en trouvera 
 allégé. 
 
-**Recommandation** : Cadrer les images au plus juste en retirant 
+**Recommandation** : Cadrer les images au plus juste en retirant 
 les bordures unies et espaces blancs inutiles. 
 
 ### Cas particulier des favicon
@@ -1103,11 +1103,11 @@ Les navigateurs téléchargeront toujours le favicon, quoi que
 vous fassiez. Votre capacité d'intervention se limite donc 
 à faire en sorte qu'il soit le plus petit possible. La différence 
 entre un favicon de 300 ou de 500 octets est virtuellement nulle 
-et il n'y a qu'une seule règle importante à respecter : viser une 
+et il n'y a qu'une seule règle importante à respecter : viser une 
 image qui fait au plus 1 Ko. Cette limite est due à TCP, pour éviter 
 que le téléchargement ne nécessite plusieurs paquets réseaux. 
 
-**Recommandation** : Supprimer les différentes résolutions 
+**Recommandation** : Supprimer les différentes résolutions 
 de votre image favicon.ico pour tomber en dessous du kilo-octet. 
 Seule la version 16x16 pixels est indispensable. 
 
@@ -1136,7 +1136,7 @@ de 70 %. Tout dépend du style de codage et des optimisations mises
 en œuvre. Le résultat sera ensuite réduit une seconde fois par 
 la compression HTTP comme nous l'avons vu plus avant dans ce livre. 
 
-**Recommandation** : Minifier les fichiers javascript et CSS 
+**Recommandation** : Minifier les fichiers javascript et CSS 
 à la publication, par exemple avec YUI Compressor. 
 
 ### Javascript
@@ -1146,11 +1146,11 @@ Compiler, YUI Compressor, et Dojo ShrinkSafe. Tous trois sont
 rattachés à une bibliothèque javascript de référence mais sont 
 génériques et n'imposent pas d'utiliser la bibliothèque correspondante. 
 
-* Closure Compiler : [http://code.google.com/intl/fr/closure/compiler/](http://code.google.com/intl/fr/closure/compiler/) 
+* Closure Compiler : [http://code.google.com/intl/fr/closure/compiler/](http://code.google.com/intl/fr/closure/compiler/) 
 
-* YUI Compressor : [http://developer.yahoo.com/yui/compressor/](http://developer.yahoo.com/yui/compressor/) 
+* YUI Compressor : [http://developer.yahoo.com/yui/compressor/](http://developer.yahoo.com/yui/compressor/) 
 
-* Dojo ShrinkSafe : [http://shrinksafe.dojotoolkit.org/](http://shrinksafe.dojotoolkit.org/) 
+* Dojo ShrinkSafe : [http://shrinksafe.dojotoolkit.org/](http://shrinksafe.dojotoolkit.org/) 
 
 Ces outils permettent d'optimiser un fichier javascript en 
 retirant les espaces blancs inutiles, les commentaires, et 
@@ -1171,19 +1171,19 @@ Les plus agressifs analysent tout le code pour aussi utiliser
 les propriétés courtes (fusionner les `background-image`, 
 `background-position`, `background-repeat` et `background-color` 
 dans la seule propriété `background` par exemple) mais peuvent 
-parfois casser les astuces comme les « hacks CSS ». 
+parfois casser les astuces comme les « hacks CSS ». 
 
-* Clean CSS : [http://www.cleancss.com/](http://www.cleancss.com/) ; agressif 
+* Clean CSS : [http://www.cleancss.com/](http://www.cleancss.com/) ; agressif 
 
-* CSS Compressor : [http://www.csscompressor.com/](http://www.csscompressor.com/) ; agressif 
+* CSS Compressor : [http://www.csscompressor.com/](http://www.csscompressor.com/) ; agressif 
 
-* Lottery Post :[http://www.lotterypost.com/css-compress.aspx](http://www.lotterypost.com/css-compress.aspx) ; intermédiaire 
+* Lottery Post :[http://www.lotterypost.com/css-compress.aspx](http://www.lotterypost.com/css-compress.aspx) ; intermédiaire 
 
-* YUI Compressor : [http://developer.yahoo.com/yui/compressor/](http://developer.yahoo.com/yui/compressor/) ; simple 
+* YUI Compressor : [http://developer.yahoo.com/yui/compressor/](http://developer.yahoo.com/yui/compressor/) ; simple 
 
-Si vous utilisez un outil marqué comme « agressif », pensez à en 
+Si vous utilisez un outil marqué comme « agressif », pensez à en 
 tester le résultat sur de nombreux navigateurs et sur l'intégralité 
-de vos pages pour être certains qu'aucun dégât n'apparait. 
+de vos pages pour être certains qu'aucun dégât n'apparaît. 
 
 Il est aussi important de noter que YUI Compressor est le seul 
 à permettre de réaliser la compression en local. Tous les autres 
@@ -1234,7 +1234,7 @@ pas besoin de recevoir les cookies.
 Nous n'avons pas moyen d'informer à l'avance le navigateur de 
 l'utilité d'envoyer ou non les cookies. Par défaut ils sont envoyés 
 pour tout le domaine pour lesquels ils ont été enregistrés initialement. 
-Il ne reste donc qu'une option efficace : Séparer les contenus 
+Il ne reste donc qu'une option efficace : Séparer les contenus 
 dynamiques (qui ont besoin des cookies) et les contenus statiques 
 (qui n'ont pas besoin de cookies) sur des domaines différents, 
 et ne pas envoyer de cookies sur ces derniers. 
@@ -1242,12 +1242,12 @@ et ne pas envoyer de cookies sur ces derniers.
 Il est aussi possible d'utiliser des sous-domaines et non des 
 domaines différents mais dans ce cas il faut bien penser à ce que 
 les ressources dynamiques utilisent aussi un sous-domaine 
-(par exemple « www.example.org » et non directement « example.org 
+(par exemple « www.example.org » et non directement « example.org 
 ») et que les cookies sont restreints à ce sous-domaine (cela 
 se règle dans les options d'envoi des cookies avec votre langage 
 de programmation ou votre application). 
 
-**Recommandation** : Séparer les contenus statiques sur un 
+**Recommandation** : Séparer les contenus statiques sur un 
 ou plusieurs domaines ou sous-domaines qui ne recevront ni n'enverront 
 aucun cookie. 
 
@@ -1272,16 +1272,15 @@ y référence fréquemment un plan du site complet et dans ce cas
 leur poids varie de 25 Ko à 50 Ko (HTML uniquement). La page d'erreur 
 de tf1.fr fait par exemple 30 Ko. 
 
-**Recommandation** : Assurez-vous que les pages d'erreurs, 
+**Recommandation** : Assurez-vous que les pages d'erreurs, 
 et principalement la page d'erreur 404 soit minimale (HTML de 
 5 Ko environ) 
 
 Il arrive même que certains sites lancent une redirection vers 
 la page d'accueil, ce qui fait un aller-retour serveur inutile 
-et une page de 75 à 100 Ko à télécharger. La page d'orange.fr fait 
-par exemple 
+et une page de 75 à 100 Ko à télécharger. C'est le cas pour le site orange.fr. 
 
-**Recommandation** : La page d'erreur ne doit pas mener à une 
+**Recommandation** : La page d'erreur ne doit pas mener à une 
 redirection. 
 
 Le navigateur qui a une référence cassée vers une image ou un javascript 
@@ -1314,7 +1313,7 @@ donc à toujours avoir un fichier /favicon.ico, même s'il est
 perfectible du point de vue graphisme. Vous éviterez à certains 
 navigateur d'avoir à télécharger une page d'erreur inutilement. 
 
-**Recommandation** : Toujours prévoir un fichier favicon.ico 
+**Recommandation** : Toujours prévoir un fichier favicon.ico 
 à la racine du domaine. 
 
 À retenir

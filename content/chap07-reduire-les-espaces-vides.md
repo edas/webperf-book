@@ -41,7 +41,7 @@ incompatibles. Ils maintiennent une liste noire fixe des serveurs
 par le navigateur par le passé. Des réflexions sont toutefois 
 menées pour améliorer l'utilisation du pipelining à l'avenir. 
 
-De plus, ce mécanisme peut aussi ralentir le chargement des pages :
+De plus, ce mécanisme peut aussi ralentir le chargement des pages :
 le navigateur télécharge en réalité les composants sur plusieurs 
 fils TCP en parallèle. Un peu comme les queues au supermarché, 
 si on se contente de regarder le nombre de personnes en attente 
@@ -54,26 +54,26 @@ en cours de route. Ainsi, il est possible qu'un téléchargement
 soit en attente sur un fil TCP alors même que les autres fils TCP 
 n'ont plus aucune activité. 
 
-Support navigateur : http://www.blaze.io/technical/http-pipelining-request-distribution-algorithms/ 
+Support navigateur : http://www.blaze.io/technical/http-pipelining-request-distribution-algorithms/ 
 
 Le protocole SPDY
 -----------------
 
-SPDY (à prononcer en anglais comme « speedy », « rapide » en anglais) 
+SPDY (à prononcer en anglais comme « speedy », « rapide » en anglais) 
 est une évolution du protocole HTTP créée par Google. Cette couche 
 intermédiaire entre HTTP et TCP offre plusieurs fonctionnalités 
-et en particulier : 
+et en particulier : 
 
 * la possibilité d'utiliser un même fil TCP pour multiplexer 
   plusieurs requêtes/réponses simultanées, optimisant ainsi 
-  la bande passante ; 
+  la bande passante ; 
 
 * la possibilité de conseiller le navigateur dès les entêtes 
-  sur les ressources qu'il devrait charger sans attendre ; 
+  sur les ressources qu'il devrait charger sans attendre ; 
 
 * la possibilité pour le serveur d'envoyer des contenus de sa 
   propre initiative s'il est extrêmement probable que le client 
-  en aura besoin ; 
+  en aura besoin ; 
 
 * la compression des entêtes HTTP. 
 
