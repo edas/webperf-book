@@ -63,20 +63,20 @@ un peu plus loin dans le livre. Pour l'instant notre but est de
 couper au plus haut, éviter de faire les requêtes HTTP quand cela 
 est possible. 
 
-Concaténation javascript et css
+Concaténation JavaScript et CSS
 -------------------------------
 
 Le premier pas à faire, qui offre le meilleur retour sur investissement, 
 est d'abord de fusionner des contenus ensemble. 
 
 Toujours pour l'exemple de www.lemonde.fr nous avons 40 fichiers 
-javascript individuels dont 27 sur le domaine principal. Sur 
+JavaScript individuels dont 27 sur le domaine principal. Sur 
 Microsoft Internet Explorer 6 avec une mauvaise connexion avec 
 100 ms de latence, cela peut faire 1,5 secondes de perdues inutilement 
 rien qu'avec ces 27 requêtes HTTP (une demie seconde avec Firefox 
 3.5). 
 
-En fusionnant ces différents fichiers javascript avant de les 
+En fusionnant ces différents fichiers JavaScript avant de les 
 renvoyer au navigateur en un unique gros fichier qu'on téléchargera, on 
 évite alors l'impact de 26 requêtes HTTP (il en faudra toujours 
 une) et le délai que cela implique pour les mauvaises connexions 
@@ -93,7 +93,7 @@ c'est encore 6 fois 30 à 100 ms (donc de 200 ms à 600 ms au total) qui
 sont gagnés. 
 
 Le gain est d'autant plus important qu'en réalité les fichiers 
-javascript posent des problèmes aux navigateurs. C'est aussi 
+JavaScript posent des problèmes aux navigateurs. C'est aussi 
 vrai dans une moindre mesure pour les fichiers CSS. Ces fichiers 
 ont tendance à les charger séquentiellement sans utiliser leurs 
 possibilités de téléchargements parallèles : pendant ce temps 
@@ -108,7 +108,7 @@ qui sera à charger par le navigateur.
 
 **Recommandation** : Regroupez les feuilles de style apparaissant 
 sur la même page en un seul fichier. Faites de même avec les codes 
-javascript. Si possible, pensez à utiliser les attributs "defer" et "async" sur la balise script, 
+JavaScript. Si possible, pensez à utiliser les attributs "defer" et "async" sur la balise script, 
 si votre code est conçu pour être fonctionnel en asynchrone.
 Limitez-vous si possible à un seul composant de 
 chaque type sur une page. 
@@ -117,7 +117,7 @@ chaque type sur une page.
 
 Avoir un seul fichier de taille importante n'est pas toujours 
 idéal pour les développements. Il est appréciable de séparer 
-chaque fonctionnalité javascript et chaque style dans un fichier 
+chaque fonctionnalité JavaScript et chaque style dans un fichier 
 distinct, manipulable rapidement. 
 
 La précédente recommandation n'empêche pas un développement 
@@ -130,7 +130,7 @@ après fusion.
 La mise en œuvre manuelle de ce système ne prend pas un temps réellement 
 important. Il suffit à chaque mise en production de réaliser 
 un petit nombre de copier/coller et de changer les déclarations 
-de style et de javascript dans les entêtes des gabarits HTML. 
+de style et de JavaScript dans les entêtes des gabarits HTML. 
 
 Avec une petite aide, par exemple quelques lignes de PHP, l'application 
 saura basculer toute seule entre le chargement de multiples 
@@ -147,12 +147,12 @@ contraintes que cela apporterait.
 
 Toutefois, mettre en place une procédure entièrement automatisée 
 ne demande pas plus de quelques dizaines de lignes de script. 
-Il faut alors référencer les fichiers javascript et les fichiers 
+Il faut alors référencer les fichiers JavaScript et les fichiers 
 CSS dans un fichier de configuration. En développement, l'application 
 relit dynamiquement cette configuration pour charger les composants 
 un à un dans leur dernière version. 
 
-![Mise en place d'une structure souple pour la fusion des fichiers css et javascript](img/chap04-mise-en-place-dune-structure-souple-pour-la-fusion-des-fichiers-css-et-javascript.png)
+![Mise en place d'une structure souple pour la fusion des fichiers CSS et JavaScript](img/chap04-mise-en-place-dune-structure-souple-pour-la-fusion-des-fichiers-css-et-JavaScript.png)
 
 Une procédure automatisée relit cette même configuration pour 
 recréer le fichier fusionné à partir des sources, par exemple 
@@ -189,7 +189,7 @@ du fichier le plus récent. Un module similaire existe sur lighttpd.
 Yahoo! utilise lui aussi un tel mécanisme qu'ils appellent « 
 combo handler » pour ses serveurs de ressources statiques. L'adresse 
 suivante permet ainsi de charger en une fois le code de base de 
-la bibliothèque javascript YUI et le module de gestion des cookies : 
+la bibliothèque JavaScript YUI et le module de gestion des cookies : 
 <http://yui.yahooapis.com/combo?3.3.0/build/yui/yui-min.js&3.3.0/build/cookie/cookie-min.js>
 
 * Pour Apache 2 : <http://code.google.com/p/modconcat/>
@@ -223,7 +223,7 @@ subira un ralentissement.
 Il vous faut étudier quel est le pourcentage de réutilisation 
 de vos composants sur les différentes pages de votre site. Si 
 la réutilisation est forte et que vous pouvez vous le permettre, 
-avoir un fichier central unique pour javascript et un fichier 
+avoir un fichier central unique pour JavaScript et un fichier 
 central unique pour la feuille de style vous permettra d'avoir 
 un site très réactif. C'est le mode que vous devriez privilégier 
 dans un premier temps. 
@@ -233,7 +233,7 @@ qui diffèrent vraiment du reste du site. Il s'agit essentiellement
 des quelques pages très riches en animation ou qui ont besoin 
 de composants additionnels très lourds. On peut par exemple 
 citer les pages qui contiennent des éditeurs riches en ligne 
-à base de javascript. Ces pages là peuvent se permettre de ne pas 
+à base de JavaScript. Ces pages là peuvent se permettre de ne pas 
 utiliser le fichier central mais leur version, spécifique. 
 
 Éventuellement, s'il est possible d'individualiser quelques 
@@ -305,17 +305,17 @@ d'utilisateurs cibles.
   + config.css + … 
 
 En dehors des pages spécifiques comme celles des éditeurs riches 
-en javascript, il faut considérer un maximum de deux feuilles 
+en JavaScript, il faut considérer un maximum de deux feuilles 
 de style par page, en visant au maximum la possibilité de ne charger 
 que le fichier central si possible. Le plus souvent, pour les 
 feuilles de style, il est envisageable d'avoir un seul fichier 
 central pour quasiment toutes les pages du site, sans fichier 
 secondaire. 
 
-#### Spécificités des fichiers javascript
+#### Spécificités des fichiers JavaScript
 
-Si ce qui a été dit reste tout à fait valable pour les fichiers javascript, 
-la problématique est un peu différente. Comme les fichiers javascript 
+Si ce qui a été dit reste tout à fait valable pour les fichiers JavaScript, 
+la problématique est un peu différente. Comme les fichiers JavaScript 
 sont parfois lourds à télécharger, l'équilibre entre un cache 
 efficace, un téléchargement initial léger et le nombre de requêtes 
 HTTP sera différent de celui des feuilles de style. On tendra 
@@ -325,7 +325,7 @@ par page (mais pas plus, et uniquement si on en a vraiment besoin).
 Il est en effet plus fréquent d'avoir besoin d'un composant spécifique 
 qui sera un peu gros pour une inclusion inconditionnelle dans 
 toutes les pages. Suivant les besoins on peut même aller jusqu'à 
-trois fichiers javascript : le fichier central du site, le fichier 
+trois fichiers JavaScript : le fichier central du site, le fichier 
 qui contient les composants propres à la section (boutique, 
 actus, etc.), et le fichier qui contient les composants spécifique 
 à la page ou au modèle de page. 
@@ -333,25 +333,25 @@ actus, etc.), et le fichier qui contient les composants spécifique
 Il ne faut cependant pas oublier que cette multiplication a un 
 coût sérieux et qu'avoir un seul fichier par page doit rester 
 un objectif à tout moment. Tout ce qui a été dit au sujet de la fusion 
-des feuilles de style reste valable pour les fichiers javascript. 
+des feuilles de style reste valable pour les fichiers JavaScript. 
 
-Enfin, n'hésitez pas à créer un dernier fichier javascript si 
+Enfin, n'hésitez pas à créer un dernier fichier JavaScript si 
 celui-ci est chargé en fin de page HTML, juste avant la fermeture 
 de la balise `<body>`. Ce code ne sera en effet chargé qu'à la fin 
 de la page, après tout le contenu. L'effet négatif étant plus 
 faible, tout ce qui est ainsi posé à la fin a bien moins d'influence. 
 Vous verrez plus loin dans ce livre qu'insérer ainsi un fichier 
-javascript en fin de page est de toutes façons une recommandation 
+JavaScript en fin de page est de toutes façons une recommandation 
 importante. On y transférera le maximum de code possible, diminuant 
-ainsi les fichiers javascript chargés en haut de page dont nous 
+ainsi les fichiers JavaScript chargés en haut de page dont nous 
 parlions plus tôt. 
 
-![Répartition et séparation des fichiers javascript dans la page](img/chap04-repartition-et-separation-des-fichiers-javascript-dans-la-page.png)
+![Répartition et séparation des fichiers JavaScript dans la page](img/chap04-repartition-et-separation-des-fichiers-JavaScript-dans-la-page.png)
 
 Images en sprites CSS
 ---------------------
 
-Une fois les feuilles de styles et fichiers javascript concaténés 
+Une fois les feuilles de styles et fichiers JavaScript concaténés 
 il reste un composant principal qui occupe souvent plus de la 
 moitié des requêtes HTTP : les images. Contrairement à ce que 
 nous dit l'intuition, fusionner plusieurs images en un seul 
@@ -698,7 +698,7 @@ Données en ligne et téléchargements par lot
 -------------------------------------------
 
 Nous avons vu comment regrouper plusieurs composants externes 
-en un seul, que nous parlions de feuille de style, javascript 
+en un seul, que nous parlions de feuille de style, JavaScript 
 ou d'image. Si vous voulez aller plus loin il faudrait embarquer 
 ces composants directement dans la page web, ou du moins les fusionner 
 entre eux. 
@@ -706,7 +706,7 @@ entre eux.
 ### Externalisation des contenus
 
 Quand nous parlions de cache dans le chapitre précédent j'avais 
-posé comme recommandation d'insérer tous les codes css et javascript 
+posé comme recommandation d'insérer tous les codes CSS et JavaScript 
 dans des fichiers externes pour qu'ils puissent utiliser le 
 cache. Nous allons désormais modérer cette recommandation. 
 
@@ -724,13 +724,13 @@ en cache.
 Dans ce cas, le surcoût dû aux requêtes HTTP en plus n'est pas forcément 
 compensé par le gain dû aux caches. On s'autorise alors à mettre 
 le plus de contenus possible dans la page web elle-même, et à insérer 
-directement les codes javascript et CSS au lieu de faire des fichiers 
+directement les codes JavaScript et CSS au lieu de faire des fichiers 
 externes. 
 
 **Recommandation** : Pour les pages cibles (page d'accueil, 
 publicité, plaquette) attirant essentiellement des nouveaux 
 utilisateurs et suffisamment différentes du reste du site, 
-envisagez d'intégrer directement les codes javascript et CSS 
+envisagez d'intégrer directement les codes JavaScript et CSS 
 dans le corps de la page HTML au lieu de fichiers externes. 
 
 Ceci est une exception aux recommandations générales qui proposent 
@@ -747,7 +747,7 @@ un lot unique, ensemble. C'est ce qui est discuté ci-après.
 
 ### Les méthodes de téléchargement par lots
 
-Pouvoir intégrer les fichiers javascript et les feuilles de 
+Pouvoir intégrer les fichiers JavaScript et les feuilles de 
 style directement à la page HTML est intéressant mais pas suffisant. 
 Il peut être intéressant par exemple de regrouper différents 
 types de contenus, ou de les proposer au téléchargement en file 
@@ -900,7 +900,7 @@ aide à la compréhension, outils d'accessibilité, etc.).
 ### Les fichiers composés mhtml
 
 Les fichiers mhtml viennent du monde des emails (le nom vient 
-de « mime html », mime venant lui-même de « multipurpose internet 
+de « mime HTML », mime venant lui-même de « multipurpose internet 
 mail extensions », pour « extensions multifonctions pour e-mails 
 internet »). Ils y servent à insérer des images jointes au mail 
 et y faire référence dans le corps du document (généralement 
@@ -937,7 +937,7 @@ Content-Type: multipart/related ;
               boundary="==boundary-1" ;
               type="text/html"
 
-<!doctype html>
+<!doctype HTML>
 <html>
 <head>
 <title>Test de puce rouge</title>
@@ -1063,13 +1063,13 @@ probablement pas), quitte à ralentir un peu le chargement de
 la seconde page (vu que le cache ne sera pas initialisé). Plus 
 la page est spéciale, et uniquement utilisée comme page d'arrivée 
 (et pas dans la suite de la navigation), plus la décision d'embarquer 
-javascript, CSS, voire images et autres composants en ligne 
+JavaScript, CSS, voire images et autres composants en ligne 
 à du sens. 
 
 Pour les téléchargements par lot via data:, mhtml ou jar les critères 
 sont un peu plus souples. Il est en effet possible de profiter 
 du cache quand les fichiers sont chargés en lot avec une feuille 
-de style ou un javascript externe (et pas directement avec la 
+de style ou un JavaScript externe (et pas directement avec la 
 page principale elle-même). Il n'y a que trois problématiques 
 qui doivent alors guider le choix : 
 
@@ -1115,7 +1115,7 @@ Repérer les requêtes HTTP inutiles
 
 Nous avons tenté de limiter les requêtes HTTP sur les contenus 
 principaux, en regroupant les feuilles de style et les fichiers 
-javascript entre eux, en regroupant les images en sprites, voire 
+JavaScript entre eux, en regroupant les images en sprites, voire 
 en proposant de télécharger les images directement avec la feuille 
 de style. 
 
@@ -1156,9 +1156,9 @@ pour ne jamais les empiler les unes après les autres.
 
 S'il faut faire une redirection le problème peut être encore 
 plus important si vous la réalisez à l'aide d'une balise `<meta>` 
-en HTML ou pire, avec un code javascript` document.location`. 
+en HTML ou pire, avec un code JavaScript` document.location`. 
 Dans ces deux cas le navigateur tente de charger la page HTML complète 
-avec images, javascript, feuilles de style. C'est parfois plusieurs 
+avec images, JavaScript, feuilles de style. C'est parfois plusieurs 
 dizaines de requêtes qui sont lancées avant de faire la redirection. 
 C'est donc autant de temps perdu, inutilement. 
 
@@ -1170,7 +1170,7 @@ lourde page HTML bourrée de composants.
 
 **Recommandation** : Les éventuelles redirections doivent 
 être réalisées avec un code de retour HTTP 301, 302 ou 307 et pas 
-à l'aide d'une balise HTML ou d'un code javascript. 
+à l'aide d'une balise HTML ou d'un code JavaScript. 
 
 ### Feuilles de style alternatives
 
@@ -1218,7 +1218,7 @@ rarement une bonne idée.
 
 **Recommandation** : Ne spécifiez pas de style alternatif dans 
 la page HTML. Si vous devez proposer plusieurs styles, reposez-vous 
-sur un mécanisme à base de javascript ou via un fonctionnement 
+sur un mécanisme à base de JavaScript ou via un fonctionnement 
 applicatif côté serveur (le serveur se chargera d'envoyer la 
 feuille de style adaptée et seulement celle là). 
 
@@ -1251,7 +1251,7 @@ Les blocs rectangulaires purs et durs sont vus comme agressifs
 et « vieux » par certains graphistes. 
 
 La technique la plus habituelle est d'utiliser une à neuf images 
-pour les coins et les bordures, et un montage peu simple en html 
+pour les coins et les bordures, et un montage peu simple en HTML 
 et CSS pour placer ces images dans les différents coins et bords. 
 Le plus souvent ce sont quatre images qui sont utilisées, ou au 
 moins une grande image (sprite) de taille extrêmement importante 
@@ -1370,7 +1370,7 @@ sans rentrer dans des développements discutables.
 
 Il nous reste encore deux solutions qui n'ont pas été abordées 
 pour nos coins arrondis : utiliser des images vectorielles directement 
-embarquées dans un code html ou javascript, ne nécessitant pas 
+embarquées dans un code HTML ou JavaScript, ne nécessitant pas 
 de multiples images tierces. 
 
 Nous pouvons faire appel pour cela aux deux langages vectoriels 
@@ -1447,14 +1447,14 @@ intégrateurs web. Tous deux prennent en charge la création de
 l'élément VML et tout le code nécessaire pour le mettre en œuvre. 
 
 La première s'appelle DD_Roundies. Elle vous propose de charger 
-un fichier javascript spécifique avec un commentaire conditionnel 
+un fichier JavaScript spécifique avec un commentaire conditionnel 
 HTML (pour ne pas l'exécuter dans les navigateurs qui n'en ont 
 pas besoin) et de faire appel à la méthode `DD_Roundies.addRule()` 
 pour chaque sélecteur CSS qui cible les images à coins arrondis. 
 
 ~~~~~~~ {.html .partial}
 <!--[if lte IE 9]>
-<script type="text/javascript" src="script/roundies.js">
+<script type="text/JavaScript" src="script/roundies.js">
 </script><![endif]-->
 DD_roundies.addRule('#menu li', '10px'); 
 DD_roundies.addRule('h1', '20px') ;
@@ -1463,7 +1463,7 @@ DD_roundies.addRule('h1', '20px') ;
 La seconde méthode utilise un fichier HTC (l'équivalent des 
 fichiers XBL, mais propre à Microsoft Internet Explorer). Ces 
 fichiers permettent de rajouter des fonctionnements complexes 
-à certaines balises HTML, en javascript, dans les feuilles de 
+à certaines balises HTML, en JavaScript, dans les feuilles de 
 style. Le HTC s'occupe donc de tout le code VML pour peu qu'on l'inclue 
 dans tous les sélecteurs CSS qui s'occupent des coins arrondis 
 : 
@@ -1494,7 +1494,7 @@ le titre précédent « Lâcher Microsoft Internet Explorer 6 à 8
 » par acquis de conscience. Il est très probable que vous vous 
 engagiez sur une solution qui ne couvre pas tous les cas d'utilisation, 
 qui vous ajoute des contraintes de développement, et qui a, elle 
-aussi, ses défauts de performance (htc pour l'une, javascript 
+aussi, ses défauts de performance (htc pour l'une, JavaScript 
 pour l'autre). À vous de faire vos choix, je ne vous donne que les 
 armes, mais si vous vous tirez dans le pied à ce sujet, je dégage 
 toute responsabilité. 
@@ -1718,7 +1718,7 @@ contient un paramètre et l'autre non), par deux serveurs distincts
 (le chargement de jquery une fois par Google et une fois en local 
 sur le site), ou dans des versions proches. 
 
-Ces duplications imposent au navigateur de charger plusieurs fois le composant. Quand il s'agit de bibliothèques javascript de près de 100 Ko l'impact sur les performances est important. Pour traquer ces cas regardez la liste des ressources CSS et javascript téléchargées et traquez des noms similaires.
+Ces duplications imposent au navigateur de charger plusieurs fois le composant. Quand il s'agit de bibliothèques JavaScript de près de 100 Ko l'impact sur les performances est important. Pour traquer ces cas regardez la liste des ressources CSS et JavaScript téléchargées et traquez des noms similaires.
 
 ![Ces duplications imposent au navigateur de charger plusieurs fois le composant](img/chap04-ces-duplications-imposent-au-navigateur-de-charger.png)
 
@@ -1754,17 +1754,17 @@ par un code de retour HTTP (301, 302 ou 307 suivant les cas) et l'entête
 `Location`. En PHP par exemple cela peut être fait avec `header("Location: 
 http://new-page/")`. 
 
-S'il s'agit d'une actualisation différée alors un code javascript 
+S'il s'agit d'une actualisation différée alors un code JavaScript 
 à l'aide de `document.location` et `window.setTimeout` peut 
 remplacer la balise `<meta>`. 
 
-~~~~~~~ {.oneline .javascript}
+~~~~~~~ {.oneline .JavaScript}
 window.setTimeout( function() { document.location = "…" ; }, 1000) ;
 ~~~~~~~
 
 **Recommandation** : Éliminez les entêtes « refresh » présente 
 dans les entêtes HTTP ou dans les balises <meta>. Remplacez les 
-par des redirections HTTP ou des compteurs javascript. 
+par des redirections HTTP ou des compteurs JavaScript. 
 
 ### URL vides
 
@@ -1774,11 +1774,11 @@ Le navigateur interprète ces adresses comme des adresses relatives
 par rapport à la page courante. Une adresse relative vide référence 
 alors tout simplement la page courante. 
 
-En conséquence une image, un code javascript, une feuille de 
+En conséquence une image, un code JavaScript, une feuille de 
 style, ou un composant quelconque avec une adresse vide référence 
 tout simplement la page courante. Le navigateur se retrouve 
 contraint de retélécharger la page HTML avant d'échouer à l'interpréter 
-comme une image, du javascript ou comme une feuille de style. 
+comme une image, du JavaScript ou comme une feuille de style. 
 
 Ces adresses vides impliquent donc une requête HTTP, le téléchargement 
 d'une page HTML qui fait parfois plus de 100 Ko puis une tentative 
@@ -1827,7 +1827,7 @@ autre balise du `<head>`.
 ### Adresses en erreur
 
 Enfin, et bien que cela soit étonnant, de nombreux sites contiennent 
-des liens ou des références vers des fichiers inexistants (javascript, 
+des liens ou des références vers des fichiers inexistants (JavaScript, 
 CSS, images). Ces fichiers ont pu exister à un moment, et ne sont 
 plus utilisés. Les références restent dans certains gabarits 
 et provoquent des erreurs 404. 
@@ -1855,7 +1855,7 @@ erreur 404
 * Le nombre de requêtes HTTP est l'un des principaux facteurs 
   de ralentissement des pages web ; 
 
-* Regroupez les composants javascript et les feuilles de style 
+* Regroupez les composants JavaScript et les feuilles de style 
   en un seul fichier ; 
 
 * Réalisez des sprites CSS pour charger plusieurs images en 

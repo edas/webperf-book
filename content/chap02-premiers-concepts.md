@@ -116,7 +116,7 @@ La suite de la réponse est vraiment similaire à ce que nous avons
 vu pour une requête : une suite d’en-têtes avec clef - valeur, une 
 ligne vide, et le corps de la réponse. Le corps de la réponse, c'est 
 ce que le serveur a fait correspondre à la ressource demandée,
-par exemple un fichier HTML, du code javascript, ou du contenu binaire de 
+par exemple un fichier HTML, du code JavaScript, ou du contenu binaire de 
 du fichier image. 
 
 ### Les outils
@@ -272,7 +272,7 @@ préalable de faible débit perdure.
 
 Sur le web l'essentiel des contenus sont très petits, souvent 
 moins de 10 ko, rarement plus de 25 ko (http://httparchive.org/interesting.php#responsesizes). Seuls quelques pages ou composants 
-javascript montent à 100 ko. Le résultat c'est que très souvent 
+JavaScript montent à 100 ko. Le résultat c'est que très souvent 
 TCP n'a pas le temps d'échanger assez de données pour monter à 
 la bande passante optimale entre le client et le serveur. 
 
@@ -348,9 +348,9 @@ propres à une analyse macroscopiques.
 
 Tout d’abord vous voyez que certaines requêtes bloquent tout 
 téléchargement. C’est le cas de la troisième ligne, un fichier 
-javascript. Tant que ce javascript n’est pas entièrement téléchargé, 
+JavaScript. Tant que ce JavaScript n’est pas entièrement téléchargé, 
 rien d’autre n’avance. Il y a même un espace blanc entre la fin 
-de ce javascript et le téléchargement suivant. C’est que le javascript 
+de ce JavaScript et le téléchargement suivant. C’est que le JavaScript 
 prend un certain temps à s’exécuter, et bloque le navigateur 
 pendant ce temps. 
 
@@ -415,7 +415,7 @@ Explorer :
 * JavaScript : C'est le sous-système chargé d'exécuter le code 
   JavaScript. 
 
-* Routage (marshalling) : Si le module javascript n'est pas 
+* Routage (marshalling) : Si le module JavaScript n'est pas 
   directement intégré dans le navigateur, il faut passer par 
   une couche intermédiaire pour toutes les interactions avec 
   le DOM ou les éléments du navigateur. Ce sous-système de routage 
@@ -443,7 +443,7 @@ La construction de la page en mémoire et l'affichage dans le navigateur passe d
 par de nombreuses étapes, susceptibles de générer des ralentissements ou blocages
 qu'il faudra donc éviter.
 
-Pour une application basée fortement sur ajax avec Microsoft 
+Pour une application basée fortement sur AJAX avec Microsoft 
 Internet Explorer 8, hors réseau, les répartitions sont de l'ordre 
 de 30 % pour le rendu, 20 % pour JavaScript, 15 % pour l'agencement, 
 et 12 % pour le formatage. Pour un site web plus classique le rendu, 
@@ -455,10 +455,10 @@ Cependant quelques points méritent une attention particulière.
 
 En premier lieu, on mentionnera :
 * l'ordre d'apparition des composants dans la page qui peut provoquer des blocages
-(attente qu'un composant - js, fonte - soit chargé et interprété avant de charger le suivant)
+(attente qu'un composant - JS, fonte - soit chargé et interprété avant de charger le suivant)
 * les composants dont le navigateur ne peut pas connaître les dimensions sans les avoir
 complètement téléchargés, et qui obligent a redessiner toute la page plusieurs fois 
-(images sans dimensions, animations flash chargées par javascript, publicités...)
+(images sans dimensions, animations flash chargées par JavaScript, publicités...)
 
 En second ordre, mais qui peuvent être problématique sur des grosses pages :
 * la taille du DOM
@@ -525,7 +525,7 @@ C'est toutefois la combinaison de toutes ces mesures qui constitue
 la performance d'une page. Lors de vos propres études, faites 
 attention à ne pas vous focaliser uniquement sur les deux que 
 nous mettons souvent en avant. Si le navigateur exécute encore 
-beaucoup de javascript (temps pour agir très long) ou si c'est 
+beaucoup de JavaScript (temps pour agir très long) ou si c'est 
 le contenu utile de la fin de page qui se charge avant celui de la 
 partie visible, vous aurez échoué à efficacement améliorer 
 les performances du point de vue de l'utilisateur. 
@@ -641,7 +641,7 @@ logiciels vous aurez certainement à installer des machines
 virtuelles. Certaines versions ayant des paramétrages vraiment 
 différent, ce n'est pas superflu. 
 
-Si vous avez en plus un Iphone et quelques téléphones portables 
+Si vous avez en plus un iPhone et quelques téléphones portables 
 avec accès web, cela peut être intéressant (mais pas indispensable). 
 Sur Android l'installation de Browser2 ([http://www.5o9mm.com/](http://www.5o9mm.com/)) 
 sera aussi utile pour avoir des métriques fiables. 
@@ -724,10 +724,10 @@ Débit et latence d'une connexion Internet type
 Ne soyez pas trop optimistes sur les valeurs de bande passante 
 et latence. Pensez que 2 Mb/s est déjà une bonne moyenne. En réalité 
 beaucoup ont une moins bonne connexion parce qu'ils utilisent 
-une connexion WIFI, un téléphone portable, un ordinateur lent, 
+une connexion Wi-Fi, un téléphone portable, un ordinateur lent, 
 ou un logiciel P2P en tâche de fond par exemple. Générez des mesures 
 et des tests pour 56 kb/s (modem téléphonique classique, RTC), 
-512 kb/s (ligne ADSL basique, mauvais wifi, ligne partagée), 
+512 kb/s (ligne ADSL basique, mauvais Wi-Fi, ligne partagée), 
 1 Mb/s, 2 Mb/s, éventuellement pour 3 Mb/s et 5 Mb/s. 
 
 Malheureusement il n'est pas la peine de monter plus haut. Plus 
@@ -751,7 +751,7 @@ correctes en France métropolitaine et des sites hébergés eux
 aussi en France métropolitaine ou dans la proche Europe. La latence 
 dépasse rarement les 100 ms pour des sites en Europe mais peut 
 facilement exploser s'il y a un problème réseau quelconque, et dès que l'on
-utilise des connexions aériennes telles que Wifi public ou par mobiles. 
+utilise des connexions aériennes telles que Wi-Fi public ou par mobiles. 
 
 Vous pouvez travailler avec le jeu de latence suivant : 30 ms, 
 45 ms, 60 ms, 90 ms et 120 ms voire 150 ms. 

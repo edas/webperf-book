@@ -357,7 +357,7 @@ plus importante. 
 Au total, en moyenne, le poids des pages est de plus de 500 kilo octets,
 avec près de 65 composants par page et pour seulement 500 mots. Si
 l'étude ne va pas jusqu'en 2010, avec la multiplication des
-bibliothèques javascript et des effets visuels, on peut sans risques
+bibliothèques JavaScript et des effets visuels, on peut sans risques
 continuer les courbes sur leur progression d'alors.
 
   [^12]: Étude avec sources sur websiteoptimizations.com, [« Average Web Page Size Triples Since 2003 » d’avril 2008](http://www.websiteoptimization.com/speed/tweak/average-web-page/)

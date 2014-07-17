@@ -124,7 +124,7 @@ iframe
 frame
 -----
 
-javascript
+JavaScript
 ----------
 
 css

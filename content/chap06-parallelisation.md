@@ -134,7 +134,7 @@ par VPN. Si une de ces connexions est trouvée, le navigateur est
 alors limité à deux connexions persistantes par domaine. 
 
 Il est possible dans ce navigateur de connaître combien de connexions 
-sont utilisées à l'aide de la propriété javascript `maxConnexionsPerServer` 
+sont utilisées à l'aide de la propriété JavaScript `maxConnexionsPerServer` 
 de l'objet `window`. 
 
 Plusieurs domaines en parallèle
@@ -294,9 +294,9 @@ explicitement tous les domaines sources autorisés) :
 </cross-domain-policy>
 ~~~~~~~
 
-De plus, les codes javascript ne pourront pas explorer totalement 
+De plus, les codes JavaScript ne pourront pas explorer totalement 
 les données venant de domaines tiers. Ainsi vous ne pourrez pas 
-en javascript explorer le DOM d'une feuille de style venant d'un 
+en JavaScript explorer le DOM d'une feuille de style venant d'un 
 autre domaine. Vous aurez aussi des limitations pour les requêtes 
 de type AJAX. 
 
@@ -322,8 +322,8 @@ pour les performances, au moins pour les navigateurs qui ne sont
 pas parfaitement à jour. 
 
 On peut facilement constater le problème sous Microsoft Internet 
-Explorer 6 en chargeant un long javascript suivi par quelques 
-images : Pendant le chargement et l'exécution du javascript, 
+Explorer 6 en chargeant un long JavaScript suivi par quelques 
+images : Pendant le chargement et l'exécution du JavaScript, 
 aucune autre activité n'est réalisée par le navigateur. Au lieu 
 d'être téléchargées en parallèle, les ressources sont chargées 
 séquentiellement, doublant le temps nécessaire au chargement 
@@ -349,7 +349,7 @@ les images quant elles apparaissent après une feuille de style
 suivie par un script « en ligne ». Les autres navigateurs (y compris 
 toutes les versions d'Opera au moins jusqu'à la 11.5) attendent 
 le téléchargement complet de la feuille de style pour exécuter 
-le javascript et enfin commencer à télécharger les images. 
+le JavaScript et enfin commencer à télécharger les images. 
 
 Pour l'instant (mars 2011) aucun navigateur ne sait correctement 
 gérer le parallélisme en mixant des scripts et des iframes. 
@@ -392,7 +392,7 @@ liste les fonctionnalités de chaque navigateur au regard de
 ces critères (et d'autres). Il est normalement tenu à jour assez 
 rapidement après la sortie d'une nouvelle version. 
 
-Positionner le code javascript
+Positionner le code JavaScript
 ------------------------------
 
 La première recommandation pour palier le problème de parallélisation 
@@ -400,12 +400,12 @@ des scripts est de faire attention à leur placement dans le corps
 de la page. Pour cela on distingue les scripts embarqués dans 
 la page (« inline ») et les scripts externes. 
 
-### Code javascript embarqué dans la page
+### Code JavaScript embarqué dans la page
 
 Les codes embarqués, s'ils sont exécutables presque instantanément, 
 devraient être placés le plus haut possible dans le `<head>`, 
 avant les références vers les feuilles de style et les autres 
-javascript. Placés en haut avant toute autre référence ils n'imposeront 
+JavaScript. Placés en haut avant toute autre référence ils n'imposeront 
 aucun téléchargement séquentiel avant de charger les composants 
 de la page. 
 
@@ -427,7 +427,7 @@ tout délai laissera une page blanche ou la page précédente plus
 longtemps à la vue de l'utilisateur, provocant un ressenti très 
 négatif. 
 
-### Code javascript externe ou à exécution lente
+### Code JavaScript externe ou à exécution lente
 
 Les scripts externes (dans des fichiers séparés) sont par nature 
 lents. Dans le meilleur des cas, sur un site grand public, c'est 
@@ -439,7 +439,7 @@ activité. Pour ces navigateurs, un script qui met une seconde
 à se charger c'est une page dont le chargement est ralenti d'autant. 
 
 Les autres navigateurs savent paralléliser les téléchargements 
-suivants (images et autres fichiers javascript) mais le rendu 
+suivants (images et autres fichiers JavaScript) mais le rendu 
 s'arrête le temps que notre fichier soit téléchargé et exécuté. 
 
 Pour éviter ces désagréments on conseille donc d'inclure l'essentiel 
@@ -450,14 +450,14 @@ embarqués directement dans la page.
 Placer les scripts en fin de page
 ---------------------------------
 
-Quand on propose de déporter le javascript en fin de page la réaction 
+Quand on propose de déporter le JavaScript en fin de page la réaction 
 est souvent une réaction de rejet. On n'imagine pas une page sans 
-javascript et on craint de donner une mauvaise expérience à l'internaute. 
+JavaScript et on craint de donner une mauvaise expérience à l'internaute. 
 
 Pourtant, nous avons un fait essentiel qui soutient notre objectif 
 : L'utilisateur cherche à utiliser en premier lieu le contenu 
 textuel et graphique avant de tenter d'interagir avec les enrichissements 
-javascript ou de profiter des animations. 
+JavaScript ou de profiter des animations. 
 
 Ce que nous cherchons donc à faire ici n'est pas d'accélérer le 
 chargement de la page, mais uniquement de faire arriver à l'écran 
@@ -465,22 +465,22 @@ le plus important le plus tôt possible : prioriser. En fait il
 se peut même que le chargement complet de la page soit légèrement 
 plus long, mais nous considérons quand même cela comme un bénéfice 
 si la page affichée à l'utilisateur est exploitable entre temps. 
-C'est tout l'objectif de déporter le javascript en fin de page. 
+C'est tout l'objectif de déporter le JavaScript en fin de page. 
 
-**Recommandation** : Placez les codes javascripts externes 
+**Recommandation** : Placez les codes JavaScripts externes 
 ou lents en fin de page, juste avant la fermeture de la balise `</body>`. 
 
-### Rendre la page fonctionnelle en attendant javascript
+### Rendre la page fonctionnelle en attendant JavaScript
 
 Malheureusement pour nous, les sites sont de plus en plus en dépendance 
-forte avec javascript. Pour mettre en œuvre notre recommandation 
-d'injecter le javascript uniquement à la fin de la page, il faut 
+forte avec JavaScript. Pour mettre en œuvre notre recommandation 
+d'injecter le JavaScript uniquement à la fin de la page, il faut 
 respecter une bonne pratique d'accessibilité : d'abord construire 
-la page, utilisable sans javascript, et ajouter les enrichissements 
+la page, utilisable sans JavaScript, et ajouter les enrichissements 
 seulement ensuite. 
 
 Il nous faudra toutefois éviter qu'un enrichissement dépendant 
-de javascript ne soit utilisé avant qu'il ne soit fonctionnel. 
+de JavaScript ne soit utilisé avant qu'il ne soit fonctionnel. 
 Trois options sont possibles : 
 
 #### Cacher la fonctionnalité lors de l'attente
@@ -493,16 +493,16 @@ est le carrousel : Par défaut seul le premier item du carrousel
 s'affiche. L'interface semble fonctionnelle, l'utilisateur 
 se retrouve juste avec un seul visuel. 
 
-Une fois le javascript disponible, c'est là que les autres visuels 
+Une fois le JavaScript disponible, c'est là que les autres visuels 
 sont téléchargés en tâche de fond et que l'animation commence. 
 Si c'est bien réalisé, l'utilisateur ne se rendra même pas compte 
 que le chargement se fait en deux temps. Seul le fait que le premier 
 visuel reste plus longtemps à l'écran la première fois permet 
 de déceler l'astuce. 
 
-![Carrousel avant le chargement complet des javascript](img/chap06-carrousel-avant-le-chargement-complet-des-javascript.png)
+![Carrousel avant le chargement complet des JavaScript](img/chap06-carrousel-avant-le-chargement-complet-des-JavaScript.png)
 
-![Carrousel après le chargement complet des javascripts](img/chap06-carrousel-apres-le-chargement-complet-des-javascripts.png)
+![Carrousel après le chargement complet des JavaScripts](img/chap06-carrousel-apres-le-chargement-complet-des-JavaScripts.png)
 
 Le fait que les animations n'attirent pas immédiatement la vue 
 mais seulement après un certain temps pourra même être vu comme 
@@ -536,18 +536,18 @@ avons donc tout à y gagner.
 
 Réaliser cet effet demande un investissement plus lourd que 
 la méthode précédente puisqu'il faut exécuter un très court 
-javascript en ligne dans le `<head>` (quelques lignes) afin 
+JavaScript en ligne dans le `<head>` (quelques lignes) afin 
 d'activer ce comportement d'attente, puis détecter si un clic 
-est en attente ou pas quand le javascript réel s'exécute en fin 
+est en attente ou pas quand le JavaScript réel s'exécute en fin 
 de page. 
 
 #### Attente lors de l'affichage de la fonctionnalité
 
 La troisième option c'est afficher directement un visuel d'attente 
-à la place, à côté ou par dessus l'interface dont le javascript 
+à la place, à côté ou par dessus l'interface dont le JavaScript 
 est en train de se télécharger. Ce peut être une image animée, 
 une barre de chargement, ou simplement un bouton grisé et désactivé. 
-Le visuel d'attente est ensuite supprimé quand le code javascript 
+Le visuel d'attente est ensuite supprimé quand le code JavaScript 
 nécessaire est enfin entièrement chargé. 
 
 ![Interface vidéo où les commentaires et sous-titres sont en cours de chargement](img/chap06-interface-video-ou-les-commentaires-et-sous-titres-sont-en-cours-de-chargement.png)
@@ -561,7 +561,7 @@ la page : un player vidéo par exemple.
 
 Aucune de ces options n'est parfaite, et elles représentent 
 toutes trois un compromis différent suivant le rôle et la place 
-de la fonctionnalité javascript. Gardez toutefois à l'esprit 
+de la fonctionnalité JavaScript. Gardez toutefois à l'esprit 
 que l'alternative c'est que votre page ne s'affiche pas du tout 
 (page blanche ou attente sur la page précédente), ou à moitié 
 (contenu haut et gauche, sans la barre de droite, le bas et plusieurs 
@@ -574,14 +574,14 @@ attente n'en sera que meilleure.
 
 ### Prévoir l'arrivée des scripts : éviter les pages qui bougent
 
-Afin de réaliser des pages qui fonctionne avec et sans javascript, 
+Afin de réaliser des pages qui fonctionne avec et sans JavaScript, 
 il vous est conseillé d'utiliser un mécanisme d'enrichissement. 
-Il s'agit de réaliser d'abord une page fonctionnelle sans javascript, 
-puis de modifier le DOM avec javascript pour obtenir l'effet 
+Il s'agit de réaliser d'abord une page fonctionnelle sans JavaScript, 
+puis de modifier le DOM avec JavaScript pour obtenir l'effet 
 souhaité. Si les deux interfaces, avec et sans, diffèrent visuellement, 
 l'effet peut être gênant pour l'utilisateur. C'est encore plus 
 vrai si les scripts sont exécutés en fin de page puisque la page 
-« sans javascript » sera donc affichée plus longtemps. 
+« sans JavaScript » sera donc affichée plus longtemps. 
 
 Il est alors nécessaire de prévoir si la page exécutera ou non 
 les scripts pour lui faire afficher directement la bonne mise 
@@ -595,17 +595,17 @@ se contente d'ajouter une classe nommée « js » à la balise racine
 ~~~~~~~
 
 La feuille de style pourra alors prévoir les deux cas, avec ou 
-sans javascript, et afficher immédiatement la mise en forme 
+sans JavaScript, et afficher immédiatement la mise en forme 
 la plus proche possible de la mise en forme finale. 
 
 Pour illustrer notre propos on peut prendre l'exemple d'une 
-page avec des résultats sportifs. Sans javascript ces résultats 
+page avec des résultats sportifs. Sans JavaScript ces résultats 
 sont présentés sous forme de plusieurs tableaux, un pour chaque 
 poule, placés les uns en dessous des autres. 
 
-![Résultats sportifs sans javascript](img/chap06-resultats-sportifs-sans-javascript.png)
+![Résultats sportifs sans JavaScript](img/chap06-resultats-sportifs-sans-JavaScript.png)
 
-Avec javascript nous souhaitons avoir une mise en page plus agréable 
+Avec JavaScript nous souhaitons avoir une mise en page plus agréable 
 sous forme d'onglets de façon à optimiser l'espace de la page. 
 
 ![Résultats sportifs avec javscript](img/chap06-resultats-sportifs-avec-javscript.png)
@@ -613,7 +613,7 @@ sous forme d'onglets de façon à optimiser l'espace de la page.
 Il est possible de passer de l'un à l'autre avec uniquement des 
 règles CSS. Les onglets supplémentaires (ici « résultats » et 
 « à venir ») ne seront pas utilisables directement. Pour passer 
-sur ces onglets il faudra attendre le chargement complet de Javascript 
+sur ces onglets il faudra attendre le chargement complet de JavaScript 
 mais l'utilisateur ne s'en apercevra probablement pas : Il s'agit 
 d'un contenu annexe sur lequel l'utilisateur n'ira pas forcément 
 cliquer en moins de quelques secondes. Si besoin on peut toutefois 
@@ -624,32 +624,32 @@ Par contre, il ne subira pas l'expérience désagréable qu'aurait
 avant de les voir se replier sous ses yeux faisant totalement 
 changer la forme générale de la page. 
 
-Charger Javascript en asynchrone
+Charger JavaScript en asynchrone
 --------------------------------
 
-Plus que simplement déporter le javascript en bas de page, il 
+Plus que simplement déporter le JavaScript en bas de page, il 
 existe aussi des techniques pour que les fichiers soient chargés 
 de façon asynchrone, en parallèle des autres composants, sans 
 bloquer le rendu de la page. 
 
 Toutes ces techniques ont un coût, soit en complexité soit en 
 compatibilité. Il vous est recommandé de répondre en premier 
-à la recommandation précédente et de placer un maximum de javascript 
+à la recommandation précédente et de placer un maximum de JavaScript 
 en bas de page. C'est particulièrement vrai si vous avez des fichiers 
 de forte taille puisque même chargés en asynchrone ils continueront 
 d'occuper vos files de téléchargement et d'empêcher le navigateur 
 d'afficher le reste des composants. 
 
-![Exemple de javascript bloquant sur covoiturage.fr](img/chap06-exemple-de-javascript-bloquant-sur-covoituragefr.png)
+![Exemple de JavaScript bloquant sur covoiturage.fr](img/chap06-exemple-de-JavaScript-bloquant-sur-covoituragefr.png)
 
 Sur l'exemple covoiturage.fr, retirer l'aspect bloquant du 
-gros javascript (quatrième composant) permettrait d'avancer 
+gros JavaScript (quatrième composant) permettrait d'avancer 
 l'affichage de tous les autres composants de plus de deux secondes. 
 
 ### Fonctionnement natif des navigateurs
 
 Outre le comportement natif des navigateurs récents qui savent 
-paralléliser correctement le chargement des fichiers javascript, 
+paralléliser correctement le chargement des fichiers JavaScript, 
 nous avons plusieurs techniques à notre disposition pour éviter 
 de bloquer le rendu. 
 
@@ -686,7 +686,7 @@ peut être prévu avec certitude.
 ~~~~~~~
 
 Dans les deux cas, il faudra porter la plus grande attention aux 
-dépendances entre vos codes javascript : Si jQuery est chargé 
+dépendances entre vos codes JavaScript : Si jQuery est chargé 
 avec l'attribut async, rien ne garantit que jQuery sera bien 
 initialisé quand vous tenterez de l'utiliser dans une autre 
 balise `<script>` plus loin. 
@@ -756,11 +756,11 @@ En pratique, si le chargement de la publicité se fait avec les lignes
 suivantes :
 
 ~~~~~~~ {.html .partial}
-<script type="text/javascript"><!--
+<script type="text/JavaScript"><!--
   ad_width = 300;
   ad_height = 250;
 //--></script>
-<script type="text/javascript" src="http://www.example.com/ad/show_ads.js">
+<script type="text/JavaScript" src="http://www.example.com/ad/show_ads.js">
 </script>
 ~~~~~~~
 
@@ -768,7 +768,7 @@ on pourra l'englober dans une iframe de la façon suivante :
 
 ~~~~~~~ {.html .partial}
 <iframe src="about:blank" seamless srcdoc="
-  <script type=text/javascript><!--
+  <script type=text/JavaScript><!--
     ad_width = 300;
     ad_height = 250;
   //--></script>

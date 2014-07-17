@@ -164,7 +164,7 @@ Compromis
 Au fil de ce livre je vous proposerai des recommandations.
 Généralement elles sont applicables sans avoir à dégrader l'expérience
 utilisateur ou vos choix graphiques. Par contre, dans de rares cas, il
-vous faudra peut être faire des compromis entre la performance, la
+vous faudra peut-être faire des compromis entre la performance, la
 richesse des pages, la qualité graphique, la complexité et le temps de
 développement. 
 

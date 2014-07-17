@@ -1,4 +1,4 @@
-Cette oeuvre, création, site ou texte est sous licence Creative Commons  Attribution -  Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-sa/4.0/deed.fr ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+Cette œuvre, création, site ou texte est sous licence Creative Commons  Attribution -  Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-sa/4.0/deed.fr ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 
 Creative Commons Attribution-ShareAlike 4.0 International Public License

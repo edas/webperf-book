@@ -12,7 +12,7 @@ Compression HTTP
 
 La première solution pour diminuer le poids des composants à 
 télécharger est presque magique. Elle permet d'obtenir des 
-gains de l'ordre de 70 % sur le code HTML, CSS ou javascript et prend 
+gains de l'ordre de 70 % sur le code HTML, CSS ou JavaScript et prend 
 tout au plus quelques heures à mettre en place. 
 
 ### Gain en performance
@@ -42,7 +42,7 @@ C'est cependant probablement négligeable au regard des gains.
 
 **Recommandation** : Activer la compression HTTP sur votre 
 serveur web, au moins pour les contenus statiques à base de texte 
-(CSS et javascript par exemple). 
+(CSS et JavaScript par exemple). 
 
 ### Fonctionnement
 
@@ -215,8 +215,8 @@ pour tous les types de fichiers souhaités :
 
 ~~~~~~~ {.apache .partial}
 AddOutputFilterByType DEFLATE text/html text/plain text/xml 
-AddOutputFilterByType DEFLATE text/javascript application/javascript
-AddOutputFilterByType DEFLATE text/css application/x-javascript
+AddOutputFilterByType DEFLATE text/JavaScript application/JavaScript
+AddOutputFilterByType DEFLATE text/css application/x-JavaScript
 AddOutputFilterByType DEFLATE application/xml application/xhtml+xml
 AddOutputFilterByType DEFLATE image/svg+xml application/rss+xml
 ~~~~~~~
@@ -345,7 +345,7 @@ Pour économiser de la place dans le cache, il est possible de contraindre Varni
 
 ~~~~~~~
 sub vcl_fetch {
-    # si le contenu est de type texte (html, css, js, etc ...)
+    # si le contenu est de type texte (html, CSS, JS, etc ...)
     if (beresp.http.content-type ~ "text") {
         # on force la compression avant la mise en cache
         set beresp.do_gzip = true;
@@ -414,7 +414,7 @@ conviennent parfaitement.
 
 Les algorithmes de compression utilisés sont extrêmement performants 
 pour les fichiers textes classiques. C'est le cas des fichiers 
-HTML, CSS, javascript, XML, etc. Pour ces fichiers, même un niveau 
+HTML, CSS, JavaScript, XML, etc. Pour ces fichiers, même un niveau 
 de compression minimum obtient de très bons résultats. 
 
 Côté web on peut identifier les types mimes suivants : 
@@ -427,11 +427,11 @@ Côté web on peut identifier les types mimes suivants :
 
 * text/css, 
 
-* text/javascript, 
+* text/JavaScript, 
 
-* application/x-javascript, 
+* application/x-JavaScript, 
 
-* application/javascript, 
+* application/JavaScript, 
 
 * application/json, 
 
@@ -542,7 +542,7 @@ aux seconds, et probablement à la majorité des premiers, mais
 il n'y a malheureusement pas de solution efficace pour les détecter 
 simplement dans le serveur web. 
 
-Google a développé un test applicatif à base de cookie, javascript 
+Google a développé un test applicatif à base de cookie, JavaScript 
 et iframe : Si le navigateur ne déclare pas supporter la compression 
 HTTP et qu'aucun cookie au nom de « gzip » n'est présent, on insère 
 ce cookie avec une valeur 0 et on ajoute une iframe spécifique. 
@@ -550,7 +550,7 @@ Cette iframe est envoyée compressée quelle que soit la déclaration
 du navigateur, et exclue de tout cache (`Cache-Control: no-cache`). 
 Google a aussi remarqué qu'il était très important que l'adresse 
 de la page présente l'extension « .html » pour certains proxys 
-dans le cadre de ce test. Un javascript dans l'iframe modifie 
+dans le cadre de ce test. Un JavaScript dans l'iframe modifie 
 le cookie pour y mettre la valeur 1. Si la page compressée est correctement 
 décodée le cookie passe donc à 1, sinon il reste à 0. Par la suite 
 on peut activer la compression pour les navigateurs qui ont ce 
@@ -655,7 +655,7 @@ Par contre, peu de logiciels de graphisme proposent cette option
 
 #### Gif ou png
 
-Vous l'avez peut être remarqué, je n'ai rien recommandé pour 
+Vous l'avez peut-être remarqué, je n'ai rien recommandé pour 
 gif. Gif et png sont des formats concurrents avec les mêmes objectifs. 
 Gif est un peu plus ancien, limité à 256 couleurs, et a longtemps 
 posé des problèmes de brevet. Png est plus récent, permet de se 
@@ -828,7 +828,7 @@ cette image sur Internet. Vérifiez que vous en êtes l'auteur,
 ou que les conditions d'utilisations de l'image et le contexte 
 légal vous en donnent le droit. Si l'image appartient à un tiers, 
 il est probable que vous soyez obligés d'au moins laisser les 
-mentions de copyright et le nom de l'auteur, peut être plus. 
+mentions de copyright et le nom de l'auteur, peut-être plus. 
 
 ### Qualité de l'image
 
@@ -1136,14 +1136,14 @@ de 70 %. Tout dépend du style de codage et des optimisations mises
 en œuvre. Le résultat sera ensuite réduit une seconde fois par 
 la compression HTTP comme nous l'avons vu plus avant dans ce livre. 
 
-**Recommandation** : Minifier les fichiers javascript et CSS 
+**Recommandation** : Minifier les fichiers JavaScript et CSS 
 à la publication, par exemple avec YUI Compressor. 
 
-### Javascript
+### JavaScript
 
-Les trois outils les plus fréquents pour javascript sont Closure 
+Les trois outils les plus fréquents pour JavaScript sont Closure 
 Compiler, YUI Compressor, et Dojo ShrinkSafe. Tous trois sont 
-rattachés à une bibliothèque javascript de référence mais sont 
+rattachés à une bibliothèque JavaScript de référence mais sont 
 génériques et n'imposent pas d'utiliser la bibliothèque correspondante. 
 
 * Closure Compiler : [http://code.google.com/intl/fr/closure/compiler/](http://code.google.com/intl/fr/closure/compiler/) 
@@ -1152,7 +1152,7 @@ génériques et n'imposent pas d'utiliser la bibliothèque correspondante.
 
 * Dojo ShrinkSafe : [http://shrinksafe.dojotoolkit.org/](http://shrinksafe.dojotoolkit.org/) 
 
-Ces outils permettent d'optimiser un fichier javascript en 
+Ces outils permettent d'optimiser un fichier JavaScript en 
 retirant les espaces blancs inutiles, les commentaires, et 
 en ajoutant diverses optimisations. YUI fait par exemple des 
 alias pour les noms de variable longs et fréquemment utilisés 
@@ -1228,7 +1228,7 @@ laissant que le jeton de session dans le cookie.
 La seconde recommandation, plus importante, est de n'utiliser 
 les cookies que sur les pages qui en ont besoin, c'est à dire habituellement 
 les pages HTML et les requêtes Ajax. Le reste des composants, 
-et principalement les fichiers javascript, css, images, n'ont 
+et principalement les fichiers JavaScript, CSS, images, n'ont 
 pas besoin de recevoir les cookies. 
 
 Nous n'avons pas moyen d'informer à l'avance le navigateur de 
@@ -1283,7 +1283,7 @@ et une page de 75 à 100 Ko à télécharger. C'est le cas pour le site orange.f
 **Recommandation** : La page d'erreur ne doit pas mener à une 
 redirection. 
 
-Le navigateur qui a une référence cassée vers une image ou un javascript 
+Le navigateur qui a une référence cassée vers une image ou un JavaScript 
 se retrouve donc à charger 25 à 100 Ko, ce qui forcément pénalise 
 de façon importante les performances. 
 
@@ -1294,8 +1294,8 @@ par le navigateur. La page d'erreur sera donc retéléchargée
 page HTML ou de la CSS, c'est le poids de toutes les pages vues qui 
 est ainsi gonflé artificiellement. 
 
-Pire, dans le cas du javascript le navigateur tente d'interpréter 
-la page d'erreur en tant que code javascript même si le type mime 
+Pire, dans le cas du JavaScript le navigateur tente d'interpréter 
+la page d'erreur en tant que code JavaScript même si le type mime 
 est bien celui d'une page HTML. On perd alors aussi du temps à essayer 
 d'interpréter le contenu de la page. 
 
@@ -1319,7 +1319,7 @@ navigateur d'avoir à télécharger une page d'erreur inutilement.
 À retenir
 ---------
 
-* Activer la compression HTTP des fichiers CSS et Javascript 
+* Activer la compression HTTP des fichiers CSS et JavaScript 
 
 * Optimiser les images avec pngcrush ou équivalent 
 
@@ -1328,7 +1328,7 @@ navigateur d'avoir à télécharger une page d'erreur inutilement.
 * Choisir le bon format pour chaque image (jpeg ou png, suivant 
   les cas) 
 
-* Minimiser les Javascript et CSS à l'aide de YUI Compressor 
+* Minimiser les JavaScript et CSS à l'aide de YUI Compressor 
   ou équivalent 
 
 * Faire des pages d'erreur petites (< 5 Ko) et sans redirection 
