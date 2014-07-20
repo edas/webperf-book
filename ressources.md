@@ -8,6 +8,7 @@ Ressources
 - http://www.differencebetween.net/technology/protocols-formats/difference-between-http-1-0-and-1-1/
 - http://wapiti.telecom-lille1.eu/commun/ens/peda/options/st/rio/pub/exposes/exposesrio1997/http1.0vs1.1/comp.htm
 - http://abcdrfc.free.fr/rfc-vf/rfc1945.html en fr
+- http://www.bortzmeyer.org/2616.html en fr
 
 ### Livres ###
 - http://www.amazon.com/High-Performance-Browser-Networking-performance/dp/1449344763/
