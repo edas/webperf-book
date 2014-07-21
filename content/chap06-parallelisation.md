@@ -91,6 +91,9 @@ simultanées par domaine, sauf Opera et Internet Explorer 10 qui sont passé à 
 
 ### Serveurs HTTP 1.0
 
+![Frise chronologique des versions HTTP](img/chap06-HTTP.svg)
+
+
 Tous les serveurs web ne gèrent pas les connexions persistantes. 
 Les navigateurs s'adaptent et peuvent s'autoriser plus de connexions 
 simultanées vers ces serveurs. Firefox passe alors à quinze 
