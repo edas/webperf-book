@@ -91,7 +91,7 @@ simultanées par domaine, sauf Opera et Internet Explorer 10 qui sont passé à 
 
 ### Serveurs HTTP 1.0
 
-![Frise chronologique des versions HTTP](img/chap06-HTTP.svg)
+![Frise chronologique des versions HTTP](img/chap06-HTTP.png)
 
 
 Tous les serveurs web ne gèrent pas les connexions persistantes. 
