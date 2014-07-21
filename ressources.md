@@ -10,5 +10,8 @@ Ressources
 - http://www.bortzmeyer.org/2616.html en fr
 - https://developers.google.com/speed/pagespeed/module/filters
 
+### Outils ###
+ - Statistiques sur les feuilles de style de votre site : http://cssstats.com/
+
 ### Livres ###
 - http://www.amazon.com/High-Performance-Browser-Networking-performance/dp/1449344763/
