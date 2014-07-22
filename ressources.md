@@ -13,7 +13,7 @@ Ressources
 ### Outils ###
  - Optimisation PNG : optipng http://optipng.sourceforge.net/ et pngcrush http://pmt.sourceforge.net/pngcrush/
  - Optimisation SVG : SVGO https://github.com/svg/svgo-gui
- - Statistiques sur les feuilles de style de votre site : http://cssstats.com/
+ - Statistiques sur les feuilles de style de votre site : http://cssstats.com/ et http://www.stylestats.org/
 
 ### Livres ###
 - http://www.amazon.com/High-Performance-Browser-Networking-performance/dp/1449344763/
