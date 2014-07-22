@@ -11,6 +11,8 @@ Ressources
 - https://developers.google.com/speed/pagespeed/module/filters
 
 ### Outils ###
+ - Optimisation PNG : optipng http://optipng.sourceforge.net/ et pngcrush http://pmt.sourceforge.net/pngcrush/
+ - Optimisation SVG : SVGO https://github.com/svg/svgo-gui
  - Statistiques sur les feuilles de style de votre site : http://cssstats.com/
 
 ### Livres ###
