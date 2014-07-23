@@ -9,6 +9,7 @@ Ressources
 - http://abcdrfc.free.fr/rfc-vf/rfc1945.html en fr
 - http://www.bortzmeyer.org/2616.html en fr
 - https://developers.google.com/speed/pagespeed/module/filters
+- http://www.w3.org/TR/edge-arch 
 
 ### Outils ###
  - Optimisation PNG : optipng http://optipng.sourceforge.net/ et pngcrush http://pmt.sourceforge.net/pngcrush/
