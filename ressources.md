@@ -10,7 +10,7 @@ Ressources
 - http://www.bortzmeyer.org/2616.html en fr
 - https://developers.google.com/speed/pagespeed/module/filters
 - http://www.w3.org/TR/edge-arch 
-
+- Détail sur les caches : http://blog.octo.com/http-caching-avec-nginx-memcached/ 
 ### Outils ###
  - Optimisation PNG : optipng http://optipng.sourceforge.net/ et pngcrush http://pmt.sourceforge.net/pngcrush/
  - Optimisation SVG : SVGO https://github.com/svg/svgo-gui
