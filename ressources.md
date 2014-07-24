@@ -13,10 +13,12 @@ Ressources
 - Détail sur les caches : http://blog.octo.com/http-caching-avec-nginx-memcached/ 
 
 
+
 ### Outils ###
  - Optimisation PNG : optipng http://optipng.sourceforge.net/ et pngcrush http://pmt.sourceforge.net/pngcrush/
  - Optimisation SVG : SVGO https://github.com/svg/svgo-gui
  - Statistiques sur les feuilles de style de votre site : http://cssstats.com/ et http://www.stylestats.org/
+ - Nettoyer CSS non utilisé : http://addyosmani.com/blog/removing-unused-css/ 
 
 ### Livres ###
 - http://www.amazon.com/High-Performance-Browser-Networking-performance/dp/1449344763/
