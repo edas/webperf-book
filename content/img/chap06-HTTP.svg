@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Nouveau document 1">
+   sodipodi:docname="chap06-HTTP.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -56,7 +56,10 @@
      id="layer1">
     <g
        id="g3931"
-       style="opacity:0.4">
+       style="opacity:0.4"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998">
       <rect
          style="fill:#d1f0ff;fill-opacity:1;stroke:none"
          id="use3914"
@@ -81,7 +84,10 @@
     </g>
     <g
        id="g3863"
-       transform="translate(5,0)">
+       transform="translate(5,0)"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998">
       <rect
          ry="5"
          rx="5"
@@ -106,7 +112,10 @@
     </g>
     <g
        id="g3868"
-       transform="translate(10,0)">
+       transform="translate(10,0)"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998">
       <rect
          ry="5"
          rx="5"
@@ -132,7 +141,10 @@
     <g
        id="g3892"
        style="opacity:0.4"
-       transform="translate(-144,0)">
+       transform="translate(-144,0)"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998">
       <g
          id="g3879">
         <rect
@@ -162,20 +174,32 @@
        id="path3986"
        d="m 288.34543,515.64296 -0.18423,-0.27893 -5.16531,-5.1653 c -0.33575,-0.33575 -0.88327,-0.33575 -1.21729,0 -0.33575,0.33574 -0.33575,0.88154 0,1.21729 l 3.69491,3.69491 h -16.86129 c -0.4752,0 -0.86088,0.38568 -0.86088,0.86089 0,0.47521 0.38568,0.86088 0.86088,0.86088 h 16.86129 l -3.69491,3.69492 c -0.33403,0.33402 -0.33403,0.88155 0,1.21729 0.33574,0.33403 0.88326,0.33403 1.21729,0 l 5.16531,-5.16531 0.18595,-0.27892 0.0654,-0.32542 v -0.003 l -0.0671,-0.32886 z"
        inkscape:connector-curvature="0"
-       style="fill:#b3b3b3" />
+       style="fill:#b3b3b3"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998" />
     <path
        style="fill:#b3b3b3"
        inkscape:connector-curvature="0"
        d="m 144.34543,515.64296 -0.18423,-0.27893 -5.16531,-5.1653 c -0.33575,-0.33575 -0.88327,-0.33575 -1.21729,0 -0.33575,0.33574 -0.33575,0.88154 0,1.21729 l 3.69491,3.69491 h -16.86129 c -0.4752,0 -0.86088,0.38568 -0.86088,0.86089 0,0.47521 0.38568,0.86088 0.86088,0.86088 h 16.86129 l -3.69491,3.69492 c -0.33403,0.33402 -0.33403,0.88155 0,1.21729 0.33574,0.33403 0.88326,0.33403 1.21729,0 l 5.16531,-5.16531 0.18595,-0.27892 0.0654,-0.32542 v -0.003 l -0.0671,-0.32886 z"
-       id="path3995" />
+       id="path3995"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998" />
     <path
        style="fill:#b3b3b3"
        inkscape:connector-curvature="0"
        d="m 434.34543,515.64296 -0.18423,-0.27893 -5.16531,-5.1653 c -0.33575,-0.33575 -0.88327,-0.33575 -1.21729,0 -0.33575,0.33574 -0.33575,0.88154 0,1.21729 l 3.69491,3.69491 h -16.86129 c -0.4752,0 -0.86088,0.38568 -0.86088,0.86089 0,0.47521 0.38568,0.86088 0.86088,0.86088 h 16.86129 l -3.69491,3.69492 c -0.33403,0.33402 -0.33403,0.88155 0,1.21729 0.33574,0.33403 0.88326,0.33403 1.21729,0 l 5.16531,-5.16531 0.18595,-0.27892 0.0654,-0.32542 v -0.003 l -0.0671,-0.32886 z"
-       id="path3997" />
+       id="path3997"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998" />
     <g
        transform="translate(153.94674,-66.467017)"
-       id="g4001">
+       id="g4001"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998">
       <rect
          style="fill:#d1f0ff;fill-opacity:1;stroke:none"
          id="rect4003"
@@ -202,6 +226,9 @@
        style="fill:#b3b3b3"
        inkscape:connector-curvature="0"
        d="m 496.8182,492.39456 0.27893,-0.18423 5.1653,-5.16531 c 0.33575,-0.33575 0.33575,-0.88327 0,-1.21729 -0.33574,-0.33575 -0.88154,-0.33575 -1.21729,0 l -3.69491,3.69491 0,-16.86129 c 0,-0.4752 -0.38568,-0.86088 -0.86089,-0.86088 -0.47521,0 -0.86088,0.38568 -0.86088,0.86088 l 0,16.86129 -3.69492,-3.69491 c -0.33402,-0.33403 -0.88155,-0.33403 -1.21729,0 -0.33403,0.33574 -0.33403,0.88326 0,1.21729 l 5.16531,5.16531 0.27892,0.18595 0.32542,0.0654 0.003,0 0.32886,-0.0671 z"
-       id="path3997-3" />
+       id="path3997-3"
+       inkscape:export-filename="/home/sam/www/webperf-book/content/img/chap06-HTTP.png"
+       inkscape:export-xdpi="82.099998"
+       inkscape:export-ydpi="82.099998" />
   </g>
 </svg>
