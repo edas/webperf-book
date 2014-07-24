@@ -706,10 +706,10 @@ entre eux.
 ### Les polices ligaturées
 
 Les systèmes de rendus de polices de caractères permettent de ligaturer
-les caractères consécutifs entre eux. Par exemple, dans le mot `différent`,
-les lettres `f` et `f` consécutives peuvent être remplacées par un élégant `ﬀ`.
+les caractères consécutifs entre eux. Par exemple, dans le mot « différent »,
+les lettres `f` et `f` consécutives peuvent être remplacées par un élégant « ﬀ ».
 
-Ces règles de ligaturages sont décrits dans le fichier de la police. Un plan
+Ces règles de ligatures sont décrits dans le fichier de la police. Un plan
 d'adressage Unicode leur est spécialement réservé, dite de [forme et présentation alphabétique](http://www.unicode.org/versions/Unicode6.2.0/ch16.pdf), 
 néanmoins, il est possible de lier vers un autre plan Unicode, si possible prévu
 pour un usage privatif.
@@ -717,20 +717,20 @@ pour un usage privatif.
 La gestion des ligatures est désormais disponible sur pratiquement
 l'ensemble des OS et informatiques embarquées, on peut même dire que 
 la gestion est très propre depuis cinq ans dans les navigateurs web modernes, 
-[à l'exception d'Internet Explorer à ce jour](http://caniuse.com/#feat=kerning-pairs-ligatures)
+[à l'exception d'Internet Explorer et d'Opera Mini à ce jour](http://caniuse.com/#feat=kerning-pairs-ligatures)
 
 L'intérêt de cette fonction pour la gestion des éléments graphiques a été
 [révélé par Kazuyuki Motoyama avec sa police Ligature Symbols](http://kudakurage.com/ligature_symbols/). 
 
-L'usage des emoji comme éléments graphiques se trouve restreint par la gestion 
+L'usage des emoji ou émoticônes comme éléments graphiques se trouve restreint par la gestion 
 en fallback des caractères unicodes non-supporté. Dans ce cas, si le système client ne
-peut afficher de tels caractères, nous nous retrouvons face à un symbole `�` (U+FFFD),
+peut afficher de tels caractères, nous nous retrouvons face à un symbole « � » (U+FFFD),
 qui n'est ni expressif, ni accessible.
 Plutôt qu'accéder à l'élément graphique par un simple point unicode, la
 police Ligature Symbols propose de remplacer des mots complets par des glyphes,
-qui sont techniquement “ligaturés”, mais qui présentent un tout autre aspect.
+qui sont techniquement « ligaturés », mais qui présentent un tout autre aspect.
 
-Par exemple, le mot “cloud” se retrouve remplacé par un dessin de nuage.
+Par exemple, le mot « cloud » se retrouve remplacé par un dessin de nuage.
 
 Ces glyphes sont stockés dans les points unicodes U+E000 à U+E1FF, un plan d'adressage
 prévu exprès pour un usage privé, ce qui renforce encore l'élégance du hack par
