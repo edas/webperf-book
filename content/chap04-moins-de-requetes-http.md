@@ -709,6 +709,8 @@ Les systèmes de rendus de polices de caractères permettent de ligaturer
 les caractères consécutifs entre eux. Par exemple, dans le mot « différent »,
 les lettres `f` et `f` consécutives peuvent être remplacées par un élégant « ﬀ ».
 
+![Ligatures stockées dans la police Times New Roman](http://dascritch.net/vrac/.blog2/webdev/1303-DirtyHacky/1305-Ligatures-Times.png)
+
 Ces règles de ligatures sont décrits dans le fichier de la police. Un plan
 d'adressage Unicode leur est spécialement réservé, dite de [forme et présentation alphabétique](http://www.unicode.org/versions/Unicode6.2.0/ch16.pdf), 
 néanmoins, il est possible de lier vers un autre plan Unicode, si possible prévu
@@ -722,9 +724,9 @@ la gestion est très propre depuis cinq ans dans les navigateurs web modernes,
 L'intérêt de cette fonction pour la gestion des éléments graphiques a été
 [révélé par Kazuyuki Motoyama avec sa police Ligature Symbols](http://kudakurage.com/ligature_symbols/). 
 
-L'usage des emoji ou émoticônes comme éléments graphiques se trouve restreint par la gestion 
+[L'usage des emoji ou émoticônes comme éléments graphiques se trouve restreint](http://dascritch.net/post/2012/09/18/Des-emoji-dans-l-Unicode-5) par la gestion 
 en fallback des caractères unicodes non-supporté. Dans ce cas, si le système client ne
-peut afficher de tels caractères, nous nous retrouvons face à un symbole « � » (U+FFFD),
+peut afficher de tels caractères, nous nous retrouvons [au mieux face à un symbole « � » (U+FFFD)](http://dascritch.net/post/2011/05/09/Les-espacements-unicodes#fallbacks),
 qui n'est ni expressif, ni accessible.
 Plutôt qu'accéder à l'élément graphique par un simple point unicode, la
 police Ligature Symbols propose de remplacer des mots complets par des glyphes,
@@ -732,12 +734,31 @@ qui sont techniquement « ligaturés », mais qui présentent un tout autre as
 
 Par exemple, le mot « cloud » se retrouve remplacé par un dessin de nuage.
 
+Si nous devions adapter un tel dispositif pour donner des coordonnées de contact, et si nous
+laissons le texte des icones dans le code HTML, nous pourrions avoir :
+
+```
+ <address>
+  <span class="icon">Adresse</span> 1 boulevard Prestigieux<br />
+  <span class="icon">Téléphone</span> 01-23-45-67-89<br />
+  <span class="icon">Courriel</span> email@example.com<br />
+ </address>
+
+```
+
+Néanmoins, cet exemple n'est pas idéal, [l'auteur du hack préconise](http://kudakurage.hatenadiary.com/entry/20120720/1342749116) 
+de mettre le texte des icônes en propriété CSS `content`.
+Dans le cas où la ligature n'est pas souhaitée, il est possible d'utiliser
+[l'espace nul jointif ZWJ](http://dascritch.net/post/2011/05/09/Les-espacements-unicodes#sanslargeurs)
+pour la briser. Ce caractère spécial est justement conçu pour ce genre de cas.
+
 Ces glyphes sont stockés dans les points unicodes U+E000 à U+E1FF, un plan d'adressage
 prévu exprès pour un usage privé, ce qui renforce encore l'élégance du hack par
 son respect des standards. L'importation se fait via une règle CSS, ce qui permet de
 différencier sémantiquement le contenu graphique dans votre source HTML.
 
-Ainsi, nous avons à la fois une très bonne gestion de l'accessibilité, de la syntaxique
+Ainsi, nous avons à la fois une très bonne gestion de l'accessibilité, de la syntaxique, des 
+affichages à haute résolution (les polices étant vectorielles)
 et un package graphique qualitatif, qui peut être rendu en couleurs par les 
 extensions propres à l'affichage des emoji couleurs.
 
