@@ -11,6 +11,7 @@ if [ -d ../export/html/img ]; then
 fi
 
 pandoc \
+    -c style.css  \
     -f markdown \
     -t html \
     --normalize \
