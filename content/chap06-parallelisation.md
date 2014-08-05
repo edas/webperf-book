@@ -25,7 +25,7 @@ suivant la couleur).
 On repère tout de suite dans les courbes la sous-utilisation 
 du processeur et de la bande passante. La lecture de l'échelle 
 de la bande passante ajoute encore à la frustration quand on se 
-rends compte que la vitesse la plus importante est de 51 Kb/s. 
+rend compte que la vitesse la plus importante est de 51 Kb/s. 
 
 Sur les lignes de téléchargement on peut voir que certaines connexions 
 servent peu (les premières) et que les autres ont des « trous ». 
@@ -46,7 +46,7 @@ Plusieurs connexions TCP par domaine
 
 Le premier palliatif au manque de parallélisation est implémenté 
 dans tous les navigateurs, et même proposé par la spécification 
-du protocole HTTP 1.1 : Si la bande passante est sous-occupée 
+du protocole HTTP 1.1 : si la bande passante est sous-occupée 
 à cause des aller-retours réseaux et de la gestion TCP, il suffit 
 d'ouvrir plusieurs connexions parallèles pour compenser. 
 Ouvrir plus de connexions permet d'optimiser la bande passante 
@@ -56,7 +56,7 @@ Historiquement les navigateurs ouvraient nativement deux
 connexions en parallèle par site (même nom de domaine complet). Ils pouvaient 
 ainsi télécharger deux images simultanément, et exploiter 
 au mieux la bande passante. Depuis, les processeurs et les débits 
-ont augmentés de façon impressionnante et deux connexions simultanées 
+ont augmenté de façon impressionnante et deux connexions simultanées 
 ne suffisent plus à couvrir même la moitié de notre bande passante 
 ou à occuper significativement nos processeurs. 
 
@@ -104,7 +104,7 @@ Ces comportements se déclenchent en fait dès que le serveur répond
 utilise la fonctionnalité keep-alive (qui a quelques spécificités 
 mais qui est similaire aux connexions persistantes de HTTP 1.1). 
 
-L'exemple d'AOL est connu sur ce sujet : Afin d'améliorer la performance 
+L'exemple d'AOL est connu sur ce sujet : afin d'améliorer la performance 
 des navigateurs visitant son site, les serveurs AOL répondaient 
 toujours en HTTP 1.0, et profitaient donc immédiatement de plus 
 de connexions parallèles. 
@@ -118,8 +118,8 @@ serveur sont différentes.
 
 Firefox passe alors à huit connexions simultanées par proxy, 
 tous domaines confondus, Internet Explorer 9 à douze. Suivant 
-le nombre de domaines que le navigateur essaye de joindre simultanément 
-via le même proxy, ça peut se révéler bénéfique ou gênant. Généralement 
+le nombre de domaines que le navigateur essaie de joindre simultanément 
+via le même proxy, cela peut se révéler bénéfique ou gênant. Généralement 
 le bénéfice du proxy (cache partagé) compense toutefois les 
 éventuelles dégradations dues au nombre de connexions simultanées. 
 
@@ -151,7 +151,7 @@ les ressources sur plusieurs domaines. Si les données sont réparties
 sur trois domaines, cela fait mathématiquement trois fois plus 
 de connexion simultanées. 
 
-Chaque domaine supplémentaire a un coût : Il demande une requête 
+Chaque domaine supplémentaire a un coût : il demande une requête 
 DNS, et plusieurs nouvelles connexions TCP. Il ne serait donc 
 pas positif de multiplier à l'excès le nombre de domaines sur 
 lesquels sont répartis les composants d'une page. 
@@ -188,8 +188,8 @@ importante qu'avant sur un site léger.
 Le nombre de domaines pertinent pour votre site devra faire l'objet 
 de tests adaptés à votre cas, mais une bonne mesure peut être de 
 compter le nombre de ressources, de diviser par 6 (nombre de connexions 
-parallèles des navigateurs récents), puis encore par 5 ou 6 (en 
-dessous de 5 requêtes que une même connexion, le coût d'ouverture 
+parallèles des navigateurs récents), puis encore par 5 ou 6 (en-dessous 
+de 5 requêtes sur une même connexion, le coût d'ouverture 
 d'une nouvelle connexion n'est pas forcément amorti). 
 
 Cela nous donnerait le tableau suivant : 
@@ -213,7 +213,7 @@ Explorer 6 et 7, il faudra plus rapidement envisager deux ou trois
 domaines. 
 
 À l'inverse, si votre site est sécurisé avec HTTPS, le coût d'une 
-nouvelle connexion est prohibitif : N'ajoutez pas un domaine 
+nouvelle connexion est prohibitif : n'ajoutez pas un domaine 
 tant que vous avez moins de 8 à 10 requêtes par connexion. Si vous 
 avez des visiteurs avec des navigateurs récents, cela veut dire 
 que vous pourrez souvent rester avec un voir deux domaines. 
@@ -243,7 +243,7 @@ Nginx, avec la même configuration et la même destination. On
 pourra alors utiliser un domaine ou un autre, indifféremment, 
 pour n'importe quelle ressource. 
 
-Attention dans ce dernier cas d'utilisation : Si vous ne voulez 
+Attention dans ce dernier cas d'utilisation : si vous ne voulez 
 pas annuler tout l'effet du cache HTTP (et vous ne le voulez pas, 
 sinon relisez les chapitres précédents), il faut qu'une même 
 ressource utilise toujours le même domaine ; ne créez pas des 
@@ -314,7 +314,7 @@ Ressources bloquantes
 ---------------------
 
 Nous avons augmenté le parallélisme au niveau réseau mais il 
-nous reste un problème majeur : Le navigateur lui-même ne sait 
+nous reste un problème majeur : le navigateur lui-même ne sait 
 pas toujours gérer ce parallélisme. 
 
 Certaines ressources bloquent historiquement l'activité 
@@ -326,7 +326,7 @@ pas parfaitement à jour.
 
 On peut facilement constater le problème sous Microsoft Internet 
 Explorer 6 en chargeant un long JavaScript suivi par quelques 
-images : Pendant le chargement et l'exécution du JavaScript, 
+images : pendant le chargement et l'exécution du JavaScript, 
 aucune autre activité n'est réalisée par le navigateur. Au lieu 
 d'être téléchargées en parallèle, les ressources sont chargées 
 séquentiellement, doublant le temps nécessaire au chargement 
@@ -398,7 +398,7 @@ rapidement après la sortie d'une nouvelle version.
 Positionner le code JavaScript
 ------------------------------
 
-La première recommandation pour palier le problème de parallélisation 
+La première recommandation pour pallier le problème de parallélisation 
 des scripts est de faire attention à leur placement dans le corps 
 de la page. Pour cela on distingue les scripts embarqués dans 
 la page (« inline ») et les scripts externes. 
@@ -425,7 +425,7 @@ du script soit perçue.
 
 Les cas entre lent et instantané à exécuter dépendent du contexte, 
 mais il est en général plus sûr de déléguer l'exécution à la fin 
-de la page en cas de doute : Le haut de page est très sensible car 
+de la page en cas de doute : le haut de page est très sensible car 
 tout délai laissera une page blanche ou la page précédente plus 
 longtemps à la vue de l'utilisateur, provocant un ressenti très 
 négatif. 
@@ -458,7 +458,7 @@ est souvent une réaction de rejet. On n'imagine pas une page sans
 JavaScript et on craint de donner une mauvaise expérience à l'internaute. 
 
 Pourtant, nous avons un fait essentiel qui soutient notre objectif 
-: L'utilisateur cherche à utiliser en premier lieu le contenu 
+: l'utilisateur cherche à utiliser en premier lieu le contenu 
 textuel et graphique avant de tenter d'interagir avec les enrichissements 
 JavaScript ou de profiter des animations. 
 
@@ -492,7 +492,7 @@ La première est de cacher la fonctionnalité tant qu'elle n'est
 pas complète. On utilisera cela pour les fonctionnalités annexes 
 qui ne manqueront pas à l'utilisateur et dont l'apparition différée 
 ne choquera pas l'utilisateur. Le cas parfait pour cette option 
-est le carrousel : Par défaut seul le premier item du carrousel 
+est le carrousel : par défaut seul le premier item du carrousel 
 s'affiche. L'interface semble fonctionnelle, l'utilisateur 
 se retrouve juste avec un seul visuel. 
 
@@ -679,7 +679,7 @@ le script sera exécuté dès que possible (à la fin du téléchargement),
 mais le navigateur est informé qu'il doit continuer l'analyse 
 et le rendu du reste de la page en attendant. Les scripts étant 
 chargés de façon asynchrone, l'ordre d'exécution n'est plus 
-assuré : Il dépend de l'ordre de fin de téléchargement, qui ne 
+assuré : il dépend de l'ordre de fin de téléchargement, qui ne 
 peut être prévu avec certitude. 
 
 ~~~~~~~ {.html .partial}
