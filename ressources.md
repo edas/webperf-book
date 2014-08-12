@@ -11,6 +11,8 @@ Ressources
 - https://developers.google.com/speed/pagespeed/module/filters
 - http://www.w3.org/TR/edge-arch 
 - Détail sur les caches : http://blog.octo.com/http-caching-avec-nginx-memcached/ 
+- Stats : https://github.com/zenorocha/browser-diet/wiki/Impact-of-performance
+- Guide pédagogique : http://browserdiet.com/fr/
 
 
 
