@@ -1,8 +1,35 @@
+<!-- MarkdownTOC depth=3 -->
+
+- Parallélisation
+    - Plusieurs connexions TCP par domaine
+        - Serveurs HTTP 1.0
+        - Serveurs proxys
+        - Maximum de connexions
+        - Cas particulier d'Internet Explorer sur modem RTC et VPN
+    - Plusieurs domaines en parallèle
+        - Nombre de domaines
+        - Mise en place
+        - Sécurité
+    - Ressources bloquantes
+    - Positionner le code JavaScript
+        - Code JavaScript embarqué dans la page
+        - Code JavaScript externe ou à exécution lente
+    - Placer les scripts en fin de page
+        - Rendre la page fonctionnelle en attendant JavaScript
+        - Prévoir l'arrivée des scripts : éviter les pages qui bougent
+    - Charger JavaScript en asynchrone
+        - Fonctionnement natif des navigateurs
+        - Bibliothèques complètes
+    - Iframe et événement onload
+    - Cas des fournisseurs externes
+
+<!-- /MarkdownTOC -->
+
 Parallélisation
 ===============
 
 Nous l'avons vu dans le chapitre d'introduction aux premiers 
-concepts, une session web a tendance à fortement sous-utiliser 
+concepts, une session web a tendance à fortement sousm-utiliser 
 notre bande passante. Sur nos machines modernes, le processeur 
 tourne lui aussi quasiment à vide pendant une bonne partie du 
 chargement. 
